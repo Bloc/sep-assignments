@@ -1,3 +1,5 @@
+require_relative 'node'
+
 class OpenAddressing
   def initialize(size)
   end

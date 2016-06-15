@@ -1,5 +1,7 @@
 include RSpec
 
+require_relative 'screen'
+
 RSpec.describe Screen, type: Class do
   let(:screen) { Screen.new(10, 10) }
 

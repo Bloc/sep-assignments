@@ -1,5 +1,8 @@
 include RSpec
 
+require_relative 'hash_item'
+require_relative 'hashclass'
+
 RSpec.describe HashClass, type: Class do
   let(:lotr_movies) { HashClass.new(6) }
 

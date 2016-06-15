@@ -1,5 +1,7 @@
 include RSpec
-require 'node'
+
+require_relative 'node'
+require_relative 'linked_list'
 
 RSpec.describe LinkedList, type: Class do
   let(:n1) { Node.new("Rob") }
@@ -7,7 +9,7 @@ RSpec.describe LinkedList, type: Class do
   let(:n3) { Node.new("Mike") }
   let(:llist) { LinkedList.new }
 
-  describe "#add_to_tail(data)" do
+  describe "#add_to_tail" do
     it "adds a Node to the tail" do
       llist.add_to_tail(n1)
       expect(llist.tail).to eq n1
@@ -37,7 +39,7 @@ RSpec.describe LinkedList, type: Class do
     specify { expect { llist.print }.to output("Rob\nBen\n").to_stdout }
   end
 
-  describe "#delete(node)" do
+  describe "#delete" do
     before do
       llist.add_to_tail(n1)
       llist.add_to_tail(n2)
@@ -66,7 +68,7 @@ RSpec.describe LinkedList, type: Class do
     end
   end
 
-  describe "#add_to_front(node)" do
+  describe "#add_to_front" do
     it "adds the node to the front of the linked list" do
       llist.add_to_front(n1)
       expect(llist.head).to eq n1

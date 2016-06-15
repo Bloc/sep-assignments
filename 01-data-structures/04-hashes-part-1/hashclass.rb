@@ -9,7 +9,6 @@ class HashClass
 
 
   def [](key)
-    @items.at(index(key, @items.size)).value
   end
 
   def resize

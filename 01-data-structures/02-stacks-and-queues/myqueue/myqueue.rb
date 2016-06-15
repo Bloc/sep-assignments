@@ -3,6 +3,8 @@ class MyQueue
   attr_accessor :tail
 
   def initialize
+    @queue = Array.new
+    @head = @queue[0]
   end
 
   def enqueue(element)

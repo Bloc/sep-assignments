@@ -1,7 +1,8 @@
+require_relative 'node'
+
 class BinarySearchTree
 
-  def initialize
-    @size = 0
+  def initialize(root)
   end
 
   def insert(root, node)
@@ -11,7 +12,7 @@ class BinarySearchTree
   def find(root, data)
   end
 
-  def delete(data)
+  def delete(root, data)
   end
 
   # Recursive Breadth First Search

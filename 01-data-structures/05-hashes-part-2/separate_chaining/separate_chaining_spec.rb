@@ -1,7 +1,9 @@
 include RSpec
 
-RSpec.describe OpenAddressing, type: Class do
-  let(:star_wars_movies) { OpenAddressing.new(6) }
+require_relative 'separate_chaining'
+
+RSpec.describe SeparateChaining, type: Class do
+  let(:star_wars_movies) { SeparateChaining.new(6) }
 
   before do
     star_wars_movies["Star Wars: The Phantom Menace"] = "Number One"
@@ -28,7 +30,7 @@ RSpec.describe OpenAddressing, type: Class do
 
   describe "#hash[key] = value" do
     it "does not resize the array when a collision occurs and the values match" do
-      hash = OpenAddressing.new(4)
+      hash = SeparateChaining.new(4)
       hash["key"] = "value"
       expect(hash.size).to eq 4
       hash["key"] = "second value"
@@ -54,7 +56,7 @@ RSpec.describe OpenAddressing, type: Class do
 
   describe "#load_factor" do
     it "returns the number of items in the hash divided by the size of the underlying array" do
-      h = OpenAddressing.new(4)
+      h = SeparateChaining.new(4)
 
       # Load Factor starts at zero
       expect(h.load_factor == 0).to be true
@@ -73,14 +75,14 @@ RSpec.describe OpenAddressing, type: Class do
 
   describe "#resize" do
     it "doubles the size of the array when invoked" do
-      movies = OpenAddressing.new(6)
+      movies = SeparateChaining.new(6)
       expect(movies.size).to eq 6
       movies.resize
       expect(movies.size).to eq 12
     end
 
     it "copies existing values properly when the array is resized" do
-      movies = OpenAddressing.new(6)
+      movies = SeparateChaining.new(6)
       movies["A New Hope"] = "Average"
       movies["Empire Strikes Back"] = "Excellent"
       movies["Return of the Jedi"] = "The Best"

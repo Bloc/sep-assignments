@@ -1,3 +1,5 @@
+require_relative 'node'
+
 class LinkedList
   attr_accessor :head
   attr_accessor :tail

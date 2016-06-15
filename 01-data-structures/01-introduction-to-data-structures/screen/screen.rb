@@ -1,3 +1,5 @@
+require_relative 'pixel'
+
 class Screen
   attr_accessor :width
   attr_accessor :height
@@ -16,7 +18,6 @@ class Screen
   private
 
   def inbounds(x, y)
-    x >= 0 && x <= self.width && y >= 0 && y <= self.height
   end
 
 end

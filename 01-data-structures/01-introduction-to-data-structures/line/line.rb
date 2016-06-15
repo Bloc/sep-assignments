@@ -5,6 +5,7 @@ class Line
   attr_accessor :members
 
   def initialize
+    self.members = []
   end
 
   def join(person)

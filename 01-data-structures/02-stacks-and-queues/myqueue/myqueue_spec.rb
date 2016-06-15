@@ -1,5 +1,7 @@
 include RSpec
 
+require_relative 'myqueue'
+
 RSpec.describe MyQueue, type: Class do
   let(:q) { MyQueue.new }
 
