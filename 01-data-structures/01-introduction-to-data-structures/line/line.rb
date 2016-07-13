@@ -9,21 +9,32 @@ class Line
   end
 
   def join(person)
+    self.members.push(person)
   end
 
   def leave(person)
+    if self.members.delete(person)
+      return nil
+    end
   end
 
   def front
+    self.members[0]
   end
 
   def middle
+    return self.members[3]
   end
 
   def back
+    return self.members.last
   end
 
   def search(person)
+    self.members.each do |member|
+      return person if member == person
+    end
+    nil
   end
 
   private
