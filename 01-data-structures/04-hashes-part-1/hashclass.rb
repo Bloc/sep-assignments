@@ -8,51 +8,63 @@ class HashClass
 
   # new entry into Hash
   def []=(key, value)
+    puts "-" * 10
     hash_index = index(key, @items.size)
-
-    @items.each_with_index do |hash_value, hash_key|
-      unless hash_value == nil
-        if hash_key == hash_index && hash_value.value != value
-          puts "#{key} has triggered a collision"
-          self.resize
-        end
-      end
+    if @items[hash_index] == nil
+      # puts "No collision. Inserting into Hash..."
+      new_hash_item = HashItem.new(key, value)
+      @items[hash_index] = new_hash_item
+    elsif @items[hash_index].value == value
+      # puts "This is already in the hash...exiting insertion"
+      return
+    elsif @items[hash_index].key == key
+      # puts "This item has a duplicate key...resizing and exiting"
+      self.resize
+    elsif @items[hash_index] != value
+      # puts "This index is taken - resizing..."
+      self.resize
+      self[key] = value
     end
-
-    new_hash_item = HashItem.new(key, value)
-    @items[hash_index] = new_hash_item
-    puts "Key: #{key}"
-    puts "Value: #{value}"
+    puts "Key Inserted: #{key}"
+    puts "Value Inserted: #{value}"
     puts "Hash Index: #{hash_index}"
-    puts "Size: #{@items.size}"
+    puts "Hash Size: #{@items.size}"
+    puts "Hash: #{@items}"
     puts "-" * 10
   end
 
 
   def [](key)
     hash_index = index(key, @items.size)
-    @items[hash_index].value
+    if @items[hash_index] == nil
+      return "Error occurred: value is nil"
+    else
+      @items[hash_index].value
+    end
+
   end
 
   def resize
-    @items.size.times do |i|
-      @items << nil
-    end
-    # This passes, but I think this might break if the rehasing sets the hash_item's
-    # new index to an existing hash_item
-    # if that is the case, I could first push the new indexes and items to a
-    # temp variable and then reset
-    # hash after the loop is over
-    @items.each do |hash_item|
-      unless hash_item == nil
-        new_hash_index = index(hash_item.key, @items.size)
-        self[hash_item.key] = hash_item
+    doubling_array = Array.new(@items.size)
+    saved_items = []
+    @items.each do |item|
+      unless item == nil
+        saved_items << item
       end
     end
 
-    puts "*" * 10
-    puts "RESIZE"
-    puts "Size: #{@items.size}"
+    # erase the hash
+    @items.map! do |hash_item|
+      unless hash_item == nil
+        hash_item = nil
+      end
+    end
+    # smoosh them together
+    @items.concat(doubling_array)
+
+    saved_items.each do |item|
+      self[item.key] = item.value
+    end
   end
 
   # Returns a unique, deterministically reproducible index into an array
