@@ -1,0 +1,5 @@
+The process of doubling the array in use is very slow one and because of this, there
+are performance advantages to using a different process to increase the array size.
+
+Another advantage is that doubling the array size will result in hash indices that
+are more likely to cause collisions than sizes that are prime numbers.
