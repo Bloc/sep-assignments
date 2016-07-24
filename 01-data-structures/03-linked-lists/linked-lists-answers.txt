@@ -1,1 +1,3 @@
-
+1. Spatial locality accesses the elements in a list, that are in order by memory location, once.
+2. In the process of deleting, a linked list is faster but,
+in searching and accessing an element/node, the array is a faster option because the linked list always has to start from the beginning and iterate through; while the array can easily search and find what is needed.
