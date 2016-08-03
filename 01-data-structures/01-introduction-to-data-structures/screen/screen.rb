@@ -20,7 +20,7 @@ class Screen
   end
 
   def at(x, y)
-    if inbounds(x, y)?
+    if inbounds(x, y)
       return @matrix[x][y]
     else
       nil

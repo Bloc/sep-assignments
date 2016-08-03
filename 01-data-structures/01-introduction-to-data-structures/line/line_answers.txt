@@ -6,10 +6,4 @@ B. We can mimic changes to the real world line accurately using array methods.
 C. We are representing people with two pieces of data: a name and place in line that are adequately modeled by a string stored at a specific index.
 D. We can assume that there are no ties in our line because it is a line for a ride where there is a 1:1 relationship between seats in the ride and line order.
 
-Questions
-1. Developers can manipulate the data structure with common array operations such as using the array[index] method to read and write/update data.
-2. You can either use the #[] method to find an element by index, or array.index('string') to find the index of a given element.
-3. This structure is useful for representing a list of unique items ordered along a single dimension where the order matters in storing and searching. Examples include lists of items ordered by priority (such as a to-do list or shopping list), step-by-step instructions (such as navigation, cooking or furniture assembly instructions), force-rankings (no ties allowed) (i.e. my ranked order of favorite things to eat, stars by size), chronological ordering (ex. ordered list of names of Presidents of the United States).
-
-2. Pixels
 
