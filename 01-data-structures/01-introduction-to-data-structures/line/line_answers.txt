@@ -1,0 +1,9 @@
+1. Line of people at an amusement park
+
+Overall, the line of people can best be represented by an array for the data structure. Some reasons are: 
+A. We can represent the real world order of people in the order of the array elements.
+B. We can mimic changes to the real world line accurately using array methods.
+C. We are representing people with two pieces of data: a name and place in line that are adequately modeled by a string stored at a specific index.
+D. We can assume that there are no ties in our line because it is a line for a ride where there is a 1:1 relationship between seats in the ride and line order.
+
+

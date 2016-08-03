@@ -1,0 +1,11 @@
+2. Pixels on a screen
+
+We actually have a few data structures here. For the pixel, we are able to encapsulate the 5 attributes of a pixel with 5 primitives (integers in this case). 
+
+For a screen, which is a two dimensional plane, I think we ought to be able to use a two dimensional array. Each x,y value of this array will contain a pixel that itself contains the x-y coordinates it is located in as well as the RGB value. This works well for the following reasons:
+A. Arrays begin at 0, which works well for our coordinate system for this 2-D screen that traditionally has a corner labeled as the origin at 0,0. 
+B. The pixel can be easily reassigned color values based on the x,y coordinates.
+C. The pixel can be accurately represented with three color values and the coordinates.
+D. Each pixel occupies a unique space on the x-y plane so an array of arrays will not have conflicts of two pixel elements having equal values (the tie score problem).
+
+
