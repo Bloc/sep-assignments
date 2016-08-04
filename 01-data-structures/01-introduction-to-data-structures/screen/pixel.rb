@@ -27,6 +27,7 @@ class Pixel
       return 0
     else
       color
+    end
   end
-
+  
 end
