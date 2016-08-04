@@ -24,16 +24,16 @@ class LinkedList
   # This method removes the last node in the lists and must keep the rest of the list intact.
   def remove_tail
     next_to_last = @head
-    if next_to_last.next = nil
+    if next_to_last.next == nil
       next_to_last, @head, @tail = nil, nil, nil
     else
       while next_to_last.next != @tail
         next_to_last = next_to_last.next
       end
       @tail = next_to_last
-      delete_me = next_to_last.next
+      target = next_to_last.next
       next_to_last.set_next(nil)
-      delete_me = nil
+      target = nil
     end 
   end
 
