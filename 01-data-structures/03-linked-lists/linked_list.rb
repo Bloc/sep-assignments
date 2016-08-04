@@ -84,4 +84,14 @@ class LinkedList
       temp_head
     end
   end
+
+  # This method finds the node with the passed in data value. Returns the node if success, or nil on fail
+  def find(data)
+    target = @head
+    while target.data != data or target != nil
+      target = target.next
+    end
+    target
+  end
+
 end

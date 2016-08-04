@@ -10,4 +10,5 @@ class Node
   def set_next(node)
   	self.next = node
   end
+
 end
