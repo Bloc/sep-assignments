@@ -42,25 +42,23 @@ class LinkedList
     current_node = @head
     while current_node != nil
       puts current_node.data
-      puts current_node.next
       current_node = current_node.next
     end
   end
 
   # This method removes `node` from the list and must keep the rest of the list intact.
   def delete(node)
-    previous_node = @head
-    if previous_node == node
-      @head = previous_node.next
-      previous_node = nil
-    else
-      while previous_node.next != node
-        previous_node = previous_node.next
+    temp = @head   # did we nail it right away
+    if temp == node
+      @head = temp.next
+    elsif temp != node && @head != nil
+      while temp.next != node
+        temp = temp.next
       end
-      target_node = previous_node.next
-      next_node = target_node.next
-      previous_node.set_node(next_node)
-      target_node = nil
+      temp.next = node.next
+      if @tail == node  # are we at the bitter end
+        @tail = temp
+      end
     end
   end
 
@@ -88,10 +86,16 @@ class LinkedList
   # This method finds the node with the passed in data value. Returns the node if success, or nil on fail
   def find(data)
     target = @head
-    while target.data != data or target != nil
-      target = target.next
-    end
+    if @head == nil
+      return @head
+    elsif target.data == @head.data
+      return target
+    else 
+      while target.data != data
+        target = target.next
+      end
     target
+    end
   end
 
 end
