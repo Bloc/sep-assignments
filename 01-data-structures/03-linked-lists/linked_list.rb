@@ -33,6 +33,7 @@ class LinkedList
       @tail = next_to_last
       delete_me = next_to_last.next
       next_to_last.set_next(nil)
+      delete_me = nil
     end 
   end
 
@@ -48,14 +49,19 @@ class LinkedList
 
   # This method removes `node` from the list and must keep the rest of the list intact.
   def delete(node)
-    # if list exists
-    #   if list.
-    # track previous, target and next_node
-    # find target using previous.next so you dont lose track of it
-    # set target to previous.next
-    # set next_node to target.next
-    # previous.set_next(next_node)
-    # 
+    previous_node = @head
+    if previous_node == node
+      @head = previous_node.next
+      previous_node = nil
+    else
+      while previous_node.next != node
+        previous_node = previous_node.next
+      end
+      target_node = previous_node.next
+      next_node = target_node.next
+      previous_node.set_node(next_node)
+      target_node = nil
+    end
   end
 
   # This method adds `node` to the front of the list and must set the list's head to `node`.
