@@ -1,0 +1,4 @@
+Linked List Questions
+
+1. Spatial Locality
+Spatial Locality occurs when memory blocks are physically next to each other in memory. The advantage of this is that when the CPU has data moved from RAM to cache, all of the data in the collection / data structure can be moved into cache. This results in faster performance as there is no need to keep moving data from RAM to the cache - the data is physcially adjacent in the cache.
