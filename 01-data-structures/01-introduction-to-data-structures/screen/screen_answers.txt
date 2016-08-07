@@ -1,0 +1,12 @@
+(really not sure about how I should be answering these questions…I’ve always been bad with this part) 
+
+1.How does your data structure allow developers to access and manipulate the data?
+	There is functionality to create pixels with data about their r/g/b color values, as well as to position said pixels to different spots on a screen (matrix,) which they can also define the boundaries of when creating.
+
+
+2. If a developer wanted to find a specific element in your data structure, how would you search for it?
+	This allows them to search for specific pixels (returning the data about pixel’s color value,) by entering specific coordinates. 
+
+
+3.What other real-world data can each structure represent?
+	It would work as any number of grid-type structures. A simple example (which wouldn’t require the complexity of the pixel class,) would be say the position of letters on a scrabble board, a word search, (or as a more complicated case) imagining types of information (boxes, letters, etc.) on a grid to create a crossword puzzle. A more appropriate example might be to imagine the pixels as students in a large classroom, the color values as details about said student, and the screen/grid as a layout of desks or seats.
