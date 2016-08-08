@@ -8,20 +8,18 @@ class MyStack
 
   def push(item)
     @stack[@stack.count] = item
-    self.top = @stack[-1]
+    self.top = item
   end
 
   def pop
     if !empty? 
-      temp = @stack[-1]
-      @stack.delete_at[-1]
+      temp = @stack.delete_at(-1)
       self.top = @stack[-1]
       return temp
-    else
-      nil
+    end
   end
 
   def empty?
-    @stack.count == 0 ? true : false
+    @stack.count == 0
   end
 end

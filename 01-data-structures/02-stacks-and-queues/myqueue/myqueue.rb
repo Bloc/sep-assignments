@@ -16,10 +16,11 @@ class MyQueue
     if !@queue.empty?
       @queue.shift
       set_head_tail
+    end
   end
 
   def empty?
-    @queue.count == 0 ? true : false
+    @queue.count == 0
   end
 
   private 
