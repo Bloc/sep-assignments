@@ -30,7 +30,7 @@ RSpec.describe Screen, type: Class do
     end
 
     it "handles invalid x, y values gracefully" do
-      screen.insert(p, -1, -1) #okay I had to add this! I can't see how it would work otherwise!
+      # #okay I had to add this! I can't see how it would work otherwise!
       p = screen.at(-1, -1)
       expect(p).to eq nil
     end

@@ -21,13 +21,13 @@ class Screen
   end
 
   def at(x, y)
+    if inbounds(x,y)
      @matrix.each do |pix, xcord, ycord|
        if (xcord == x) && (ycord = y)
          return pix
-       else
-         return nil
        end
      end
+   end
   end
 
   private
