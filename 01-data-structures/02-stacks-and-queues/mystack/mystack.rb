@@ -24,7 +24,7 @@ class MyStack
     if self.top == nil
       true
     else
-      false 
+      false
     end
   end
 end
