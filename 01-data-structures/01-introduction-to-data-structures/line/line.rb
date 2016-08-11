@@ -35,7 +35,6 @@ class Line
         return x
       end
     end
-    return nil
   end
 
   private
