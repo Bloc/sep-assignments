@@ -10,7 +10,7 @@ class MyQueue
 
   def enqueue(element)
     @queue.length.times do |x|
-      @queue[@queue.length - x] =   @queue[@queue.length - x -1]
+      @queue[@queue.length - x] =  @queue[@queue.length - x -1]
     end
     @queue[0] = element
     @head = @queue[0]
