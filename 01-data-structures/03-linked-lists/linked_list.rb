@@ -17,7 +17,7 @@ class LinkedList
       @head = node
       @tail = node
     else
-    search_until(nil)
+      search_until(nil)
       @current.next = node
       @tail = node
     end
@@ -64,8 +64,8 @@ class LinkedList
 
   # This method removes and returns the first node in the Linked List and must set Linked List's head to the second node.
   def remove_front
-    temp = @head.next
-    @head.next == nil # I don't understand why this is needed...
-    @head = temp
+    @head = @head.next
+    #@head.next = nil # I don't understand why this is needed...
+    #@head = temp
   end
 end
