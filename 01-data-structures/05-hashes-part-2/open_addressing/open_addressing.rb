@@ -25,7 +25,7 @@ class OpenAddressing
           @items[next_index] = new_node
         else
           resize
-          add_element(key, value)
+          # add_element(key, value)
         end
       end
     else
@@ -48,24 +48,17 @@ class OpenAddressing
   # We are hashing based on strings, let's use the ascii value of each string as
   # a starting point.
   def index(key, size)
-    # ascii = 0
-    # key.each_byte do |ch| 
-    #   ascii += ch
-    # end
     key.sum % size 
-    # ascii % size
   end
 
   # Given an index, find the next open index in @items
   def next_open_index(index)
-    
     while index < (self.size - 1)
       index += 1
       if @items[index] == nil
         return index
       end
     end
-
     return -1 
   end
 
