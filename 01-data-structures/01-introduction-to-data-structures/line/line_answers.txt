@@ -1,0 +1,8 @@
+Used an Array, a linear, ordered arrangement of elements and suggested by initialize method of the exercise code
+
+1) a) joining the line means to simply append the new member to the array
+   b) searching for a particular member requires iterating through each element until a match is found
+   c) removing a particular member, requires first searching (see above) and then setting element to be empty or nil (though probably should just remove the element to shorten the line
+   d) searching for which member is in a particular position (e.g., front) in the line merely requires accessing the element in that position
+2) see 1b
+3) a stack of papers, cars on a metered on-ramp waiting to enter freeway traffic

@@ -1,0 +1,23 @@
+Line:
+
+Used an Array, a linear, ordered arrangement of elements and suggested by initialize method of the exercise code
+
+1) a) joining the line means to simply append the new member to the array
+   b) searching for a particular member requires iterating through each element until a match is found
+   c) removing a particular member, requires first searching (see above) and then setting element to be empty or nil (though probably should just remove the element to shorten the line
+   d) searching for which member is in a particular position (e.g., front) in the line merely requires accessing the element in that position
+2) see 1b
+3) a stack of papers, cars on a metered on-ramp waiting to enter freeway traffic
+
+
+
+
+Pixel:
+
+Used an Array of Arrays to act as a two-dimensional array (or matrix)
+
+1) a) inserting a pixel can be done directly to the Array of Arrays by simply referring to their position in the arrays using x and y
+   b) searching for a pixel by x and y position is done by simply accessing the same element indices within the two-dimensional array
+   c) removing a particular pixel can be done by reseting the element at its position with nil
+2) see 1b
+3) a grid based map (i.e., discrete coordinates, not continuous), seats in an auditorium
