@@ -4,6 +4,23 @@ class LinkedList
   attr_accessor :head
   attr_accessor :tail
 
+  def find(index)
+    x = 0
+    current = @head
+    until x == index
+      current = current.next
+      x +=1
+    end
+    current
+  end
+
+  def delete_at(index)
+    previous = find(index-1)
+    temp = previous.next.next
+    previous.next.next = nil
+    previous.next = temp
+  end
+
   def search_until(thing)
     @current = @head
     until @current.next == thing
@@ -17,8 +34,8 @@ class LinkedList
       @head = node
       @tail = node
     else
-      search_until(nil)
-      @current.next = node
+      # search_until(nil)
+      @tail.next = node
       @tail = node
     end
   end
@@ -64,8 +81,8 @@ class LinkedList
 
   # This method removes and returns the first node in the Linked List and must set Linked List's head to the second node.
   def remove_front
-    @head = @head.next
-    #@head.next = nil # I don't understand why this is needed...
-    #@head = temp
+    temp = @head
+    @head.next = nil # This is for memory managment purposes
+    @head = temp
   end
 end
