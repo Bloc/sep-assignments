@@ -17,43 +17,20 @@ class OpenAddressing
 
     if @items[new_index] == nil
       @items[new_index] = new_node
-
-      puts "-- Entered item on nil --"
-      puts "key #{@items[new_index].key}"
-      puts "value #{@items[new_index].value}"
-      puts "index #{new_index}"
-      puts "index length #{self.size}"
-
     elsif @items[new_index].key == key
-      if @items[new_index].value != value
-        new_index = next_open_index(new_index)
-        if new_index > -1
-          new_node.next = new_index
-          @items[new_index] = new_node
-
-          puts "-- Entered item on collision--"
-          puts "key #{@items[new_index].key}"
-          puts "value #{@items[new_index].value}"
-          puts "index #{new_index}"
-          puts "index length #{self.size}"
-
+      if @items[new_index].value != value 
+        next_index = next_open_index(new_index)
+        if next_index > -1
+          new_node.next = next_index
+          @items[next_index] = new_node
         else
           resize
           add_element(key, value)
-          puts "-- Resize -- -----------"
-
-          
         end
       end
     else
-      new_index = next_open_index(new_index)
-      if new_index > -1
-        new_node.next = new_index
-        @items[new_index] = new_node
-      else
-        resize
-        add_element(key, value)
-      end
+      resize
+      add_element(key, value)
     end
   end
 
@@ -71,16 +48,18 @@ class OpenAddressing
   # We are hashing based on strings, let's use the ascii value of each string as
   # a starting point.
   def index(key, size)
-    ascii = 0
-    key.each_byte do |ch| 
-      ascii += ch
-    end
-    ascii % size
+    # ascii = 0
+    # key.each_byte do |ch| 
+    #   ascii += ch
+    # end
+    key.sum % size 
+    # ascii % size
   end
 
   # Given an index, find the next open index in @items
   def next_open_index(index)
-    while index < self.size - 1
+    
+    while index < (self.size - 1)
       index += 1
       if @items[index] == nil
         return index
