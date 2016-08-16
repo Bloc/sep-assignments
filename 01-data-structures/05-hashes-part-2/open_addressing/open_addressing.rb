@@ -17,10 +17,33 @@ class OpenAddressing
 
     if @items[new_index] == nil
       @items[new_index] = new_node
+
+      puts "-- Entered item on nil --"
+      puts "key #{@items[new_index].key}"
+      puts "value #{@items[new_index].value}"
+      puts "index #{new_index}"
+      puts "index length #{self.size}"
+
     elsif @items[new_index].key == key
       if @items[new_index].value != value
-        # resize
-        @items[new_index] = new_node
+        new_index = next_open_index(new_index)
+        if new_index > -1
+          new_node.next = new_index
+          @items[new_index] = new_node
+
+          puts "-- Entered item on collision--"
+          puts "key #{@items[new_index].key}"
+          puts "value #{@items[new_index].value}"
+          puts "index #{new_index}"
+          puts "index length #{self.size}"
+
+        else
+          resize
+          add_element(key, value)
+          puts "-- Resize -- -----------"
+
+          
+        end
       end
     else
       new_index = next_open_index(new_index)
