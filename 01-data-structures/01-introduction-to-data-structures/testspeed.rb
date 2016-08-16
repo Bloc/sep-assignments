@@ -57,6 +57,16 @@ def testInclusion(n)
         end
       end
     end
+
+    trial.report('combined double ternary (ugly)') do
+      n.times do |idx|
+        pixel = values[idx]
+        x = pixel[0]
+        y = pixel[1]
+        (x < 0 ? 0 : (x > 255 ? 255 : x)) && (y < 0 ? 0 : (y > 255 ? 255 : y))
+      end
+    end
+
   end
 
 end
