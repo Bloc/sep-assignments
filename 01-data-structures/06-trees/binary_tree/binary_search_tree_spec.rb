@@ -63,82 +63,78 @@ RSpec.describe BinarySearchTree, type: Class do
 
     it "properly finds a left node" do
       tree.insert(root, pacific_rim)
-      expect(tree.find(root, pacific_rim.title).title).to eq "Pacific Rim"
+      expect(tree.find(root, pacific_rim.rating).title).to eq "Pacific Rim"
     end
 
     it "properly finds a left-left node" do
       tree.insert(root, braveheart)
       tree.insert(root, pacific_rim)
-      expect(tree.find(root, pacific_rim.title).title).to eq "Pacific Rim"
+      expect(tree.find(root, pacific_rim.rating).title).to eq "Pacific Rim"
     end
 
     it "properly finds a left-right node" do
       tree.insert(root, donnie)
       tree.insert(root, inception)
-      expect(tree.find(root, inception.title).title).to eq "Inception"
+      expect(tree.find(root, inception.rating).title).to eq "Inception"
     end
 
     it "properly finds a right node" do
       tree.insert(root, district)
-      expect(tree.find(root, district.title).title).to eq "District 9"
+      expect(tree.find(root, district.rating).title).to eq "District 9"
     end
 
     it "properly finds a right-left node" do
       tree.insert(root, hope)
       tree.insert(root, martian)
-      expect(tree.find(root, martian.title).title).to eq "The Martian"
+      expect(tree.find(root, martian.rating).title).to eq "The Martian"
     end
 
     it "properly finds a right-right node" do
       tree.insert(root, empire)
       tree.insert(root, mad_max_2)
-      expect(tree.find(root, mad_max_2.title).title).to eq "Mad Max 2: The Road Warrior"
+      expect(tree.find(root, mad_max_2.rating).title).to eq "Mad Max 2: The Road Warrior"
     end
   end
 
   describe "#delete(data)" do
-    it "handles nil gracefully" do
-      expect(tree.delete(root, nil)).to eq nil
-    end
-
     it "properly deletes a left node" do
       tree.insert(root, hope)
-      tree.delete(root, hope.title)
-      expect(tree.find(root, hope.title)).to be_nil
+      tree.delete(root, hope.rating)
+      expect(tree.find(root, hope.rating)).to be_nil
     end
 
     it "properly deletes a left-left node" do
       tree.insert(root, braveheart)
       tree.insert(root, pacific_rim)
-      tree.delete(root, pacific_rim.title)
-      expect(tree.find(root, pacific_rim.title)).to be_nil
+      tree.delete(root, pacific_rim.rating)
+      expect(tree.find(root, pacific_rim.rating)).to be_nil
     end
 
     it "properly deletes a left-right node" do
       tree.insert(root, donnie)
       tree.insert(root, inception)
-      tree.delete(root, inception.title)
-      expect(tree.find(root, inception.title)).to be_nil
+      tree.delete(root, inception.rating)
+      expect(tree.find(root, inception.rating)).to be_nil
     end
 
     it "properly deletes a right node" do
       tree.insert(root, district)
-      tree.delete(root, district.title)
-      expect(tree.find(root, district.title)).to be_nil
+      tree.delete(root, district.rating)
+      expect(tree.find(root, district.rating)).to be_nil
     end
 
     it "properly deletes a right-left node" do
       tree.insert(root, hope)
       tree.insert(root, martian)
-      tree.delete(root, martian.title)
-      expect(tree.find(root, martian.title)).to be_nil
+      tree.delete(root, martian.rating)
+      expect(tree.find(root, martian.rating)).to be_nil
     end
 
     it "properly deletes a right-right node" do
       tree.insert(root, empire)
       tree.insert(root, mad_max_2)
-      tree.delete(root, mad_max_2.title)
-      expect(tree.find(root, mad_max_2.title)).to be_nil
+      tree.delete(root, mad_max_2.rating)
+      expect(tree.find(root, mad_max_2.rating)).to be_nil
     end
   end
 

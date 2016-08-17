@@ -1,6 +1,6 @@
 require_relative 'node'
 
-class BinarySearchTree
+class Heap
 
   def initialize(root)
     @root = root
