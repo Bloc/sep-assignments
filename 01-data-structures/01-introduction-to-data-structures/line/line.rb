@@ -9,21 +9,41 @@ class Line
   end
 
   def join(person)
+    members.push(person)
+    #or use shovel operator <<
   end
 
   def leave(person)
+    members.delete(person)
   end
 
   def front
+    members[0]
+    #or members.first
   end
 
   def middle
+    #divide array in half
+    calculate_middle = members.length/2
+    #use modulus to determine if array is even or odd
+    if members.length % 2 == 0
+      #run calculate_middle method on members array
+      members[calculate_middle]
+    #if array is odd then we need to round answer and subtract 1 to find the middle postion in array
+    else
+      #run calculate_middle, use round method and subtract one positon in array
+      members[calculate_middle.round - 1]
+    end
   end
 
   def back
+    members[-1]
+    #or members.last
   end
 
   def search(person)
+    members.include?(person)
+    return person
   end
 
   private
