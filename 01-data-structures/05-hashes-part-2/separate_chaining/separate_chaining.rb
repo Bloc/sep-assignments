@@ -17,14 +17,14 @@ class SeparateChaining
       @items[index] = LinkedList.new()
       @items[index].add_to_tail(Node.new(key,value))
       @item_count +=1
-      if load_factor() >= @max_load_factor
-        self.resize
+       if load_factor() >= @max_load_factor
+         self.resize
       end
-    elsif @items[index].key == key
-      unless @items[index].value == value
-        @items[index].value = value
-        # self.resize #for the spec
-      end
+    # elsif @items[index].head.key == key
+    #   unless @items[index].head.value == value
+    #     @items[index].head.value = value
+    #     # self.resize #for the spec
+    #   end
     else
       @items[index].add_to_tail(Node.new(key,value))
       @item_count +=1
@@ -38,14 +38,14 @@ class SeparateChaining
     index = self.index(key, @items.length)
 
     unless @items[index].nil?
-      if @items[index].key == key
-        @items[index].value
+      if @items[index].head.key == key
+        @items[index].head.value
       else
         x=0
-        until hash_list.find(x).key == key
+        until @items[index].find(x).key == key
           x+=1
         end
-        hash_list.find(x).value
+        @items[index].find(x).value
       end
     end
   end
