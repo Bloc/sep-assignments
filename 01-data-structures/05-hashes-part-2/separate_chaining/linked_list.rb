@@ -4,6 +4,16 @@ class LinkedList
   attr_accessor :head
   attr_accessor :tail
 
+  def find(index)
+    x = 0
+    current = @head
+    until x == index
+      current = current.next
+      x +=1
+    end
+    current
+  end
+  
   def search_until(thing)
     @current = @head
     until @current.next == thing
@@ -31,7 +41,7 @@ class LinkedList
     else
       search_until(@tail)
       @tail = @current
-    end 
+    end
   end
 
   # This method prints out a representation of the list.

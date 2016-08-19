@@ -37,8 +37,16 @@ class SeparateChaining
   def [](key)
     index = self.index(key, @items.length)
 
-    unless @items[index].nil? || @items[index].key != key
-      @items[index].value
+    unless @items[index].nil?
+      if @items[index].key == key
+        @items[index].value
+      else
+        x=0
+        until hash_list.find(x).key == key
+          x+=1
+        end
+        hash_list.find(x).value
+      end
     end
   end
 
@@ -48,14 +56,16 @@ class SeparateChaining
 
     old_array.each do |hash_list|
       unless hash_list.nil?
-        hash_list.
-        index = self.index(hash_item.key, @items.length)
-
-        if @items[index].nil?
-          @items[index] = hash_item # this is actually a linked list
-        else
-          self.resize
-          self[hash_item.key] = hash_item.value
+        x = 0
+        until hash_list.find(x) == nil
+          index = self.index(hash_list.find(x).key, @items.length)
+          if @items[index].nil?
+            @items[index] = LinkedList.new()
+            @items[index].add_to_tail(Node.new(hash_list.find(x).key, hash_list.find(x).value))
+          else
+            @items[index].add_to_tail(Node.new(hash_list.find(x).key, hash_list.find(x).value))
+          end
+          x += 1
         end
       end
     end
