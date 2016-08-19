@@ -14,7 +14,19 @@ class Line
   end
 
   def leave(person)
-    members.delete(person)
+    #members.delete(person)
+      #expected nil, got ["Hillary", "Bernie", "Ted", "Jeb", "Ben"]
+    #members.delete_at(index(person))
+      #expected nil, got ["Hillary", "Bernie", "Ted", "Jeb", "Ben"]
+    #self.members.delete_at(index(person))
+      #expected nil, got ["Hillary", "Bernie", "Ted", "Jeb", "Ben"]
+    #if self.members.delete(person)
+      #return nil
+    #end
+      #expected nil, got ["Hillary", "Bernie", "Ted", "Jeb", "Ben"]
+
+    #got this to work, but not really sure why....once Donald is removed, it checks that position and it is nil??  
+    members[index(person)] = nil
   end
 
   def front
@@ -42,13 +54,18 @@ class Line
   end
 
   def search(person)
-    members.include?(person)
-    return person
+    #iterate through the array to search for person
+    members.each do |individual|
+      if person == individual
+        return individual
+      end
+    end
   end
 
   private
 
   def index(person)
+    members.index(person)
   end
 
 end

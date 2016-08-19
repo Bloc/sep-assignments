@@ -30,6 +30,7 @@ class Pixel
     #return color passed in as argument if between 0 and 255
     else
       return color
+    end
   end
 
 end
