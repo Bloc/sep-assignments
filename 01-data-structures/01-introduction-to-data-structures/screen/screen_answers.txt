@@ -1,0 +1,3 @@
+A two dimensional is used in screen.rb to create a matrix which is ultimately a grid of numbers arranged in rows
+and columns. Nested loops are used most of the time to reference every element within a two dimensional array.
+In screen.rb I utilized a private method to validate x and y and set the arrays equal to a pixel for that coordinate. 

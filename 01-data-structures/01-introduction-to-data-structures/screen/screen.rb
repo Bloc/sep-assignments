@@ -8,31 +8,32 @@ class Screen
   def initialize(width, height)
     @width = width
     @height = height
-    #create matrix array to hold x,y coordinates and pixel
-    @matrix = []
+    #create an array within an array to hold [x[y]]
+    @matrix = Array.new(@width) {Array.new(@height)}
   end
 
   # Insert a Pixel at x, y
   def insert(pixel, x, y)
-    #insert pixel, x, y into matrix array
-    matrix.push(pixel, x, y)
+    #if x,y meet inbounds method requirements, then a pixel can be inserted
+    if inbounds(x,y)
+      return @matrix[x][y] = pixel
+    end
   end
 
   def at(x, y)
-    #use bloc to iterate through array and determine if x,y have coordinates and if so, return pixel
-    matrix.each_with_index do |array, index|
-      #if element at 0 position equals x and 1 position equals y, then return pixel color
-      if matrix[index][0] == x && matrix[index][1] == y
-        return matrix[index][2]
-      else
-        #if x,y are not available, nothing to return
-        return nil
-      end
+    if inbounds(x,y)
+      #returns the valid x,y values
+      return @matrix[x][y]
     end
   end
 
   private
+  #define what x and y must be
+  #screen has width and height..x must be less/equal to width and y <= height
+  #initially used width and height before realizing @width and @height, also had > instead of <=
+  #x and y are both integers
   def inbounds(x, y)
+    ((x > 0) && (x <= @width)) && ((y > 0) and (y <= @height))
   end
 
 end
