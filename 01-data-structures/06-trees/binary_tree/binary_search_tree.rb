@@ -38,9 +38,32 @@ class BinarySearchTree
   def delete(root, data)
     if !data
       nil
-    elsif root.left.title == data
-      temp = root.left
-      root.left = temp.right
+    else
+      puts " ---- "
+      puts root.title
+      puts root.right.title unless !root.right
+      puts root.left.title unless !root.left
+      if root.right
+        if root.right.title == data
+          temp = root.right
+          root.right = temp.left
+          if root.right != nil
+            root.right.right = temp.right
+          end
+        end
+      elsif root.left
+        if root.left.title == data
+          temp = root.left
+          root.left = temp.left
+          if root.left != nil
+            root.left.right = temp.right
+          end
+        end
+      else
+        delete(root.left, data)
+      
+        delete(root.right, data)
+      end
     end
 
   end
