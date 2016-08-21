@@ -28,10 +28,6 @@ class BinarySearchTree
   def find(root, data)
     if root.title == data
       root
-    # elsif root != nil 
-    #   find(root.right, data) unless root.right == nil
-    #   find(root.left, data) unless root.left == nil
-    # end
     elsif root.right != nil
       find(root.right, data)
     elsif root.left != nil
@@ -40,6 +36,13 @@ class BinarySearchTree
   end
 
   def delete(root, data)
+    if !data
+      nil
+    elsif root.left.title == data
+      temp = root.left
+      root.left = temp.right
+    end
+
   end
 
   # Recursive Breadth First Search
