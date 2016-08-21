@@ -26,18 +26,17 @@ class BinarySearchTree
 
   # Recursive Depth First Search
   def find(root, data)
-    target = nil
-    if root.title == data.title
-      target = root
-    elsif data.rating < root.rating
-      find(root.left, data)
-
-    elsif data.rating > root.rating
+    if root.title == data
+      root
+    # elsif root != nil 
+    #   find(root.right, data) unless root.right == nil
+    #   find(root.left, data) unless root.left == nil
+    # end
+    elsif root.right != nil
       find(root.right, data)
-    else
-      nil
+    elsif root.left != nil
+      find(root.left, data)
     end
-    return target
   end
 
   def delete(root, data)
