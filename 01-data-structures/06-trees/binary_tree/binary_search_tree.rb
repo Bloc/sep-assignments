@@ -39,10 +39,6 @@ class BinarySearchTree
     if !data
       nil
     else
-      puts " ---- "
-      puts root.title
-      puts root.right.title unless !root.right
-      puts root.left.title unless !root.left
       if root.right
         if root.right.title == data
           temp = root.right
@@ -70,5 +66,25 @@ class BinarySearchTree
 
   # Recursive Breadth First Search
   def printf(children=nil)
+    if !children
+      puts "#{self.root.title}: #{self.root.rating}" 
+    end
+    print_kids(self.root)
   end
+
+  def print_kids(root)
+    if root.left
+      puts "#{root.left.title}: #{root.left.rating}"
+    end
+    if root.right
+      puts "#{root.right.title}: #{root.right.rating}"
+    end
+    if root.left
+      print_kids(root.left)
+    end
+    if root.right
+      print_kids(root.right)
+    end
+  end
+
 end
