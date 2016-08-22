@@ -2,10 +2,11 @@ require_relative 'node'
 
 class BinarySearchTree
 
-  attr_accessor :root
+  attr_accessor :root, :movie_list
 
   def initialize(root)
     self.root = root
+    self.movie_list = []
   end
 
   def insert(root, node)
@@ -61,30 +62,40 @@ class BinarySearchTree
         end
       end
     end
-
   end
+
+# nodes = []
+
+# ####
+
+# next_breadth = []
+
+# nodes.each do |node|
+#   print node
+
+#   next_breadth << node.left
+#   next_breadth << node.right
+# end
+
+# do_it_again(next_breadth)
 
   # Recursive Breadth First Search
-  def printf(children=nil)
-    if !children
-      puts "#{self.root.title}: #{self.root.rating}" 
-    end
-    print_kids(self.root)
-  end
+  def printf(nodes=nil)
+    next_row = []
 
-  def print_kids(root)
-    if root.left
-      puts "#{root.left.title}: #{root.left.rating}"
+    if nodes.nil?
+      nodes = [self.root]
     end
-    if root.right
-      puts "#{root.right.title}: #{root.right.rating}"
+    nodes.each do |node|
+      if !node.nil?
+        puts "#{node.title}: #{node.rating}"
+        next_row << node.left
+        next_row << node.right
+      end
     end
-    if root.left
-      print_kids(root.left)
-    end
-    if root.right
-      print_kids(root.right)
+
+    if next_row.count > 0
+      printf(next_row)
     end
   end
-
 end
