@@ -50,6 +50,8 @@ class BinarySearchTree
           if root.right != nil
             root.right.right = temp.right
           end
+        else
+          delete(root.right, data)
         end
       elsif root.left
         if root.left.title == data
@@ -58,11 +60,9 @@ class BinarySearchTree
           if root.left != nil
             root.left.right = temp.right
           end
+        else
+          delete(root.left, data)
         end
-      else
-        delete(root.left, data)
-      
-        delete(root.right, data)
       end
     end
 
