@@ -134,14 +134,12 @@ class BinarySearchTree
     insert(nil, self.favorite_movies[0])
 
     self.favorite_movies.each do |movie|
-      if self.recursive_breadth_find(self.root, movie.title).nil?
-        self.insert(self.root, movie)
-      end
+      self.insert(self.root, movie)
     end
   end
 
   # node.title search
-  def recursive_breadth_find(nodes, data)
+  def recursive_breadth_find(nodes=nil, data)
     next_row = []
 
     if nodes.nil?
@@ -153,8 +151,9 @@ class BinarySearchTree
         if node.title == data
           return node
         else
-        next_row << node.left
-        next_row << node.right
+          next_row << node.left
+          next_row << node.right
+        end
       end
     end
 
