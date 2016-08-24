@@ -1,0 +1,9 @@
+1. To find the letter G in a alphabetically sorted collection, it would take 7 iterations to find it, linearly.
+2. To find the letter G using a binary search it would take three tries to find.
+3. 0 1 1 2 3 5 8 13 21 34 55 89
+
+1. In an unsorted list, I would use a linear search because a binary search needs to be sorted to be efficient.
+I would use an iterative approach because a linear search is already slow and using a recursive approach would take even more time.
+
+2. In a sorted list, I would use binary search because it is faster in this situation.
+I would use an iterative approach would be better because again, it is faster than a recursive approach.
