@@ -1,0 +1,29 @@
+1. def tip (total, quality)
+    IF quality is "great"
+      total * 0.15
+    ELSE IF quality is "okay"
+      total * 0.10
+    ELSE IF quality is "horrible"
+      total
+    END
+  END
+
+  2. def picking_outfit(weather, clothes)
+      IF weather is sunny
+        clothes = shorts
+      ELSE IF weather is rainy
+        clothes = raincoat
+      ELSE IF weather is windy
+        clothes = light jacket
+      END
+    END
+
+  3. def binge_watch (show, sleep)
+      counter = 0
+      IF show is more than 1 seasons
+        press play and ignore responsibilities
+          IF sleep && counter > 1
+            counter = 0
+          END
+        END
+      END
