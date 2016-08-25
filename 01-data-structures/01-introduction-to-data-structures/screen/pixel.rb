@@ -9,13 +9,28 @@ class Pixel
   attr_accessor :x
   attr_accessor :y
 
-
+  #why do we need to initialize if we use attr_accessor?
   def initialize(red, green, blue, x, y)
+    @red = validate_color(red)
+    @green = validate_color(green)
+    @blue = validate_color(blue)
+    @x = x
+    @y = y
   end
 
   private
 
   def validate_color(color)
+    #if color greater than 0 return 255
+    if color > 255
+      return 255
+    #if color less than 0 return 0
+    elsif color < 0
+      return 0
+    #return color passed in as argument if between 0 and 255
+    else
+      return color
+    end
   end
 
 end

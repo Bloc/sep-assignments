@@ -1,0 +1,5 @@
+1. The data structure used is an array which is easy for developers to manipulate. An array is organized
+in a way that is easy to search, remove element by index and add/remove elements as needed. Arrays simplify
+access and manipulation of data.
+2. Arrays can be searched by iterating through the array(linear search) to locate the element being searched for.
+3. Arrays can be utilized to hold the list of students names, list of albums by one band, grocery list, to do list.
