@@ -20,49 +20,49 @@ RSpec.describe HeapTree, type: Class do
 
   describe "#insert(data)" do
     it "properly inserts a higher value below root for min-heap" do
-      tree.insert(root, district)
+      tree.insert(tree.root, district)
       expect(tree.root.title).to eq "The Matrix"
     end
 
     it "properly inserts a higher value to root.right for min-heap" do
-    	tree.insert(root, district)
-      tree.insert(root, shawshank)
+    	tree.insert(tree.root, district)
+      tree.insert(tree.root, shawshank)
       expect(tree.root.right.title).to eq "The Shawshank Redemption"
     end
 
     it "properly inserts a lower value as root for min-heap" do
-      tree.insert(root, pacific_rim)
+      tree.insert(tree.root, pacific_rim)
       expect(tree.root.title).to eq "Pacific Rim"
     end
 
-    # it "properly inserts a new node as a left-left child" do
-    #   tree.insert(root, braveheart)
-    #   tree.insert(root, pacific_rim)
-    #   expect(root.left.left.title).to eq "Pacific Rim"
-    # end
+    it "properly inserts a new node, coughs up correct left-left child" do
+      tree.insert(tree.root, braveheart)
+      tree.insert(tree.root, pacific_rim)
+      expect(tree.root.left.title).to eq "The Matrix"
+    end
 
-    # it "properly inserts a new node as a left-right child" do
-    #   tree.insert(root, donnie)
-    #   tree.insert(root, inception)
-    #   expect(root.left.right.title).to eq "Inception"
-    # end
+    it "properly inserts a new node as a left-right child" do
+      tree.insert(tree.root, donnie)
+      tree.insert(tree.root, inception)
+      expect(tree.root.right.title).to eq "Inception"
+    end
 
-    # it "properly inserts a new node as a right child" do
-    #   tree.insert(root, district)
-    #   expect(root.right.title).to eq "District 9"
-    # end
+    it "properly inserts a new node as a right-left child" do
+      tree.insert(tree.root, jedi)
+      tree.insert(tree.root, braveheart)
+      tree.insert(tree.root, martian)
+      expect(tree.root.left.left.title).to eq "The Martian"
+    end
 
-    # it "properly inserts a new node as a right-left child" do
-    #   tree.insert(root, hope)
-    #   tree.insert(root, martian)
-    #   expect(root.right.left.title).to eq "The Martian"
-    # end
-
-    # it "properly inserts a new node as a right-right child" do
-    #   tree.insert(root, empire)
-    #   tree.insert(root, mad_max_2)
-    #   expect(root.right.right.title).to eq "Mad Max 2: The Road Warrior"
-    # end
+    it "properly inserts a new node as a right-right child" do
+      tree.insert(tree.root, district)
+      tree.insert(tree.root, shawshank)
+      tree.insert(tree.root, martian)
+      tree.insert(tree.root, hope)
+      tree.insert(tree.root, empire)
+      tree.insert(tree.root, mad_max_2)
+      expect(tree.root.right.right.title).to eq "Mad Max 2: The Road Warrior"
+    end
   end
 
   describe "#find(nodes=nil, data)" do
@@ -112,6 +112,36 @@ RSpec.describe HeapTree, type: Class do
       tree.insert(tree.root, mad_max_2)
       expect(tree.find(tree.root, mad_max_2.title).title).to eq "Mad Max 2: The Road Warrior"
     end
+  end
+
+  describe "#print ordered inserts, unordered inserts" do
+    specify {
+      expected_output = "Pacific Rim: 72\nThe Matrix: 87\nInception: 86\nDistrict 9: 90\nThe Shawshank Redemption: 91\nThe Martian: 92\nStar Wars: A New Hope: 93\nStar Wars: The Empire Strikes Back: 94\nMad Max 2: The Road Warrior: 98\n"
+	      tree.insert(tree.root, pacific_rim)
+	      tree.insert(tree.root, inception)
+	      tree.insert(tree.root, district)
+	      tree.insert(tree.root, shawshank)
+			  tree.insert(tree.root, martian)
+	      tree.insert(tree.root, hope)
+	      tree.insert(tree.root, empire)
+	      tree.insert(tree.root, mad_max_2)
+      expect { tree.print }.to output(expected_output).to_stdout
+     }
+
+     # specify {
+     #   expected_output = "The Matrix: 87\nBraveheart: 78\nMad Max 2: The Road Warrior: 98\nPacific Rim: 72\nInception: 86\nDistrict 9: 90\nStar Wars: Return of the Jedi: 80\nThe Shawshank Redemption: 91\nThe Martian: 92\nStar Wars: The Empire Strikes Back: 94\nStar Wars: A New Hope: 93\n"
+     #   tree.insert(tree.root, mad_max_2)
+     #   tree.insert(tree.root, district)
+     #   tree.insert(tree.root, shawshank)
+     #   tree.insert(tree.root, braveheart)
+     #   tree.insert(tree.root, inception)
+     #   tree.insert(tree.root, pacific_rim)
+     #   tree.insert(tree.root, martian)
+     #   tree.insert(tree.root, jedi)
+     #   tree.insert(tree.root, empire)
+     #   tree.insert(tree.root, hope)
+     #   expect { tree.print }.to output(expected_output).to_stdout
+     # }
   end
 
  end
