@@ -48,7 +48,7 @@ class HeapTree
 		end
 	end
 
-	# compare parent and child, recursively checking up the tree until
+	# compare parent and child, recursively checking up the tree
 	def parent_compare(child, parent)
 		unless parent.nil?
 			if child.rating < parent.rating
@@ -57,6 +57,8 @@ class HeapTree
 			end 
 		end
 	end
+
+	
 
 	# swap a parent and child node
 	def swap(child, parent)
@@ -92,7 +94,54 @@ class HeapTree
 		end
 	end
 
-	def delete(root,data)
+	# locate the node, swap in bottom-right-most-node (brmn)
+	def delete(nodes,data)
+		target = find(nodes, data) unless data.nil?
+		unless target.nil?
+			brmn = find_bottom_right_most_node(nodes)
+
+			target.title = brmn.title
+			target.rating = brmn.rating
+
+			# remove link to brmn from former parent
+			if brmn.parent.right == brmn
+				brmn.parent.right = nil
+			else
+				brmn.parent.left = nil
+			end
+				
+			# compare 
+		end
+	end
+
+	def find_bottom_right_most_node(nodes)
+		next_row = []
+
+		if nodes.nil? 
+			nodes = [self.root]
+		end
+
+		if nodes == self.root
+			nodes = [self.root]
+		end
+
+		nodes.each do |node|
+			next_row << node.left unless node.left.nil?
+			next_row << node.right unless node.right.nil?
+		end
+
+		if next_row.count > 0
+			# on full row, look again recursively
+			if next_row.count == 2 * nodes.count
+				find_bottom_right_most_node(next_row)
+			# otherwise compact the array and return the last element
+			else
+				node = next_row.compact[next_row.compact.length - 1]
+			end
+			# or, just return the last item from the array of parent nodes
+		else
+			nodes[nodes.count - 1]
+		end
 	end
 
 	def find(nodes, data)
@@ -120,17 +169,6 @@ class HeapTree
     if next_row.count > 0
       find(next_row, data)
     end
-	end
-
-	def delete (root, data)
-		# start at root
-		# breadth search
-		# - iterate over the array
-		# - if not found repeat
-		# - else 
-		# -- refer to insert child/parent shenanigans
-		# -- need preserve L->R order 
-		# stop when both kids.nil?
 	end
 
 	def print(nodes=nil)
