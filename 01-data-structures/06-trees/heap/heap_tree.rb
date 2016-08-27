@@ -58,6 +58,28 @@ class HeapTree
 		end
 	end
 
+	# compare parent to both left, right kids, recursively checking down the tree
+	def child_compare(parent)
+		unless parent.nil?
+			if parent.left.nil? && parent.right.nil?
+				nil
+			elsif parent.right.nil?
+				if parent.rating > parent.left.rating
+					swap(parent.left, parent)
+				end
+			else		
+				if parent.rating > parent.left.rating || parent.rating > parent.right.rating
+					if parent.left.rating < parent.right.rating
+						swap(parent.left, parent)
+						child_compare(parent.left)
+					else
+						swap(parent.right, parent)
+						child_compare(parent.right)
+					end
+				end
+			end
+		end
+	end
 	
 
 	# swap a parent and child node
@@ -95,33 +117,39 @@ class HeapTree
 	end
 
 	# locate the node, swap in bottom-right-most-node (brmn)
-	def delete(nodes,data)
-		target = find(nodes, data) unless data.nil?
+	def delete(root, data)
+		target = find(root, data) unless data.nil?
 		unless target.nil?
-			brmn = find_bottom_right_most_node(nodes)
+			brmn = find_bottom_right_most_node(root)
 
-			target.title = brmn.title
-			target.rating = brmn.rating
-
-			# remove link to brmn from former parent
-			if brmn.parent.right == brmn
-				brmn.parent.right = nil
-			else
-				brmn.parent.left = nil
-			end
+			if brmn != target
+				target.title = brmn.title
+				target.rating = brmn.rating
 				
-			# compare 
+				# remove link to brmn from former parent
+				if brmn.parent.right.title == brmn.title
+					brmn.parent.right = nil
+				else
+					brmn.parent.left = nil
+				end
+
+				brmn.parent = nil
+
+				unless target.parent.nil?
+					parent_compare(target, target.parent)
+				end
+
+				child_compare(target)
+			else
+				self.root = nil
+			end
 		end
 	end
 
 	def find_bottom_right_most_node(nodes)
 		next_row = []
 
-		if nodes.nil? 
-			nodes = [self.root]
-		end
-
-		if nodes == self.root
+		if nodes.nil? || nodes == self.root
 			nodes = [self.root]
 		end
 
@@ -136,23 +164,19 @@ class HeapTree
 				find_bottom_right_most_node(next_row)
 			# otherwise compact the array and return the last element
 			else
-				node = next_row.compact[next_row.compact.length - 1]
+				return next_row.compact[next_row.compact.length - 1]
 			end
-			# or, just return the last item from the array of parent nodes
+		# or, just return the last item from the array of parent nodes
 		else
-			nodes[nodes.count - 1]
+			return nodes[nodes.count - 1]
 		end
 	end
 
 	def find(nodes, data)
     next_row = []
 
-    if nodes.nil?
+    if nodes.nil? || nodes == self.root
       nodes = [self.root]
-    end
-
-    if nodes == self.root
-    	nodes = [self.root]
     end
 
     nodes.each do |node|

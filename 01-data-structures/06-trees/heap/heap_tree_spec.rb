@@ -125,38 +125,65 @@ RSpec.describe HeapTree, type: Class do
       expect(tree.find(tree.root, hope.title)).to be_nil
     end
 
-    it "properly deletes a left-left node" do
-      tree.insert(tree.root, braveheart)
-      tree.insert(tree.root, pacific_rim)
-      tree.delete(tree.root, pacific_rim.title)
-      expect(tree.find(tree.root, pacific_rim.title)).to be_nil
-    end
-
-    it "properly deletes a left-right node" do
-      tree.insert(tree.root, donnie)
-      tree.insert(tree.root, inception)
-      tree.delete(tree.root, inception.title)
-      expect(tree.find(tree.root, inception.title)).to be_nil
-    end
-
     it "properly deletes a right node" do
-      tree.insert(tree.root, district)
-      tree.delete(tree.root, district.title)
-      expect(tree.find(tree.root, district.title)).to be_nil
-    end
-
-    it "properly deletes a right-left node" do
       tree.insert(tree.root, hope)
       tree.insert(tree.root, martian)
       tree.delete(tree.root, martian.title)
       expect(tree.find(tree.root, martian.title)).to be_nil
     end
 
-    it "properly deletes a right-right node" do
+    it "properly deletes a root node" do
+    	tree.delete(tree.root, root.title)
+      expect(tree.find(tree.root, root.title)).to be_nil
+    end
+
+    it "properly deletes a root node plus bottom-right-most-swap" do
+    	tree.insert(tree.root, pacific_rim)
+    	tree.insert(tree.root, braveheart)
+    	tree.delete(tree.root, pacific_rim.title)
+    	expect(tree.find(tree.root, "Pacific Rim")).to be_nil
+    end
+
+    it "properly deletes a left-left node of 3 row heap" do
+      tree.insert(tree.root, district)
+      tree.insert(tree.root, shawshank)
+      tree.insert(tree.root, martian)
+      tree.insert(tree.root, hope)
+      tree.delete(tree.root, martian.title)
+      expect(tree.find(tree.root, 'The Martian')).to be_nil
+    end
+
+    it "properly deletes a right-right node of a 3 row heap" do
+      tree.insert(tree.root, district)
+      tree.insert(tree.root, shawshank)
+      tree.insert(tree.root, martian)
+      tree.insert(tree.root, hope)
       tree.insert(tree.root, empire)
       tree.insert(tree.root, mad_max_2)
       tree.delete(tree.root, mad_max_2.title)
-      expect(tree.find(tree.root, mad_max_2.title)).to be_nil
+      expect(tree.find(tree.root, "Mad Max 2: The Road Warrior")).to be_nil
+    end
+
+    it "properly deletes a left node of a 3 row heap" do
+      tree.insert(tree.root, district)
+      tree.insert(tree.root, shawshank)
+      tree.insert(tree.root, martian)
+      tree.insert(tree.root, hope)
+      tree.insert(tree.root, empire)
+      tree.insert(tree.root, mad_max_2)
+      tree.delete(tree.root, district.title)
+      expect(tree.find(tree.root, "District 9")).to be_nil
+    end
+
+    it "properly deletes a right node of a 3 row heap" do
+      tree.insert(tree.root, district)
+      tree.insert(tree.root, shawshank)
+      tree.insert(tree.root, martian)
+      tree.insert(tree.root, hope)
+      tree.insert(tree.root, empire)
+      tree.insert(tree.root, mad_max_2)
+      tree.delete(tree.root, shawshank.title)
+      expect(tree.find(tree.root, "The Shawshank Redemption")).to be_nil
     end
   end
 
@@ -175,28 +202,6 @@ RSpec.describe HeapTree, type: Class do
       expect { tree.print }.to output(expected_output).to_stdout
     }
  
-
-   # 	it "prints reverse-ordered (biggest first) inserts" do
-   #   	specify {
-	  #     expected_output = "The Matrix: 87\nStar Wars: A New Hope: 93\nStar Wars: The Empire Strikes Back\nMad Max 2: The Road Warrior: 98\nThe Martian: 92\nThe Shawshank Redemption: 93\n"
-	  #     tree.insert(tree.root, mad_max_2)
-	  #     tree.insert(tree.root, empire)
-	  #     tree.insert(tree.root, hope)
-	  #     tree.insert(tree.root, martian)
-	  #     tree.insert(tree.root, shawshank)
-
-	  #     tree.insert(tree.root, district)
-	      
-	  #     tree.insert(tree.root, braveheart)
-	  #     tree.insert(tree.root, inception)
-	  #     tree.insert(tree.root, pacific_rim)
-	      
-	  #     tree.insert(tree.root, jedi)
-	      
-	  #     tree.insert(tree.root, hope)
-	  #     expect { tree.print }.to output(expected_output).to_stdout
-   #  	}
-  	# end
   end
 
 end
