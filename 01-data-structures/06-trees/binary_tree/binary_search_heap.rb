@@ -16,7 +16,7 @@ class BinarySearchHeap
       if node.rating > root.rating
         @root = node
         @root.left = root
-        if root.left.rating > root.right.rating #compares orginal parent's children to insert into right (next-next largest)
+        if root.right.nil? || root.left.rating > root.right.rating #compares orginal parent's children to insert into right (next-next largest)
           @root.right = root.left
         else
           @root.right = root.right
@@ -32,6 +32,7 @@ class BinarySearchHeap
           first_kids << root.right
           self.insert(first_kids, node)
         end
+      end
     else #for all subsequent cases
       new_kids = [] #array to store children
       root.each do |child|
@@ -39,9 +40,9 @@ class BinarySearchHeap
           old_root = child # stores orginal parent value
           child = node # replaces parent with node
           child.left = old_root #sets new nodes left as orginal parent (next largest)
-          if old_root.left.rating > old_root.right.rating #compares orginal parent's children to insert into right (next-next largest)
+          if old_root.right.nil? || old_root.left.rating > old_root.right.rating  #compares orginal parent's children to insert into right (next-next largest)
             child.right = old_root.left
-          else
+          else #do I need to check the left here for .nil?
             child.right = old_root.right
           end
           #check to make sure no empty values? maybe?

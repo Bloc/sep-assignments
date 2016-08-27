@@ -2,11 +2,11 @@ include RSpec
 
 require_relative 'binary_search_heap'
 
-RSpec.describe BinarySearchTree, type: Class do
+RSpec.describe BinarySearchHeap, type: Class do
 
   let (:root) { Node.new("The Matrix", 87) }
 
-  let (:tree) { BinarySearchTree.new(root) }
+  let (:tree) { BinarySearchHeap.new() }
   let (:pacific_rim) { Node.new("Pacific Rim", 72) }
   let (:braveheart) { Node.new("Braveheart", 78) }
   let (:jedi) { Node.new("Star Wars: Return of the Jedi", 80) }
@@ -30,15 +30,18 @@ RSpec.describe BinarySearchTree, type: Class do
 
       tree.insert(root, jedi) #80
       expect(root.left).to eq jedi
+      expect(root.right).to eq braveheart
+      expect(root.left.left).to eq pacific_rim
 
       tree.insert(root, donnie) #85
+      expect(root.left).to eq donnie
+      expect(root.right).to eq braveheart
+      expect(root.left.left).to eq jedi
+      expect(root.left.right).to eq pacific_rim
+
       tree.insert(root, inception) #86
       tree.insert(root, district) #90
-      tree.insert(root, shawshank) #91
-      tree.insert(root, martian) #92
-      tree.insert(root, hope) #93
-      tree.insert(root, empire) #94
-      tree.insert(root, mad_max_2) #98
+
     end
   end
 
