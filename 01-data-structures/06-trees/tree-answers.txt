@@ -1,0 +1,107 @@
+Answers
+
+1.1 Binary Search Output
+rully good movie: 50
+bad movie: 10
+hipsterdrivel: 75
+The Scrappy Team Wins: 15
+Vietnam War Suckage: 66
+Pretentious. Foreign. Mucho Sexo.: 99
+Lots of Slow Panoramas: 25
+Ninja in the Computer: 60
+Space Wizards: 85
+Every Bullet Misses The Hero: 55
+I Was Fighting Myself All Along Club: 90
+Sympathetic Mob Murderers: 98
+ => nil
+
+1.2 Heap Output
+2.3.0 :026 > ht.print
+bad movie: 10
+rully good movie: 50
+hipsterdrivel: 75
+Vietnam War Suckage: 66
+Space Wizards: 85
+Sympathetic Mob Murderers: 98
+ => nil
+
+Not sure why it won't grow past this point! Let's review in our meeting.
+
+2.
+Top is Binary Search Tree, bottom is Heap (inserting 10,000 values - note that 100,000 crashed my recursive implementation). 
+
+Pickles:06-trees russellschmidt$ ruby benchmark.rb
+  9.620000   0.010000   9.630000 (  9.645934)
+  7.400000   0.210000   7.610000 (  7.630975)
+
+
+2.1 
+Avg insert BST:	0.000965 sec per insert (1ms)
+Avg insert HT: 	0.000763 sec per insert (0.8ms)
+
+
+2.2 
+Pickles:06-trees russellschmidt$ ruby benchmark.rb
+  9.560000   0.010000   9.570000 (  9.590389)
+  7.360000   0.160000   7.520000 (  7.539021)
+Rehearsal ---------------------------------------
+bst   0.000000   0.000000   0.000000 (  0.000813)
+ht    0.000000   0.000000   0.000000 (  0.001397)
+------------------------------ total: 0.000000sec
+
+          user     system      total        real
+bst   0.000000   0.000000   0.000000 (  0.000760)
+ht    0.000000   0.000000   0.000000 (  0.001513)
+
+In this case, the Binary Search Tree has dramatically faster search times, able to find the 5000th element in 0.76ms compared to 1.51ms for the Heap.
+
+
+2.3
+  9.670000   0.010000   9.680000 (  9.705401)
+  7.680000   0.170000   7.850000 (  7.855425)
+Rehearsal --------------------------------------------
+bst find   0.000000   0.000000   0.000000 (  0.000763)
+ht find    0.000000   0.000000   0.000000 (  0.001457)
+----------------------------------- total: 0.000000sec
+
+               user     system      total        real
+bst find   0.000000   0.000000   0.000000 (  0.000754)
+ht find    0.000000   0.000000   0.000000 (  0.001340)
+Rehearsal -------------------------------------------------
+bst delete 5k   0.000000   0.000000   0.000000 (  0.000776)
+ht delete 5k    0.010000   0.000000   0.010000 (  0.003538)
+---------------------------------------- total: 0.010000sec
+
+                    user     system      total        real
+bst delete 5k   0.000000   0.000000   0.000000 (  0.000796)
+ht delete 5k    0.000000   0.000000   0.000000 (  0.008229)
+Rehearsal ---------------------------------------------------
+bst delete 9990   0.010000   0.000000   0.010000 (  0.000722)
+ht delete 9990    0.000000   0.000000   0.000000 (  0.002683)
+------------------------------------------ total: 0.010000sec
+
+                      user     system      total        real
+bst delete 9990   0.000000   0.000000   0.000000 (  0.001173)
+ht delete 9990    0.010000   0.000000   0.010000 (  0.007405)
+Rehearsal --------------------------------------------------
+bst delete 500   0.000000   0.000000   0.000000 (  0.000080)
+ht delete 500    0.000000   0.000000   0.000000 (  0.000381)
+----------------------------------------- total: 0.000000sec
+
+                     user     system      total        real
+bst delete 500   0.000000   0.000000   0.000000 (  0.000103)
+ht delete 500    0.010000   0.000000   0.010000 (  0.004271)
+
+I used values at 5000, 9990 and 500 to serve as data points for an average. A more precise, scientific approach would be to use a fresh tree for each and get more data points. However, using the additional data points of the 'rehearsal' I have 6 data points which is passably ok to show the dramatic difference in performance.
+
+For this data:
+Avg Deletion Time, Binary Search Tree:	0.000966s (~1.0ms)
+Avg Deletion Time, Heap:								0.004418s (~4.5ms)
+
+
+2.4
+Binary Search Trees are, per my implementation, twice as fast for search and 4.5x faster for deleting than heaps. This would lead me to use Binary Search Trees in a situation where I would need performant lookups of data and more frequent deletions. Traversing any one level requires just one comparison, unlike Heaps where you need to make multiple comparisons per row. If properly balanced, a BST can quickly sort and organize data along a single dimension (assuming there are no duplicate values on this dimension that need to be saved) which is very convenient for all the reasons you want a fast lookup of data in any number of applications from a phone book application to customer records by customer number to anonymized patient or census data.
+
+2.5 
+Heaps only outperform Binary Search Trees on creation (insert), though admittedly this test is of a sorted list so probably a best case scenario. I suppose if I had a data set where I needed to do frequent insertions of data, I would prefer a Heap. Heaps will also always have the smallest item in the tree (min-heap) or largest item (max-heap) at the root which can provide speed and convenience in calculations if you need to know these respective numbers from a given set of data. I've read that some schedulers and queueing systems use Heaps because it is easy to implement a FIFO queue with a min heap where the elements are timestamped (oldest request thus has smallest timestamp and is root), or conceptually where something is assigned some sort of relative weighting. I was thinking of how my home router supports two WAN connections to provide load balancing, and I can weight ports and external IPs by priority. So, with a ton of data packets flying back and forth, a heap might be pretty useful to quickly deal with all that. Hopefully with better performance than me.
+

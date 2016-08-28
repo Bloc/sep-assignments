@@ -1,0 +1,34 @@
+Linked List Questions
+
+1. Spatial Locality
+Spatial Locality occurs when memory blocks are physically next to each other in memory. The advantage of this is that when the CPU has data moved from RAM to cache, all of the data in the collection / data structure can be moved into cache. This results in faster performance as there is no need to keep moving data from RAM to the cache - the data is physcially adjacent in the cache.
+
+2. Benchmark Results
+
+Pickles:01-data-structures russellschmidt$ ruby 03-linked-lists/benchmark.rb
+
+  0.000000   0.000000   0.000000 (  0.001377)
+Rehearsal -----------------------------------------------
+array         0.000000   0.000000   0.000000 (  0.001146)
+linked list   0.010000   0.000000   0.010000 (  0.005495)
+-------------------------------------- total: 0.010000sec
+
+                  user     system      total        real
+array         0.000000   0.000000   0.000000 (  0.001172)
+linked list   0.010000   0.000000   0.010000 (  0.004788)
+Rehearsal -------------------------------------------------
+array find      0.000000   0.000000   0.000000 (  0.000007)
+linklist find   0.000000   0.000000   0.000000 (  0.000007)
+---------------------------------------- total: 0.000000sec
+
+                    user     system      total        real
+array find      0.000000   0.000000   0.000000 (  0.000007)
+linklist find   0.000000   0.000000   0.000000 (  0.000006)
+Rehearsal ------------------------------------------------
+array del      0.000000   0.000000   0.000000 (  0.000021)
+linklist del   0.000000   0.000000   0.000000 (  0.000006)
+--------------------------------------- total: 0.000000sec
+
+                   user     system      total        real
+array del      0.000000   0.000000   0.000000 (  0.000031)
+linklist del   0.000000   0.000000   0.000000 (  0.000008)
