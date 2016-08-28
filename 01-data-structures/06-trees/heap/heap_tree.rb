@@ -29,21 +29,21 @@ class HeapTree
 		end
 
 		nodes.each do |node|
-			if node.left == nil
+			if node.left.nil?
 				node.left = target
 				node.left.parent = node
-				return node
-			elsif node.right == nil
+				return
+			elsif node.right.nil?
 				node.right = target
 				node.right.parent = node
-				return node
+				return
 			else
 				next_row << node.left
 				next_row << node.right
 			end
 		end
 
-		if next_row.count > 0 
+		if next_row.count > 0
 			go_to_bottom(next_row, target)
 		end
 	end
@@ -127,13 +127,15 @@ class HeapTree
 				target.rating = brmn.rating
 				
 				# remove link to brmn from former parent
-				if brmn.parent.right.title == brmn.title
-					brmn.parent.right = nil
-				else
-					brmn.parent.left = nil
-				end
+				unless brmn.parent.nil?
+					if brmn.parent.right.title == brmn.title
+						brmn.parent.right = nil
+					else
+						brmn.parent.left = nil
+					end
 
-				brmn.parent = nil
+					brmn.parent = nil
+				end
 
 				unless target.parent.nil?
 					parent_compare(target, target.parent)

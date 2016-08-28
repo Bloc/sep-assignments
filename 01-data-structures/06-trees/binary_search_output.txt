@@ -1,0 +1,115 @@
+Output of My Favorite Movies
+2.3.0 :031 > bstree.printf
+rully good movie: 50
+bad movie: 10
+hipsterdrivel: 75
+The Scrappy Team Wins: 15
+Vietnam War Suckage: 66
+Pretentious. Foreign. Mucho Sexo.: 99
+Lots of Slow Panoramas: 25
+Ninja in the Computer: 60
+Space Wizards: 85
+Every Bullet Misses The Hero: 55
+I Was Fighting Myself All Along Club: 90
+Sympathetic Mob Murderers: 98
+ => nil
+
+the commands
+
+Pickles:06-trees russellschmidt$ irb
+2.3.0 :001 > require './binary_tree/binary_search_tree'
+ => true
+2.3.0 :002 > a = Node.new('rully good movie', 50)
+ => #<Node:0x007fe5e2a33cf0 @title="rully good movie", @rating=50, @left=nil, @right=nil>
+2.3.0 :003 > bstree = BinarySearchTree.new(a)
+ => #<BinarySearchTree:0x007fe5e2a21e10 @root=#<Node:0x007fe5e2a33cf0 @title="rully good movie", @rating=50, @left=nil, @right=nil>, @movie_list=[]>
+2.3.0 :004 > bstree.insert(Node.new('bad movie', 10))
+ArgumentError: wrong number of arguments (given 1, expected 2)
+	from /Users/russellschmidt/bloc/SEP/01-data-structures/06-trees/binary_tree/binary_search_tree.rb:12:in `insert'
+	from (irb):4
+	from /Users/russellschmidt/.rvm/rubies/ruby-2.3.0/bin/irb:11:in `<main>'
+2.3.0 :005 > b = Node.new ('bad movie', 10)
+SyntaxError: (irb):5: syntax error, unexpected ',', expecting ')'
+b = Node.new ('bad movie', 10)
+                          ^
+	from /Users/russellschmidt/.rvm/rubies/ruby-2.3.0/bin/irb:11:in `<main>'
+2.3.0 :006 > b = Node.new('bad movie', 10)
+ => #<Node:0x007fe5e29c22a8 @title="bad movie", @rating=10, @left=nil, @right=nil>
+2.3.0 :007 > bstree.insert(b)
+ArgumentError: wrong number of arguments (given 1, expected 2)
+	from /Users/russellschmidt/bloc/SEP/01-data-structures/06-trees/binary_tree/binary_search_tree.rb:12:in `insert'
+	from (irb):7
+	from /Users/russellschmidt/.rvm/rubies/ruby-2.3.0/bin/irb:11:in `<main>'
+2.3.0 :008 > bstree.insert(a,b)
+ => #<Node:0x007fe5e29c22a8 @title="bad movie", @rating=10, @left=nil, @right=nil>
+2.3.0 :009 > b = Node.new('hipsterdrivel', 75)
+ => #<Node:0x007fe5e29369b0 @title="hipsterdrivel", @rating=75, @left=nil, @right=nil>
+2.3.0 :010 > bstree.insert(a,b)
+ => #<Node:0x007fe5e29369b0 @title="hipsterdrivel", @rating=75, @left=nil, @right=nil>
+2.3.0 :011 > b = Node.new('Pretentious. Foreign. Mucho Sexo.', 99)
+ => #<Node:0x007fe5e2903bc8 @title="Pretentious. Foreign. Mucho Sexo.", @rating=99, @left=nil, @right=nil>
+2.3.0 :012 > bstree.insert(a,b)
+ => #<Node:0x007fe5e2903bc8 @title="Pretentious. Foreign. Mucho Sexo.", @rating=99, @left=nil, @right=nil>
+2.3.0 :013 > b = Node.new('The Scrappy Team Wins', 15)
+ => #<Node:0x007fe5e29805d8 @title="The Scrappy Team Wins", @rating=15, @left=nil, @right=nil>
+2.3.0 :014 > bstree.insert(a,b)
+ => #<Node:0x007fe5e29805d8 @title="The Scrappy Team Wins", @rating=15, @left=nil, @right=nil>
+2.3.0 :015 > b = Node.new('Vietnam War Suckage', 66)
+ => #<Node:0x007fe5e2959910 @title="Vietnam War Suckage", @rating=66, @left=nil, @right=nil>
+2.3.0 :016 > bstree.insert(a,b)
+ => #<Node:0x007fe5e2959910 @title="Vietnam War Suckage", @rating=66, @left=nil, @right=nil>
+2.3.0 :017 > b = Node.new('Space Wizards', 85)
+ => #<Node:0x007fe5e2931eb0 @title="Space Wizards", @rating=85, @left=nil, @right=nil>
+2.3.0 :018 > bstree.insert(a,b)
+ => #<Node:0x007fe5e2931eb0 @title="Space Wizards", @rating=85, @left=nil, @right=nil>
+2.3.0 :019 > b = Node.new('Ninja in the Computer', 60)
+ => #<Node:0x007fe5e28bc2f0 @title="Ninja in the Computer", @rating=60, @left=nil, @right=nil>
+2.3.0 :020 > bstree.insert(a,b)
+ => #<Node:0x007fe5e28bc2f0 @title="Ninja in the Computer", @rating=60, @left=nil, @right=nil>
+2.3.0 :021 > b = Node.new('I Was Fighting Myself All Along Club', 90)
+ => #<Node:0x007fe5e2856ce8 @title="I Was Fighting Myself All Along Club", @rating=90, @left=nil, @right=nil>
+2.3.0 :022 > bstree.insert(a,b)
+ => #<Node:0x007fe5e2856ce8 @title="I Was Fighting Myself All Along Club", @rating=90, @left=nil, @right=nil>
+2.3.0 :023 > b = Node.new('Lots of Slow Panoramas', 25)
+ => #<Node:0x007fe5e283e878 @title="Lots of Slow Panoramas", @rating=25, @left=nil, @right=nil>
+2.3.0 :024 > bstree.insert(a,b)
+ => #<Node:0x007fe5e283e878 @title="Lots of Slow Panoramas", @rating=25, @left=nil, @right=nil>
+2.3.0 :025 > bstree.print
+NoMethodError: private method `print' called for #<BinarySearchTree:0x007fe5e2a21e10>
+Did you mean?  printf
+	from (irb):25
+	from /Users/russellschmidt/.rvm/rubies/ruby-2.3.0/bin/irb:11:in `<main>'
+2.3.0 :026 > bstree.printf
+rully good movie: 50
+bad movie: 10
+hipsterdrivel: 75
+The Scrappy Team Wins: 15
+Vietnam War Suckage: 66
+Pretentious. Foreign. Mucho Sexo.: 99
+Lots of Slow Panoramas: 25
+Ninja in the Computer: 60
+Space Wizards: 85
+I Was Fighting Myself All Along Club: 90
+ => nil
+2.3.0 :027 > b = Node.new('Every Bullet Misses The Hero', 55)
+ => #<Node:0x007fe5e30045f8 @title="Every Bullet Misses The Hero", @rating=55, @left=nil, @right=nil>
+2.3.0 :028 > bstree.insert(a,b)
+ => #<Node:0x007fe5e30045f8 @title="Every Bullet Misses The Hero", @rating=55, @left=nil, @right=nil>
+2.3.0 :029 > b = Node.new('Sympathetic Mob Murderers', 98)
+ => #<Node:0x007fe5e2a2aec0 @title="Sympathetic Mob Murderers", @rating=98, @left=nil, @right=nil>
+2.3.0 :030 > bstree.insert(a,b)
+ => #<Node:0x007fe5e2a2aec0 @title="Sympathetic Mob Murderers", @rating=98, @left=nil, @right=nil>
+2.3.0 :031 > bstree.printf
+rully good movie: 50
+bad movie: 10
+hipsterdrivel: 75
+The Scrappy Team Wins: 15
+Vietnam War Suckage: 66
+Pretentious. Foreign. Mucho Sexo.: 99
+Lots of Slow Panoramas: 25
+Ninja in the Computer: 60
+Space Wizards: 85
+Every Bullet Misses The Hero: 55
+I Was Fighting Myself All Along Club: 90
+Sympathetic Mob Murderers: 98
+ => nil

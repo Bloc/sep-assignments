@@ -25,3 +25,18 @@ favorite_movies = [
   Node.new("Valhalla Rising", 70),
   Node.new("Hammer of the Gods", 30),
 ]
+
+
+
+a = Node.new('rully good movie', 50)
+b = Node.new('bad movie', 10)
+b = Node.new('hipsterdrivel', 75)
+b = Node.new('Pretentious. Foreign. Mucho Sexo.', 99)
+b = Node.new('The Scrappy Team Wins', 15)
+b = Node.new('Vietnam War Suckage', 66)
+b = Node.new('Space Wizards', 85)
+b = Node.new('Ninja in the Computer', 60)
+b = Node.new('I Was Fighting Myself All Along Club', 90)
+b = Node.new('Lots of Slow Panoramas', 25)
+b = Node.new('Every Bullet Misses The Hero', 55)
+b = Node.new('Sympathetic Mob Murderers', 98)

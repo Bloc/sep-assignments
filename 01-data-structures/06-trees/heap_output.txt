@@ -1,0 +1,68 @@
+2.3.0 :026 > ht.print
+bad movie: 10
+rully good movie: 50
+hipsterdrivel: 75
+Vietnam War Suckage: 66
+Space Wizards: 85
+Sympathetic Mob Murderers: 98
+ => nil
+
+Pickles:heap russellschmidt$ irb
+2.3.0 :001 > require './heap_tree.rb'
+ => true
+2.3.0 :002 > a = Node.new('rully good movie', 50)
+ => #<Node:0x007ffaa982fa90 @title="rully good movie", @rating=50, @left=nil, @right=nil, @parent=nil>
+2.3.0 :003 > ht = HeapTree.new(a)
+ => #<HeapTree:0x007ffaa981e858 @root=#<Node:0x007ffaa982fa90 @title="rully good movie", @rating=50, @left=nil, @right=nil, @parent=nil>>
+2.3.0 :004 > b = Node.new('bad movie', 10)
+ => #<Node:0x007ffaa98a1b90 @title="bad movie", @rating=10, @left=nil, @right=nil, @parent=nil>
+2.3.0 :005 > ht.insert(ht.root, b)
+ => nil
+2.3.0 :006 > b = Node.new('hipsterdrivel', 75)
+ => #<Node:0x007ffaa9873f10 @title="hipsterdrivel", @rating=75, @left=nil, @right=nil, @parent=nil>
+2.3.0 :007 > ht.insert(ht.root, b)
+ => nil
+2.3.0 :008 > b = Node.new('Pretentious. Foreign. Mucho Sexo.', 99)
+ => #<Node:0x007ffaa9826300 @title="Pretentious. Foreign. Mucho Sexo.", @rating=99, @left=nil, @right=nil, @parent=nil>
+2.3.0 :009 > ht.insert(ht.root, b)
+ => nil
+2.3.0 :010 > b = Node.new('The Scrappy Team Wins', 15)
+ => #<Node:0x007ffaa8867090 @title="The Scrappy Team Wins", @rating=15, @left=nil, @right=nil, @parent=nil>
+2.3.0 :011 > ht.insert(ht.root, b)
+ => nil
+2.3.0 :012 > b = Node.new('Vietnam War Suckage', 66)
+ => #<Node:0x007ffaa8844310 @title="Vietnam War Suckage", @rating=66, @left=nil, @right=nil, @parent=nil>
+2.3.0 :013 > ht.insert(ht.root, b)
+ => nil
+2.3.0 :014 > b = Node.new('Space Wizards', 85)
+ => #<Node:0x007ffaa8826130 @title="Space Wizards", @rating=85, @left=nil, @right=nil, @parent=nil>
+2.3.0 :015 > ht.insert(ht.root, b)
+ => nil
+2.3.0 :016 > b = Node.new('Ninja in the Computer', 60)
+ => #<Node:0x007ffaaa80ea38 @title="Ninja in the Computer", @rating=60, @left=nil, @right=nil, @parent=nil>
+2.3.0 :017 > ht.insert(ht.root, b)
+ => nil
+2.3.0 :018 > b = Node.new('I Was Fighting Myself All Along Club', 90)
+ => #<Node:0x007ffaa9960f90 @title="I Was Fighting Myself All Along Club", @rating=90, @left=nil, @right=nil, @parent=nil>
+2.3.0 :019 > ht.insert(ht.root, b)
+ => nil
+2.3.0 :020 > b = Node.new('Lots of Slow Panoramas', 25)
+ => #<Node:0x007ffaa9939800 @title="Lots of Slow Panoramas", @rating=25, @left=nil, @right=nil, @parent=nil>
+2.3.0 :021 > ht.insert(ht.root, b)
+ => nil
+2.3.0 :022 > b = Node.new('Every Bullet Misses The Hero', 55)
+ => #<Node:0x007ffaa990ab40 @title="Every Bullet Misses The Hero", @rating=55, @left=nil, @right=nil, @parent=nil>
+2.3.0 :023 > ht.insert(ht.root, b)
+ => nil
+2.3.0 :024 > b = Node.new('Sympathetic Mob Murderers', 98)
+ => #<Node:0x007ffaa98d0120 @title="Sympathetic Mob Murderers", @rating=98, @left=nil, @right=nil, @parent=nil>
+2.3.0 :025 > ht.insert(ht.root, b)
+ => nil
+2.3.0 :026 > ht.print
+bad movie: 10
+rully good movie: 50
+hipsterdrivel: 75
+Vietnam War Suckage: 66
+Space Wizards: 85
+Sympathetic Mob Murderers: 98
+ => nil
