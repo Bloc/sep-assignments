@@ -1,93 +1,183 @@
 require_relative 'node'
 
 class BinarySearchHeap
+  attr_reader :root
 
-  # def initialize(root) #doesn't say use initialize but whatever
-  #   @root = root
-  # end
-
-  def insert(root, node) #wondering about using data vs node says to use node...but can't figure out how to do it with just "data" I guess I'd need both the title and the rating in the data and then make the node...
-
-    # If no root creating @root
-    if root.nil? && @root.nil?
-      @root = node
-    elsif @root == root # If checking first (@root)
-      #first case
-      if node.rating > root.rating
-        @root = node
-        @root.left = root
-        if root.right.nil? || root.left.rating > root.right.rating #compares orginal parent's children to insert into right (next-next largest)
-          @root.right = root.left
-        else
-          @root.right = root.right
-        end
+  def search_for_empty(root, node)
+    new_kids = []
+    root.each do |kid|
+      if kid.left.nil? || kid.right.nil?
+        return kid
       else
-        if root.left.nil?
-          root.left = node
-        elsif root.right.nil?
-          root.right = node
-        else
-          first_kids = []
-          first_kids << root.left
-          first_kids << root.right
-          self.insert(first_kids, node)
-        end
+        new_kids << kid.left
+        new_kids << kid.right
       end
-    else #for all subsequent cases
-      new_kids = [] #array to store children
-      root.each do |child|
-        if node.rating > child.rating # replacing the parent with new node if it is larger
-          old_root = child # stores orginal parent value
-          child = node # replaces parent with node
-          child.left = old_root #sets new nodes left as orginal parent (next largest)
-          if old_root.right.nil? || old_root.left.rating > old_root.right.rating  #compares orginal parent's children to insert into right (next-next largest)
-            child.right = old_root.left
-          else #do I need to check the left here for .nil?
-            child.right = old_root.right
-          end
-          #check to make sure no empty values? maybe?
-        else #checking for open children (spaces)
-          if child.left.nil?
-            child.left = node
-          elsif child.right.nil?
-            child.right = node
-          else
-            new_kids << child.left
-            new_kids << child.right
-          end
-        end
+    end
+    self.search_for_empty(new_kids, node) unless new_kids.empty?
+  end
+
+  def search_for_parent_of_last(root)
+    new_kids = []
+     previous_kid = @root if previous_kid.nil? # I had to add this and figured it out myself right away! Yay! Be proud of me!
+    root.each do |kid|
+      if kid.left.nil? && kid.right.nil?
+        return previous_kid
+      elsif kid.left.nil? || kid.right.nil?
+        return kid
+      else
+        new_kids << kid.left
+        new_kids << kid.right
       end
-      self.insert(new_kids, node)
+      previous_kid = kid
+    end
+    unless new_kids.empty?
+      parent_of_last = self.search_for_parent_of_last(new_kids)
+      if parent_of_last.nil?
+        # puts root[-1].rating
+        return root[-1]
+      else
+        return parent_of_last
+      end
     end
   end
 
 
-    #what if node.rating is larger than root?
-    # if node.rating > root.rating
-    #     #set new node to equal @root
-    #     #sorting...
-    #     #set root (old root) to @root.left and compare (old)root.left & (old)root.right insert larger one into @root.right
-    #     #create something to check if every row until the last is fill (check the printf function - check the last part)
-    # end
+  def check_values(root)
+    new_kids = []
+    change = false
+    root.each do |kid|
+      if !kid.left.nil? && kid.left.rating < kid.rating
+        temp_rating = kid.rating
+        temp_title = kid.title
+        kid.title = kid.left.title
+        kid.rating = kid.left.rating
+        kid.left.title = temp_title
+        kid.left.rating = temp_rating
+        if @root.title == temp_title
+          @root.title = kid.title
+          @root.rating = kid.rating
+        end
+        change = true
+      end
 
+      if !kid.right.nil? && kid.right.rating < kid.rating
+        temp_rating = kid.rating
+        temp_title = kid.title
+        kid.title = kid.right.title
+        kid.rating = kid.right.rating
+        kid.right.title = temp_title
+        kid.right.rating = temp_rating
+        if @root.title == temp_title
+          @root.title = kid.title
+          @root.rating = kid.rating
+        end
+        change = true
+      end
 
-    #otherwise (possibly scratch the previous if)
-      # starting with the @root check if it the node.rating is not larger than the parent
-
-      # if it is,  we replace the parent with the new node, then assign the parent to the new node's.left (compare the parent's original .left and .right) and assign the larger into the new_node's.right  and make sure the new node is attached to the orignal parent's parent -- then we do some magic to make sure empty spaces are filled in.
-
-      #otherwise we check the left and right for open spaces - if we find one we enter it
-
-      # we are going to have to repeat(recurse?) this function to check "neighbooring" parents
-
-      #if no luck we recurse - we end when .left && .right are nil - though I guess we don't need to do this because once we find a nil child we just empty it which is the same as hitting the end of the heap
-
-  def delete(root, data)
+      new_kids << kid.left unless kid.left.nil?
+      new_kids << kid.right unless kid.right.nil?
+    end
+    if !new_kids.empty?
+      self.check_values(new_kids)
+    elsif change == true
+      self.check_values([@root])
+    end
   end
 
-  def find(root, data)
+  def insert(root, node) #wondering about using data vs node says to use node...but can't figure out how to do it with just "data" I guess I'd need both the title and the rating in the data and then make the node...
+    if root.nil? && @root.nil?
+      @root = node
+    else
+      target = search_for_empty([root], node) #find empty node and direction
+      if target.left.nil?  #insert new node
+        target.left = node
+      else
+        target.right = node
+      end
+      check_values([root])
+    end
   end
 
-  def print(root)
+  def delete(root, rating)
+
+    target = find(root, rating)
+    unless target.nil?
+
+      last_parent = search_for_parent_of_last([root])
+      # puts last_parent.rating
+      if last_parent.right.nil?
+        last_node = last_parent.left
+        last_parent.left = nil
+      else
+        last_node = last_parent.right
+        last_parent.right = nil
+      end
+
+      target.title = last_node.title
+      target.rating = last_node.rating
+
+      check_values([@root])
+    end
+  end
+
+  def find_parent(root, rating)
+    new_kids = []
+    root.each do |kid|
+      if (!kid.left.nil? && kid.left.rating == rating) ||
+         (!kid.right.nil? && kid.right.rating == rating)
+        return kid
+      else
+        new_kids << kid.left unless kid.left.nil?
+        new_kids << kid.right unless kid.right.nil?
+      end
+    end
+    self.find_parent(new_kids, rating) unless new_kids.empty?
+  end
+
+  def find(root, rating)
+    if @root.rating == rating
+      return @root
+    else
+      self.search_kids([root], rating)
+    end
+  end
+
+  def search_kids(kids, rating)
+    new_kids = []
+    kids.each do |kid|
+      unless rating < kid.rating
+        if !kid.left.nil? && kid.left.rating == rating
+          return kid.left
+        elsif !kid.right.nil? && kid.right.rating == rating
+          return kid.right
+        else
+          new_kids << kid.left unless kid.left.nil?
+          new_kids << kid.right unless kid.right.nil?
+        end
+      end
+    end
+    search_kids(new_kids, rating) unless new_kids.empty?
+  end
+
+  def print(children=nil)
+    if children.nil?
+      puts @root.title + ": " + @root.rating.to_s
+      children = [@root.left, @root.right]
+      print(children)
+    else
+      new_kids = []
+      children.each do |kids|
+        puts kids.title + ": " + kids.rating.to_s
+        unless kids.left.nil?
+          new_kids << kids.left
+        end
+        unless kids.right.nil?
+          new_kids << kids.right
+        end
+      end
+      unless new_kids.empty?
+        print(new_kids)
+      end
+    end
   end
 end
