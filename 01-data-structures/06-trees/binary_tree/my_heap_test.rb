@@ -203,7 +203,7 @@ RSpec.describe BinarySearchHeap, type: Class do
 
       tree.delete(root, 80)
 
-      # tree.print()
+      tree.print()
 
       expect(tree.root.rating).to eq 72
       expect(tree.root.left.rating).to eq 85

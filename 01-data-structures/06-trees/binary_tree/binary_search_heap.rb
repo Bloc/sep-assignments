@@ -18,7 +18,7 @@ class BinarySearchHeap
 
   def search_for_parent_of_last(root)
     new_kids = []
-     previous_kid = @root if previous_kid.nil? # I had to add this and figured it out myself right away! Yay! Be proud of me!
+     previous_kid = nil #maybe this?
     root.each do |kid|
       if kid.left.nil? && kid.right.nil?
         return previous_kid
