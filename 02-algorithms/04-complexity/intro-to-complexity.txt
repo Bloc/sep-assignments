@@ -1,0 +1,30 @@
+1. The algorithm with O(1) is private jet, on its way to China.
+The O(2n) would be me walking and swimming to get to the same destination, except I don't think I'd make it.
+
+2. Best case scenario for binary search would be if the thing it was searching for was the first thing it came across.
+
+3. Worst case scenario is the slowest and the last place the search finds. Worst case could also get worse if the data is not sorted.
+
+4. Bounded case is when you get the average of the worst case and the best case.
+
+6. There really isn't an asymptote but the graph is logarithmic.
+
+7. 0log(n)
+
+8.def linear_search(array, value)
+  input_size = 0
+  array.each_with_index do |i|
+    input_size += 1
+    if array[i] == value
+      return "Iterations: #{i + 1} Input size: #{input_size}"
+    end
+  end
+end
+
+9.
+
+10. Big-O is 0log(n)
+
+11. Big-Omega is 0(1)
+
+12. Big-Theta is 0log(n)
