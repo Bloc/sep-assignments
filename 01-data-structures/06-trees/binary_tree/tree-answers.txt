@@ -1,0 +1,6 @@
+
+1. The heap takes MUCH MUCH longer. (Obviously my heap is also extra inefficient) 
+2. I note the find takes longer for the heap, but this is probably in some part due to my programs issues. 
+3. See above (same situation as find for delete.) 
+4. The tree is often faster. It certainly is in terms of insertion (I think) or deletion as well as for searching for arbitrary elements. 
+5. The heap (aside from offering a more robust/complete ordering) is also very good at locating a min/max. It’s also better for creating priority queues. 

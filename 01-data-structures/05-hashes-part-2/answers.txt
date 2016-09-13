@@ -1,0 +1,16 @@
+1.) Other Types of Collision Strategies:
+
+A.) Hopscotch Hashing: In this system a small collection of nearby buckets is kept/positioned around the target bucket/location. In the event of a collision, the node can be placed in one of these neighborhood buckets. This is particularly valuable for searching as the location of a collided node will always be within a defined range from the original index value’s bucket. 
+
+B.) Robin Hood Hashing:  This system works like linear probing, at a collision it searches right but if any of the filled hash values of the keys stored have a distance from the initial bucket less than distance the method has traveled searching for an empty bucket, then it swaps the new key-value pair with the  old “rich” value pair and continue the right-moving search continuing the same process. This approach decreases number of “poor" values that are too far from their initial positions, and require a lot of time to find.
+
+C.) 2-Choice Hashing: This system uses two separate hashes to store values. Index values are computed separately for each hash based upon the hashes size and (assuming both hashes have locations open at the desired index) the smaller array is selected for insertion (defaults to first array if both are equal). The main purpose for this, (as far as I can tell,) is that the second hash dramatically reduces the number of potential collisions.  
+
+2. Creating My Own Collision Strategy…(a few ideas…not really sure what I’m doing here) 
+	
+	A.) 2-Chainz Hashing… 2-Choice hashing with the addition of linked-lists (separate chaining)…it’s main benefit is that it’s called something funny.
+
+	B.) Another more serious option would be to try to replace open addressing with a multidirectional search, that checks both sides of a node for an empty space in order to place collided nodes faster/more efficiently. 
+	
+	C.) Another approach I think would be interesting is to use a form of chaining, but using a pre-determined  length of linked-lists (maybe a minimum of 2 added items with specific identifiers, first & second,) that might allow for a more easily searchable or logical ordering of data. 
+	

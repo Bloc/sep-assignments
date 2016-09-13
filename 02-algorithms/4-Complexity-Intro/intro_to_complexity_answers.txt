@@ -1,0 +1,25 @@
+Answers to Intro to Complexity Assignment 
+
+1. We can think of O(1) as taking a pile of garbage and dumping it into a trash can and we can think of O(2^n) as going through a pile of garbage, breaking each piece down and sorting each piece into a pile that represents its respective materials. 
+
+2. The best case scenario for a binary search is that the first element in the list is the one we are looking for. 
+
+3. The worse case scenario for a binary search is that the last element in the list is the one we are looking for. 
+
+4. The bounded case scenario for a binary search represents the average between the best and worst case scenarios for the same binary search. 
+
+5. (See graph in screenshot) 
+
+6. The asymptotic limit (for the above graph) as n approaches infinity is infinity. 
+
+7. The Big-Ο for the graph above is Ο(2^n) 
+
+8. (See script) 
+
+9. (See graph)  - (Note: both 8 and 9 are kinda absurdly simple silly and we talked about them so I hope this is okay)
+
+10. The Big-Ο for a binary search is Ο(n) 
+
+11. The Big-Ω for a binary search is Ω(1)
+
+12. The Big-θ for a binary search is θ(n/2)

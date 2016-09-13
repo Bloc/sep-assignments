@@ -1,0 +1,57 @@
+1. Talking the dog on walk (getting ready) 
+	GET socks from bedroom
+	GET shoes from living room 
+	GET keys from living room
+	SET shoes & socks as ON  
+	GET bag from dining room table 
+	DETERMINE if water bottle is empty
+	IF empty THEN 
+		fill water
+	ENDIF 
+	GET e-collar and remote from bag 
+	SET remote to on 
+	SET collar to on 
+	DETERMINE that collar works
+	GET dog 
+	SET collar on dog 
+	DETERMINE if back door is locked
+	IF door unlocked 
+		lock door
+	ENDIF 
+	GET leash from bag 
+	SET leash on dog 
+	SET front door as unlocked 
+	exit with dog (not sure how to do this part) 
+	SET front door as locked 
+
+2. Calculating a Tip 
+	
+	GET bill 
+	DETERMINE total 
+	COMPUTE total * .2 
+	SET result to tip 
+	IF tip is not an INT
+		COMPUTE (?) round total up to nearest int
+	RETURN tip 
+
+3. Getting dressed 
+	SET array “clothes” to underwear, pants, shirt, socks 
+	FOR all items in clothes 
+		DETERMINE if item is in dresser
+		IF item is in dresser 
+			GET item 
+			SET to on 
+		ELSE
+		DETERMINE if item is in laundry basket
+			UNLESS laundry basket is dirty 
+				DETERMINE if item is in laundry basket
+					IF item is in basket 
+						GET item 
+						SET to on 
+					ENDIF
+			ENDIF
+		ENDIF
+		
+		
+	 
+

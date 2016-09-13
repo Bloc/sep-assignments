@@ -1,0 +1,13 @@
+(really not sure about how I should be answering these questions…I’ve always been bad with this part)
+
+1.How does your data structure allow developers to access and manipulate the data?
+	There is the function join which adds data to the end of the structure, or leave which removes a specific piece of data from said structure. It also provides functions to check the front, middle, and end positions of the data.  
+
+
+2. If a developer wanted to find a specific element in your data structure, how would you search for it?
+	The search function I guess? It allows you to search by a specific string and returns the name if the result exists (this functionality doesn’t seem particularly useful, but it’s how the skeleton of the code and the tests were laid out.)
+
+
+
+3.What other real-world data can each structure represent?
+	Pretty much anything which keeps track of an ordered (sorta) list of strings. There are endless examples of cues and lists, but they are all functionally speaking “lines.”

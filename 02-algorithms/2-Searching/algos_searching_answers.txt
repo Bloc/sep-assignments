@@ -1,0 +1,22 @@
+1. Using linear search it would take 7 iterations to find G. 
+2. Using Binary search it would take 3 iterations to find G.
+3. (I’m confused why we’re doing this or how to demonstrate that I’m really doing this by hand but) the fib sequence is (I’m adding them in my head you’ll just have to believe me I guess (or maybe I’ll have screwed one up?) ??? 
+	1) 1 
+	2) 1 
+	3) 2 
+	4) 3
+	5) 5 
+	6) 8 
+	7) 13
+	8) 21
+	9) 34
+	10) 55
+	11) 89
+	12) 144
+
+(Note they don’t really ask for an answer but I’ve included a screen shot of my tests on the iterative and recursive functions - recursive seems to take longer, which based on my research has something to do with the language itself?)
+
+1. Given the unsorted list one would think we would need to use a linear search (despite it being a million long)… since the binary search wouldn’t have anything to measure the middle against on an unsorted list. I would think running it iteratively would be more effective most of the time. 
+2. Given a sorted list a million long, obviously one would use a binary search. I think again iterative might be faster? 
+
+
