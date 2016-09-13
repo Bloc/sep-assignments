@@ -1,0 +1,11 @@
+1. O(1) n is a constant and will increase as n increases.
+
+2. O(n) the algorithm works linearly. Every time it runs, it will go through each item and as the collection increases infinitely so will the run time.
+
+3. O(n*m) the outside loop runs linearly and so does the second loop. But they depend on each other to determine the value.
+
+4. O(2^n) Since it is recursive it is exponential.
+
+5. O(n) runs in linear time. increases by (n - 1) * 4
+
+6. O(n^2) the while loop runs linearly, but there is some recursion that makes the algorithm quadratic. 
