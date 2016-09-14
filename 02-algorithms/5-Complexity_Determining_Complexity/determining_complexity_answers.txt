@@ -1,0 +1,15 @@
+1. The Big-O here is O(1), or constant, because it always executes the same amount of operations regardless of the input. 
+
+2. The Big-O here is O(n), or linear, because its meaningful (or non constant-time) operation is to iterate through the length of the collection which is in effect equal to n. 
+
+3. I believe the Big-O here might be O(n^2) because we need to iterate over the first loop n times and then for each collection in n we must iterate through it to the length of n, which we can call n2. However I’m unsure here because the length of each array in the array is not defined. If n > n2 than it would appear that the total number of steps grows logarithmically (or maybe loglinear?) However if n2 were much larger than n we would seem to have a n^n2 type of situation but assuming they both grow together towards infinity, than n = n2 and it would seem to be n*n2 and we’d have something like O(n^2). (REALLY NOT SURE - after writing this I just read something that we multiply their complexities, and since each loop is linear the idea of this being quadratic makes sense) 
+
+Okay apparently the big O can be expressed as O(n*n2) 
+
+4. The initial part of this function is constant-time, however the number of recursive calls would seem to grow exponentially as n gets larger? So i believe this might actually be an O(2^N)?
+
+5. For all that’s going on here, it seems like the only thing that is effected by the n input is the while loop, so I think this would still be a O(n) or linear. 
+
+6. Okay, I’m definitely a little weak on this one this appears to be a quicksort I think (heads up the end of the code looks wrong in some way), and I did check what the Big-O is supposed to be (n^2 right?) it sorta seems to me that as the size grows we’d need to do more and more quick sorts (again unclear cause of the end) - which ought to make it 2^n? 
+
+After discussing it I see that is not exponential because each recursion does have the linear work in each loop. 

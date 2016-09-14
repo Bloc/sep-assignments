@@ -1,5 +1,7 @@
 include RSpec
 
+require_relative 'pixel' #I had to add this, I don't know if that was supposed to be part of the assignment or not. 
+
 RSpec.describe Pixel, type: Class do
   let(:pixel) { Pixel.new(255, 255, 255, 0, 0) }
 
