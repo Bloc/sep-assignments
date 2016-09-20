@@ -79,7 +79,7 @@ class LinkedList
 
   # This method removes and returns the first node in the Linked List and must set Linked List's head to the second node.
   def remove_front
-    if @head = nil
+    if @head == nil
       return @head
     else
       current_node = @head
