@@ -8,20 +8,20 @@ class HashClass
 
   #setter method
   def []=(key, value)
-    #set array
-    #set key to value
-    #calculate index
-    index = self.index(key, size)
-    #check if hash element is already defined in @items array
-    if @items[index]
-      @items[index] = HashItem.new(key, value)
-    #check if key/value already exist
-    elsif
-    #if both key and value are the same do nothing
-    #call resize
-    else
-    #if neither conditions match, call resize, assign value to key
-
+    # #set array
+    # #set key to value
+    # #calculate index
+    # index = self.index(key, size)
+    # #check if hash element is already defined in @items array
+    # if @items[index]
+    #   @items[index] = HashItem.new(key, value)
+    # #check if key/value already exist
+    # elsif
+    # #if both key and value are the same do nothing
+    # #call resize
+    # else
+    # #if neither conditions match, call resize, assign value to key
+    # end
   end
 
   #getter method
