@@ -1,0 +1,7 @@
+1. O(n + n log n)
+
+2. O(n + n log n)
+
+3. O(n + n log n)
+
+They all have a constant of n 
