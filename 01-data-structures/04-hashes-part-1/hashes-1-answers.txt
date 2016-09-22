@@ -1,0 +1,3 @@
+The process of doubling the size of the underlying array of my HashClass may be a poor idea due to the fragmentation and performance issues that may result as the array grows in length.
+
+Each time we resize and double the array we are introducing more empty/open slots which not only utilizes more memory, but also increases array search time. Again, these performance issues will gain in severity as the array grows in size.
