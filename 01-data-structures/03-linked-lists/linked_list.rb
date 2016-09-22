@@ -25,31 +25,26 @@ class LinkedList
     until @current.next == node
       @current = @current.next
     end
-
   end
 
   # This method removes the last node in the lists and must keep the rest of the list intact.
   def remove_tail
-    #move through list until reach end and delete the the tail
-    #where tail is nil
-    #if @current = @tail remove that element
-    #if not equal keep searching
-
-
-    # @current = @head
-    # until @current = @tail
-    #   @current = @current.next
-    # end
-    #
-    # @head = nil
-    # @tail = nil
-
-    if @head == @tail
-      @head = nil
-      @tail = nil
-      return nil
+    # start from beginning and go to tail
+    @current = @head
+    until @current.next == nil
+      @current = @current.next
     end
+    # update tail.previous next value to nil
+    @new_current = @head
+    until @new_current.next == @current
+      @new_current = @new_current.next
+    end
+
+    @new_current.next = nil
+    delete(@current)
   end
+
+
 
   # This method prints out a representation of the list.
   def print
@@ -62,6 +57,26 @@ class LinkedList
 
   # This method removes `node` from the list and must keep the rest of the list intact.
   def delete(node)
+    # find the node using search_node
+    @current = @head
+    until @current = node
+      @current = @current.next
+    end
+
+
+    # if front of list, call remove_front
+    # if @head == nil
+    #   remove_front
+    # end
+    # if end of list, call remove_tail
+
+
+    if @current.next == nil
+      remove_tail
+    end
+    # if middle, remove and update next on previous
+      # set previous next value
+      # delete node
   end
 
   # This method adds `node` to the front of the list and must set the list's head to `node`.
