@@ -34,13 +34,17 @@ class LinkedList
     until @current.next == nil
       @current = @current.next
     end
+
     # update tail.previous next value to nil
     @new_current = @head
     until @new_current.next == @current
       @new_current = @new_current.next
     end
 
+    # set new tail
     @new_current.next = nil
+
+    # delete old tail
     delete(@current)
   end
 
@@ -58,20 +62,12 @@ class LinkedList
   # This method removes `node` from the list and must keep the rest of the list intact.
   def delete(node)
     # find the node using search_node
-    @current = @head
-    until @current = node
-      @current = @current.next
-    end
-
-
+    @to_delete = search_node(node)
     # if front of list, call remove_front
-    # if @head == nil
-    #   remove_front
-    # end
+    if @to_delete == @head
+      remove_front
     # if end of list, call remove_tail
-
-
-    if @current.next == nil
+    elsif @to_delete.next == nil
       remove_tail
     end
     # if middle, remove and update next on previous
