@@ -1,0 +1,16 @@
+Line
+
+  1. My data structure allows developers to easily access and manipulate data by storing the data in a simple array.
+  Items can easily be appended to or removed from the array utilizing push and delete methods.
+
+  2. To find a specific element in my data structure a developer could iterate over the array until a match is found
+
+  3. A similar real-world example is a cafeteria line. A more complex example could be tracking multiple lines in a grocery store
+
+Screen
+
+  1. My data structure allows developers to easily access and manipulate data by storing the data in a multi-dimensional array. The insert method allows additional data to be added while the inbound method ensures data integrity
+
+  2. Searching can be done by searching for the matching x and y positions
+
+  3. This could be used for other coordinate based data such as seats at a theatre and the patron assigned to the seat.
