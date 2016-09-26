@@ -5,19 +5,16 @@ class LinkedList
   attr_accessor :tail
 
   # This method creates a new `Node` using `data`, and inserts it at the end of the list.
-  def add_to_tail(node)
-    #Check if anything is in the list
-    if @head == nil && @tail == nil
-      @head = node
-      @tail = @head
-      @tail.next = nil
-    elsif @tail == nil
-      @tail = node
-    else
-      @tail.next = node
-      @tail = node
-    end
+  # def add_to_tail(node)
 
+  def add_to_tail(node)
+   if @head.nil?
+     @head = node
+     @tail = node
+   else
+     @tail.next = node
+     @tail = node
+   end
   end
 
   def search_node(node)
@@ -29,26 +26,14 @@ class LinkedList
 
   # This method removes the last node in the lists and must keep the rest of the list intact.
   def remove_tail
-    # start from beginning and go to tail
-    @current = @head
-    until @current.next == nil
-      @current = @current.next
-    end
-
-    # update tail.previous next value to nil
-    @new_current = @head
-    until @new_current.next == @current
-      @new_current = @new_current.next
-    end
-
-    # set new tail
-    @new_current.next = nil
-
-    # delete old tail
-    delete(@current)
+   if @current == @tail
+     @head = nil
+     @tail = nil
+   else
+     search_node(@tail)
+     @tail = @current
+   end
   end
-
-
 
   # This method prints out a representation of the list.
   def print
@@ -61,18 +46,14 @@ class LinkedList
 
   # This method removes `node` from the list and must keep the rest of the list intact.
   def delete(node)
-    # find the node using search_node
-    @to_delete = search_node(node)
-    # if front of list, call remove_front
-    if @to_delete == @head
+    if node == @head
       remove_front
-    # if end of list, call remove_tail
-    elsif @to_delete.next == nil
+    elsif node.next == nil
       remove_tail
+    else
+      search_node(node)
+      @current.next = node.next
     end
-    # if middle, remove and update next on previous
-      # set previous next value
-      # delete node
   end
 
   # This method adds `node` to the front of the list and must set the list's head to `node`.
