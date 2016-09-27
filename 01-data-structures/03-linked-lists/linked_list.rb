@@ -17,11 +17,31 @@ class LinkedList
    end
   end
 
+  def find_node_index(index)
+    current_index = 0
+    current_node = @head
+    until current_index == index
+      current_node = current_node.next
+      current_index += 1
+    end
+    current_index
+  end
+
   def search_node(node)
     @current = @head
     until @current.next == node
       @current = @current.next
     end
+  end
+
+  def delete_at_index(index)
+    current_index = 0
+    current_node = @head
+    until current_index == index
+      current_node = current_node.next
+      current_index += 1
+    end
+    delete(current_node)
   end
 
   # This method removes the last node in the lists and must keep the rest of the list intact.

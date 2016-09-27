@@ -1,0 +1,21 @@
+1.  Spatial Locality refers to the use of data elements within relatively close storage locations.
+    Performance is benefited by spatial locality because searches are happening on data elements stored
+    closer in proximity to the other data elements in the same list or array resulting is quicker access
+    to elements.
+
+2.
+                            user       system     total       real
+array build                 0.000000   0.000000   0.000000    (0.001518)
+linked list build           0.010000   0.000000   0.010000    (0.005391)
+
+                            user       system     total       real
+array find                  0.000000   0.000000   0.000000    (0.000002)
+linked list find            0.000000   0.000000   0.000000    (0.000199)
+
+                            user       system     total       real
+array delete                0.000000   0.000000   0.000000    (0.000426)
+linked list delete          0.000000   0.000000   0.000000    (0.000477)
+
+                            user       system     total       real
+array remove front          0.000000   0.000000   0.000000    (0.000005)
+linked list remove front    0.000000   0.000000   0.000000    (0.000002)
