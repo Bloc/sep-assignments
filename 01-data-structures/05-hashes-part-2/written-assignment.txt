@@ -1,0 +1,11 @@
+Three collision strategies not mention in checkpoint:
+
+1.  Robin Hood - a variation of double-hashing collision resolution with the idea that a new key may displace a key already inserted, if it's probe count is larger than that of the key at the current position. Robin Hood hashing reduces worst case search times in the table.
+2.  Hopscotch - an alternative open-addressing solution which combines cuckoo hashing and linear probing while avoiding many of their limitations
+3.  Coalasced - a hybrid of chaining and open addressing where chains of nodes are linked together within the table itself
+
+My Collision Resolution Strategy
+
+  - Hash values created based on - ASCII value X current array size
+  - Upon collision I would first check the load factor, if > .7 call resize and insert new items
+  - If load factor < .7, find next open spot for new item causing collision
