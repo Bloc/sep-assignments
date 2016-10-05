@@ -1,5 +1,6 @@
 include RSpec
 
+require 'spec_helper'
 require_relative 'line'
 
 RSpec.describe Line, type: Class do
