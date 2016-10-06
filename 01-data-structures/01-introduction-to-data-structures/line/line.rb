@@ -9,26 +9,34 @@ class Line
   end
 
   def join(person)
+    members.push(person)
   end
 
   def leave(person)
+    members.delete(person)
   end
 
   def front
+    members.first
   end
 
   def middle
+    avg = (members.count/2).floor
+    members[avg]
   end
 
   def back
+    members.last
   end
 
   def search(person)
+    if members.include?(person)
+      person
+    end
   end
 
   private
 
   def index(person)
   end
-
 end
