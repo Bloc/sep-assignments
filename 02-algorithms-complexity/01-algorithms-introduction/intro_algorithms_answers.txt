@@ -1,0 +1,27 @@
+Going Mountain Biking
+1. Load bike and gear in car
+2. Drive to mountain bike trails
+3. IF it is Monday, Wednesday, Friday or Sunday
+      ride clockwise
+   ELSE
+      ride counter-clockwise
+4. Load bike and gear in car
+5. Drive home
+
+Shooting a Landscape Photo
+1. Research location
+2. Travel to location
+3. Set up camera gear
+4. Take photos
+5. Return home
+6. Edit photos
+7. Add photos to portfolio
+
+Making a Matcha Latte
+1. Warm 1/2 cup of water and 1/2 cup of almond milk in separate cups
+2. In empty mug, add one teaspoon of matcha powder
+3. Add small amount of warmed water and mix with matcha powder
+4. Add remaining warmed water and almond milk
+5. Add honey
+6. Stir well
+7. Enjoy :)
