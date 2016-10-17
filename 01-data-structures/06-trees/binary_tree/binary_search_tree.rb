@@ -9,16 +9,16 @@ class BinarySearchTree
   def insert(root, node)
 
     if node.rating > root.rating
-      if root.right.nil?
-        root.right = node
-      else
-        insert(root.right, node)
-      end
-    else
       if root.left.nil?
         root.left = node
       else
         insert(root.left, node)
+      end
+    else
+      if root.right.nil?
+        root.right = node
+      else
+        insert(root.right, node)
       end
     end
   end
