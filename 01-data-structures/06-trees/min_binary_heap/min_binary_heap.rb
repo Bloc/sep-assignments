@@ -25,6 +25,7 @@ class MinBinaryHeap
 
     #compare value of the new child node with its parent
     #swap up if needed
+    
 
 
   def swap_up(root, node)
