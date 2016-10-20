@@ -10,13 +10,14 @@ def fib_i(n)
   return fib_array.last
 end
 
-puts fib(0) #0
-puts fib(1) #1
-puts fib(2) #1
-puts fib(3) #2
-puts fib(4) #3
-puts fib(5) #5
-puts fib(6) #8
-puts fib(7) #13
-puts fib(8) #21
-puts fib(9) #34
+puts fib_i(0) #0
+puts fib_i(1) #1
+puts fib_i(2) #1
+puts fib_i(3) #2
+puts fib_i(4) #3
+puts fib_i(5) #5
+puts fib_i(6) #8
+puts fib_i(7) #13
+puts fib_i(8) #21
+puts fib_i(9) #34
+puts fib_i(100) #354224848179261915075

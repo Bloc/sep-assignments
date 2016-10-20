@@ -15,3 +15,12 @@ def binary_search_iterative(collection, value)
 
   return "value not found"
 end
+
+collection = [0,5,10,15,20,25,30]
+
+position = binary_search_iterative(collection, 5)
+puts position
+position = binary_search_iterative(collection, 1)
+puts position
+position = binary_search_iterative(collection, 10)
+puts position
