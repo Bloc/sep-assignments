@@ -1,14 +1,13 @@
 def fib(n)
-  fib_0 = 0
-  fib_1 = 1
+  fib_array = [0,1]
+  return fib_array[n] if n <= 1
 
-  (0..n-1).each do |x|
-    fib_0 = x
-    fib_1 = fib_0
-    fib_1 = fib_0 + fib_1
+  (2..n).each do |x|
+    value = fib_array[x-2] + fib_array[x-1]
+    fib_array << value
   end
 
-  fib_1
+  return fib_array.last
 end
 
 puts fib(0) #0
