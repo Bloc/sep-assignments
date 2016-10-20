@@ -1,0 +1,15 @@
+1. 7 iterations to find G using linear search
+2. 3 iterations to find G using binary search
+3. f(10) = 55
+   f(11) = 89
+   f(12) = 144
+
+Iterative vs Recursive Benchmark
+fib(20)
+             user       system     total      real
+iterative:   0.000000   0.000000   0.000000   (0.000007)
+recursive:   0.000000   0.000000   0.000000   (0.001441)
+
+
+
+1.
