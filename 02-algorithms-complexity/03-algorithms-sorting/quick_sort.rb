@@ -1,19 +1,30 @@
 def quick_sort(array)
-  #pick pivot point
-  pivot = array.last - 1
+  return array if array.length <= 1
 
-  small_array =
+  pivot = array.length - 1
 
-  big_array =
-  #compare each item to pivot point
-  #loop through array
-    #create two new arrays
-      #if greater than pivot point then move to right
-        #smaller array = less than pivot
-        #bigger array = greater than pivot
-    # call quick_sort again on each small and big array
-    #if greater than pivot point then move to right
+  small_array = []
+  big_array = []
+  sorted_array = []
 
-  #return sorted array
-  return array
+  for x in 0...pivot
+    if array[x] >= array[pivot]
+      big_array << array[x]
+    else
+      small_array << array[x]
+    end
+  end
+
+  if small_array.length > 0
+    sorted_array.concat(quick_sort(small_array))
+  end
+    sorted_array << array[pivot]
+
+  if big_array.length > 0
+    sorted_array.concat(quick_sort(big_array))
+  end
+  sorted_array
 end
+
+# test_array = (1..50).to_a.shuffle
+# puts quick_sort(test_array)
