@@ -1,0 +1,20 @@
+1. 7 iterations to find G using linear search
+2. 3 iterations to find G using binary search
+3. f(10) = 55
+   f(11) = 89
+   f(12) = 144
+
+Iterative vs Recursive Benchmark
+fib(20)
+             user       system     total      real
+iterative:   0.000000   0.000000   0.000000   (0.000007)
+recursive:   0.000000   0.000000   0.000000   (0.001441)
+
+
+
+1.  Linear search is used because binary search only works with sorted lists.
+    Based on benchmarking I'd go with an iterative solution as it seems faster than recursive.
+    Depending on the list I may consider sorting the list so binary search could be used.
+
+2.  Binary search is used since the list is sorted, in most cases this will require less iterations to find value
+    Based on benchmarking I'd go with an iterative solution as it seems faster than recursive.
