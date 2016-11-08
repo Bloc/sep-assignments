@@ -1,0 +1,15 @@
+1.  An algorithm that has O(1) is a Ferrari and an algorithm that has an O(2^n) is a bicycle.
+2.  Best case scenario for binary search would be when the value searching for is the middle value
+    in the initial array, this would be returned on the first iteration.
+3.  Worst case scenario for binary search would be when the value searching for is either the first
+    or last value in the array.
+4.  Bounded-case scenario for binary search would be when the value searching for is closest to or at the middle
+    for each search iteration
+5.  See screenshot - 5_graphed_data.png
+6.  Infinity
+7.  O(2^n)
+8.  See input_to_iterations_linear.rb
+9.  See screenshot - Big-O is O(n) - 9_graphed_data.png
+10. Big-O of binary search is O(n)
+11. Big-Ω of binary search is O(1)
+12. Big-Ө of binary search is O(log n)

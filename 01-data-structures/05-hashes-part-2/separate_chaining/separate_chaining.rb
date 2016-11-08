@@ -87,4 +87,10 @@ class SeparateChaining
 
     @items = new_items
   end
+
+  def print_hash
+    current_load_factor = @items.compact.length / self.size
+    puts "Current Load Factor: #{load_factor}"
+    @items.inspect
+  end
 end
