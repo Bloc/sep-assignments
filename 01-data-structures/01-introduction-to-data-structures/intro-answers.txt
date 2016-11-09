@@ -1,0 +1,20 @@
+# Intro Answers - answering these questions for line and screen data structures
+
+1. How does your data structure allow developers to access and manipulate the data?
+2. If a developer wanted to find a specific element in your data structure, how would you search for it?
+3. What other real-world data can each structure represent?
+
+
+# Line
+
+1. Since this data structure is a line, it's best represented as an array.  You can manipulate the data with the methods below:
+ a. join(person) - adds a person to the back of the line
+ b. leave(person) - removes a person from the line (goes to get cotton candy)
+ c. front - returns the person in the front of the line (at array[0]) who is about to get on the ride - you lucky person, you...
+ d. middle - returns the person in the middle of the line (median)
+ e. back - returns the person at the end of the line (must have just gotten in line)
+ f. search(person) - looks for and returns if that person is in line (so moms can find their lost children who left to ride the roller coaster)
+
+2. pretty clear from 1. above
+
+3. I'd probably use this to determine lineup for an all-you-can-eat buffet
