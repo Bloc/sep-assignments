@@ -4,5 +4,6 @@ class Node
 
   def initialize(data)
     self.data = data
+    self.next = nil
   end
 end
