@@ -9,6 +9,14 @@ RSpec.describe LinkedList, type: Class do
   let(:n3) { Node.new("Mike") }
   let(:llist) { LinkedList.new }
 
+  describe "#nodes_created" do
+    it "nodes created" do
+      expect(n1.data).to eq "Rob"
+      expect(n2.data).to eq "Ben"
+      expect(n3.data).to eq "Mike"
+    end
+  end
+
   describe "#add_to_tail" do
     it "adds a Node to the tail" do
       llist.add_to_tail(n1)
