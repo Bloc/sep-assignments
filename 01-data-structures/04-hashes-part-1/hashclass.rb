@@ -6,9 +6,8 @@ class HashClass
   end
 
   def []=(key, value)
-    
-  end
 
+  end
 
   def [](key)
 
