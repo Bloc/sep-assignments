@@ -5,11 +5,13 @@ class MyStack
     @stack = Array.new
     self.top = nil
     @pointer = -1
+    # @pointer can be swapped for @stack[-1] to get "tail"
   end
 
   def push(item)
     @pointer += 1
     @stack[@pointer] = item
+    @stack[-1]
     self.top = item
   end
 
