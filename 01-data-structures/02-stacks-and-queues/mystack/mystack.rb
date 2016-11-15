@@ -28,10 +28,6 @@ class MyStack
   end
 
   def empty?
-    if self.top == nil
-      return true
-    else
-      return false
-    end
+    self.top.nil?
   end
 end
