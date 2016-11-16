@@ -1,0 +1,1 @@
+doubling would be overkill, and could make the array very big for no reason, slowing down the whole process. 
