@@ -1,29 +1,27 @@
 class MyStack
-  attr_accessor :top
+  attr_accessor :top, :pointer
 
   def initialize
     @stack = Array.new
     self.top = nil
-    @pointer = -1
-    # @pointer can be swapped for @stack[-1] to get "tail"
+    self.pointer = -1
   end
 
   def push(item)
-    @pointer += 1
-    @stack[@pointer] = item
-    @stack[-1]
+    self.pointer += 1
+    @stack[self.pointer] = item
     self.top = item
   end
 
   def pop
-    temp = @stack[@pointer]
+    temp = @stack[self.pointer]
 
-    @pointer -= 1
+    self.pointer -= 1
 
-    if @pointer < 0
+    if self.pointer < 0
       self.top = nil
     else
-      self.top = @stack[@pointer]
+      self.top = @stack[self.pointer]
     end
 
     return temp
@@ -32,4 +30,5 @@ class MyStack
   def empty?
     self.top.nil?
   end
+
 end
