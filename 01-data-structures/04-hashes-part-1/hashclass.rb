@@ -25,7 +25,8 @@ class HashClass
   def [](key)
     item = @items[index(key, @items.length)]
     #if item is nil return nil, else return value of item
-    item.nil? ? nil : item.value
+    !item.nil? && item.key === key ? item.value : nil
+     
   end
 
   def resize
