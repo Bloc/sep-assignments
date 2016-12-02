@@ -32,8 +32,14 @@ class HashClass
 
   # get
   def [](key)
-    if @items[index(key, @size)].key === key
-      return @items[index(key, @size)].value
+    index = index(key, @size)
+
+    if @items[index].nil?
+      return nil
+    end
+
+    if @items[index].key === key
+      return @items[index].value
     end
   end
 
