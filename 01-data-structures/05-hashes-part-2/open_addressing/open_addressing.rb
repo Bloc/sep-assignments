@@ -2,6 +2,7 @@ require_relative 'node'
 
 class OpenAddressing
   def initialize(size)
+    @items = Array.new(size)
   end
 
   def []=(key, value)
