@@ -43,17 +43,7 @@ class SeparateChaining
   # We are hashing based on strings, let's use the ascii value of each string as
   # a starting point.
   def index(key, size)
-    sum = 0
-
-    key.split("").each do |char|
-      if char.ord == 0
-        next
-      end
-
-      sum = sum + char.ord
-    end
-
-    sum % size
+    key.sum % size
   end
 
   # Calculate the current load factor
