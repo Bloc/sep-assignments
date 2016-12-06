@@ -17,21 +17,13 @@ class Screen
   end
 
   def at(x, y)
-    if inbounds(x, y) == true
-      return matrix[y][x]
-    else
-      return nil
-    end
+    return inbounds(x, y) ? matrix[y][x] : nil
   end
 
   private
 
   def inbounds(x, y)
-    if x > 0 && x < self.width && y > 0 && y < self.height
-      return true
-    else
-      return false
-    end
+    return (x > 0) && (x < self.width) && (y > 0) && (y < self.height)
   end
 
 end
