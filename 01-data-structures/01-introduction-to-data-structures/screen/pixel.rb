@@ -18,13 +18,19 @@ class Pixel
     @y = y;
   end
 
-  private
+  def colorScheme
+    colorScheme = {red: red, green: green, blue: blue};
+  end
 
+
+  private
   def validate_color(color)
-    if color < 0 || color > 255
-      color = 0
+    if color > 255
+      return 255
+    elsif color < 0
+      return 0
     else
-      color = color
+      return color
     end
   end
 
