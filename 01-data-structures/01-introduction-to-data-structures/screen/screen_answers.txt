@@ -1,0 +1,2 @@
+For the screen I used a hash where the key is the coordinates of the pixel and the value is the
+actual pixel itself. 

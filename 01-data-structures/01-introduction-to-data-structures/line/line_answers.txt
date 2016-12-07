@@ -1,0 +1,1 @@
+1. Array would suffice for this one as the key value is the place in line that the people are in.
