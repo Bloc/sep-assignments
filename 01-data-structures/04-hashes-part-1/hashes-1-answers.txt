@@ -1,0 +1,8 @@
+Explain why doubling the size of the underlying array of your HashClass may be a poor idea
+
+* Doubling the size of the array does not scale very well
+  -> As the array grows, each resizing will create a ton of potentially unused space (resizing an array of 1000 creates 2000 new slots, which is bad if we only really need 1001 total)
+
+
+* The real reason this hashclass is inefficient is because we're not dealing with prime numbers for indices:
+  -> this leaves a ton of wasted space - not using all non-prime indices
