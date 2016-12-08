@@ -1,0 +1,11 @@
+push: This function was the simple one. I just made a new item at the end of the
+array that was already created, and then set the self.top to equal the new value
+at the end of the Array
+
+pop: This was the harder function, but mainly because I was having a hard time
+trying to figure out what the order I was supposed to put all the functions and
+variables in. This was actually the last function that I wrote before all the
+tests passed. The rest of them were finished well before.
+
+empty?: Same as the last empty? function; I used a comparison to check whether or
+not the array length was 0 or not. 
