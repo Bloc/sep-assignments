@@ -1,0 +1,4 @@
+Line Choices
+
+I used the structure provided and tried to limit my code to few lines as possible (within my knowledge).  Utilizing Ruby
+methods allowed me to accomplish this.
