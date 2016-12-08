@@ -10,11 +10,7 @@ class LinkedList
       @head = node
       @tail = node
     else
-      placeholder = @head
-      while placeholder.next
-        placeholder = placeholder.next
-      end
-      placeholder.next = node
+      @tail.next = node
       @tail = node
     end
   end
