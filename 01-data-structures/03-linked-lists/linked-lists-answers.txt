@@ -1,1 +1,13 @@
-1.  Spacial locality relates to the location of data.  Because it is faster for the computer to access cached data than it is to access data from RAM it grabs chunks, or ranges, of data from RAM to add to the cache whenever it needs to access a bit of data not currently cached.  This makes data that is stored close to other relevant pieces of data, like in an array, faster for the computer to access in sequence than data points that are stored in less predictable locations. 
+1.  Spacial locality relates to the location of data.  Because it is faster for the computer to access cached data than it is to access data from RAM it grabs chunks, or ranges, of data from RAM to add to the cache whenever it needs to access a bit of data not currently cached.  This makes data that is stored close to other relevant pieces of data, like in an array, faster for the computer to access in sequence than data points that are stored in less predictable locations.
+
+2. first my raw data after running the tests:
+
+                                  User CPU | System CPU | Total CPU time| elapsed real time
+create 10,000 item array          0.000000    0.000000    0.000000        0.002093
+append 10,000 items to llist      0.000000    0.000000    0.000000        0.002107
+
+access 5000th element of array    0.000000    0.000000    0.000000        0.000002
+access 5000th node in llist       0.000000    0.000000    0.000000        0.000357
+
+remove 5000th element in array    0.000000    0.000000    0.000000        0.000005
+remove 5000th node in llist       0.000000    0.000000    0.000000        0.000555

@@ -55,8 +55,12 @@ class LinkedList
       previousNode = @head
       placeholder = @head.next
       while placeholder.data != node.data
-        placeholder = placeholder.next
-        previousNode = previousNode.next
+        if placeholder.next
+          previousNode = placeholder
+          placeholder = placeholder.next
+        else
+          return 'node not found'
+        end
       end
       previousNode.next = placeholder.next
     end
