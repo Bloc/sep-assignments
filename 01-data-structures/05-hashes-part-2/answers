@@ -1,0 +1,16 @@
+Hopscotch hashing:
+Keep items not more then H buckets away from their orginal buckets
+
+Coalesced hashing:
+Hybred of chaining and open adressing, links chains of nodes within the table itself.  
+
+Robin Hood Hashing:
+New Key may displace a key that is already inserted, if its probe count is larger than that of the key at the current position.  
+
+2. Creating my own collision strategy
+When a collision occurs take the position found by the initial hashing strategy and make it negative to find a new point that is that distance from the end of the table and then work backwards.
+
+Peters-MacBook-Air:sep-assignments pbailen$ ruby 01-data-structures/05-hashes-part-2/open_addressing/hash_print.rb
+Load Factor: 0.075
+[nil, nil, nil, nil, nil, nil, nil, nil, #<Node:0x007fa81780eb68 @next=nil, @key="Star Wars: A New Hope", @value="Number Four">, nil, #<Node:0x007fa81780e938 @next=nil, @key="Star Wars: The Empire Strikes Back", @value="Number Five">, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, #<Node:0x007fa81780e870 @next=nil, @key="Star Wars: Return of the Jedi", @value="Number Six">, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, #<Node:0x007fa81780f1a8 @next=nil, @key="Star Wars: The Phantom Menace", @value="Number One">, nil, nil, nil, nil, nil, nil, nil, nil, #<Node:0x007fa81780ec08 @next=nil, @key="Star Wars: Revenge of the Sith", @value="Number Three">, nil, nil, nil, nil, nil, nil, nil, #<Node:0x007fa81780ee60 @next=nil, @key="Star Wars: Attack of the Clones", @value="Number Two">, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil]
+

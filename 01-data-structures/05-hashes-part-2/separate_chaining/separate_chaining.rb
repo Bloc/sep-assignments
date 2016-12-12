@@ -87,4 +87,20 @@ class SeparateChaining
 
     @items = new_items
   end
+
+  def status
+    puts self.load_factor
+    (0..@items.size-1).each do |i|
+      list = @items[i]
+      if list != nil
+        curr = list.head
+        index = 0  
+        until curr.nil?
+          puts "#{i} #{index} Key #{curr.key} value  #{curr.value}"
+          curr = curr.next
+          index += 1
+        end
+      end  
+    end
+  end
 end
