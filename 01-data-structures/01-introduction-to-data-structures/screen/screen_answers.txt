@@ -1,0 +1,13 @@
+How does your data structure allow developers to access and manipulate the data?
+
+  * It breaks it down into sections that are easy to understand and manage.  Allowing Pixels to be of a different class,
+  developers do not have to manage Screen if only wanting to manipulate Pixel data.
+
+If a developer wanted to find a specific element in your data structure, how would you search for it?
+
+  * Could find what they are looking for by searching a specific coordinate.  If it's not there, it should tell
+  them its unavailable.
+
+What other real-world data can each structure represent?
+
+  * The screen and pixels can represent many graphical data structures by storing data within each coordinate.
