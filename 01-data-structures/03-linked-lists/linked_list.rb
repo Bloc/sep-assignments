@@ -1,4 +1,6 @@
+require 'benchmark'
 require_relative 'node'
+
 
 class LinkedList
   attr_accessor :head
@@ -76,4 +78,15 @@ class LinkedList
       @head = @head.next
     end
   end
+
+  def measure_LS(number)
+    i = 0
+    while i <= number
+      new_head = Node.new("n" + i.to_s)
+      self.add_to_tail(new_head)
+      i += 1;
+    end
+    self
+  end
+
 end
