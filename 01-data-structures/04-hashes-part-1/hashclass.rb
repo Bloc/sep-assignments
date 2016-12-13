@@ -5,11 +5,18 @@ class HashClass
   end
 
   def []=(key, value)
+    while (@items[index(key, @items.size)] != nil) && (@items[index(key, @items.size)].value != value)
+      resize
+    end
+    @items[index(key, @items.size)] = HashItem.new(key, value)
   end
 
 
   def [](key)
-    @items[index(key, @items.size)]
+    tempItem = @items[index(key, @items.size)]
+    if tempItem
+      return tempItem.value
+    end
   end
 
   def resize
@@ -17,7 +24,8 @@ class HashClass
     placeholder = Array.new(tempSize)
     @items.each do |item|
       if item != nil
-        placeholder.insert(index(item, tempSize), item)
+        tempIndex = index(item.key, tempSize)
+        placeholder[tempIndex] = item
       end
     end
     @items = placeholder
@@ -27,7 +35,7 @@ class HashClass
   # We are hashing based on strings, let's use the ascii value of each string as
   # a starting point.
   def index(key, size)
-    index = (ascii(key) % size)
+    ascii(key) % size
   end
 
   # Simple method to return the number of items in the hash
@@ -44,6 +52,5 @@ class HashClass
     end
     return total
   end
-
 
 end
