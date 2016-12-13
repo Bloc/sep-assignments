@@ -5,10 +5,7 @@ class HashClass
   end
 
   def []=(key, value)
-    while (@items[index(key, @items.size)] != nil) && (@items[index(key, @items.size)].value != value)
-      resize
-    end
-    @items[index(key, @items.size)] = HashItem.new(key, value)
+    addItem(key, value)
   end
 
 
@@ -44,6 +41,19 @@ class HashClass
   end
 
   private
+
+  def addItem(key, value)
+    if @items[index(key, @items.size)] != nil && @items[index(key, @items.size)].value != value
+      resize
+    else
+      @items[index(key, @items.size)] = HashItem.new(key, value)
+      return
+    end
+    #unless conditional below is included because otherwise the test that expects the same key with different values to resize the array will continue forever; in an actual data structure I don't think we should have this particular interaction and would like to speak with Richard as to why it's in here this way. 
+    unless @items[index(key, @items.size)]!= nil && @items[index(key, @items.size)].key == key
+      addItem(key, value)
+    end
+  end
 
   def ascii(key)
     total = 0
