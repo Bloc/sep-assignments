@@ -5,41 +5,42 @@ class MyQueue
   def initialize
     @queue = Array.new
     @head = @queue[0]
+    @tail = @queue[-1]
   end
 
   def enqueue(element)
-    if @queue.empty?
-      @queue[0] = element
-    else
-      new_array = [element]
-      @queue.each_with_index do |person, index|
-        new_array[index + 1] = @queue[index]
-      end
-      @queue = new_array
+    new_array = []
+    new_array[0] = element
+
+    @queue.each do |element|
+      new_array << element
     end
+
+    @queue = new_array
+
     @head = @queue[0]
     @tail = @queue[-1]
   end
 
   def dequeue
-    if @queue.empty?
-      return true
-    else
-      second_array = []
-      @queue.each_with_index do |person, index|
-        @queue[index - 1]
-      end
-      @queue = second_array
+    new_array = []
+    i = 0
+    while i < @queue.length - 2
+      new_array << @queue[i]
+      i += i
     end
-    @tail = @queue[-1]
+
+    @queue = new_array
+
     @head = @queue[0]
+    @tail = @queue[-1]
   end
 
   def empty?
     if @queue.length == 0
-      return true
+      true
     else
-      return false
+      false
     end
   end
 end

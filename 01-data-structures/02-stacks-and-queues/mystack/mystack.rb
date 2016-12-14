@@ -3,43 +3,32 @@ class MyStack
 
   def initialize
     @stack = Array.new
+    @stack_position = -1
     self.top = nil
   end
 
   def push(item)
-    if @stack.empty?
-      @stack[0] = item
-    else
-      array = [item]
-      @stack.each_with_index do |person, index|
-        array[index + 1] = @stack[index]
-      end
-      @stack = array
-    end
-    self.top = @stack[0]
+    @stack_position += 1
+    @stack[@stack_position] = item
+    self.top = @stack[@stack_position]
   end
 
   def pop
-    if @stack.empty?
-      return true
+    temp = @stack[@stack_position]
+    @stack_position -= 1
+    if @stack_position >= 0
+      self.top = @stack[@stack_position]
     else
-      array = []
-      new_one = @stack[0]
-      @stack.each_with_index do |person, index|
-        next if index == 0
-        array[index - 1] = person
-      end
-      @stack = array
+      self.top = nil
     end
-    self.top = @stack[0]
-    new_one
+    temp
   end
 
   def empty?
     if @stack.length == 0
-      return true
+      true
     else
-      return false
+      false
     end
   end
 end
