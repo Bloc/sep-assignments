@@ -13,6 +13,8 @@ RSpec.describe MyQueue, type: Class do
       q.enqueue("Ben")
       expect(q.head).to eq "Ben"
       expect(q.tail).to eq "Rob"
+      q.dequeue
+      q.dequeue
     end
   end
 
