@@ -1,0 +1,12 @@
+Describe three collision resolution strategies not mentioned here.
+
+  Double hashing - like linear probing double hashing finds a starting point at which to place the new object in a hash but if the starting point is occupied, rather than incrementing by a static amount, it uses a second hash function using the data of the object being added to calculate the incremented amount; this allows multiple objects that have the same starting index to, potentially, have shorter search times as they do not necessarily keep moving more steps away from the starting index.
+
+  Robin Hood hashing - this method works like double hashing but also keeps track of a probe count which is the number of times the key being added to the hash has been unable to land at its preferred location and if the key at the location it's trying to place itself at has a lower probe count the new key takes that space and the old key moves on.  this helps to mitigate worse case scenario speeds for the hash.
+
+  2-choice hashing - this method computes two separate table locations for a given key and places it at the location that currently has fewer objects already present.
+
+
+Create your own collision resolution strategy and describe how it works.
+
+  one option that I think might be interesting would be a two dimensional hash where any given object being added would first calculate which of a list of hashes the object would be added too followed by what location in that hash it would sit at. If the individual hashes resized if a single item couldn't fit also resized the parent hash of hashes to create one, or more, empty hashes that objects could now be placed in.  A search would require a maximum of two steps, potentially being faster than other forms that could include many steps, it would however potentially require more frequent resizing.
