@@ -1,5 +1,7 @@
 include RSpec
 
+require_relative 'pixel'
+
 RSpec.describe Pixel, type: Class do
   let(:pixel) { Pixel.new(255, 255, 255, 0, 0) }
 
