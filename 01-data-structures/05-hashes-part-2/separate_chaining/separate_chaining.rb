@@ -87,4 +87,56 @@ class SeparateChaining
 
     @items = new_items
   end
+
+  def print
+    puts
+    (0..@items.size-1).each do |x|
+      list = "index #{x}: "
+      if @items[x] == nil
+        list += 'empty'
+      else
+        i = 1
+        currentValue = @items[x].head
+        list += "##{i} in list: "
+        list += "#{currentValue.key}, #{currentValue.value}."
+        while currentValue.next
+          currentValue = currentValue.next
+          i += 1
+          list += "  ##{i} in list: "
+
+          list += "#{currentValue.key}, #{currentValue.value}."
+        end
+      end
+      puts list
+    end
+    puts "Load factor: #{load_factor}"
+  end
 end
+
+=begin
+  the output for:
+    star_wars_movies = SeparateChaining.new(6)
+    star_wars_movies["Star Wars: The Phantom Menace"] = "Number One"
+    star_wars_movies["Star Wars: Attack of the Clones"] = "Number Two"
+    star_wars_movies["Star Wars: Revenge of the Sith"] = "Number Three"
+    star_wars_movies["Star Wars: A New Hope"] = "Number Four"
+    star_wars_movies["Star Wars: The Empire Strikes Back"] = "Number Five"
+    star_wars_movies["Star Wars: Return of the Jedi"] = "Number Six"
+    star_wars_movies.print
+
+  is:
+  index 0: empty
+  index 1: empty
+  index 2: #1 in list: Star Wars: The Empire Strikes Back, Number Five.
+  index 3: #1 in list: Star Wars: Attack of the Clones, Number Two.  #2 in list: Star Wars: Return of the Jedi, Number Six.
+  index 4: #1 in list: Star Wars: A New Hope, Number Four.
+  index 5: empty
+  index 6: #1 in list: Star Wars: The Phantom Menace, Number One.
+  index 7: empty
+  index 8: empty
+  index 9: empty
+  index 10: empty
+  index 11: #1 in list: Star Wars: Revenge of the Sith, Number Three.
+  Load factor: 0.5
+
+= end
