@@ -1,0 +1,14 @@
+How does your data structure allow developers to access and manipulate the data?
+
+  * The data allows a user to manipulate the array (line) by adding, removing, and searching for a particular person.
+
+
+If a developer wanted to find a specific element in your data structure, how would you search for it?
+
+  * By using a loop to compare the users string with each index of the array.  Depending on how big the line was, I'd use
+  different algorithms to accomplish this.
+
+What other real-world data can each structure represent?
+
+  * The line structure provides useful methods and structure for any array needing the same options.  The Line
+  class could be used for inventory, employees, or budgets.

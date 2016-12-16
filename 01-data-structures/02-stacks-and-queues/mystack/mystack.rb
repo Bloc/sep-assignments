@@ -7,11 +7,23 @@ class MyStack
   end
 
   def push(item)
+    @stack << item;
+    self.top = item;
   end
 
   def pop
+    deletedItem = self.top;
+    @stack.delete(@stack.last)
+    self.top = @stack.last;
+
+    return deletedItem
   end
 
   def empty?
+    if @stack.length < 1
+      true;
+    else
+      false;
+    end
   end
 end
