@@ -1,0 +1,5 @@
+Explain why doubling the size of the underlying array of your HashClass may be a poor idea.
+emory) is a slow operation.
+
+As the array becomes larger as it is resized, doubling would become larger and unnecessary.  It should only be resized to a size that is required for the new data to be inserted.
+This would save time on any loops and implementation of the hash.
