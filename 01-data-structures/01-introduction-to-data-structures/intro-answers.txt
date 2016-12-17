@@ -1,0 +1,16 @@
+#My Answers
+
+### Line
+
+For `line.rb` I used an Array in order to organize the line. It's easy to manipulate as it automatically adjusts the index according to everythig else in the array. So if you call the `leave` method on the first person in the array, `array[0]` will be replaced by whatever is sitting at `array[1]` making it easy to use. Finding a `person` in the data structure can be used by calling the `.index` array method using the name, or it can be deleted by actual index itself. 
+
+An example of a real world application of this, is if you have a to-do or shopping list, where only a single piece of information is needed for each element and it can be identified by that information. In most other circumstances a good case can be made for a Hash, or key/value pair, which is what I used for `screen.rb`
+
+### Screen
+
+For `screen.rb` I used a hash for pixels. The pixels themselves contained 5 attributes, which all needed to be tied to the object itself as well as be callable. A hash was perfect for this scenario. This makes the Pixels attributes easy to change by simply calling `pixel.red = 232` or something to that effect. So change is easy.
+
+For the screen itself, I used a multidimensional array, or matrix. This was the only way I saw to implement a correct coordinate system for the screen itself. This makes it easy to place pixels by calling `array[x][y]` to reference the exact place in the array. By default the screen is filled with `nil` in the dimensions of the screen, and then a `nil` is replaced with a Pixel.
+
+An example of a real world application of this could possibly be managing a grid of lights. A hash would be created for maybe different groupings of lights, while the matrix is used for each individual group. This makes it easy to call `(x, y)` coordinates instead of having to parse through another hash to find the correct attribute.
+
