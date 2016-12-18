@@ -13,15 +13,10 @@ class MyStack
   end
 
   def pop
-
       temp = @stack[(@stack.length - 1)]
-
-      @stack[(@stack.length - 1)] = nil
-      
+      @stack.delete_at(@stack.length - 1)
       @top = @stack[(@stack.length - 1)]
-      
       return temp
-      
   end
 
   def empty?
