@@ -1,4 +1,5 @@
 require_relative 'linked_list'
+require_relative 'node'
 
 class SeparateChaining
   attr_reader :max_load_factor
