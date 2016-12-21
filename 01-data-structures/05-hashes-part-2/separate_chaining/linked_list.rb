@@ -33,9 +33,13 @@ class LinkedList
   # This method prints out a representation of the list.
   def print
     temp = @head
+    i = 1
     until temp.nil?
-      puts "#{temp.data}\n"
+      puts "key #{i}: #{temp.key}\n"
+      puts "value #{i}: #{temp.value}\n"
+
       temp = temp.next
+      i += 1
     end
   end
 
