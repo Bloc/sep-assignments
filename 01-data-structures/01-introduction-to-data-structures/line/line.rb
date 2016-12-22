@@ -9,21 +9,31 @@ class Line
   end
 
   def join(person)
+    members << person
   end
 
   def leave(person)
+    members.reject! { |item|
+      item == person
+    }
   end
 
   def front
+    members[0]
   end
 
   def middle
+    members[members.size / 2]
   end
 
   def back
+    members.last
   end
 
   def search(person)
+    if members.include?(person)
+      person
+    end
   end
 
   private

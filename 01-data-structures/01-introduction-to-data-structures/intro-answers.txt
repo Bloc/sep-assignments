@@ -1,0 +1,13 @@
+# Line
+
+1. Developers can add people to the back of the line and remove people by
+passing the name of the person to remove. They can see who's in the line by
+looking at the members attribute.
+2. They can use #members[] or #members.index.
+3. It can represent print jobs on a public printer.
+
+# Screen
+
+1. Developers can add a pixel at any position.
+2. They can use #at to see any pixel in the screen.
+3. It can represent a tiled game map.
