@@ -1,3 +1,5 @@
+require_relative('pixel')
+
 include RSpec
 
 RSpec.describe Pixel, type: Class do
