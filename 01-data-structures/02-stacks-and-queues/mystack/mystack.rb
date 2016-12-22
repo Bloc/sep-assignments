@@ -13,8 +13,8 @@ class MyStack
 
   def pop
     result = top
-    @stack.delete_at(@stack.size - 1)
-    @top = @stack[@stack.size - 1]
+    @stack.delete_at(-1)
+    @top = @stack[-1]
     result
   end
 
