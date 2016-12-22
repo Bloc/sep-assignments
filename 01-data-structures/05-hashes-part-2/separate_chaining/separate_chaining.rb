@@ -1,4 +1,5 @@
 require_relative 'linked_list'
+require_relative 'node'
 
 class SeparateChaining
   attr_reader :max_load_factor
@@ -84,7 +85,28 @@ class SeparateChaining
         end
       end
     end
-
     @items = new_items
   end
+
+  # see LinkedList #print
+  def current_hash_info
+    for i in 0..@items.length do
+      if @items[i].nil? == true
+        puts "#{i}: #{@items[i]}\n"
+      else
+        puts "#{i}:\n"
+        puts "#{@items[i].print}"
+      end
+    end
+  end
+
+  def print_hash_details
+    puts "############\n"
+    puts "Hash Details\n"
+    puts "############\n\n"
+    puts "Hash Load Factor: #{self.load_factor}\n\n"
+    puts "Current Hash index and of elements:\n"
+    puts current_hash_info
+  end
+
 end
