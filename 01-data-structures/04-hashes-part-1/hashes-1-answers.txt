@@ -1,0 +1,4 @@
+When you double the size of the array to avoid a collision you can use up memory
+faster than you add keys. Sometimes, you might still have a collision after
+resizing, which means you may have to resize multiple times for a single
+insertion.
