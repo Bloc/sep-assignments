@@ -1,0 +1,15 @@
+Line: I thought that the line one was pretty straight forward it was just a simple array
+where everyone was in order in line, so trying to find someone would be relatively easy.
+For this one I just used an array to keep track of where people are, when someone wants to leave
+I found them using a query on the array finding if it contained the name of the person /
+who wanted to get out of line. When someone wanted to get in line all it took is an
+addition to the array which I used push, but using << could have worked too.
+
+Pixel: This one I used a class to represent the pixel where dot notation would hold the
+values of x, y, red, blue, and green.
+
+Screen: This one was a bit tricky, but thanks to the Slack channel I was pushed in
+the right direction. Simple enough I would make the key of the hash the x and y coordinates
+via an array and then I would set the value to a pixel. Sounds easy in theory, but
+I didn't think getting it to work would be that tricky, but I'll blame it on being
+a bit rusty on Ruby coming from the Javascript course :)
