@@ -2,9 +2,11 @@ require_relative 'node'
 
 class OpenAddressing
   def initialize(size)
+    @size = size  
   end
 
   def []=(key, value)
+    
   end
 
   def [](key)
