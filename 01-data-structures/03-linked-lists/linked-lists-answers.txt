@@ -1,0 +1,13 @@
+1) Spacial Locality is a computer science term for the relative location of data elements in relation to each other.  In the case of spacial locality, this means that the physical distant is relatively close.  Sequential Spacial Locality is a special case in that the data elements are physically next to each other in sequential order such as in an array.  Given that array elements are very close to each other and are sequential ordered, the performance for accessing these elements should be very high as compared to other spacial locate data structures.
+
+2) Benchmark of Arrays vs Linked List.  It seems clear that the arrays have much higher performance benchmarks versus linked lists.
+
+                                    user     system      total        real
+Push 10,000 items to MyArray    0.000000   0.000000   0.000000 (  0.001915)
+Append 10,000 items to MyList   0.010000   0.000000   0.010000 (  0.005433)
+
+Find 5,000th item in MyArray    0.000000   0.000000   0.000000 (  0.000002)
+Find 5,000th item in MyList     0.000000   0.000000   0.000000 (  0.000344)
+
+Delete 5,000th item in MyArray  0.000000   0.000000   0.000000 (  0.000014)
+Delete 5,000th item in MyList   0.000000   0.000000   0.000000 (  0.000636)
