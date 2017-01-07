@@ -54,4 +54,62 @@ RSpec.describe HeapSearchTree, type: Class do
     end
 
   end
+
+  describe "#find(data)" do
+    it "handles nil gracefully" do
+      tree.insert(empire)
+      tree.insert(mad_max_2)
+      expect(tree.find(tree.root, nil)).to eq nil
+    end
+
+    it "properly finds a left node" do
+      tree.insert(pacific_rim)
+      expect(tree.find(tree.root, pacific_rim.title).title).to eq "Pacific Rim"
+    end
+
+    it "properly finds a left-left node" do
+      tree.insert(braveheart)
+      tree.insert(pacific_rim)
+      expect(tree.find(tree.root, pacific_rim.title).title).to eq "Pacific Rim"
+    end
+
+    it "properly finds a left-right node" do
+      tree.insert(donnie)
+      tree.insert(inception)
+      expect(tree.find(tree.root, inception.title).title).to eq "Inception"
+    end
+
+    it "properly finds a right node" do
+      tree.insert(district)
+      expect(tree.find(tree.root, district.title).title).to eq "District 9"
+    end
+
+    it "properly finds a right-left node" do
+      tree.insert(hope)
+      tree.insert(martian)
+      expect(tree.find(tree.root, martian.title).title).to eq "The Martian"
+    end
+
+    it "properly finds a right-right node" do
+      tree.insert(empire)
+      tree.insert(mad_max_2)
+      expect(tree.find(tree.root, mad_max_2.title).title).to eq "Mad Max 2: The Road Warrior"
+    end
+  end
+
+  describe "#print" do
+     specify {
+       expected_output = "Star Wars: The Empire Strikes Back: 94\nThe Matrix: 87\nStar Wars: A New Hope: 93\nStar Wars: Return of the Jedi: 80\nPacific Rim: 72\nThe Martian: 92\nThe Shawshank Redemption: 91\nBraveheart: 78\nInception: 86\n"
+       tree.insert(hope)
+       tree.insert(empire)
+       tree.insert(jedi)
+       tree.insert(martian)
+       tree.insert(pacific_rim)
+       tree.insert(inception)
+       tree.insert(braveheart)
+       tree.insert(shawshank)
+       expect { tree.print }.to output(expected_output).to_stdout
+     }
+
+  end
 end

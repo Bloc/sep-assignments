@@ -170,6 +170,7 @@ class HeapSearchTree
   end
 
   def find(root, data)
+    return nil if data.nil?
     if root.title == data
       return root
     else
@@ -179,7 +180,7 @@ class HeapSearchTree
     end
   end
 
-  def print(root)
+  def print
     return nil if @root.nil?
     queue = Queue.new
     queue.enq(@root)
