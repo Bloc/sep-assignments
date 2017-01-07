@@ -1,0 +1,10 @@
+When would you use a Binary Search Tree and why?
+
+If organization of data is not important, binary search trees are quicker then hash tables etc.  The size of the tree is
+only composed of the needed space needed to incorporate into the tree.  Insertion is faster because it goes to the bottom most
+insertion area.
+
+When would you use an Heap and why?
+
+You'd use a heap when organizing data is essential.  For example, when people want "price high to low" on amazon.com, all the data
+to display to the user could use a max-heap to display the content.

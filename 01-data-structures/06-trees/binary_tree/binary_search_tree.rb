@@ -79,7 +79,7 @@ class BinarySearchTree
   end
 
   # Recursive Breadth First Search
-  #not sure what children=nil was hinting about...but, I'm passing specs.  
+  #not sure what children=nil was hinting about...but, I'm passing specs.
   def printf(children=nil)
     return nil if @root.nil?
     queue = Queue.new
