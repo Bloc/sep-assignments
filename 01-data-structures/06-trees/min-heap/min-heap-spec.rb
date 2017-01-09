@@ -78,6 +78,7 @@ RSpec.describe MinHeap, type: Class do
        tree.insert(district)
        tree.insert(mad_max_2)
        expect { tree.print }.to output(expected_output).to_stdout
+      tree.print
      }
 
      specify {
