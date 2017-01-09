@@ -26,5 +26,4 @@ class Screen
   def inbounds(x, y)
     ((@width > x && x >= 0) && (@height > y && y >= 0)) ? true : false
   end
-
 end
