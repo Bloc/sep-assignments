@@ -1,0 +1,30 @@
+Calculate Tip(bill)
+  tip = 0
+  total_bill = bill
+  if bill > 5 && bill < 10
+    total_bill = bill + tip
+  else
+    total_bill = (bill * 0.20)
+    # round down to nearest dollar for convenience
+  end
+  return total_bill
+end
+
+Make Smoothie(items)
+  blend(items) UNTIL small
+  REMOVE blender lid
+  pour items into glass
+  return glass(items)
+end
+
+Get Family Ready
+  wake_up(me)
+  make_cereal_for(kids)
+  wake_up(kids)
+  WHILE kids are eating
+    take shower
+    get dressed
+  end
+  Get kids dressed
+  leave
+end
