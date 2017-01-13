@@ -1,0 +1,12 @@
+Line
+
+1. The array data structure allows developers to determine which person is in the front, middle, back or any other position in line. It also allows them to add or remove people from the line, as well as determining whether someone is actually in line.
+2. A developer would need to loop through the array until an item matching the specific element is found.
+3. The array data structure can be used for any ordered list of items, such as a dictionary or a phone book.
+
+
+Pixel 
+
+1. The data structure is a multidimensional array, which is basically just an array inside of another array.
+2. The developer would need to call the corresponding x and y values of the pixel to determine it’s location on the screen.
+3. The data structure can represent data points on a grid, such as a map.
