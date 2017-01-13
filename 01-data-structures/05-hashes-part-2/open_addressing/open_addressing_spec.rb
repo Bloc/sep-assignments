@@ -62,7 +62,6 @@ RSpec.describe OpenAddressing, type: Class do
       inception["The Original"] = "The Best Movie Ever"
       expect(inception.next_open_index(0)).to eq -1
     end
-
   end
 
   describe "#resize" do
