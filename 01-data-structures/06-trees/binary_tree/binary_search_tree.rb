@@ -39,64 +39,32 @@ class BinarySearchTree
       # Delete the root node.
       if !root.left
         @root = root.right
-        # Go left and find the right-most node from there.
-      elsif !root.left.right
-        root.left.right = root.right
-        @root = root.left
       else
-        leaf_parent = root.left
-        while leaf_parent.right.right
-          leaf_parent = leaf_parent.right
-        end
-        leaf = leaf_parent.right
-        leaf_parent.right = leaf.left
-        leaf.left = root.left
-        leaf.right = root.right
-        @root = leaf
+        new_left, successor = delete_max(root.left)
+        successor.left = new_left
+        successor.right = root.right
+        @root = successor
       end
-      # See if root is the parent of the target node.
-    elsif root.left
-      if root.left.title != data
-        delete(root.left, data)
-        # Delete root.left.
-      elsif !root.left.left
-        root.left = root.left.right
-        # Go left and find the right-most node from there.
-      elsif !root.left.left.right
-        root.left.left.right = root.left.right
-        root.left = root.left.left
-      else
-        leaf_parent = root.left.left
-        while leaf_parent.right.right
-          leaf_parent = leaf_parent.right
+    else
+      [:left, :right].each { |branch|
+        if root.send(branch)
+          set_branch = branch.to_s + '='
+          # See if root is the parent of the target node.
+          if root.send(branch).title != data
+            delete(root.send(branch), data)
+            # Delete the child node.
+          elsif !root.send(branch).left
+            root.send(set_branch, root.send(branch).right)
+          else
+            deleted = root.send(branch)
+            new_left, successor = delete_max(deleted.left)
+            successor.left = new_left
+            successor.right = deleted.right
+            root.send(set_branch, successor)
+          end
         end
-        leaf = leaf_parent.right
-        leaf_parent.right = leaf.left
-        leaf.left = root.left.left
-        leaf.right = root.left.right
-        root.left = leaf
-      end
-    elsif root.right
-      if root.right.title != data
-        delete(root.right, data)
-        # Delete root.right.
-      elsif !root.right.left
-        root.right = root.right.right
-        # Go left and find the right-most node from there.
-      elsif !root.right.left.right
-        root.right.left.right = root.right.right
-        root.right = root.right.left
-      else
-        leaf_parent = root.right.left
-        while leaf_parent.right.right
-          leaf_parent = leaf_parent.right
-        end
-        leaf = leaf_parent.right
-        leaf_parent.right = leaf.left
-        leaf.left = root.right.left
-        leaf.right = root.right.right
-        root.right = leaf
-      end
+      }
+      nil
     end
   end
 
@@ -112,6 +80,24 @@ class BinarySearchTree
         children.push(node.right)
       end
       printf(children)
+    end
+  end
+
+  private
+
+  # Deletes the max node from a subtree. Returns an array. [0] is the new head.
+  # [1] is the deleted node.
+  def delete_max head
+    if !head.right
+      [head.left, head]
+    else
+      current = head
+      while current.right.right
+        current = current.right
+      end
+      deleted = current.right
+      current.right = deleted.left
+      [head, deleted]
     end
   end
 end
