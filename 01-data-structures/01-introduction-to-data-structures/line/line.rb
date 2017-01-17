@@ -9,21 +9,41 @@ class Line
   end
 
   def join(person)
+    members.push(person)
   end
 
   def leave(person)
+    i = 0
+    while (i < members.length)
+      if (members[i] === person)
+        members.delete_at(i)
+      end
+      i += 1
+    end
   end
 
   def front
+    members[0]
   end
 
   def middle
+    middle = ((members.length) / 2).round
+    members[middle]
   end
 
   def back
+    members[-1]
   end
 
   def search(person)
+    i = 0
+    while (i < members.length)
+      if (members[i] === person)
+        return person
+      end
+      i += 1
+    end
+    return nil
   end
 
   private
