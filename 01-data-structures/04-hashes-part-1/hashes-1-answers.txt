@@ -1,0 +1,1 @@
+Doubling the size of the underlying array is a poor idea because it requires a lot of unused memory, which eventually slows down the operation. Rather than always using an even number for the size, it may be better to use a prime number to create less collisions. 
