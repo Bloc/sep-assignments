@@ -1,0 +1,25 @@
+1: goodbye_world.rb
+
+O(1); Will always take the same time (constant) to execute
+
+2: find_largest.rb
+
+O(n); This is a linear algorithm as it cycles through the size of the array.  Therefore, because the program iterates through each
+element (n), the algorithm will process "n" amount of times.
+
+3: find_largest_2D_array.rb
+
+O(n^2);  It will run at linearly, but there are two loops.
+
+4: numbers_recurive.rb
+
+O(2^n); assumption based off that your adding (n-1) and (n-2) recursively.  Each time recursion happens, its 2 to the "n" amount of times needed.
+
+5: numbers_iterative.rb
+
+O(n); because the while loop is dependent on the size of "n," thus increasing "i" by 1 until it's greater then "n"
+
+6: sort.rb
+
+O(nlogn);  I know this by researching quicksort and mergesort.  Basically, when the algorithm is broken down, you end up having n * logn.  Each partition, that is,
+finding the pivot, is based off O(n).  Then you have the division (like binary search) of the array, thus O(logn).  
