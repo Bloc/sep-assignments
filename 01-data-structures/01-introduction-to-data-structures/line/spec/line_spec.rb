@@ -1,6 +1,6 @@
 include RSpec
 
-require_relative 'line'
+require_relative '../line'
 
 RSpec.describe Line, type: Class do
   let(:line) { Line.new }
@@ -28,7 +28,7 @@ RSpec.describe Line, type: Class do
 
   describe "#middle" do
     it "returns the person in the middle of the line" do
-      expect(line.middle).to eq "Ted"
+      expect(line.middle).to eq "Bernie"
     end
   end
 
