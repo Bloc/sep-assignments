@@ -28,7 +28,7 @@ RSpec.describe Line, type: Class do
 
   describe "#middle" do
     it "returns the person in the middle of the line" do
-      expect(line.middle).to eq "Bernie"
+      expect(line.middle).to eq "Ted"
     end
   end
 
