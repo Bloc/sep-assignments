@@ -1,0 +1,13 @@
+**Explanations on my answer**
+
+- Since this assignment deals with a single file line, `Array` seems to be the best data structure to use. Also, the `initialize` method was already there by default.
+
+- Most of the methods are using basic `Ruby` methods, and they are very straightforward.
+
+- Notes on the `middle` method: I implemented this method according to how the RSpec was setup, but if what "middle" means changes, my method needs to change.
+
+  For example, if we had an array of [0, 1, 2, 3, 4, 5], according to the way the given RSpec defines where the "middle" is, `3` is the middle.
+
+  But you could define "middle" as `2, 3` when there is an even number of elements in an array like the above array. Under that definition, the `middle` method has to first check if the array's length is even or odd. Then execute code to determine which element or elements are in the "middle".
+
+  For the purpose of this exercise, my code passes the given test for the method.

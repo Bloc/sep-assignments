@@ -9,21 +9,28 @@ class Line
   end
 
   def join(person)
+    members << person
   end
 
   def leave(person)
+    members.delete(person)
   end
 
   def front
+    members.first
   end
 
   def middle
+    middle_index = (members.length / 2).round
+    members[middle_index]
   end
 
   def back
+    members.last
   end
 
   def search(person)
+    members.bsearch { |x| x == person }
   end
 
   private

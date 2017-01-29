@@ -1,0 +1,5 @@
+**Explanations on my answer**
+
+- I chose to use an array of arrays for this assignment since it dealt with data that could be expressed using rows and columns
+- One the array (of arrays) is set up, it is very easy to add or get an element at a certain spot.
+- Only thing that I wasn't sure was that the RSpec for the inbound method was passing even before I implemented the method. At first, I thought the test was giving a false positive, but it doesn't seem to be that way. I need to discuss this with my mentor.  
