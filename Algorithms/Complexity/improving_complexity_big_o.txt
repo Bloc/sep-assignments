@@ -1,0 +1,5 @@
+optimized_written_ruby = Big O(n^2); for loop is one "n" and while loop is second "n"
+
+timecomplex_written_ruby(*arrays) = BigO(n^2) or O(n log n); depended on how large the array to be sorted is.
+
+saveTime_written_ruby = BigO(n); The creation of the hash still is linear, however, searching could be as low as O(1) if the data is looking for a specific key. 
