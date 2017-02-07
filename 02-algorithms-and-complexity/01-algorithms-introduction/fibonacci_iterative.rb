@@ -1,7 +1,9 @@
 def FIB(n)
+	return 0 if n == 0
+	return 1 if n == 1
 	fib0 = 0
 	fib1 = 1
-	for n in 0..n-1 do
+	for n in 1..n-1 do
 		temp = fib0
 		fib0 = fib1
 		fib1 = temp + fib1
