@@ -1,0 +1,11 @@
+              user     system      total        real
+Heap Sort:   0.000000   0.000000   0.000000 (  0.000430)
+Quick Sort:   0.000000   0.000000   0.000000 (  0.000206)
+Bucket Sort:   0.000000   0.000000   0.000000 (  0.000102)
+
+
+I believe the Heap Sort and Quick Sort algorithms were hampered by the fact that the algorithm used was recursive algorithm.  The Bucket Sort used an iterative algorithm.
+
+I expected the Heap sort to be slower than the Quick sort because the heap sort first has to put the values into a heap, and then the sort itself, when it swaps a value, it then most re-heapify each time.
+
+In researching the different sort algorithms, it had been stated that the quick sort should be faster than the bucket sort.  The bucket sort's performance greatly depended on the distribution of the values the number of buckets used compared to the size of the array to be sorted. Also, the bucket sort seems to only work on integer type numbers.
