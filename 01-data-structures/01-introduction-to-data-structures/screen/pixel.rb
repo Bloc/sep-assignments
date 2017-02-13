@@ -12,6 +12,36 @@ class Pixel
 
 
   def initialize(red, green, blue, x, y)
+		pixel.red = red
+		pixel.green = green
+		pixel.blue = blue
+		pixel.x = x
+		pixel.y = y
+		
+		if pixel.red < 0
+			pixel.red = 0
+		end
+		
+		if pixel.green < 0
+			pixel.green = 0
+		end
+		
+		if pixel.blue < 0
+			pixel.blue = 0
+		end
+		
+		if pixel.red > 255
+			pixel.red = 255
+		end
+		
+		if pixel.green > 255
+			pixel.green = 255
+		end
+		
+		if pixel.blue > 255
+			pixel.blue = 255
+		end
+		
   end
 
   private
