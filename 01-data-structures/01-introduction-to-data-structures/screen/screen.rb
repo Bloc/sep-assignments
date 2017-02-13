@@ -16,7 +16,7 @@ class Screen
   end
 
   def at(x, y)
-		x = width.value
+		x = width.value 
 		y = height.value
 		
 		if x < 0 || y < 0

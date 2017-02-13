@@ -24,7 +24,7 @@ class Pixel
 		
 		if pixel.green < 0
 			pixel.green = 0
-		end
+		end 
 		
 		if pixel.blue < 0
 			pixel.blue = 0

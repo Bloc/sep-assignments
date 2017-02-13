@@ -25,7 +25,7 @@ class Line
   end
 
   def back
-	  return members[-1]
+	  return members[-1] 
   end
 
   def search(person)

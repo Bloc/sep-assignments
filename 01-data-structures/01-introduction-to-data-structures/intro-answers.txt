@@ -9,4 +9,4 @@
 
 ---------------------------
 
-3. What other real-world data can each structure represent?
+3. What other real-world data can each structure represent? 
