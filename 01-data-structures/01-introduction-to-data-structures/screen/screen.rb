@@ -14,6 +14,7 @@ class Screen
   # Insert a Pixel at x, y
   def insert(pixel, x, y)
 		@matrix[y][x] = pixel
+		
   end
 
   def at(x, y)
