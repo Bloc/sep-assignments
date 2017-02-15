@@ -29,7 +29,9 @@ class Line
   end
 
   def search(person)
-	  return members.search(person)
+	  if members.include?(person)
+			return person
+		end
   end
 
   private
