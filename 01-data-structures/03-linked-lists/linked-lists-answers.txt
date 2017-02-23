@@ -1,0 +1,3 @@
+What is Spatial Locality and why does it benefit performance?
+
+	In my understanding, spatial locality is utilizing requested data's near-by data in an effor to reduce processing time. This appears to be the backbone of linked lists — LL's .next feature is an example of spatial locality at work (...I think). 
