@@ -5,6 +5,7 @@ class MinBinaryHeap
   def initialize(root)
     @root = root
     @size = 1
+    @last = nil
   end
 
   def insert(root, node)
@@ -88,24 +89,34 @@ class MinBinaryHeap
   end
 
   def delete(root, data)
-
-    # 1. find bottom most right node (last node)
-    # 2. swap last node with node being deleted
-    # 3. compare replacement node with both children
-    # 4. if replacement node is greater than both children, swap with smallest child
-    # 5. if replacement node is less than parent, swap with parent node
-    # 6. repeat until condition is not true for both cases
-
     if root.nil? || data.nil?
       return nil
     end
 
     node = find(root, data)
-    if node.nil? 
-      return nil
-    else 
-      node.title = nil
-      node.rating = nil
+    temp = @last.clone
+
+    if temp.parent.left
+      @last = temp.parent.left
+    end
+
+    temp.title = node.title
+    temp.rating = node.rating
+    node.title = nil
+    node.rating = nil
+
+    if temp.right
+      if temp.rating > temp.left.rating || temp.rating > temp.right.rating
+        heapifyDown(temp)
+      end
+    elsif temp.left
+      if temp.rating > temp.left.rating
+        heapifyDown(temp)
+      end
+    end
+
+    if temp.rating < temp.parent.rating 
+      heapifyUp(temp)
     end
   end
 
@@ -125,9 +136,13 @@ class MinBinaryHeap
     end
   end
 
-  def heapifyUp(node)
+  def heapifyUp(node, flag=false)
     if node.parent.nil?
       return nil
+    end
+
+    if node.rating > node.parent.rating && !flag
+      flag = node
     end
 
     if node.rating < node.parent.rating
@@ -136,8 +151,14 @@ class MinBinaryHeap
       node.parent.rating = node.rating
       node.title = temp.title
       node.rating = temp.rating
-      heapifyUp(node.parent)
+      if !flag
+        flag = node
+      end
+      heapifyUp(node.parent, flag)
     end
+
+    @last = flag
+    # puts @last.rating
   end
 
   def heapifyDown(node)

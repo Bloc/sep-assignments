@@ -18,7 +18,7 @@ class BinarySearchTree
       else
         insert(temp.left, node)
       end
-    elsif node.rating > temp.rating
+    else
       if temp.right.nil?
         temp.right = node
       else
@@ -29,22 +29,42 @@ class BinarySearchTree
 
   # Recursive Depth First Search Using Preorder
   def find(root, data)
-    if root.nil? || data.nil?
-      return nil
+    if root.title == data
+      return root
     end
 
-    if root.title === data
-      return root
-    elsif root.left != nil
-      find(root.left, data)
-    elsif root.right != nil
-      find(root.right, data)
+    if root.left != nil
+      left = find(root.left, data)
+      if left != nil
+        return left
+      end
+    end
+
+    if root.right != nil
+      right = find(root.right, data)
+      if right != nil
+        return right
+      end
     end
   end
 
   def delete(root, data)
     if root.nil? || data.nil?
       return nil
+    end
+
+    if root.left
+      if root.left.title === data
+        temp = root.left
+        root.left = temp.left
+        temp.title = nil
+        temp.rating = nil
+        if root.left != nil
+          root.left.right = temp.right
+        end
+      else
+        delete(root.left, data)
+      end
     end
 
     if root.right
@@ -59,18 +79,6 @@ class BinarySearchTree
       else
         delete(root.right, data)
       end
-    elsif root.left
-      if root.left.title === data
-        temp = root.left
-        root.left = temp.left
-        temp.title = nil
-        temp.rating = nil
-        if root.left != nil
-          root.left.right = temp.right
-        end
-      else
-        delete(root.left, data)
-      end
     end
   end
 
@@ -80,11 +88,10 @@ class BinarySearchTree
 
     queue.each do |current|
       puts "#{current.title}: #{current.rating}"
-      if current.left && current.right
-        queue << current.left << current.right
-      elsif current.left
+      if current.left
         queue << current.left
-      elsif current.right
+      end
+      if current.right
         queue << current.right
       end
     end
