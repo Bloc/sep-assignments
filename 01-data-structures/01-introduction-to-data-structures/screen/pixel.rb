@@ -7,11 +7,37 @@ class Pixel
   attr_accessor :red
   attr_accessor :green
   attr_accessor :blue
-  attr_accessor :x
-  attr_accessor :y
 
 
-  def initialize(red, green, blue, x, y)
+  def initialize(red, green, blue)
+		pixel.red = red
+		pixel.green = green
+		pixel.blue = blue
+
+		if pixel.red < 0
+			pixel.red = 0
+		end
+		
+		if pixel.green < 0
+			pixel.green = 0
+		end 
+		
+		if pixel.blue < 0
+			pixel.blue = 0
+		end
+		
+		if pixel.red > 255
+			pixel.red = 255
+		end
+		
+		if pixel.green > 255
+			pixel.green = 255
+		end
+		
+		if pixel.blue > 255
+			pixel.blue = 255
+		end
+		
   end
 
   private
