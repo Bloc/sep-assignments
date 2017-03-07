@@ -1,0 +1,35 @@
+1) Cooking dinner
+
+TURN ON stove top
+HEAT frying pan
+SPRAY olive oil
+SET chicken on frying pan
+WHILE chicken cooks
+  SET rice in rice cooker
+  WHEN water is evaporated
+    TURN OFF rice cooker
+  ENDIF
+ENDWHILE
+APPEND chicken to rice
+
+
+
+2) Determing what to wear
+
+IF weather < 70 degrees THEN
+  WEAR jeans && hoodie
+ELSIF weather > 85 degrees THEN
+  WEAR shorts && tank top
+ELSE
+  WEAR sweatpants && t-shirt
+ENDIF
+
+
+
+3) Calculating a tip
+
+DETERMINE pretax bill
+MOVE decimal point one place to left
+ROUND up to next easy number
+DOUBLE new number
+SET tip equal to new number
