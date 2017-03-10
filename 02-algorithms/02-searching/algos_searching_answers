@@ -1,0 +1,15 @@
+1) It would take 7 iterations to find the value G using linear search.
+
+2) It would take 3 iterations to find the value G using binary search.
+
+3) fib(10) = 55 | fib(11) = 89 | fib(12) = 144
+
+
+               user     system      total        real
+iterative    0.000000   0.000000   0.000000 (  0.000008)
+recursive    0.000000   0.000000   0.000000 (  0.001343)
+
+
+1) For an unsorted collection of items, I would use linear search with an iterative solution because binary search only works for sorted collections.
+
+2) For a sorted collection of items, I would use binary search with an iterative solution as it seems to be much faster than a recursive solution.
