@@ -1,0 +1,22 @@
+1) An algorithm that has O(1) is a similar to a Bugatti Veyron and an algorithm that has O(2^n) is similar to a Volvo.
+2) The best case scenario for binary search is when the element is in the middle of the collection.
+3) The worst case scenario for binary search is when the element is not in the collection at all. 
+4) The bounded-case scenario for binary search is when the element is anywhere besides the middle of the collection.
+5) (See Graph)
+6) As the number of items in the collection approaches infinity, the asymptotic limit is infinity.
+7) O(2^n)
+8) 0 => 1
+   1 => 2
+   2 => 4
+   3 => 8
+   4 => 16
+   5 => 32
+   6 => 64
+   7 => 128
+   8 => 256
+   9 => 512
+   10 => 1024
+9) O(2^n)
+10) Worst Case: O(logn)
+11) Best Case: Ω(1)
+12) Average Case: Ө(logn)
