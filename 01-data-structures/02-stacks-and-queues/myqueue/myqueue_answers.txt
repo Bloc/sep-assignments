@@ -1,0 +1,9 @@
+enqueue: For this one I did some googling for the Array functions that I had at my disposal.
+I found that there was a great function called unshift that did exactly what I wanted
+to do which was create a new element in the [0] position of an array.
+
+dequeue: This one was pretty simple I remember dealing with the delete_at function
+in Ruby before and all I needed to do was delete it at the first element of the array.
+
+empty?: Simple a one line if/ else statement checking the length of the array if it
+is equal to 0 then it would return true and false if not. 
