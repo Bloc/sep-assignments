@@ -1,0 +1,33 @@
+The insert into the min_heap tree took a tremendous amount of time versus the Binary tree. 34.5 minutes vs .5 seconds.  I don't know if its the fact that my min_heap algothrim is tremendously inefficient, or that it truly is a time-consuming insert operation to constantly swap nodes to meet the heap property requirement.
+
+There doesn't seem to be a single operation on the heap that runs faster than a regular binary tree.  It seems that the only time you would want to use a heap, is because you have a need to represent the data set in a particular hierarchal order.
+
+My results were as follows:
+
+Binary Tree
+
+                                    user     system      total        real
+Push 100,000 items to tree 1:   0.370000   0.010000   0.380000 (  0.376144)
+Push 100,000 items to tree 1:   0.450000   0.010000   0.460000 (  0.453649)
+Push 100,000 items to tree 1:   0.570000   0.000000   0.570000 (  0.575708)
+>                      avg:     0.463333   0.006667   0.470000 (  0.468500)
+
+                                    user     system      total        real
+Find 50,000th item in tree 1:   0.020000   0.000000   0.020000 (  0.020255)
+Find 50,000th item in tree 2:   0.020000   0.000000   0.020000 (  0.020181)
+Find 50,000th item in tree 3:   0.010000   0.000000   0.010000 (  0.019554)
+>                      avg:     0.016667   0.000000   0.016667 (  0.019997)
+
+                                      user     system      total        real
+Delete 50,000th item in tree 1:   0.020000   0.000000   0.020000 (  0.017183)
+Delete 50,000th item in tree 2:   0.030000   0.000000   0.030000 (  0.023781)
+Delete 50,000th item in tree 3:   0.040000   0.000000   0.040000 (  0.044307)
+>                        avg:     0.030000   0.000000   0.030000 (  0.028424)
+
+
+Min Heap Tree
+
+                                     user     system       total          real
+Push 100,000 items to tree    2079.160000   3.860000 2083.020000 (39135.954353)
+Find 50,000th item in tree       0.060000   0.000000    0.060000   (  0.063222)
+Delete 50,000th item in MyArray  0.380000   0.000000    0.380000   (  0.384171)

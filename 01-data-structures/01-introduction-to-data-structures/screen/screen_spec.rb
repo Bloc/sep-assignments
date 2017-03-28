@@ -1,7 +1,17 @@
+include RSpec
+
+require_relative 'pixel'
 require_relative 'screen'
 
 RSpec.describe Screen, type: Class do
   let(:screen) { Screen.new(10, 10) }
+  let(:p) {Pixel.new(255, 255, 255, 1, 1)}
+
+  describe "Pixel" do
+    it "checks init" do
+      expect(p.red).to eq 255
+    end
+  end
 
   describe "#insert" do
     it "inserts a pixel at the proper x, y coordinates" do

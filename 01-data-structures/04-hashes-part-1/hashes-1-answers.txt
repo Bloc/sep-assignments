@@ -1,0 +1,11 @@
+Doubling the array size has an exponential growth rate making it size inefficient.  Also, array allocation means the potential for serious performance and memory fragmentation as the size increases.
+
+
+Hash Values
+
+lotr_runtimes["The Hobbit: An Unexpected Journey"] = "3 hours, 2 minutes" - Hash: 19
+lotr_runtimes["The Lord of the Rings: The Fellowship of the Ring"] = "3 hours, 48 minutes" - Hash: 17
+lotr_runtimes["The Hobbit: The Desolation of Smaug"] = "3 hours, 7 minutes" - Hash: 16
+lotr_runtimes["The Hobbit: The Battle of Five Armies"] = "2 hours, 44 minutes" - Hash: 8
+lotr_runtimes["The Lord of the Rings: The Return of the King"] = "3 hours, 21 minutes" - Hash: 5
+lotr_runtimes["The Lord of the Rings: The Two Towers"] = "3 hours, 55 minutes" - Hash: 4
