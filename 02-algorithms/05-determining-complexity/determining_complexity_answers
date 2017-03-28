@@ -1,0 +1,11 @@
+1) Big-O(1) - The worse-case scenario for the "Goodbye World" algorithm executes in constant time, regardless of input.
+
+2) Big-O(n) - The worst-case scenario for finding the largest element in an array executes in linear time. If the largest element is at the end of the collection, the algorithm will take 'n' number of times to execute, where 'n' is equal to the length of the collection.
+
+3) Big-O(n^2) - The worst-case scenario for finding the largest element in a two dimensional array executes in quadratic time. If the largest element is the last element in the last subcollection of the array, the algorithm will take 'n^2' amount of times to execute.
+
+4) Big-O(2^n) - The worse-case scenario for the recursive fibonacci sequence executes in exponential time.
+
+5) Big-O(n) - The worse-case scenario for the iterative fibonacci sequence executes in linear time. The function iterates 'n' number of times, where 'n' is equal to the input.
+
+6) Big-O(n^2) - The worst-case scenario for the quicksort algorithm executes in quadratic time. If the pivot chosen is either the smallest or largest element in the array, causing an unbalanced parition, the algorithm will take 'n^2' amount of time to execute.
