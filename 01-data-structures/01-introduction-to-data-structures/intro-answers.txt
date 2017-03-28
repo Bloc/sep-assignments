@@ -1,0 +1,10 @@
+How does your data structure allow developers to access and manipulate the data?
+- The Line, Pixel, and Screen data structures contain methods that allow access to and manipulate the data elements.
+
+If a developer wanted to find a specific element in your data structure, how would you search for it?
+- The data elements are stored in an array, sorted, and then search via a binary search.
+
+What other real-world data can each structure represent?
+- Line data structure can represent any list of data elements where items can be added, removed, sorted, and searched
+- The Screen data structure can represent a grid such as a map. And at each point, can be a point of interest - information.
+- The Pixel data structure can represent some piece of information and its location relative to some grid.
