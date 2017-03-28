@@ -1,0 +1,8 @@
+1. a) The Line data structure has a search method, as well as front, middle and back methods to easily access the data. It also has join and leave methods to manipulate the data.
+   b) The Screen data structure has an at method to access data, and an insert method to manipulate data.
+
+2. a) For the Line data structure, a developer could use the search method to find a specific element.
+   b) For the Screen data structure, a developer could use the at method to find a specific element.
+
+3. a) The Line data structure is a one dimensional array, which can also represent a list or a stack.
+   b) The Screen data structure is a two dimensional array, which can also represent a basic table or a two dimensional board game.
