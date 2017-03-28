@@ -1,0 +1,50 @@
+Albany, NY
+Annapolis, MD
+Atlanta, GA
+Augusta, ME
+Austin, TX
+Baton Rouge, LA
+Bismarck, ND
+Boise, ID
+Boston, MA
+Carson City, NV
+Charleston, WV
+Cheyenne, WY
+Columbia, SC
+Columbus, OH
+Concord, NH
+Denver, CO
+Des Moines, IA
+Dover, DE
+Frankfort, KY
+Harrisburg, PA
+Hartford, CT
+Helena, MT
+Honolulu, HI
+Indianapolis, IN
+Jackson, MS
+Jefferson City, MO
+Juneau, AK
+Lansing, MI
+Lincoln, NE
+Little Rock, AR
+Madison, WI
+Montgomery, AL
+Montpelier, VT
+Nashville, TN
+Oklahoma City, OK
+Olympia, WA
+Phoenix, AZ
+Pierre, SD
+Providence, RI
+Raleigh, NC
+Richmond, VA
+Sacramento, CA
+Saint Paul, MN
+Salem, OR
+Salt Lake City, UT
+Santa Fe, NM
+Springfield, IL
+Tallahassee, FL
+Topeka, KS
+Trenton, NJ

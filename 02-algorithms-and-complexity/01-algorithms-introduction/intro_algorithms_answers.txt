@@ -1,0 +1,38 @@
+DEF Calculate Tip (Total Amount)
+    Tip Rate = 15%
+    Return Total Amount x Tip Rate
+END
+
+DEF Determine What to Wear()
+    Go to Dresser
+
+    Open T-Shirt Drawer
+    Pull First T-Shirt
+
+    Open Underwear Drawer
+    Pull Underwear with Complimentary Colors to T-Shirt Drawn
+
+    Open Sock Drawer
+    Pull Color Coordinated Sock to T-Shirt and Underwear Currently Drawn
+
+    Go to Closet
+
+    Pop First Color Matched Jean from Stack
+
+    Pull First Color Matched Collared Shirt from Queue
+
+    Choose Pair of Shoes in Rotation
+
+    Determine Weather
+        If Cold Outside Then Choose Color Matching Jacket (Default Black)
+        If Raining Then Get Umbrella
+        If Bright and Sunny Then Choose Color Matching Hat (Default Black)
+End
+
+DEF Getting to Work
+    Get in Car
+    Drive Car from Home to Ferry Terminal
+    Get onto Ferry to SF
+    Walk to Office from SF Ferry Terminal
+END
+

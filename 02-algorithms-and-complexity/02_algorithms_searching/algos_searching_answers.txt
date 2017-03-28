@@ -1,0 +1,18 @@
+Given Collection [A, B, C, D, E, F, G]
+1) Linear Search G would require 7 iterations
+2) Binary Search G would require 3 iterations
+
+Calculate by Hand
+Fib(10) = 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55
+Fib(11) = 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89
+Fib(12) = 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144
+
+Benchmark recursive vs iterative Fibonacci()
+                               user     system      total        real
+fibonacci_recursive(20):   0.000000   0.000000   0.000000 (  0.001040)
+fibonacci_iterative(20):   0.000000   0.000000   0.000000 (  0.000004)
+
+Given an unsorted collection of a million items, I would use a linear search.  Binary searches require a sorted collection.  I would use an iterative search for speed.
+
+Given a sorted collection of a million items, I would use a binary search.  Iterative searches perform faster.
+

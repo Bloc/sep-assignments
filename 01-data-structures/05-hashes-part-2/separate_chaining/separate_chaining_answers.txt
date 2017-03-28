@@ -1,0 +1,38 @@
+insert hash { "Star Wars: The Phantom Menace", "Number One" }
+Hash: 0 -> Position: 0 -> Key: Star Wars: The Phantom Menace -> Value: Number One
+load factor: 0.16666666666666666
+
+insert hash { "Star Wars: Attack of the Clones", "Number Two" }
+Hash: 0 -> Position: 0 -> Key: Star Wars: The Phantom Menace -> Value: Number One
+Hash: 3 -> Position: 0 -> Key: Star Wars: Attack of the Clones -> Value: Number Two
+load factor: 0.3333333333333333
+
+insert hash { "Star Wars: Revenge of the Sith", "Number Three" }
+Hash: 0 -> Position: 0 -> Key: Star Wars: The Phantom Menace -> Value: Number One
+Hash: 3 -> Position: 0 -> Key: Star Wars: Attack of the Clones -> Value: Number Two
+Hash: 5 -> Position: 0 -> Key: Star Wars: Revenge of the Sith -> Value: Number Three
+load factor: 0.5
+
+insert hash { "Star Wars: A New Hope", "Number Four" }
+Hash: 0 -> Position: 0 -> Key: Star Wars: The Phantom Menace -> Value: Number One
+Hash: 3 -> Position: 0 -> Key: Star Wars: Attack of the Clones -> Value: Number Two
+Hash: 4 -> Position: 0 -> Key: Star Wars: A New Hope -> Value: Number Four
+Hash: 5 -> Position: 0 -> Key: Star Wars: Revenge of the Sith -> Value: Number Three
+load factor: 0.6666666666666666
+
+insert hash { "Star Wars: The Empire Strikes Back", "Number Five" }
+Hash: 2 -> Position: 0 -> Key: Star Wars: The Empire Strikes Back -> Value: Number Five
+Hash: 3 -> Position: 0 -> Key: Star Wars: Attack of the Clones -> Value: Number Two
+Hash: 4 -> Position: 0 -> Key: Star Wars: A New Hope -> Value: Number Four
+Hash: 6 -> Position: 0 -> Key: Star Wars: The Phantom Menace -> Value: Number One
+Hash: 11 -> Position: 0 -> Key: Star Wars: Revenge of the Sith -> Value: Number Three
+load factor: 0.4166666666666667
+
+insert hash { "Star Wars: Return of the Jedi", "Number Six" }
+Hash: 2 -> Position: 0 -> Key: Star Wars: The Empire Strikes Back -> Value: Number Five
+Hash: 3 -> Position: 0 -> Key: Star Wars: Attack of the Clones -> Value: Number Two
+Hash: 3 -> Position: 1 -> Key: Star Wars: Return of the Jedi -> Value: Number Six
+Hash: 4 -> Position: 0 -> Key: Star Wars: A New Hope -> Value: Number Four
+Hash: 6 -> Position: 0 -> Key: Star Wars: The Phantom Menace -> Value: Number One
+Hash: 11 -> Position: 0 -> Key: Star Wars: Revenge of the Sith -> Value: Number Three
+load factor: 0.5
