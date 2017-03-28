@@ -1,5 +1,7 @@
 require_relative 'pixel'
 
+require_relative 'pixel'
+
 RSpec.describe Pixel, type: Class do
   describe "#initialize" do
     it "creates a pixel with the specified parameters" do

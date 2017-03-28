@@ -1,0 +1,19 @@
+
+1. How does your data structure allow developers to access and manipulate the data?
+
+    the line data structure allows the user to add data points to the end of an array and remove them from any point in the array.  the array can be checked to see if a particular piece of data is included and get the data on the first, last, or middle(rounded towards the end of the array if there is an even number of data points) data points in the array.
+
+    the screen data structure allows the user to find the value at any point in the matrix, they will receive a nil value if looking for a data point outside the matrix or looking at a location in the matrix that is not yet set. the user may set any data point in the matrix replacing it's previous value.
+
+2.  If a developer wanted to find a specific element in your data structure, how would you search for it?
+
+    the line data structure allows a user to check if a element is included in the array and can be used to find the element currently residing at the first, last, or middle spot on the array but nothing else.  if a user wanted to find charlie in the array they could run the search command for charlie to find out if he was in the line or not and could then check to see if he was in the first, last, or middle place of that line; if he was not on one of those three positions there would be no way to find what position he was in without modifying the array given the current list of commands.
+
+    the screen data structure gives no way for a user to determine if a specific data element is within the matrix unless they wish to go through the entire matrix data point by data point using the 'at' function.
+
+
+3.  What other real-world data can each structure represent?
+
+    the line data structure could be used for any sort of queue where only limited data accessibility was needed, examples would be a list of pending downloads, a series of books or movies to be read/watched.  The limits this structure has for accessing the data however mean it would not be ideal for unordered lists where the user may want access to more than just the oldest, newest, and middle data elements.
+
+    the screen data structure seems like it could be used for anything needing to plot an x,y coordinate system, such as a road sign with adjustable text, a paint by number project, or of course anything involving a screen. There are still limitations here though of not being able to find out if a piece of data is currently in the data set. 
