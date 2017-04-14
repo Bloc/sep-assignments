@@ -7,7 +7,7 @@ RSpec.describe Screen, type: Class do
     it "inserts a pixel at the proper x, y coordinates" do
       pixel = Pixel.new(255, 200, 175, 1, 1)
       screen.insert(pixel, 1, 1)
-      
+
       expect(screen.at(1, 1)).to eq pixel
     end
 
@@ -26,14 +26,14 @@ RSpec.describe Screen, type: Class do
     it "returns the pixel at a specific location" do
       pixel = Pixel.new(255, 200, 175, 1, 1)
       screen.insert(pixel, 1, 2)
+
       p1 = screen.at(1, 2)
-      
-      expect(pixel).to eq p1
+      expect(p1).to eq pixel
     end
 
     it "handles invalid x, y values gracefully" do
       pixel = screen.at(-1, -1)
-      
+
       expect(pixel).to eq nil
     end
   end
