@@ -1,0 +1,34 @@
+1. Remove duplicates in a query response
+SQL: SELECT DISTINCT email FROM user;
+ORM: unique_emails = User.all.uniq.pluck(:email)
+
+2. Filter records using inequalities, pattern matching, ranges, and boolean logic
+SQL: SELECT * FROM user WHERE id < 3;
+ORM: users = User.all.less_than(id, 3)  
+
+3. Sort records in a particular order
+SQL: SELECT * FROM post ORDER BY title DESC;
+ORM: posts = Post.all.sort(title, DESC)
+
+4. Limit the number of records returned
+SQL: SELECT * FROM post LIMIT 2;
+ORM: posts = Post.all.limit(2)
+
+5. Group records into sections
+SQL: Select * FROM post GROUP BY body;
+ORM: user_posts = post.group_by(body)
+
+6. Perform calculations using aggregate functions
+SQL: SELECT COUNT(*) FROM post;
+ORM: number_of_posts = post.count
+
+7. Join tables using cross join, inner join, and outer join
+SQL: SELECT post.title, user.full_name FROM post, user; 
+ORM: cross_join = join([post.title, user.full_name])
+    
+SQL: SELECT * FROM comment JOIN user ON comment.user_id = user.id;
+ORM: inner_join = comment.join.where(user_id: comment.user_id)
+
+SQL: SELECT * from post LEFT JOIN comment ON post.user_id = comment.user_id;
+ORM: outer_join = post.join.where(comment.user_id)
+   
