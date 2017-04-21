@@ -1,0 +1,26 @@
+**What is Spatial Locality and why does it benefit performance?**
+
+"A sequence of references is said to have spatial locality if things that are referenced close in time are also close in space (nearby memory addresses, nearby sectors on a disk, etc.)
+
+If a program accesses every element in a large array and reads it once and then moves on to the next element and does not repeat an access to any given location until it has touched every other location then it is a clear case of spatial locality" (http://stackoverflow.com/questions/16289423/temporal-vs-spatial-locality-with-arrays)
+
+Spatial locality benefits performance because you're not accessing the same thing more than once.
+
+**Compare the performance of an Array to a Linked List using the Benchmark module.**
+
+**1. Compare the time it takes to create a 10,000 item Array to appending 10,000 items to a Linked List**.
+
+* Array: 0.002851
+* Linked List:  0.003037
+
+**2. Compare the time it takes to access the 5000th element of the Array and the 5000th Node in the Linked List**.
+
+* Array: 0.000005
+* Linked List:  0.000340
+
+**3. Compare the time it takes to remove the 5000th element from the Array to removing the 5000th Node in the Linked List**.
+
+* Array: 0.000012
+* Linked List:  0.000571
+
+In the Array, the 5001st item becomes the 5000th, and so on.
