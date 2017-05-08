@@ -71,21 +71,15 @@ class SeparateChaining
         self[node.key] = node.value
       end
     end
+  end
 
-    # temp = Array.new(@items.length * 2)
-    # (0...@items.length).each do |i|
-    #   if @items[i] != nil
-    #     currNode = @items[i].head
-    #     until currNode == nil
-    #       newIndex = currNode.key.sum % temp.length
-    #       temp[newIndex] = LinkedList.new
-    #       temp[newIndex].add_to_front(currNode)
-    #       currNode = currNode.next
-    #     end
-    #     @items[i] = nil
-    #   end
-    # end
-    # # assign the temp array to our items array
-    # @items = temp
+  def print_items
+    (0...size()).each do |i|
+      if @items[i] != nil
+        puts "index: #{i}"
+        @items[i].print
+      end
+    end
+  puts "load factor: #{load_factor()}"
   end
 end
