@@ -9,26 +9,37 @@ class Line
   end
 
   def join(person)
+    members.push(person)
   end
 
   def leave(person)
+    @members.delete_at(index(person))
   end
 
   def front
+    members.first
   end
 
   def middle
+    members[members.length / 2]
   end
 
   def back
+    members.last
   end
 
   def search(person)
-  end
+      if index(person)
+        return @members[index(person)]
+      else
+        puts "#{person} is not in this line"
+      end
+    end
 
   private
 
   def index(person)
+    @members.index(person)
   end
 
 end

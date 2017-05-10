@@ -1,0 +1,19 @@
+1.
+The main data structures are in the form of a classes.
+The Pixel class initializes an rgb color with an x,y locator
+The screen class initializes with a width an height...as well as a matrix hash to easily locate each pixel
+
+An instance of the Pixel class represents a single pixel.
+Colors are validated to be between 0 and 255 using a private method
+An instance of the Screen class represents the screen that we are working with.
+Hash keys represent a pixel, hash values are the corresponding x,y location...as a 2 member array
+Coordinates are validated to be within the height and width using a private method
+Developers are able to access and manipulate the data using methods of the Screen and Pixel classes
+  ex: methods for:
+    creating a pixel in the Pixel class, finding a pixel given its coordinate, inserting a pixel
+
+2.
+If a developer wanted to find a specific pixel at a given coordinate in the data structure, they would have to use the Screen#at method.
+
+3.
+This structure can also represent a 2-D map with points of interest inserted.
