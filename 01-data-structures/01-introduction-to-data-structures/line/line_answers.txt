@@ -1,0 +1,14 @@
+1.
+The main data structure is in the form of a class that initializes an array.
+An instance of the class represents a line.
+String objects represent people in the line.
+The exact position of a member is private method.
+Developers are able to access and manipulate the data using methods of the Line class
+  ex: methods for:
+    joining the line, leaving the line, seeing who's first, seeing who's last
+
+2.
+If a developer wanted to find a specific element in the data structure, the would have to use the Line#seach method.
+
+3.
+This structure can also represent a call queue at a call center
