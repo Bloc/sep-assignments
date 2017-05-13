@@ -80,6 +80,6 @@ class SeparateChaining
         @items[i].print
       end
     end
-  puts "load factor: #{load_factor()}"
+    puts "load factor: #{load_factor()}"
   end
 end
