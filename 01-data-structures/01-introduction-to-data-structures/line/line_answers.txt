@@ -1,0 +1,5 @@
+1.  Data is stored as an array of strings. Data can be accessed or manuiplated using ruby's array methods.
+
+2.  The whole array could be printed, cell values can be searched for or items can be looked up by their index.
+
+3.  Any data sets that are organized according to a single dimention. Callendars, hierarchys, pricelists etc.
