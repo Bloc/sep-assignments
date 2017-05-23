@@ -21,8 +21,7 @@ class LinkedList
   # This method removes the last node in the lists and must keep the rest of the list intact.
   def remove_tail
     if @head == @tail
-      @head = nil
-      @tail = nil
+      @head = @tail = nil
     elsif @head.next == @tail
       @head.next = nil
       @tail = @head

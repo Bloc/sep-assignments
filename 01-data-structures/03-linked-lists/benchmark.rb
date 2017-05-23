@@ -29,10 +29,8 @@ Benchmark.bm do |x|
             i = @ll.head
             (count/2).times do
                 i = i.next
-                # i
+                i
             end
-            # i = i.next
-            # i = i.next
         end
     }
     x.report("D-ar") {
