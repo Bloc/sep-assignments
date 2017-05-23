@@ -140,6 +140,23 @@ RSpec.describe BinarySearchTree, type: Class do
       tree.delete(root, mad_max_2.title)
       expect(tree.find(root, mad_max_2.title)).to be_nil
     end
+
+    it "properly deletes a node from a complex tree" do
+      tree.insert(root, hope) #93
+      tree.insert(root, empire) #94
+      tree.insert(root, mad_max_2) #98
+      tree.insert(root, shawshank) #91
+      tree.insert(root, martian) #92
+      tree.insert(root, district) #90
+      tree.insert(root, jedi) #80
+      tree.insert(root, donnie) #85
+      tree.insert(root, inception) #86
+      tree.insert(root, braveheart) #78
+      tree.insert(root, pacific_rim) #72
+      tree.delete(root, shawshank.title)
+      expect(tree.find(root, shawshank.title)).to be_nil
+      tree.printf
+    end
   end
 
   describe "#printf" do

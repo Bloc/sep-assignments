@@ -74,7 +74,7 @@ class BinarySearchTree
   end
 
   # Recursive Breadth First Search
-  def printf(children=nil)
+  def printf
     for i in 1..tree_height(@root) do
       print_given_level(@root, i)
     end
