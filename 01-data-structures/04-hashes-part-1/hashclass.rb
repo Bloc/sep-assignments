@@ -5,18 +5,29 @@ class HashClass
   end
 
   def []=(key, value)
-    @items[key.sum % @items.size] = value
+    index = key.sum % @items.size
+    if @items[index]
+      if @items[index][1] != value
+        self.resize
+      end
+    end
+    @items[key.sum % @items.size] = [key,value]
   end
 
-
   def [](key)
-    @items[key.sum % @items.size]
+    if @items[key.sum % @items.size]
+      @items[key.sum % @items.size][1]
+    end
   end
 
   def resize
-    # for i in 0..@items.size
-    #   @items.push
-    # end
+    old = @items
+    @items = Array.new(self.size*2)
+    for i in 0..old.length
+      if old[i] 
+        @items[ old[i][0].sum % @items.length ] = [old[i][0], old[i][1]]
+      end
+    end 
   end
 
   # Returns a unique, deterministically reproducible index into an array
@@ -36,11 +47,3 @@ class HashClass
     @items[k] = v
   end
 end
-
-h = HashClass.new(6)
-h.[]=("Charlie", "Man")
-h.[]=("Twigg", "Dog")
-puts h.[]("Charlie")
-puts h.[]("Twigg")
-
-puts h.inspect
