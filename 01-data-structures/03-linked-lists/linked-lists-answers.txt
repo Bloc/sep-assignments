@@ -1,0 +1,9 @@
+1.  Spacial locality refers to where data is being stored. In an array each cell is physically stored next to it's adjacnet cells which makes accessing sequential cells very efficient but means that storing large arrrays can be problematic. Linked lists conversely do not store each itteration adacent to it's sequential conterparts making large lists easy to store but less efficient to look through.
+
+2.       user     system      total        real
+C-ar  0.040000   0.000000   0.040000 (  0.041344)
+C-ll  1.400000   0.000000   1.400000 (  1.412393)
+R-ar  0.000000   0.000000   0.000000 (  0.000567)
+R-ll  2.930000   0.000000   2.930000 (  2.940199)
+D-ar  0.000000   0.000000   0.000000 (  0.002186)
+D-ll  3.300000   0.010000   3.310000 (  3.308447)
