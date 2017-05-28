@@ -11,20 +11,14 @@ class SeparateChaining
 
   def []=(key, value)
     node = Node.new(key, value)
-    i = index(key, self.size)
-    if @items[i].nil?
-      item = LinkedList.new
-      item.add_to_tail(node)
-      @items[i] = item
-    elsif @items[i].size < 5
-      @items[i].add_to_tail(node)
-    else
-      resize
-      self[key] = value
+    i = self.index(key, self.size)
+    list = @items[i]
+    if list.nil?
+      list = LinkedList.new
+      @items[i] = list
     end
-    if self.load_factor > @max_load_factor
-      resize
-    end
+    list.add_to_tail(Node.new(key, value))
+    resize if self.load_factor > @max_load_factor
   end
 
   def [](key)
@@ -76,8 +70,8 @@ class SeparateChaining
   def print_items
     (0...size()).each do |i|
       if @items[i] != nil
-        puts "index: #{i}"
         @items[i].print
+        puts "index: #{i}"
       end
     end
     puts "load factor: #{load_factor()}"
