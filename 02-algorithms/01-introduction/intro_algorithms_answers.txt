@@ -1,0 +1,37 @@
+Using proper pseudo-code, describe three or more primitive algorithms used in your day-to-day life
+
+def make_coffee
+#A more sophisticated program would allow user to specify number of cups and adjust grounds and water accordingly
+  grounds = 0
+  water = 0
+  add_filter
+  while grounds < 5
+    add_scoop_of_grounds
+    grounds += 1
+  end
+  while water < 12
+    add_water
+    water += 1
+  end
+  start_coffeemaker
+end
+
+def get_forecast
+  if within_range_of_echo
+    puts "Alexa, what's the forecast?"
+  else
+    find_iphone
+    open_weather_app
+  end
+end
+
+def pay_bills
+  if !bills.nil?
+    for each bill do
+      check_bill_due_date
+      if bill_due_date < 14
+        pay_bill
+      else
+        archive_bill
+  end
+end
