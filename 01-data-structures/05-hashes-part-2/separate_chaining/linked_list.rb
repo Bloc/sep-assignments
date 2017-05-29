@@ -31,10 +31,20 @@ class LinkedList
   end
 
   def print
-    node = @head
-    until node == nil do
-      puts "#{node.key}: #{node.value}"
-      node = node.next
+    # node = @head
+    # while node != nil do
+      # puts "#{node.key}: #{node.value}"
+      # node = node.next
+    # end
+    x = 0
+    if !@head.nil?
+      x = 1
+      n = @head
+      while n != @tail
+        puts "#{n.key}: #{n.value}"
+        n = n.next
+        x += 1
+      end
     end
   end
 

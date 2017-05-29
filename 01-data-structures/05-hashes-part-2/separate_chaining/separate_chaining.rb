@@ -7,24 +7,20 @@ class SeparateChaining
   def initialize(size)
     @max_load_factor = 0.7
     @items = Array.new(size)
+    @item_count = 0
   end
 
   def []=(key, value)
     node = Node.new(key, value)
-    i = index(key, self.size)
-    if @items[i].nil?
-      item = LinkedList.new
-      item.add_to_tail(node)
-      @items[i] = item
-    elsif @items[i].size < 5
-      @items[i].add_to_tail(node)
-    else
-      resize
-      self[key] = value
+    i = self.index(key, self.size)
+    list = @items[i]
+    if list.nil?
+      list = LinkedList.new
+      @items[i] = list
     end
-    if self.load_factor > @max_load_factor
-      resize
-    end
+    list.add_to_tail(Node.new(key, value))
+    @item_count += 1
+    resize if self.load_factor > @max_load_factor
   end
 
   def [](key)
@@ -47,13 +43,7 @@ class SeparateChaining
   # Calculate the current load factor
   # Load factor is the number of elements in a hash table divided by the number of buckets it has allocated.
   def load_factor
-    x = 0.0
-    for i in 0..self.size-1
-      if !@items[i].nil?
-        x += @items[i].size
-      end
-    end
-    x / self.size
+    @item_count / self.size.to_f
   end
 
   # Simple method to return the number of items in the hash
