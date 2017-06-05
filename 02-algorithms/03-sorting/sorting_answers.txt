@@ -1,0 +1,5 @@
+bucket sort	0.000103
+heap sort	0.000128
+quick_sort	0.000266
+
+I would suspect the algorithms requiring recursion would perform worse because of the memory recursive takes. Because of this, I expected Quick Sort to take the longest. Likewise, because Bucket Sort uses fewer operations, I expect it would be quickest. The exception to this being when there are many values clustered together because they will all fall into a single bucket and be sorted slowly. With this, my results performed as expected. However, I suspect there may be an error because my reading suggests Quick Sort should perform better except in worse case where it is significantly worse than Heap Sort.
