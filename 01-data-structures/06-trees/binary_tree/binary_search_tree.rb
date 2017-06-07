@@ -25,6 +25,7 @@ class BinarySearchTree
   def find(root = @root, data)
     finder = @root
     while finder.title != data
+      self.find(nil) if data && data == @root.looking_for
       if finder.left && finder.left.looking_for != data
         finder = finder.left
         finder.looking_for = data
@@ -37,13 +38,41 @@ class BinarySearchTree
         return nil
       end
     end
+    # puts finder.title
     finder
   end
 
-  def delete(root, data)
+  def delete(root = @root, data)
+    return nil if data == nil
+    target = find(data)
+    if target.left
+      target.up.left = target.left
+      target.left.up = target.up
+    end
   end
 
   # Recursive Breadth First Search
-  def printf(children=nil)
+  def printf(gen = 6)
+      for k in 0..gen do
+        ar = []
+        (2**k).times {|i| ar << i}
+        ar.each do |i|
+            cell = ''
+            for j in 0...k
+                if i[j] == 1
+                    cell = '.right' + cell
+                else
+                    cell = '.left' + cell
+                end
+            end
+            cell = '@root' + cell
+            begin
+              cell = eval cell
+              puts cell.title + ': ' + cell.rating.to_s
+              live = true
+            rescue
+            end
+          end
+      end
   end
 end
