@@ -52,27 +52,24 @@ class BinarySearchTree
   end
 
   # Recursive Breadth First Search
-  def printf(gen = 6)
-      for k in 0..gen do
-        ar = []
-        (2**k).times {|i| ar << i}
-        ar.each do |i|
-            cell = ''
-            for j in 0...k
-                if i[j] == 1
-                    cell = '.right' + cell
-                else
-                    cell = '.left' + cell
-                end
-            end
-            cell = '@root' + cell
-            begin
-              cell = eval cell
-              puts cell.title + ': ' + cell.rating.to_s
-              live = true
-            rescue
-            end
-          end
+  def printf(gen = 10)
+    for k in 0..gen do
+      duds = 0
+      (2**k).times do |i|
+        cell = ''
+        for j in 0...k
+          i[j] == 1 ? cell = '.right' + cell : cell = '.left' + cell
+        end
+        cell = '@root' + cell
+        begin
+          cell = eval cell
+          puts cell.title + ': ' + cell.rating.to_s
+          # gen += 1
+        rescue
+        duds += 1
+        return if duds == 2**gen
+        end
       end
+    end
   end
 end
