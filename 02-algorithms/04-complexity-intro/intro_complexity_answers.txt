@@ -1,0 +1,34 @@
+Describe an analogy for relating an algorithm that has efficiency O(1) and another algorithm that has O(2n).
+An algorithm that has O(1) is a  train and an algorithm that has O(2n) is a person walking.
+
+In plain English, what is the best case scenario for binary search?
+The best case scenario for binary search is the element to be found is in the middle of the set of searched items.
+
+In plain English, what is the worst-case scenario for binary search?
+The worst case scenario is the element to be found is either in second position or exactly before the end of the set of searched items.
+
+In plain English, what is the bounded-case scenario for binary search?
+The bounded-case scenario in a binary search is when the item to be found is in the 3rd position through n-2 position (n representing the size of the collection).
+
+Create a graph using the data below. Here's a CSV with the values you'll need.
+https://docs.google.com/spreadsheets/d/1U_V9GZbpkPIp0XtydvRPb6-VVYvbHktpUIYwtf47UUI/edit?usp=sharing
+
+What's the asymptotic limit as n approaches infinity for the function defined by the values above?
+Infinity
+
+What is the Big-O of an algorithm that has the data points above?
+O(2^n)
+
+Write a Ruby script that calculates and prints the N number, given an iteration, for linear search in the worst case (similar to the graph above).
+
+Create a graph from the output using Google Sheets or other graphing software. Analyze the graph and denote its Big-O somewhere on the graph.
+https://docs.google.com/spreadsheets/d/1U_V9GZbpkPIp0XtydvRPb6-VVYvbHktpUIYwtf47UUI/edit?usp=sharing
+
+What is the Big-O of binary search?
+O(logn)
+
+What is the Big-Ω of binary search?
+O(1)
+
+What is the Big-Ө of binary search?
+O(logn)

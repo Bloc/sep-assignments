@@ -1,0 +1,16 @@
+**How does your data structure allow developers to access and manipulate the data?**
+The data structures use arrays that allow developers to leverage Ruby built-in array methods.
+
+*Line*. In addition to built-in Ruby array methods, there are first, middle, and last methods that allow the developer to return the person in the front of the line, the person in the position equal to line length divided by 2, and the person at the end of the line, respectively. Members can be added to the line by using the insert method which adds the members to the end of the line. To remove a member from the line, the developer can use the leave method which requires the name of the person to leave.
+
+*Screen*. In addition to built-in Ruby array methods, the insert method provided by the Screen class allows the developer to insert a pixel at whatever x, y location she provides.
+
+**If a developer wanted to find a specific element in your data structure, how would you search for it?**
+
+*Line* The search method iterates over the array until the supplied string matches the array iteration. If no match is found, NIL is returned.
+
+*Screen* The at method allows the developer to specify the x, y location to return that pixel's data.
+
+**What other real-world data can each structure represent?**
+
+These structures could be used to code some search algorithms as described in Khan Academy's Algorithm course. A more fun application of the Line class is to determine the card to be picked in a game such as Trivial Pursuit.

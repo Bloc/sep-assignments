@@ -1,0 +1,32 @@
+Benchmark results
+------
+inserting heap
+  6.440000   0.100000   6.540000 (  6.593061)
+searching element 5000 in heap
+  6.860000   0.080000   6.940000 (  7.020174)
+deleting a node
+  6.670000   0.080000   6.750000 (  6.788213)
+
+inserting binary search tree
+  0.020000   0.000000   0.020000 (  0.023945)
+searching element 5000 in binary search tree
+  0.030000   0.000000   0.030000 (  0.031246)
+deleting a node
+  0.030000   0.010000   0.040000 (  0.030562)
+
+How much time does an average insertion consume in the Binary Search Tree compared to the Heap?
+Binary Search Tree performs significantly better than Heap (0.023945 vs 6.593061, respectively)
+
+How much time does finding 50000 in the Binary Search Tree consume compared to the Heap?
+Binary Search Tree = 0.031246
+Heap = 7.020174
+
+How much time does the average deletion consume in a Binary Search Tree compared to the Heap?
+Binary Search Tree = 0.030562
+Heap = 6.788213
+
+When would you use a Binary Search Tree and why?
+Binary Search Trees are good for both exact and close matches, but they are more expensive to implement. They are memory-efficient because they do not reserve more memory than they need to.
+
+When would you use an Heap and why?
+Hash tables are great for exactly matching what you need but not good for close matches. They are less expensive to implement.
