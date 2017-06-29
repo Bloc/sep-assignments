@@ -2,7 +2,7 @@
 require_relative 'quick_sort'
 
 def bucket_sort(collection)
-  n = collection.length-1
+  n = collection.length
   bucket_size= 100
   buckets = Array.new(bucket_size)
   for j in 0...bucket_size do
