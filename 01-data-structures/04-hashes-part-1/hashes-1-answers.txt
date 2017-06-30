@@ -1,0 +1,3 @@
+Explain why doubling the size of the underlying array of your HashClass may be a poor idea.
+
+Doubling the array may not be a good idea because it could be using more space than is needed for the data.

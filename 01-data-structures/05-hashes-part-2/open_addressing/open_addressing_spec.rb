@@ -13,6 +13,7 @@ RSpec.describe OpenAddressing, type: Class do
     star_wars_movies["Star Wars: A New Hope"] = "Number Four"
     star_wars_movies["Star Wars: The Empire Strikes Back"] = "Number Five"
     star_wars_movies["Star Wars: Return of the Jedi"] = "Number Six"
+    star_wars_movies.print_items()
   end
 
   describe "#index" do
