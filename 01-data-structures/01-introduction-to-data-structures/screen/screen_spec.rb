@@ -44,6 +44,14 @@ RSpec.describe Screen, type: Class do
       expect(matrix.length).to eq 10
       expect(matrix[0].length).to eq 10
     end
+
+    it "cannot mutate" do
+      matrix = screen.matrix
+      expect(screen.at(0, 0)).to be_nil
+      matrix[0][0] = "asdf"
+      expect(matrix[0][0]).to eq "asdf"
+      expect(screen.at(0, 0)).to be_nil
+    end
   end
 
   describe "#show_matrix" do
