@@ -14,15 +14,29 @@ RSpec.describe Line, type: Class do
     line.join("Ben")
   end
 
-  describe "#initialize" do
-    it "instantiates the members variable" do
-      expect(line.members).to_not be_nil
+  describe "#members" do
+    it "cannot mutate members" do
+      members = line.members
+      members[0] = "john"
+      expect(line.front).to eq "Hillary"
     end
   end
 
   describe "#front" do
     it "returns the first person in the line" do
       expect(line.front).to eq "Hillary"
+    end
+
+    it "cannot mutate front of the line" do
+      front = line.front
+      front = "john"
+      expect(line.front).to eq "Hillary"
+    end
+  end
+
+  describe "#initialize" do
+    it "instantiates the members variable" do
+      expect(line.members).to_not be_nil
     end
   end
 
