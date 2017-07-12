@@ -83,4 +83,10 @@ RSpec.describe Line, type: Class do
     end
   end
 
+  describe "#next" do
+    it "returns the next person and line and removes from the array of members" do
+      expect(line.next).to eq "Hillary"
+      expect(line.front).to eq "Bernie"
+    end
+  end
 end

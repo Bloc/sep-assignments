@@ -24,6 +24,10 @@ class Line
     @members.first
   end
 
+  def next
+    @members.shift
+  end
+
   def middle
     @members[@members.length/2]
   end
