@@ -21,6 +21,6 @@ class MyStack
   end
 
   def empty?
-    @pointer == 0 ? true : false
+    @pointer == 0
   end
 end
