@@ -1,2 +1,2 @@
 Notes:
-1. The tests called for "top" to point value stored at top instead of a pointer. I removed the `self.top` instance variable and opted to use `@pointer` to keep track of the top index. While not necessary (`@stack.length - 1` would have returned the last index), I was trying to avoid using anything other than the `#delete_at` Array function. I added a function, `#top`, that will return the item at the top of the stack.
+1. I opted to use `@pointer` to keep track of the top index. While not necessary (`@stack.length - 1` would have returned the top index), I was trying to avoid using anything other than the `#delete_at` Array function.

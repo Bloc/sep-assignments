@@ -1,6 +1,5 @@
 class MyQueue
-  attr_accessor :head
-  attr_accessor :tail
+  attr_reader :head, :tail
 
   def initialize
     @queue = Array.new
