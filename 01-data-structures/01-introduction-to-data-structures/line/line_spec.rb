@@ -14,15 +14,29 @@ RSpec.describe Line, type: Class do
     line.join("Ben")
   end
 
-  describe "#initialize" do
-    it "instantiates the members variable" do
-      expect(line.members).to_not be_nil
+  describe "#members" do
+    it "cannot mutate members" do
+      members = line.members
+      members[0] = "john"
+      expect(line.front).to eq "Hillary"
     end
   end
 
   describe "#front" do
     it "returns the first person in the line" do
       expect(line.front).to eq "Hillary"
+    end
+
+    it "cannot mutate front of the line" do
+      front = line.front
+      front = "john"
+      expect(line.front).to eq "Hillary"
+    end
+  end
+
+  describe "#initialize" do
+    it "instantiates the members variable" do
+      expect(line.members).to_not be_nil
     end
   end
 
@@ -59,4 +73,20 @@ RSpec.describe Line, type: Class do
     end
   end
 
+  describe "#place_in_line" do
+    it "returns correct place in line" do
+      expect(line.place_in_line("Donald")).to eq 3;
+    end
+
+    it "returns nil if no such person" do
+      expect(line.place_in_line("Gary")).to be_nil
+    end
+  end
+
+  describe "#next" do
+    it "returns the next person and line and removes from the array of members" do
+      expect(line.next).to eq "Hillary"
+      expect(line.front).to eq "Bernie"
+    end
+  end
 end

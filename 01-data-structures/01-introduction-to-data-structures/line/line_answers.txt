@@ -1,0 +1,21 @@
+1. How does your data structure allow developers to access and manipulate the data?
+
+Developers access and manipulate the data via the class methods (see below). Note that I removed `attr_accessor` in order to maintain encapsulation.
+
+- members: returns a copy of the @members array. Mutation does not affect the instance variable @members.
+- join(person): adds a person to the end of the array.
+- leave(person): finds and deletes a person in the array.
+- front: returns a string representing the person at the front of the line.
+- middle: returns a string representing the person in the middle of the line.
+- back: returns a string representing the person at the end of the line.
+- search(person): returns a string representing the person at
+- place_in_line(person): returns current place in line. The value 1 equates to next.
+- next: returns the person at the front of the line and removes that person from the array.
+
+2. If a developer wanted to find a specific element in your data structure, how would you search for it?
+
+Line.search(person)
+
+3. What other real-world data can each structure represent?
+
+Nearly any type of queue that requires first-in, first-out (with added "out from anywhere" functionality).

@@ -1,0 +1,16 @@
+1. How does your data structure allow developers to access and manipulate the data?
+
+Developers access and manipulate the data via the class methods (see below).
+
+- insert(pixel): with a valid Pixel object, will insert. Note that the pixel contains the coordinates (changed from the example, where a developer would directly provide the pixel location here)
+- at(x, y): returns the element at the
+- matrix: returns a clone of the matrix. Note that we iterate through each element of the two dimensional array to make a copy. This is pretty expensive at O(n^2), but it does limit side effects. If speed is key, then I would instead just add :matrix to the `attr_reader` and pay careful attention.
+- show_matrix: Returns a string of a graphical representation of the matrix
+
+2. If a developer wanted to find a specific element in your data structure, how would you search for it?
+
+Screen.at(x, y)
+
+3. What other real-world data can each structure represent?
+
+Tic tac toe board, chess board, checkers, etc.
