@@ -73,4 +73,14 @@ RSpec.describe Line, type: Class do
     end
   end
 
+  describe "#place_in_line" do
+    it "returns correct place in line" do
+      expect(line.place_in_line("Donald")).to eq 3;
+    end
+
+    it "returns nil if no such person" do
+      expect(line.place_in_line("Gary")).to be_nil
+    end
+  end
+
 end

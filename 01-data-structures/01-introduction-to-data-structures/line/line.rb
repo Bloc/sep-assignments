@@ -37,6 +37,11 @@ class Line
     i ? @members[i] : nil
   end
 
+  def place_in_line(person)
+    i = index(person)
+    i ? i + 1 : nil
+  end
+
   private
 
   def index(person)
