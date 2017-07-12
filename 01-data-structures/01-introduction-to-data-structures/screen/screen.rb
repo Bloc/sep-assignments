@@ -1,7 +1,7 @@
 require_relative 'pixel'
 
 class Screen
-  attr_accessor :width, :height
+  attr_reader :width, :height
 
   def initialize(width, height)
     @matrix = Array.new(width){Array.new(height)}
