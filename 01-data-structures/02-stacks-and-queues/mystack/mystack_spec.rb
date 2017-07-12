@@ -45,4 +45,19 @@ RSpec.describe MyStack, type: Class do
       expect(stack.empty?).to eq false
     end
   end
+
+  describe "#top" do
+    it "returns the correct top" do
+      stack.push("hello")
+      stack.push("goodbye")
+      expect(stack.top).to eq("goodbye")
+    end
+
+    it "cannot mutate the stack" do
+      stack.push("hello")
+      top = stack.top
+      top = "goodbye"
+      expect(stack.top).to eq("hello")
+    end
+  end
 end
