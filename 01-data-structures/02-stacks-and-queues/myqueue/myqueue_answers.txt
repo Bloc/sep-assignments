@@ -1,0 +1,10 @@
+So I can't prevent mutation, unfortunately. Take this sequence:
+
+q = MyQueue.new
+q.enqueue("Dave")
+head = q.head
+head.delete("Da")
+puts q.head
+ve
+
+I tried `clone`, `dup`, `@head.each_char {|chr| chr.clone/dup}`, but no matter what I do you can still mutate via method.

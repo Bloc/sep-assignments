@@ -1,0 +1,2 @@
+Notes:
+1. I opted to use `@pointer` to keep track of the top index. While not necessary (`@stack.length - 1` would have returned the top index), I was trying to avoid using anything other than the `#delete_at` Array function.
