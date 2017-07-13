@@ -3,25 +3,30 @@ class MyQueue
 
   def initialize
     @queue = Array.new
-
-    @head = @queue[0]
-    @head_pointer = 0
-
-    @tail = @queue[0]
-    @tail_pointer = 0
+    @head = nil
+    @tail = nil
   end
 
   def enqueue(element)
     @queue << element
-    @tail_pointer += 1
-    @tail = @queue[@tail_pointer]
+    if !@head
+      @head = element
+      @tail = element
+    else
+      @tail = element
+    end
   end
 
   def dequeue
-    @tail -= 1
-    @queue.delete_at(0)
+    if @head
+      @head = @queue[1]
+      return @queue.delete_at(0)
+    else
+      return nil
+    end
   end
 
   def empty?
+    !@head
   end
 end
