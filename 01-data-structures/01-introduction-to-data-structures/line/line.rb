@@ -9,26 +9,35 @@ class Line
   end
 
   def join(person)
+    self.members.push(person)
   end
 
   def leave(person)
+    self.members.delete(person)
   end
 
   def front
+    self.members.first
   end
 
   def middle
+    self.members[self.members.length/2]
   end
 
   def back
+    self.members.last
   end
 
   def search(person)
+    self.members.detect {|p| p == person}
   end
 
   private
 
   def index(person)
   end
-
 end
+
+# l = Line.new
+# l.join("charlie")
+# puts l.members

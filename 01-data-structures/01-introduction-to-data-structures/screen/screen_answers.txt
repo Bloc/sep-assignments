@@ -1,0 +1,5 @@
+1.  Data is stored in a 2 dimentional matrix, with each location holding an object with key value pairs of data. Data can be accessed or manipulated for any given pixel if it's locaiton in the matrix is known.
+
+2.  Pixels can be searched for but given a pixel's properties do not need to be unique (and often won't be) searching for them by colour, (or opacity etc) is not likley to be relevant. It is more likley that a user will want to access data from a particular set of coordinates.
+
+3.  Any two dimentional bodies of data: Longitute and latitude, streets and avenues in New York, battleships game.

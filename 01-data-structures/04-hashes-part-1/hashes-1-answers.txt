@@ -1,0 +1,5 @@
+Doubling the hash size is conducive to increasingly geometric numbers. Which increases the chances of key modulos being being overlapped.
+
+In the special case of a conflict at position 0 doubleling the array size will never resolve it.
+
+While doubleling memory might be slow I don't see how increasing it to values of primes following 2^n would be any quicker, I had thought of breaking up the base array and stacking it as a 2d matrix of n numbers of a specific sized matrix rather than growing it.
