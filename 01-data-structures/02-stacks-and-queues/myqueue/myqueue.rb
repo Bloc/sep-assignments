@@ -7,6 +7,7 @@ class MyQueue
   def initialize
     @queue = Array.new
     @head = @queue[0]
+    @tail = @queue[0]
   end
 
   def enqueue(element) # adds an item to the end the queue
