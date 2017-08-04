@@ -10,17 +10,16 @@ class MyStack
 
   def push(item)
     stackIndex = stack.length
-    stack[stackIndex] = item #last position becomes items place
+    stack[stackIndex] = item #add stack to the last index position
     @top = stack.last #set top to last pos in stack array
   end
 
   def pop
-    popItem = @top
     if !empty? 
-      stack.delete_at(stack.length - 1) 
+      stack.delete_at(stack.length - 1) #deletion 
       @top = stack.last #set top to the new last position after pop deletion
     end
-    return popItem
+    return @top
   end
 
   def empty?
