@@ -34,3 +34,38 @@ A very different approach is to have an object for each member, and have a `next
 variable whose value is equal to the next object in the list. There would be one 
 variable, `start` that holds the first object. Then each operation would only involve overwriting
 the `next_member` and `start`.
+
+## 2. Pixels on a computer screen.
+
+### Description of the functionality
+
+* A screen has a width and a height.
+* A screen is composed of Pixels.
+* A Pixel requires three color values: red, green, and blue.
+* Pixel colors red, green, and blue values must be greater than zero and less than 255. If a value less than zero is specified, default to zero. If a value greater than 255 is specified, default to 255.
+* Pixels also require a coordinate location: x and y, these are both integers.
+* Use the screen_spec.rb spec file, pixel.rb and screen.rb skeleton files to help create your class.
+
+### Discusion of the data structure
+
+There are at least two different ways to implement this functionality
+
+#### As an array of values
+
+This approach would have a two-dimensional array, with the indices being the x 
+and y locations. Each element of the array would contain a triple of numbers, the
+red/green/blue value. No pixel at all would be represented by the triple (0,0,0)
+
+#### As a set of points
+
+This approach would use an array of objects, each of which would have 4 values:
+x-coordinate, y-coordinate, red-value, blue-value, green-value. This is a more
+compact representation if there are only a few pixels that are colored in. In 
+lighting up a point, it would be necessary to first check if the point exists,
+so that we don't have two different color values for the same point
+
+#### Variant on the above
+
+In either case, there could be a default background color, so that an unspecified
+pixel would have the color of the default.
+
