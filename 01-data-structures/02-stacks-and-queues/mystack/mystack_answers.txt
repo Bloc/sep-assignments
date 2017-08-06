@@ -1,0 +1,26 @@
+# Questions about mystack
+
+## Q1. How does your data structure allow developers to access and manipulate the data?
+
+#### Manipulating data
+In my implementation of stacks, I provided the following operations for manipulating lines:
+1. Creating a new queue. `MyStack.new`
+2. Adding an item to the end of the queue. `stack.push(item)`
+3. Removing the first item from the queue. `stack.pop`
+
+#### Accessing data
+In addition, I provided the following operations for inspecting the stack:
+1. Check what the last item is. `stack.top`
+
+## Q2. If a developer wanted to find a specific element in your data structure, 
+how would you search for it?
+
+The primitive stack operations don't support search, unless the developer just keeps
+popping until the element shows up (which is destructive).
+
+## Q3. What other real-world data can each structure represent?
+
+A stack represents a situation in which there are a sequence of tasks to be 
+performed, and (contrary to a queue), the latest task has to be completed (and 
+popped) first. An example is stacking serving plates; when you take a plate,
+you always take the last one stacked, because that's on top. 
