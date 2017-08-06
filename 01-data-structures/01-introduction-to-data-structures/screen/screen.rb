@@ -4,22 +4,7 @@ class Screen
   attr_accessor :width
   attr_accessor :height
   attr_accessor :matrix
-  attr_accessor :foo
 
-  #def initialize(width, height)
-  #   self.width = width
-  #   self.height = height
-  #   self.matrix = []
-  #   (0...self.height).each do |y|
-  #     row = []
-  #     self.matrix.push(row)
-  #     (0...self.width).each do |x|
-  #       row.push nil
-  #     end
-  #   end
-    
-  # end
-  
   def initialize(width, height)
     self.matrix = []
     self.width = width
