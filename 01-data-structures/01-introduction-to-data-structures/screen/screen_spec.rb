@@ -1,3 +1,4 @@
+require 'rspec/autorun'
 require_relative 'screen'
 
 RSpec.describe Screen, type: Class do
@@ -35,6 +36,10 @@ RSpec.describe Screen, type: Class do
       pixel = screen.at(-1, -1)
 
       expect(pixel).to eq nil
+      
+      test2 = screen.at(11, 11)
+      
+      expect(test2).to eq nil
     end
   end
 
