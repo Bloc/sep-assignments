@@ -1,0 +1,8 @@
+1: How does your data structure allow developers to access and manipulate the data?
+    Data can be added to the array at the end, but any index is able to be removed in any order.
+    
+2: If a developer wanted to find a specific element in your data structure, how would you search for it?
+    The code loops over itself to check if the element is at that particular position, if the element isn't there it moves one up until it is found.
+
+3: What other real-world data can each structure represent?
+    It can represent a row of books in order of when they are to be read, a list of products you are waiting to buy, or any other thing where it calls for one single element after another.

@@ -1,5 +1,4 @@
-include RSpec
-
+require 'rspec/autorun'
 require_relative 'line'
 
 RSpec.describe Line, type: Class do

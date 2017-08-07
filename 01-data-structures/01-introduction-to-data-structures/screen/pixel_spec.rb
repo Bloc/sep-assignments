@@ -1,3 +1,4 @@
+require 'rspec/autorun'
 require_relative 'pixel'
 
 RSpec.describe Pixel, type: Class do

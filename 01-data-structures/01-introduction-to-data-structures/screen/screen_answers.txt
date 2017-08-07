@@ -1,0 +1,8 @@
+1: How does your data structure allow developers to access and manipulate the data?
+    The developer can view the data at any given point in the matrix and can insert new data at any given point. 
+    
+2: If a developer wanted to find a specific element in your data structure, how would you search for it?
+    If they knew where it was in the matrix they could search for it that way, otherwise you could write a loop to first go through each item in the matrix finding the ones that the red value matches, then fron those you find the ones matching with the green matching, then blue.
+    
+3: What other real-world data can each structure represent?
+    It could be seating in an arena showing where each person is sitting and what food that person ordered.
