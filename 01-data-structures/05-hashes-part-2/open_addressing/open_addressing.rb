@@ -2,38 +2,38 @@ require_relative 'node'
 
 class OpenAddressing
   def initialize(size)
+    @items = Array.new(size)
+    @indices = [] # I'm sure if this is helpful, but this is a list of the nonnull indices.
   end
 
   def []=(key, value) # assign the key-value pair
-    item = HashItem.new(key, value) # make the key-value pair into an item
+    item = Node.new(key, value) # make the key-value pair into an item
 
     i = self.index(key, self.size) # compute its index
     old_item = @items[i] # check if there is something already at that index
     
-    if old_item == nil # nothing at that index, then
-      @items[i] = item # stick it into the array
-      @indices.push(i) # record that the index is not used
-      return
+    if old_item
+      if next_open_index(i) < 0
+        resize
+        i = self.index(key, self.size) # compute its index
+        old_item = @items[i] # check if there is something already at that index
+      end
     end
 
-    until old_item == nil || old_item.key == item.key do # keep resizing until no collision
+    until old_item == nil || old_item.key == item.key do # find first free index
+                                                        # or exact match of key
       i += 1 # recompute i
       old_item = @items[i] # recompute old item
     end
     
-    if i > @items.length
-      self.resize
-      self[key] = value
-      return
-    end
-    
-    @items[i] = item # now that you've found an empty spot, put the item in it
+    @items[i] = item # now that you've found the right index, put the item in it
     if old_item == nil # that means that we've increase the number of items
       @indices.push(i)
     end
   end
 
   def [](key)
+    puts @items.length
     i = self.index(key, self.size) # compute its index
     old_item = @items[i] # check if there is something already at that index
     
@@ -41,15 +41,14 @@ class OpenAddressing
       return nil
     end
 
-    until old_item == nil || old_item.key == item.key do # keep resizing until no collision
+    until old_item == nil || old_item.key == key do # keep resizing until no collision
       i += 1 # recompute i
       old_item = @items[i] # recompute old item
     end
     
-    if i > @items.length
+    if i == @items.length
       return nil # past the end of the array
     end
-    
     
     if old_item
       return old_item.value
@@ -62,24 +61,35 @@ class OpenAddressing
   # We are hashing based on strings, let's use the ascii value of each string as
   # a starting point.
   def index(key, size)
-    value = ascii_value(key) % size
-    return value
+    return ascii_value(key) % size
   end
 
   # Given an index, find the next open index in @items
-  def next_open_index(index)
-    until @items[index] == nil do
-      index = index + 1
+  def next_open_index(i)
+    until @items[i] == nil do
+      i += 1
     end
-    return index
+    if i >= @items.length
+      return -1
+    end
+    return i
   end
 
   # Simple method to return the number of items in the hash
   def size
+    return @items.length
   end
 
-  # Resize the hash
-  def resize
+  def resize # get a double-sized array, and copy elements into it
+    tmp_arr = @items # save the current items
+    tmp_indices = @indices # save the indices
+
+    @items = Array.new(self.size*2) # create a new array that is twice the size
+    @indices = [] # initially, it's empty
+    tmp_indices.each do |i| # go through the nonempty elements of the old array
+      item = tmp_arr[i] 
+      self[item.key] = item.value # put them in the proper spot
+    end
   end
   
   private
