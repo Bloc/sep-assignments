@@ -34,7 +34,11 @@ class HashClass
 
   def [](key) # look up the value associated with this key
     i = self.index(key, self.size) # compute the index
-    return  @items[i] && @items[i].value # returns nil or the value at that index
+    item = @items[i]
+    if item && item.key == key
+      return item.value
+    end
+    return nil
   end
 
   def resize # get a double-sized array, and copy elements into it
