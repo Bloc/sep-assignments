@@ -46,17 +46,19 @@ class HashClass
   end
   
   def print_state
-    retval = ""
+    puts ""
+    retval = "<"
     @items.each do |item|
-      if retval.length > 0
-        retval += ", "
-      end
       if item
-        retval += '("{item.key}":"{item.value}")'
+        retval += "(#{item.key}:#{item.value})"
       else
-        retval += 'nil'
+        retval += '.'
       end
+    end
+    retval += ">"
     puts retval
+    puts ""
+  end
 
   def resize # get a double-sized array, and copy elements into it
     tmp_arr = @items # save the current items
