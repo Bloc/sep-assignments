@@ -15,6 +15,7 @@ class HashClass
     if old_item == nil # nothing at that index, then
       @items[i] = item # stick it into the array
       @indices.push(i) # record that the index is not used
+      print_state
       return
     end
 
@@ -25,11 +26,14 @@ class HashClass
     end
     
     @items[i] = item # now that you've found an empty spot, put the item in it
+    
     if old_item == nil # that means that we've increase the number of items
       @indices.push(i)
     elsif old_item.value != item.value
       self.resize # absolutely no reason for this, except the spec calls for it
     end
+    
+    print_state
   end
 
   def [](key) # look up the value associated with this key
@@ -39,6 +43,21 @@ class HashClass
       return item.value
     end
     return nil
+  end
+  
+  def print_state
+    puts ""
+    retval = "<"
+    @items.each do |item|
+      if item
+        retval += "(#{item.key}:#{item.value})"
+      else
+        retval += '.'
+      end
+    end
+    retval += ">"
+    puts retval
+    puts ""
   end
 
   def resize # get a double-sized array, and copy elements into it
