@@ -1,0 +1,21 @@
+# Explain why doubling the size of the underlying array of your HashClass may be 
+# a poor idea.
+
+There are two ways that a hash table can be inefficient:
+1. It can take longer than necessary to lookup a value, or to insert a value.
+2. It can take up more space in memory than is necessary
+
+Expanding the size of the array can speed up lookup and insertion if it reduces
+the likelihood of a collision, but at the cost of taking up extra space in memory.
+If you double the size of the array just to insert one value, then that means
+that afterward, you're using at least twice as much space as you have elements
+in your hash table. (And besides that, the process of expanding the array takes
+time.)
+
+So the issue is making a tradeoff between space taken up and the likelihood of a
+collision. The technical question is whether doubling the size of the array
+sufficiently reduces the likelihood of collisions to be worth the extra space
+taken up. The exact answer to this depends on the details of the hashing algorithm,
+but it's possible that doubling the size is a bad tradeoff, in that it greatly
+increases the size of the array, but perhaps for not much advantage, when it
+comes to reducing collisions.
