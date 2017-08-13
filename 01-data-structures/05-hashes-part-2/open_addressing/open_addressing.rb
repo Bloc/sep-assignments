@@ -5,10 +5,10 @@ class OpenAddressing
     @items = Array.new(size)
     @indices = [] # I'm sure if this is helpful, but this is a list of the nonnull indices.
   end
-
-  def []=(key, value) # assign the key-value pair
-    item = Node.new(key, value) # make the key-value pair into an item
-
+  
+  
+  def insert(item) 
+    key = item.key
     i = self.index(key, self.size) # compute its index
     old_item = @items[i] # check if there is something already at that index
     
@@ -31,6 +31,11 @@ class OpenAddressing
       @indices.push(i)
     end
     print_state
+  end
+
+  def []=(key, value) # assign the key-value pair
+    item = Node.new(key, value) # make the key-value pair into an item
+    self.insert(item)
   end
 
   def [](key)
@@ -89,7 +94,7 @@ class OpenAddressing
     @indices = [] # initially, it's empty
     tmp_indices.each do |i| # go through the nonempty elements of the old array
       item = tmp_arr[i] 
-      self[item.key] = item.value # put them in the proper spot
+      self.insert(item) # put them in the proper spot
     end
   end
   

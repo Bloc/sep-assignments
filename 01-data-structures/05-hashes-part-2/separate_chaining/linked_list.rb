@@ -20,17 +20,11 @@ class LinkedList
   end
   
   def add_to_front(node)
-    puts "Here I am"
-    self.print
     node1 = self.head
-    self.print
     self.head = node
-    self.print
     node.next = node1
-    self.print
     if node1 == nil
       self.tail = node
-      self.print
     end
   end
 

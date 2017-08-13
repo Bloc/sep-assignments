@@ -8,13 +8,9 @@ class SeparateChaining
     @items = Array.new(capacity)
     @number_items = 0 # record number of insertions, to be used for deciding when to resize
   end
-
-  def []=(key, value)
-    @number_items += 1 # increment the number of insertions
-    if self.load_factor >= @max_load_factor
-      resize # this resets everything and recomputes @number_items
-      @number_items += 1 # so we have to increment again.
-    end
+  
+  def insert(node)
+    key = node.key
 
     i = self.index(key, self.size) # find outt he index
     llist = @items[i] # the linked list at that index
@@ -22,7 +18,7 @@ class SeparateChaining
       llist = LinkedList.new
       @items[i] = llist
     end
-    node = Node.new(key,value) # create node for that key/value pair
+
     node1 = llist.head # find out the current head of that linked list
     
     if node1 == nil # If the linked list is empty, the new node becomes
@@ -45,6 +41,15 @@ class SeparateChaining
     end
     
     self.print_state
+  end
+
+  def []=(key, value)
+    @number_items += 1 # increment the number of insertions
+    if self.load_factor >= @max_load_factor
+      resize
+    end
+    node = Node.new(key,value) # create node for that key/value pair
+    self.insert(node)
   end
 
   def [](key)
@@ -98,16 +103,14 @@ class SeparateChaining
     arr = @items # save the old array
     n = self.size 
     @items = Array.new(n*2) # create new array of double the size
-    @number_items = 0 # reset the number of items to zero. They will
-                      # be incremented below as you insert items
-                      
+
     # go through each linked list in the old array, and each item in each linked
     # list, and insert into the new array.
     arr.each do |llist|
       if llist != nil
         node = llist.head
         until node == nil do
-          self[node.key] = node.value # this inserts and increments @number_items
+          self.insert(node)
           node = node.next
         end
       end
