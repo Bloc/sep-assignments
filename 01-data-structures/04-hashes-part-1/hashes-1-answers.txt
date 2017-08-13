@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-# Explain why doubling the size of the underlying array of your HashClass may be a poor idea.
-=======
 # Explain why doubling the size of the underlying array of your HashClass may be 
 # a poor idea.
 
@@ -22,4 +19,3 @@ taken up. The exact answer to this depends on the details of the hashing algorit
 but it's possible that doubling the size is a bad tradeoff, in that it greatly
 increases the size of the array, but perhaps for not much advantage, when it
 comes to reducing collisions.
->>>>>>> checkpoint-4

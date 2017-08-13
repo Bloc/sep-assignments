@@ -30,6 +30,7 @@ class OpenAddressing
     if old_item == nil # that means that we've increase the number of items
       @indices.push(i)
     end
+    print_state
   end
 
   def [](key)
@@ -90,6 +91,23 @@ class OpenAddressing
       item = tmp_arr[i] 
       self[item.key] = item.value # put them in the proper spot
     end
+  end
+  
+  
+  def load_factor # Number of items divided by amount of available spots (in percent)
+    return (100 * @indices.length)/@items.length 
+  end
+  
+  def print_state
+    retval = "(LF: #{load_factor}%) "
+    @items.each do |item|
+      if item == nil
+        retval += "."
+      else
+        retval += "[#{item.label}]"
+      end
+    end
+    puts retval
   end
   
   private
