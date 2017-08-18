@@ -13,7 +13,7 @@ class Line
   end
 
   def leave(person)
-    self.members.slice(self.members.index(person))
+    self.members.slice!(self.members.index(person))
   end
 
   def front
