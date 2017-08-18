@@ -1,0 +1,13 @@
+1. How does your data structure allow developers to access and manipulate the data?
+
+Developer will only be able to add elements to the back of the queue and can remove the element from any position.
+They can also retrieve the element that exists at multiple locations and also search for a particular person.
+
+2. If a developer wanted to find a specific element in your data structure, how would you search for it?
+
+A for loop is used to go through each index of the queue to find if a specific element exists. If the
+element exists, it will return that person, otherwise will return nil.
+
+3. What other real-world data can each structure represent?
+Can be used for any structure relating to people standing in single file lines, such as in the DMV or
+ a single traffic lane

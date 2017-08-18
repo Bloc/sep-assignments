@@ -1,0 +1,15 @@
+1. How does your data structure allow developers to access and manipulate the data?
+
+Developers can access the data with using methods to retrieve the data at each pixel
+of the screen.  The developer can create a new pixel object with the chosen color and user the insert
+method to enter the pixel into the matrix.
+
+2. If a developer wanted to find a specific element in your data structure, how would you search for it?
+
+A nested for loop can be used to find the value matching the x value and then find the y value through the
+second loop.
+
+3. What other real-world data can each structure represent?
+
+The data structure can be used to represent different locations on a map or rooms of
+a floor of a hotel (any building)
