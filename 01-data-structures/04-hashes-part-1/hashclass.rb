@@ -24,6 +24,7 @@ class HashClass
     i = index(key,size())
     if @items[i]
       @items[i].value
+      
     end
   end
 
