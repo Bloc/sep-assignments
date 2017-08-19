@@ -1,5 +1,5 @@
 require_relative 'node'
-require 'pry'
+require 'benchmark'
 
 class LinkedList
   attr_accessor :head
@@ -83,3 +83,13 @@ class LinkedList
     end
   end
 end
+
+node = Node.new("test")
+list = LinkedList.new
+
+puts Benchmark.measure { 
+  5000.times do
+    list.add_to_tail(node)
+  end
+}
+  
