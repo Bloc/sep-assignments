@@ -17,6 +17,7 @@ class SeparateChaining
     if llist == nil # if nothing at that index, create new linked list
       llist = LinkedList.new
       @items[i] = llist
+      return
     end
 
     node1 = llist.head # find out the current head of that linked list
@@ -30,7 +31,7 @@ class SeparateChaining
     # search for one of two conditions: (1) a node with no "next" (meaning
     # you're at the end of the list), or (2) a node with the same key (meaning
     # you're overwriting an existing value)
-    until node1.next == nil || node1.next.key = key do
+    until node1.next == nil || node1.next.key == key do
       node1 = node1.next
     end
     
