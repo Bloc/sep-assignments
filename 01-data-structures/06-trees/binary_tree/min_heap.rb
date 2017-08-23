@@ -15,7 +15,7 @@ class MinHeap
       parent_index = (node_index) / 2
     end
     
-    while @list[parent_index] < node
+    while @list[parent_index] > node
       temp = @list[parent_index]
       @list[parent_index] = node
       @list[node_index] = temp
@@ -39,8 +39,8 @@ class MinHeap
     
     while @list[node_index * 2]
       if @list[node_index * 2] && @list[node_index * 2 + 1]
-        if @list[node_index] < @list[node_index * 2] || @list[node_index] < @list[node_index * 2 + 1]
-          if @list[node_index * 2] <= @list[node_index * 2 + 1]
+        if @list[node_index] > @list[node_index * 2] || @list[node_index] > @list[node_index * 2 + 1]
+          if @list[node_index * 2] >= @list[node_index * 2 + 1]
             temp = @list[node_index * 2 + 1]
             @list[node_index * 2 + 1] = @list[node_index]
             @list[node_index] = temp
@@ -53,7 +53,7 @@ class MinHeap
           end
         end
       elsif @list[node_index * 2] && !@list[node_index * 2 + 1]
-        if @list[node_index * 2] < @list[node_index]
+        if @list[node_index * 2] > @list[node_index]
           temp = @list[node_index * 2]
           @list[node_index * 2] = @list[node_index]
           @list[node_index] = temp

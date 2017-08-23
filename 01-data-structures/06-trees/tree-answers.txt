@@ -1,0 +1,19 @@
+1. 
+   *I tested the graphs using 10k instead of 100k because the compiler stack
+   overflows at 100k for BST.
+   
+   Heap: 
+    .18 seconds to insert 10k numbers
+    .001 seconds to find integer 5000 using bfs
+    .0002 seconds to delete the integer 5000
+   Binary Search Tree:
+    4.9 seconds to insert 10k numbers, compiler gave stack level too deep error
+    at 100k
+    1.05 seconds to find integer 5k
+    .03 seconds to delete integer 5k
+
+2.  Binary search trees are good for general use because they run at O(logn) 
+    time. Heaps are good for finding maximums and minimum values in a dataset
+    due to the way they are organized. Heaps can find maximums or minimums at
+    constant time.
+   
