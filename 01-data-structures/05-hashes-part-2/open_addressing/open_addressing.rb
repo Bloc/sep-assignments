@@ -11,14 +11,20 @@ class OpenAddressing
     key = item.key
     i = self.index(key, self.size) # compute its index
     old_item = @items[i] # check if there is something already at that index
+    if old_item == nil:
+      
     
     if old_item
-      if next_open_index(i) < 0
+      until next_open_index(i) >= 0 do
         resize
         i = self.index(key, self.size) # compute its index
         old_item = @items[i] # check if there is something already at that index
       end
     end
+    
+    # At this point, we know that there is an open index bigger than i.
+    # So look for an open index, or for an item with the same key, whichever
+    # comes first.
 
     until old_item == nil || old_item.key == item.key do # find first free index
                                                         # or exact match of key
