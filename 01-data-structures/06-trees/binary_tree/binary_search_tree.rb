@@ -16,16 +16,16 @@ class BinarySearchTree
       return
     end
     
-    node1 = find(root, node.title)
-    if node1
-      parent = node1.parent
-      delete_aux(root, node1)
-      if parent == nil
-        parent = self.root
-      end
-      insert(parent, node)
-      return
-    end
+    #node1 = find(root, node.title)
+    #if node1
+    #  parent = node1.parent
+    #  delete_aux(root, node1)
+    #  if parent == nil
+    #    parent = self.root
+    #  end
+    #  insert(parent, node)
+    #  return
+    #end
     
     if node.rating < root.rating
       if root.left
