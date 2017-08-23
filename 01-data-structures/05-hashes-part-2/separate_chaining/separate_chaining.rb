@@ -166,4 +166,24 @@ class SeparateChaining
       @items[index] = item
     end
   end
+  
+  def status
+    puts "the load factor is #{load_factor}"
+    @items.each_with_index do |list, index|
+      if list
+        puts "these movies are at index #{index}:"
+        if list.head.next
+          current_item = list.head
+          while current_item.next
+            puts "#{current_item.key}"
+            current_item = current_item.next
+          end
+        else
+          puts list.head.key
+        end
+      else
+        puts "there is nothing at index: #{index}"
+      end
+    end
+  end
 end

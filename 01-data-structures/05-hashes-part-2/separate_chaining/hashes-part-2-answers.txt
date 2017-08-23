@@ -1,0 +1,20 @@
+1.  Hopscotch hashing defines a few indices close to each bucket as a
+    "neighborhood," then tries to fill the buckets within that neighborhood. If
+    the neighborhood of the current bucket in question is filled, then the hash
+    will resize itself.
+
+2.  Coalesced hashing will defined the first open bucket in the array as the
+    "collision bucket," in which the first element that causes a collsion will
+    be stored. The element is then linked to the chain that it had the collision
+    with.
+
+3.  Robinhood hashing will define a probe length for the element in question,
+    where the probe length is the length at which you have to search for an open
+    bucket for the key. If the probe length for the current key is less than the
+    probe length of an existing key, the existing key is displaced and swaps are
+    made until all of the elements have found a place to be stored.
+    
+4.  We can split the array into two halves. If there is a collision in the upper
+    half of the array, we halve the index store the value there. If the collison
+    occurs in the lower half, the we double it and store the value at the new
+    index. If the spot is already filled, we resize the array.
