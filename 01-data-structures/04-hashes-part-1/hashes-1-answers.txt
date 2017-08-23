@@ -1,0 +1,4 @@
+Doubling the size of the array when encountering a collision isn't a good idea
+because big arrays are costly to keep in memory. It also creates a lot of empty
+elements within the array which could be used to store more nodes, so simply
+doubling the size of the array is very inefficient.
