@@ -2,6 +2,7 @@ require_relative 'linked_list'
 
 class SeparateChaining
   attr_reader :max_load_factor
+  attr_reader :items
 
   def initialize(capacity)
     @max_load_factor = 0.7
@@ -17,20 +18,17 @@ class SeparateChaining
     if llist == nil # if nothing at that index, create new linked list
       llist = LinkedList.new
       @items[i] = llist
-    end
-
-    node1 = llist.head # find out the current head of that linked list
-    
-    if node1 == nil # If the linked list is empty, the new node becomes
-      llist.add_to_tail(node) # the only element
+      llist.add_to_tail(node)
       self.print_state
       return
     end
-    
+
+    node1 = llist.head # find out the current head of that linked list
+
     # search for one of two conditions: (1) a node with no "next" (meaning
     # you're at the end of the list), or (2) a node with the same key (meaning
     # you're overwriting an existing value)
-    until node1.next == nil || node1.next.key = key do
+    until node1.next == nil || node1.next.key == key do
       node1 = node1.next
     end
     

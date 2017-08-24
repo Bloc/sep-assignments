@@ -43,6 +43,7 @@ class LinkedList
     if self.head == node # if deleting the head, then the second element becomes
                         # the new head
       self.head = node.next
+      return node
     end
 
     prev = previous(node) # compute the previous node

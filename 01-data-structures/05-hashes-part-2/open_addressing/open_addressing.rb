@@ -1,6 +1,7 @@
 require_relative 'node'
 
 class OpenAddressing
+  attr_accessor :items
   def initialize(size)
     @items = Array.new(size)
     @indices = [] # I'm sure if this is helpful, but this is a list of the nonnull indices.
@@ -12,18 +13,15 @@ class OpenAddressing
     i = self.index(key, self.size) # compute its index
     old_item = @items[i] # check if there is something already at that index
     
-    if old_item
-      if next_open_index(i) < 0
-        resize
-        i = self.index(key, self.size) # compute its index
-        old_item = @items[i] # check if there is something already at that index
-      end
+    until i == @items.length || old_item == nil || old_item.key == key do
+      i += 1
+      old_item = @items[i]
     end
-
-    until old_item == nil || old_item.key == item.key do # find first free index
-                                                        # or exact match of key
-      i += 1 # recompute i
-      old_item = @items[i] # recompute old item
+    
+    if i == @items.length
+      resize
+      insert(item)
+      return
     end
     
     @items[i] = item # now that you've found the right index, put the item in it
