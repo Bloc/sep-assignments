@@ -1,0 +1,31 @@
+# Questions about myqueue
+(Almost the same answers as for line.rb)
+
+## Q1. How does your data structure allow developers to access and manipulate the data?
+
+#### Manipulating data
+In my implementation of queues, I provided the following operations for manipulating lines:
+1. Creating a new queue. `MyQueue.new`
+2. Adding an item to the end of the queue. `queue.enqueue(item)`
+3. Removing the first item from the queue. `queue.dequeue`
+
+#### Accessing data
+In addition, I provided the following operations for inspecting lines:
+1. Check what the last item is. `queue.tail`
+2. Check what the first item is. `queue.head`
+
+## Q2. If a developer wanted to find a specific element in your data structure, 
+how would you search for it?
+
+The primitive queue operations don't support search, unless the developer just keeps
+dequeuing until the element shows up (which is destructive).
+
+## Q3. What other real-world data can each structure represent?
+
+The queue can be used to represent any situation in which there is a linear ordering
+of objects, and where there are notions of moving up in line. 
+* It could represent the line of succession for some position, such King or President.
+* It could represent  the order of customers to be served:
+    * waiting to get into a movie
+    * waiting to get a table at a restaurant
+    * waiting to get a haircut, etc.
