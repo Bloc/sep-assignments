@@ -1,0 +1,9 @@
+1. How does your data structure allow developers to access and manipulate the data?
+  This can be accessed by the at method on line 21. Developers can also use the insert method, being able to add a pixel within the provided constraints (R,G,B, 0-255).
+
+2. If a developer wanted to find a specific element in your data structure, how would you search for it?
+  The at method shows what is located in each coordinate, but we could also write a specific loop that iterates through the values and prints that information to the user.
+
+
+3. What other real-world data can each structure represent?
+  This is effectively adding another layer of depth to the line problem. Anything planar can be represented with this structure - the global positioning system, for instance, relies on mapping the Earth into a two dimensional plane and using coordinates to represent locations(elements).
