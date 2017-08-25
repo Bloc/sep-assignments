@@ -1,0 +1,8 @@
+1. How does your data structure allow developers to access and manipulate the data?
+  Developers can add to the line, adding only to the back. They can also remove an element, from anywhere in the line. Certain elements can be specifically searched and subsequently removed.
+
+2. If a developer wanted to find a specific element in your data structure, how would you search for it?
+  On line 31 of line.rb, the search method is an 'each' loop that iterates through the members to find matches.
+
+3. What other real-world data can each structure represent?
+  Queues of various sorts are everywhere! From something as simple as a vending machine, to describing positions in a race (where they change often). Even something that is an unordered list - a receipt, for instance, can be represented as such, depending on the purpose of the structure.
