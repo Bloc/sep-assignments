@@ -30,5 +30,4 @@ class Line
 
   def index(person)
   end
-
 end

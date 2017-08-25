@@ -17,7 +17,6 @@ class Screen
 
   private
 
-  def inbounds(x, y)
+  def inbounds(x, y) 
   end
-
 end
