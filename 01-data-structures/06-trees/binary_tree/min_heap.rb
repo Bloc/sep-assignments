@@ -1,69 +1,99 @@
 class MinHeap
   def initialize(root)
-    @list = Array.new(2, 0)
+    @list = Array.new(2, nil)
     @root = root
     @list[1] = @root
   end
   
-  def insert(root, node)
+  def min_value
+    return @list[1]
+  end
+  
+  def insert(node)
     @list.push(node)
-    node_index = @list.index(node)
+    node_index = @list.length - 1
+    perc_up(node_index)
     
-    if node_index % 2 == 1
-      parent_index = (node_index - 1) / 2
-    elsif node_index % 2 == 0
-      parent_index = (node_index) / 2
+    @root = @list[1]
+  end
+  
+  def delete(node)
+    if @list.index(node)
+      node_index = @list.index(node)
+    else
+      puts "No such item"
+      return false
     end
     
-    while @list[parent_index] > node
-      temp = @list[parent_index]
-      @list[parent_index] = node
-      @list[node_index] = temp
-      
-      node_index = parent_index
-      if parent_index % 2 == 0
-        parent_index = parent_index / 2
+    if @list[@list.length - 1] == node
+      return @list.pop
+    else
+      replacement = @list.pop
+      @list[node_index] = replacement
+    end
+    
+    if has_parent?(node_index) && @list[parent_index_of(node_index)] >= @list[node_index]
+      perc_up(node_index)
+    else
+      perc_down(node_index)
+    end
+    
+    @root = @list[1]
+  end
+  
+  def perc_up(node_index)
+    while has_parent?(node_index) && @list[parent_index_of(node_index)] >= @list[node_index]
+      swap(parent_index_of(node_index), node_index)
+      node_index = parent_index_of(node_index)
+    end
+  end
+  
+  def perc_down(node_index)
+    while has_smaller_child?(node_index)
+      puts "element is #{@list[node_index]}"
+      if @list[node_index * 2 + 1] && @list[node_index * 2 + 1] < @list[node_index * 2]
+        swap(node_index, node_index * 2 + 1)
+        node_index = node_index * 2 + 1
+      elsif @list[node_index * 2] < @list[node_index]
+        swap(node_index, node_index * 2)
+        node_index = node_index *= 2
       else
-        parent_index = (parent_index - 1) / 2
+        true
       end
     end
   end
   
-  def delete(root, node)
-    node_index = @list.index(node)
-    if @list[@list.length - 1] == node
-      @list.pop
-    else
-      @list[node_index] = @list.pop
-    end
-    
-    while @list[node_index * 2]
-      if @list[node_index * 2] && @list[node_index * 2 + 1]
-        if @list[node_index] > @list[node_index * 2] || @list[node_index] > @list[node_index * 2 + 1]
-          if @list[node_index * 2] >= @list[node_index * 2 + 1]
-            temp = @list[node_index * 2 + 1]
-            @list[node_index * 2 + 1] = @list[node_index]
-            @list[node_index] = temp
-            node_index = node_index * 2 + 1
-          else
-            temp = @list[node_index * 2]
-            @list[node_index * 2] = @list[node_index]
-            @list[node_index] = temp
-            node_index = node_index * 2
-          end
-        end
-      elsif @list[node_index * 2] && !@list[node_index * 2 + 1]
-        if @list[node_index * 2] > @list[node_index]
-          temp = @list[node_index * 2]
-          @list[node_index * 2] = @list[node_index]
-          @list[node_index] = temp
-        end
+  def has_smaller_child?(index)
+    if @list[index * 2] && @list[index * 2 + 1]
+      if @list[index] > @list[index * 2] || @list[index] > @list[index * 2 + 1]
+        return true
+      else
+        return false
       end
+    elsif @list[index * 2] && !@list[index * 2 + 1]
+      if @list[index] > @list[index * 2]
+        return true
+      end
+    else
+      return false
     end
-    
-    
-    if root == node
-      @root = @list[1]
+  end
+  
+  def has_parent?(index)
+    if index == 0 || index == 1
+      return false
+    else
+      return true
+    end
+  end
+  
+  
+  
+  def parent_index_of(index)
+    if index % 2 == 1
+      parent_index = (index - 1) / 2
+    elsif index % 2 == 0
+      parent_index = (index) / 2
     end
   end
   
@@ -97,5 +127,11 @@ class MinHeap
     end
     target_node = find(@root, node)
     puts "#{target_node.title}: #{target_node.rating}"
+  end
+  
+  def swap(index, index2)
+    temp = @list[index2]
+    @list[index2] = @list[index]
+    @list[index] = temp
   end
 end

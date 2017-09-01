@@ -1,13 +1,13 @@
 class MinHeap
   def initialize(root)
-    @list = Array.new(2, 0)
+    @list = Array.new(2, nil)
     @root = root
     @list[1] = @root
   end
   
   def insert(root, node)
     @list.push(node)
-    node_index = @list.index(node)
+    node_index = @list.length - 1
     
     if node_index % 2 == 1
       parent_index = (node_index - 1) / 2
@@ -15,7 +15,7 @@ class MinHeap
       parent_index = (node_index) / 2
     end
     
-    while @list[parent_index] < node
+    while parent_index > 0 && @list[parent_index] >= node
       temp = @list[parent_index]
       @list[parent_index] = node
       @list[node_index] = temp
