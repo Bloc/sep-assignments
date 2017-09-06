@@ -19,14 +19,15 @@ class Node
   def add_actor(movie, node)
     arr = self.film_actor_hash[movie]
     if arr == nil
-      return
+      return nil
     end
     arr.each do |node1|
-      if node1.name == node
+      if node1.name == node.name
         return
       end
     end
     arr.push(node)
+    return true
   end
   
   def find(movie)

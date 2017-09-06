@@ -17,7 +17,7 @@ class Graph
         node.add_movie(movie)
         self.nodes.each do |node1|
             if node1.name != node.name
-                node1.add_actor(movie, node)
+              node1.add_actor(movie, node) && node.add_actor(movie, node1)
             end
         end
     end
@@ -44,6 +44,7 @@ class Graph
             return nil
         end
         if node.name == actor
+            node.index = index
             return node
         end
         l = left_index(index)
@@ -150,10 +151,10 @@ class Graph
 
     middle = (low + high)/2
     value1 = values[middle]
-    until low >= high || value1 == value do
-      if value1 < 0 || value1 > value
+    until low >= high || value1 == new_value do
+      if value1 < 0 || value1 > new_value
         high = middle - 1
-      elsif value1 < value
+      elsif value1 < new_value
         low = middle + 1
       end
       middle = (low+high)/2
@@ -162,19 +163,26 @@ class Graph
     indices.insert(middle, index)
     return middle
   end
-    
+  
+  def set_indices()
+    (0...self.nodes.length).each do |i|
+      node = self.nodes[i]
+      node.index = i
+    end
+  end 
 
     # https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm
     # This function attempts to find a sequence of nodes
     # connecting the node with the start_index to the
     # node with the end_index
-  def find_path(start_index, end_index)
+  def find_path(start_index, end_index, max=-1)
     # Since all my nodes are numbered, we don't need a hash to associate properties
     # with nodes; we can just use an array of properties. So, for example,
     # distances[i] is the distance of node #i from the start node
     distances = [] # the distances of each node, so far
     sorted = [] # a list of indices of unvisited nodes, sorted by distance.
     
+
     # initially, set all distances to -1 (for "infinity")
     # and put every node into the list of unvisited nodes
     (0...self.nodes.length).each do |i|
@@ -182,11 +190,15 @@ class Graph
       self.nodes[i].index = i # for convenience, tell each node what its index ix.
       sorted.push(i) # put each index into "sorted"
     end
+    
+
     current = start_index # the starting index
     new_value = 0 # the distance value for this node
     shift_to_place(sorted, distances, current, new_value) # this puts the node's index into the right place in "sorted"
+
     until current == end_index do # keep going until you get to the end point
       current_node = self.nodes[current] # current node
+      
       current_node.connected_actors().each do |actor|
         neighbor_index = actor.index
         neighbor_distance = distances[neighbor_index]
@@ -197,7 +209,7 @@ class Graph
       end
       sorted.delete(current) # remove it from the list of unvisited
       current = sorted[0] # find the new unvisited node with smallest distance
-      if distances[current] < 0 # that means that all the remaining nodes are "infinitely far away", so give up
+      if distances[current] < 0 || (max > 0 && distances[current] > max) # that means that all the remaining nodes are "infinitely far away", so give up
         return nil
       end
     end
@@ -216,6 +228,17 @@ class Graph
     return retval
   end
   
+  def path_to_kevin_bacon(actor)
+    set_indices()
+    node_1 = find("Kevin Bacon")
+    node_2 = find(actor)
+
+    if node_1 == nil || node_2 == nil
+      return nil
+    end
+    return find_path(node_1.index, node_2.index, 6)
+  end
+  
   def find_next(current_index, distances)
     current_node = self.nodes[current_index]
     current_distance = distances[current_index]
@@ -230,7 +253,6 @@ class Graph
     end
     return nil
   end
-        
 
   # Recursive Breadth First Search
   def printf
