@@ -10,10 +10,11 @@ class HashClass
 
     if @items[i].nil? 
       @items[i] = item
-    elsif @items[i].key != item.key
+    elsif @items[i].key != item.key #item already at the index and the keys dont match
+                                    #i.e - index function created same index number buy the keys are not the same
       self.resize
       self[key] = value # Recursive call to []=(key, value)
-    elsif @items[i].value != item.value # values are different
+    elsif @items[i].value != item.value # Keys are same but values are different
       self.resize
       @items[index(item.key, size)] = value
     end
@@ -23,15 +24,14 @@ class HashClass
   def [](key)
     i = index(key,size())
     if @items[i]
-      @items[i].value
-      
+      return @items[i].value
     end
   end
 
   def resize
     temp = @items.compact
     @items = Array.new(self.size * 2)
-    temp.each{ |item| self[item.key] = item.value }
+    return temp.each{ |item| self[item.key] = item.value }
   end
 
   # Returns a unique, deterministically reproducible index into an array
@@ -42,12 +42,12 @@ class HashClass
     key.each_byte do |c|
       sum += c
     end
-    sum = sum % size
+    return sum = sum % size
   end
 
   # Simple method to return the number of items in the hash
   def size
-    @items.length
+    return @items.length
   end
 
 end

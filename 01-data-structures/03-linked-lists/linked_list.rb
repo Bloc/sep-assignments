@@ -17,16 +17,16 @@ class LinkedList
 
   # This method removes the last node in the lists and must keep the rest of the list intact.
   def remove_tail
-    if @head === @tail #if there is only one node
+    if @head === @tail
       @head = nil
       @tail = nil
     else
-      current = @head # set variable at head / beginning 
-      while((!current.nil?) && (current.next != @tail)) do #current is not nil and current.next is not tail
-        current = current.next #interate until the point where it is one position behind the tail
+      current = @head
+      while (current.next != @tail) do
+        current = current.next
       end
-      @tail = current #set the tail position to second to last spot
-      @tail.next = nil #set final pointer to nil 
+      current.next = nil
+      @tail = current
     end
   end
 
