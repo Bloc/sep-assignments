@@ -37,6 +37,7 @@ class Line
   private
 
   def index(person)
+    self.members.index(person)
   end
 
 end
