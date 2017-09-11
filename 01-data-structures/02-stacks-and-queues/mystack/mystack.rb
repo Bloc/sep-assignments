@@ -21,5 +21,7 @@ class MyStack
   end
 
   def empty?
+    @stack.size == 0
   end
+
 end
