@@ -19,6 +19,7 @@ class Line
   end
 
   def middle
+    mid = (self.members.length) / 2
   end
 
   def back
