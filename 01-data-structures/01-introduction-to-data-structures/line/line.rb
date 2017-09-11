@@ -13,6 +13,7 @@ class Line
   end
 
   def leave(person)
+    self.members.delete(person)
   end
 
   def front
