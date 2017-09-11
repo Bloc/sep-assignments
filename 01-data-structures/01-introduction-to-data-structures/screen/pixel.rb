@@ -22,6 +22,14 @@ class Pixel
   private
 
   def validate_color(color)
+    if color < 0
+      return 0
+    elsif color > 255
+      return 255
+    else
+      color
+    end
+    
   end
 
 end
