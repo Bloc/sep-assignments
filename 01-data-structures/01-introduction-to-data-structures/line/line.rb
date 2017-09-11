@@ -27,6 +27,9 @@ class Line
   end
 
   def search(person)
+    if self.members.include?(person)
+      person
+    end
   end
 
   private
