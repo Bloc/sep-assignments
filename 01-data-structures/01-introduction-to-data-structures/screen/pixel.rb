@@ -12,6 +12,11 @@ class Pixel
 
 
   def initialize(red, green, blue, x, y)
+    self.red = red
+    self.green = green
+    self.blue = blue
+    self.x = x
+    self.y = y
   end
 
   private
