@@ -23,6 +23,7 @@ class Line
   end
 
   def back
+    self.members.last
   end
 
   def search(person)
