@@ -15,6 +15,7 @@ class Line
   end
 
   def front
+    self.members.first
   end
 
   def middle
