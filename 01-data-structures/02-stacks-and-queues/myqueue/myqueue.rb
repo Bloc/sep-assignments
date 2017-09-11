@@ -21,5 +21,6 @@ class MyQueue
   end
 
   def empty?
+    (@queue.size == 0) ? true : false
   end
 end
