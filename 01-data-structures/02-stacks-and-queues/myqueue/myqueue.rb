@@ -15,6 +15,9 @@ class MyQueue
   end
 
   def dequeue
+    @queue.shift
+    @head = @queue[0]
+    @tail = @queue[-1]
   end
 
   def empty?
