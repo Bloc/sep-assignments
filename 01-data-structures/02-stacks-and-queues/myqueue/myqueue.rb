@@ -9,6 +9,9 @@ class MyQueue
   end
 
   def enqueue(element)
+    @queue << element
+    @head = @queue[0]
+    @tail = @queue[-1]
   end
 
   def dequeue
