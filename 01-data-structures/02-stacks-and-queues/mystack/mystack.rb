@@ -7,6 +7,8 @@ class MyStack
   end
 
   def push(item)
+    @stack.unshift(item)
+    self.top = @stack.first
   end
 
   def pop
