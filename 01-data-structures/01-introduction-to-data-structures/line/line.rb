@@ -9,6 +9,7 @@ class Line
   end
 
   def join(person)
+    self.members.push(person)
   end
 
   def leave(person)
