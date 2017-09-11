@@ -13,6 +13,9 @@ class Screen
 
   # Insert a Pixel at x, y
   def insert(pixel, x, y)
+    if inbounds(x, y)
+        self.matrix[x][y] = pixel
+    end
   end
 
   def at(x, y)
