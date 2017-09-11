@@ -16,6 +16,7 @@ class Screen
   end
 
   def at(x, y)
+    inbounds(x, y) ? self.matrix[x][y] : nil
   end
 
   private
