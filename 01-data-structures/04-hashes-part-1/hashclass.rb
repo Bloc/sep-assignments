@@ -1,8 +1,9 @@
 class HashClass
   require_relative 'hash_item'
-  
+
   def initialize(size)
     @items = Array.new(size)
+    @size = size
   end
 
   def []=(key, value)
