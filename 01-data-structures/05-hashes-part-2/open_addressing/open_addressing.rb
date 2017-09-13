@@ -29,5 +29,10 @@ class OpenAddressing
 
   # Resize the hash
   def resize
+    doubled_ary = Array.new(@size *= 2)
+    @items.compact.each do |i|
+      doubled_ary[index(i.key, @size)] = i
+    end
+    @items = doubled_ary
   end
 end
