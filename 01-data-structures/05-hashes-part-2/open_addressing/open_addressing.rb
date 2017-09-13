@@ -71,4 +71,16 @@ class OpenAddressing
     end
     @items = doubled_ary
   end
+
+  def load_factor
+    j = 0.to_f
+
+    (0...@size).each do |i|
+      if @items[i]
+        j += 1
+      end
+    end
+    j / @size
+  end
+  
 end
