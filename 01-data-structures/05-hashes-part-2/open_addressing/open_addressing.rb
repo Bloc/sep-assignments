@@ -8,6 +8,27 @@ class OpenAddressing
   end
 
   def []=(key, value)
+    i = index(key, @size)
+    hash = @items[index(key, @size)]
+
+    if hash == nil
+      hash = Node.new(key, value)
+      count += 1
+    elsif hash.key == key && hash.value == value
+      return
+    elsif hash.key == key && hash.value != value
+      hash.value = value
+    else
+      next_open = next_open_index(i)
+
+      if next_open == -1
+        resize
+        self.key = value
+      else
+        @item[i] = Node.new(key, value)
+        count += 1
+      end
+    end
   end
 
   def [](key)
