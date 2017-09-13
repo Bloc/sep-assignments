@@ -82,5 +82,14 @@ class OpenAddressing
     end
     j / @size
   end
+
+  def print
+    (0...@size).each do |i|
+      if @items[i]
+        puts "Index: #{i}, Key: #{@items[i].key}, Value: #{@items[i].value}"
+      end
+    end
+    puts "Load Factor of: #{load_factor}"
+  end
   
 end
