@@ -44,6 +44,17 @@ class LinkedList
 
   # This method removes `node` from the list and must keep the rest of the list intact.
   def delete(node)
+    if @head == node
+      remove_front
+    elsif @tail == node
+      remove_tail
+    else
+      current = @head
+      until current.next == node
+        current = current.next
+      end
+      current.next = node.next
+    end
   end
 
   # This method adds `node` to the front of the list and must set the list's head to `node`.
@@ -52,5 +63,7 @@ class LinkedList
 
   # This method removes and returns the first node in the Linked List and must set Linked List's head to the second node.
   def remove_front
+    @tail == @head ? @head = nil : @head = @head.next
   end
+
 end
