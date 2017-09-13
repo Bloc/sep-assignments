@@ -1,0 +1,8 @@
+Question: Explain why doubling the size of the underlying array of your HashClass may be a poor
+idea.
+
+Answer: Doubling may lead to more fragmentation due to the exponential growth as the
+size of the array increase. It will also require allocating more memory which decreases performance
+by slowing the system down. Recall that the entire array may need to be traversed to search for data.
+This becomes incredibly inefficient considering that the data is constantly relocating as the array
+resizes.
