@@ -17,14 +17,22 @@ class OpenAddressing
   # We are hashing based on strings, let's use the ascii value of each string as
   # a starting point.
   def index(key, size)
+      key.sum % size
   end
 
   # Given an index, find the next open index in @items
   def next_open_index(index)
+    (index...@size).each do |i|
+      if @items[i] == nil
+        return i
+      end
+    end
+    return -1
   end
 
   # Simple method to return the number of items in the hash
   def size
+    @size
   end
 
   # Resize the hash
