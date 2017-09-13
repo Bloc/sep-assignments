@@ -40,10 +40,12 @@ class HashClass
   # We are hashing based on strings, let's use the ascii value of each string as
   # a starting point.
   def index(key, size)
+    key.sum % size
   end
 
   # Simple method to return the number of items in the hash
   def size
+    @size
   end
 
 end
