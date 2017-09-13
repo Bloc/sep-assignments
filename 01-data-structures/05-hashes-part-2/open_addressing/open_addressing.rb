@@ -32,6 +32,13 @@ class OpenAddressing
   end
 
   def [](key)
+    i = @items[index(key, @size)]
+
+    if i != nil
+      i.value
+    else
+      nil
+    end
   end
 
   # Returns a unique, deterministically reproducible index into an array
