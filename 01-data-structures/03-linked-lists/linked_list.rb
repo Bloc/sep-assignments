@@ -47,6 +47,16 @@ class LinkedList
 
   # This method adds `node` to the front of the list and must set the list's head to `node`.
   def add_to_front(node)
+    if ((@head == nil) && (@tail == nil))
+      @head = node
+      @head.next = nil
+      @tail = node
+      @tail.next = nil
+    else
+      current = @head
+      @head = node
+      @head.next = current
+    end
   end
 
   # This method removes and returns the first node in the Linked List and must set Linked List's head to the second node.
