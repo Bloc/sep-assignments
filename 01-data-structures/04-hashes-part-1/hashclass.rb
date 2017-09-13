@@ -22,6 +22,13 @@ class HashClass
 
 
   def [](key)
+    i = @items[index(key, @size)]
+
+    if i != nil
+      i.value
+    else
+      nil
+    end
   end
 
   def resize
