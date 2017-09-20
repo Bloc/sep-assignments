@@ -1,4 +1,5 @@
 require_relative 'node'
+require 'benchmark'
 
 class BinarySearchTree
 
@@ -83,3 +84,18 @@ tree.insert(root, moon)
 tree.insert(root, trans)
 
 tree.printf
+
+count = 0
+numbers = Array.new
+
+until count > 10000
+  ary << Node.new(count, count)
+  count += 1
+end
+
+root = numbers.first
+tree = BinarySearchTree.new(root)
+
+numbers.each { |num| tree.insert(root, count) }
+
+puts Benmark.measure { tree.find(root, 5000) }
