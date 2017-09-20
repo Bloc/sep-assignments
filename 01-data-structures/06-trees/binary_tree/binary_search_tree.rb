@@ -81,3 +81,5 @@ tree.insert(root, love)
 tree.insert(root, last)
 tree.insert(root, moon)
 tree.insert(root, trans)
+
+tree.printf
