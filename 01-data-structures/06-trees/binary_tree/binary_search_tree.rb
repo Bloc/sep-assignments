@@ -29,6 +29,9 @@ class BinarySearchTree
   end
 
   def delete(root, data)
+    return nil if (root.nil? || data.nil?)
+    remove = find(root, data)
+    remove.title, remove.rating = nil, nil
   end
 
   # Recursive Breadth First Search
