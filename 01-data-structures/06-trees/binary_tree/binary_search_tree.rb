@@ -4,6 +4,7 @@ class BinarySearchTree
 
   def initialize(root)
     self.root = root
+    
   end
 
   def insert(root, node)
