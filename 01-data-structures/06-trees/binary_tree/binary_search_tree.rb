@@ -17,7 +17,7 @@ class BinarySearchTree
 
   # Recursive Depth First Search
   def find(root, data)
-    return nil if (root.nil? || data.nil?)
+    return nil if  data.nil?
 
     if root.title.eql?(data)
       return root
@@ -29,13 +29,28 @@ class BinarySearchTree
   end
 
   def delete(root, data)
-    return nil if (root.nil? || data.nil?)
+    return nil if data.nil?
     remove = find(root, data)
     remove.title, remove.rating = nil, nil
   end
 
   # Recursive Breadth First Search
   def printf(children=nil)
+    queue = [root] #FIFO
+    children = []
+
+    until queue.empty?
+      sub_root = queue.slice!(0)
+
+      queue << sub_root.left if !sub_root.left.nil?
+      queue << sub_root.right if !sub_root.right.nil?
+
+      children << "#{sub_root.title : sub_root.rating}"
+    end
+
+    children.each do |child|
+      puts child
+    end
   end
 
 end
