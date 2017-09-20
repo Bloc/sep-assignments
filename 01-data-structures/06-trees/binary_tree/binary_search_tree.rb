@@ -3,6 +3,7 @@ require_relative 'node'
 class BinarySearchTree
 
   def initialize(root)
+    self.root = root
   end
 
   def insert(root, node)
@@ -18,4 +19,5 @@ class BinarySearchTree
   # Recursive Breadth First Search
   def printf(children=nil)
   end
+
 end
