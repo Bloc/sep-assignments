@@ -9,12 +9,12 @@ class HashClass
   def []=(key, value)
     hash = @items[index(key, @size)]
 
-    if hash == nil
-      hash = HashItem.new(key, value)
-    elsif hash.key != key
+    if hash.nil?
+      @items[index(key, @size)] = HashItem.new(key, value)
+    elsif !hash.key.eql?(key)
       self.resize
       self[key] = value
-    elsif hash.key == key && hash.value != value
+    elsif hash.key.eql?(key) && !hash.value.eql?(value)
       self.resize
       hash.value = value
     end
@@ -32,15 +32,14 @@ class HashClass
   end
 
   def resize
-    # move each item in the array to doubled_ary
-    # update each items index based on the resized Array
-    @items.compact.each do |i|
-      doubled_ary[index(i.key, @size)] = i
+    @size = @size * 2
+    doubled_array = Array.new(@size)
+    @items.compact.each do |item| 
+      if !item.nil?
+        doubled_array[index(item.key, @size)] = item
+      end
     end
-
-    puts "size: #{doubled_ary.length}"
-    puts "state of array: #{doubled_ary}"
-    @items = doubled_ary
+    @items = doubled_array
   end
 
   # Returns a unique, deterministically reproducible index into an array
