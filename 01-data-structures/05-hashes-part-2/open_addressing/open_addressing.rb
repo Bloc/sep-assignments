@@ -31,12 +31,13 @@ class OpenAddressing
   end
 
   def [](key)
-    i = @items[index(key, @size)]
-
-    if i != nil
-      i.value
-    else
-      nil
+    e = index(key, self.size)
+    until e > self.size
+      if @items[e].key == key
+        return @items[e].value
+      else
+        e += 1
+      end
     end
   end
 
