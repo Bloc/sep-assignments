@@ -76,18 +76,18 @@ class OpenAddressing
   def load_factor
     j = 0.to_f
 
-    (0...@size).each do |i|
+    (0...self.size).each do |i|
       if @items[i]
         j += 1
       end
     end
-    j / @size
+    j / self.size
   end
 
   def print
-    (0...@size).each do |i|
+    (0...self.size).each do |i|
       if @items[i]
-        puts "Index: #{i}, Key: #{@items[i].key}, Value: #{@items[i].value}"
+        puts "Index: #{i} - Key: #{@items[i].key} - Value: #{@items[i].value}"
       end
     end
     puts "Load Factor of: #{load_factor}"
