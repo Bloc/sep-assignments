@@ -45,31 +45,32 @@ class OpenAddressing
   # We are hashing based on strings, let's use the ascii value of each string as
   # a starting point.
   def index(key, size)
-      key.sum % size
+    key.sum % self.size
   end
 
   # Given an index, find the next open index in @items
   def next_open_index(index)
-    (index...@size).each do |i|
-      if @items[i] == nil
-        return i
-      end
+    until @items[index].nil?
+      index += 1
     end
-    return -1
+    index >= self.size ?  -1 :  index
   end
 
   # Simple method to return the number of items in the hash
   def size
-    @size
+    @items.size
   end
 
   # Resize the hash
   def resize
-    doubled_ary = Array.new(@size *= 2)
-    @items.compact.each do |i|
-      doubled_ary[index(i.key, @size)] = i
+    original_ary = @items
+    @items = Array.new(original_ary * 2)
+    original_ary.each do |i|
+      if i
+        index = self.index(i.key, @items.length)
+        @items[index] = Node.new(i.key, i.value)
+      end
     end
-    @items = doubled_ary
   end
 
   def load_factor
