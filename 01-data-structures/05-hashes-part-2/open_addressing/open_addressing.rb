@@ -3,8 +3,7 @@ require_relative 'node'
 class OpenAddressing
   def initialize(size)
     @items = Array.new(size)
-    @size = size
-    count = 0
+    @count = 0
   end
 
   def []=(key, value)
@@ -91,5 +90,5 @@ class OpenAddressing
     end
     puts "Load Factor of: #{load_factor}"
   end
-  
+
 end
