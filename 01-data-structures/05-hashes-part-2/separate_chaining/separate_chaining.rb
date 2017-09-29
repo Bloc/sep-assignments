@@ -45,7 +45,7 @@ class SeparateChaining
   # We are hashing based on strings, let's use the ascii value of each string as
   # a starting point.
   def index(key, size)
-
+    key.sum % size
   end
 
   # Calculate the current load factor
