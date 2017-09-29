@@ -62,11 +62,6 @@ class SeparateChaining
 
   # Simple method to return the number of items in the hash
   def size
-
-  end
-
-  # Simple method to return the number of items in the hash
-  def size
     @items.size
   end
 
