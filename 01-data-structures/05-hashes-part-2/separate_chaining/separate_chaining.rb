@@ -65,9 +65,9 @@ class SeparateChaining
 
   end
 
-  # Resize the hash
-  def resize
-
+  # Simple method to return the number of items in the hash
+  def size
+    @items.size
   end
 
 
