@@ -54,7 +54,6 @@ class LinkedList
   def add_to_front(node)
     node.next = @head
     @head = node
-
     if @tail.nil?
       @tail = node
     end
@@ -68,7 +67,6 @@ class LinkedList
       @tail = nil
     elsif !@head.nil?
       @head = node.next
-
       if @head.next.nil?
         @tail = @head
       end
@@ -92,11 +90,9 @@ class LinkedList
   # This method prints out a representation of the list.
   def print
     node = @head
-
     until node.eql?(nil) do
       puts node.data
       node = node.next
     end
   end
-
 end
