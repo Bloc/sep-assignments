@@ -4,7 +4,7 @@ class MinBinaryHeap
   attr_accessor :root
 
   def initialize
-    slef.root = root
+    @root = root
   end
 
   def insert(root, node)
@@ -25,7 +25,7 @@ class MinBinaryHeap
       puts "Ooops. There was an error. Please ensure there are no duplicates and retry."
     end
   end
-  
+
   # Recursive Depth First Search
   def find(root, data)
     return nil if  data.nil?
@@ -47,7 +47,7 @@ class MinBinaryHeap
 
   # Recursive Breadth First Search
   def printf(children=nil)
-    queue = [root] #FIFO
+    queue = [@root] #FIFO
     children = []
 
     until queue.empty?
@@ -56,7 +56,7 @@ class MinBinaryHeap
       queue << sub_root.left if !sub_root.left.nil?
       queue << sub_root.right if !sub_root.right.nil?
 
-      children << "#{sub_root.title : sub_root.rating}"
+      children << "#{sub_root.title} : #{sub_root.rating}"
     end
 
     children.each do |child|
