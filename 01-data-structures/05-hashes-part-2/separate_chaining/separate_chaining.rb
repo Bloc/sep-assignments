@@ -10,7 +10,21 @@ class SeparateChaining
   end
 
   def []=(key, value)
-
+    node = Node.new(key, value)
+    i = index(key, self.size)
+    if @items[i].nil?
+      list = LinkedList.new
+      list.add_to_tail(node)
+      @items[i] = list
+    elsif @items[i].size < 5
+      @items[i].add_to_tail(node)
+    else
+      resize
+      self[key] = value
+    end
+    if self.load_factor > @max_load_factor
+      resize
+    end
   end
 
   def [](key)
