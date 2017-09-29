@@ -28,7 +28,17 @@ class SeparateChaining
   end
 
   def [](key)
-
+    i = index(key, size)
+    if @items[i]
+      current = @items[i].head
+      while !current.eql?(nil)
+        if current.key.eql?(key)
+          return current.value
+        else
+          current = current.next
+        end
+      end
+    end
   end
 
   # Returns a unique, deterministically reproducible index into an array
