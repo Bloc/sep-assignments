@@ -65,5 +65,25 @@ class SeparateChaining
     @items.size
   end
 
+  # Resize the hash
+  def resize
+    original_list = @items
+    @items = Array.new(self.size * 2)
+    original_list.compact.each do |item|
+      until item.size <= 0
+        node = item.remove_front
+        self[node.key] = node.value
+      end
+    end
+  end
+
+  def print
+    loadFactor = ( (@items.compact.size) / self.size.to_f )
+
+    @items.compact.each_with_index do |each, index|
+        puts "Index: #{index} - Value: #{each.inspect}"
+    end
+        puts "Load Factor of: #{loadFactor}"
+  end
 
 end
