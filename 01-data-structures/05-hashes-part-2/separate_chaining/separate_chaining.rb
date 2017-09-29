@@ -50,7 +50,14 @@ class SeparateChaining
 
   # Calculate the current load factor
   def load_factor
+    j = 0.to_f
 
+    (0...self.size).each do |i|
+      if @items[i]
+        j += @items[i].size
+      end
+    end
+    j / self.size
   end
 
   # Simple method to return the number of items in the hash
