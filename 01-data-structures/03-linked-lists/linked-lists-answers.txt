@@ -1,0 +1,8 @@
+1. What is Spatial Locality and why does it benefit performance?
+Answer:
+When a memory location is accessed at a specific time it is likely that contiguous memory
+locations will be accessed subsequently. Because array entries exist in consecutive memory
+locations arrays are much more efficient to traverse which reduces the number of RAM
+lookups.
+
+2. Arrays are significantly faster than linked lists. 

@@ -30,7 +30,7 @@ RSpec.describe OpenAddressing, type: Class do
   end
 
   describe "#hash[key] = value" do
-    it "does not resizes the array when a collision occurs and hash is not full" do
+    it "does not resize the array when a collision occurs and hash is not full" do
       hash = OpenAddressing.new(4)
       hash["key"] = "value"
       expect(hash.size).to eq 4

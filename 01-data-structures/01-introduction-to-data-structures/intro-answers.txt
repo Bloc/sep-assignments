@@ -1,0 +1,35 @@
+LINE
+Q: How does your data structure allow developers to access and manipulate the data?
+
+A: The Line class wraps or holds a members array which sequentially orders the data.
+Every element occupies a data locale within the array, which can be accessed and manipulated by
+the included functions. New data can only be added to the end of the queue.
+
+Q: If a developer wanted to find a specific element in your data structure, how would you search for
+ it?
+
+A: Inspect the sorted array, via the #search method, to see if the data is present.
+
+Q: What other real-world data can each structure represent?
+
+A:  Team competition list, order of performers list, collection of books, product line, grocery list
+
+
+PIXEL & SCREEN
+Q: How does your data structure allow developers to access and manipulate the data?
+
+A: To create and place pixel data objects into the matrix use the insert method and include your
+color specifications. RGB pixels are produced and are assigned to the corresponding variables. If
+the RGB values are invalid default (highest or lowest possible) values are returned.Colors are
+then inserted at the designated X,Y positions of the screen. Data points are found at the intersection
+of the corresponding X and Y arrays.
+
+
+Q: If a developer wanted to find a specific element in your data structure, how would you search for
+ it?
+
+A: To access data at a given screen pixel you would use the #at method .
+
+Q: What other real-world data can each structure represent?
+
+A: This type of matrix could be used to make graphs, a chess game, a game of Xs and Os.
