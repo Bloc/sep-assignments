@@ -85,5 +85,4 @@ class SeparateChaining
     end
         puts "Load Factor of: #{loadFactor}"
   end
-
 end
