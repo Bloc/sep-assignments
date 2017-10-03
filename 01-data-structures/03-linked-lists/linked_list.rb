@@ -6,16 +6,15 @@ class LinkedList
 
   # This method creates a new `Node` using `data`, and inserts it at the end of the list.
   def add_to_tail(node)
-    new_node = Node.new(node)
     if @head == nil
-      @head = new_node.data
-      @tail = new_node.data
+      @head = node
+      @tail = node
     else
       temp_node = @head
       while temp_node.next != nil
         temp_node = temp_node.next
       end
-      @tail = new_node.data
+      @tail = node
       temp_node.next = @tail
     end
   end
@@ -74,14 +73,13 @@ class LinkedList
 
   # This method adds `node` to the front of the list and must set the list's head to `node`.
   def add_to_front(node)
-    new_node = Node.new(node)
     if @head == nil
-      @head = new_node.data
-      @tail = new_node.data
+      @head = node
+      @tail = node
     else
       temp_node = @head
-      @head = new_node.data
-      new_node.data.next = temp_node
+      @head = node
+      node.next = temp_node
     end
   end
 
