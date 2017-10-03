@@ -1,0 +1,29 @@
+1. How does your data structure allow developers to access and manipulate your data?
+
+    For Line, the data is stored in an array, so that the person in the front of the line
+    is at index[0] and the last person in line is at index[length-1].  You can push(<<)
+    new people into the line or delete to remove them from the line.
+
+    For Screen, the data is stored in a matrix, so that elements can be accessed by an x,y
+    coordinate system.  The pixels themselves are stored as an object(hash) to keep a rgb
+    color value and x,y coordinate.
+
+2. If a developer wanted to find a specific element in your data structure, 
+    how would you search for it?
+
+    For Line, there are methods available to find the first, last, or middle person in the
+    line.
+
+    For Screen, there is a method to search for an x,y coordinate to see if a pixel exists
+    there.
+
+3. What other real-world data can each structure represent?
+
+    For Line, this model can represent any data structure that would best be organized by an
+    ordered list.
+
+    For Pixel, this model could represent any object that would have multiple values
+    associated with it.
+
+    For Screen, this model could be used to represent any data structure that is best labeled
+    and organized by coordinates.
