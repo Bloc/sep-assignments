@@ -10,9 +10,8 @@ class LinkedList
       @tail = node
       @head == nil ? @head = node : @head.next = @tail
     else
-      temp_node = @tail
+      @tail.next = node
       @tail = node
-      temp_node.next = @tail
     end
   end
 
