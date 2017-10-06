@@ -6,22 +6,22 @@ class HashClass
 
   def []=(key, value)
     i = index(key, size)
-    resize if @items[i] != nil && @items[i] != value
-    @items[i] = value
+    resize unless @items[i] == nil || @items[i].value == value
+    @items[i] = HashItem.new(key, value)
   end
 
 
   def [](key)
-    @items[index(key, size)]
+    @items[index(key, size)].value
   end
 
   def resize
-    hash_primes = [0, 5, 11, 19, 37, 67, 131, 283]
-    size = [hash_primes.find_index(size) + 1]
     temp_items = @items
-    @items = Array.new(size)
-    temp_items.each_with_index do |key, value|
-      @items[index(key, size)] = value
+    @items = Array.new(size * 2)
+    temp_items.each do |item|
+      unless item == nil
+        @items[index(item.key, size)] = item
+      end
     end
   end
 
@@ -31,7 +31,7 @@ class HashClass
   def index(key, size)
     x = 0
     key.each_codepoint { |c| x += c }
-    x % size
+    (x * key.length) % size
   end
 
   # Simple method to return the number of items in the hash
