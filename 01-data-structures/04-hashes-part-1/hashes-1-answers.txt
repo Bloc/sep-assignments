@@ -1,0 +1,7 @@
+1. Explain why doubling the size of the underlying array of your HashClass may be a poor idea.
+
+    Doubling the size of the array every time there is a conflict would easily cause the
+    array to grow to substantial sizes very quickly.  With the example provided, only
+    6 elements added caused the array to grow from size 6 to 24, so if you had 1,000 
+    elements, the array could easily be very large and have a ton of holes filled with
+    empty values (nil).  This would be very poor for speed and memory allocation.
