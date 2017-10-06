@@ -8,6 +8,7 @@ class HashClass
     i = index(key, size)
     resize unless @items[i] == nil || @items[i].value == value
     @items[i] = HashItem.new(key, value)
+    puts "HashClass: #{@items}, size: #{size}"
   end
 
 
