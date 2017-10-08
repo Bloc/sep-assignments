@@ -30,8 +30,7 @@ class HashClass
   # We are hashing based on strings, let's use the ascii value of each string as
   # a starting point.
   def index(key, size)
-    x = 0
-    key.each_codepoint { |c| x += c }
+    x = key.each_codepoint.sum
     (x * key.length) % size
   end
 
