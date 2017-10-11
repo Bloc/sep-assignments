@@ -1,0 +1,15 @@
+Describe three collision resolution strategies not mentioned here.
+
+    After quite a bit of searching, it seems like the primary collision resolution strategies
+    that are used are Separate Chaining and Open Addressing.  Within Open Addressing, it 
+    appears the primary strategies used are Linear Probing, Quadratic Probing and Double
+    Hashing.  I chose to use Linear Probing for this assignment.
+
+Create your own collision resolution strategy and describe how it works.
+
+    The primary problem I see with all of the hashing functions is the number of empty values
+    in the array.  One strategy I would like to try and see how it works would be similar to 
+    Linear Probing, only it would search both ways.  If array[index] is taken, first look at 
+    array[index + 1] and if it is taken, look at array [index -1], then check array[index + 2]
+    and array [index - 2] and so on until it finds an empty spot.  I'm not sure how efficient
+    that would be in terms of LF, but I did not see any strategies that used an idea like that.
