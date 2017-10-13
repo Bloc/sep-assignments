@@ -4,15 +4,19 @@ class Screen
   attr_accessor :width
   attr_accessor :height
   attr_accessor :matrix
-
+  @@matrix = []
+  
   def initialize(width, height)
+
   end
 
   # Insert a Pixel at x, y
   def insert(pixel, x, y)
+    self.matrix[x][y] = pixel
   end
 
   def at(x, y)
+    self.matrix[x][y]
   end
 
   private
