@@ -1,0 +1,23 @@
+1. How does your data structure allow developers to access and manipulate the data?
+
+The line data structure has a number of methods allowing a developer to access
+and manipulate the data. The front, middle and back methods allow the developer
+to access the person at the front, middle or back of the line. The join method
+allows the developer to add a new person to the back of the line and the leave
+method allows the developer to remove any person in the line.
+
+2. If a developer wanted to find a specific element in your data structure, how would you search for it?
+
+If a developer wanted to find a specific element in the data, they would use
+the search method. The search method takes in a persons name and returns the
+index that they are located at.
+
+3. What other real-world data can each structure represent?
+
+Any data where a first-in-first-out data structure is required would be suitable
+for a data structure similar to the line. For example, financial transactions,
+where there may be some delay for the transaction to complete and several
+transactions are being requested at once. The transactions can be queued to
+the end of the line while they wait to be processed, and if someone decides
+to cancel their transaction before it is processed they can remove it from
+the line. 
