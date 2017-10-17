@@ -1,0 +1,64 @@
+1. Print both Trees to the console and compare the difference between
+    your Binary Search Tree and your Heap.
+
+    Binary Tree Output:
+        Braveheart: 78
+        American Psycho: 68
+        Guardians of the Galaxy: 91
+        Moulin Rouge: 76
+        Stephen King's IT: 85
+        The Dark Knight: 94
+        Scarface: 82
+        Terminator 2: Judgement Day: 93
+        The Princess Bride: 97
+        Fight Club: 79
+        The Departed: 92
+        Full Metal Jacket: 95
+
+    Min Heap Output
+        American Psycho: 68
+        Moulin Rouge: 76
+        Fight Club: 79
+        Braveheart: 78
+        Scarface: 82
+        Stephen King's IT: 85
+        The Dark Knight: 94
+        Guardians of the Galaxy: 91
+        Terminator 2: Judgement Day: 93
+        The Princess Bride: 97
+        The Departed: 92
+        Full Metal Jacket: 95
+
+2. Insert all numbers from 1 to 10000 into both Trees, then use Benchmark
+    to compare performance:
+
+                        Binary Search Tree
+               user     system      total        real
+            5.360000   0.000000   5.360000 (  5.347940)
+            0.000000   0.000000   0.000000 (  0.000205)
+            2.140000   0.020000   2.160000 (  2.153839)
+
+                        Min Heap Tree
+                user     system      total        real
+            0.020000   0.000000   0.020000 (  0.018069)
+            0.000000   0.000000   0.000000 (  0.000007)
+            0.000000   0.000000   0.000000 (  0.000015)
+
+    First test: inserting 10,000 nodes
+    Second test: finding node 5,000
+    Third test: deleting a node
+
+
+3. When would you use a Binary Search Tree and why?
+
+    If you needed to have set positions to map the distance from one node
+    to another you would use a Binary Search Tree since it's always going
+    to be predictable on where a node is located based on the root as all
+    left children will be smaller and right children will be larger.
+
+4. When would you use an Heap and why?
+
+    You would want to implement a Heap for any kind of priority system where
+    you need to access the highest or lowest "ranked" node since it will always
+    shift and rearrange to keep the nodes in order from top to bottom (not left
+    to right like Binary Tree).
