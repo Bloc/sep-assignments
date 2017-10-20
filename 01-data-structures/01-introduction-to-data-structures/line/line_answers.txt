@@ -1,0 +1,9 @@
+1. My data structure allows a developer to add more individuals to a line, but does not allow them to manipulate the position of anyone added to the line. 
+My data structure allows a developer to access the data in several different ways. They can see who is at the front, middle and back of the line, they 
+can search for a specific person to find their position in the line, and they can search to see if a specific person is in line. Developers 
+can also remove individuals from the line.
+
+2. I would search for the element by name (the name of the individual who we are searching for).
+
+3. This data structure can be used to represent any type of data that involves a line (assembly line,
+line at a movie theatre etc.).

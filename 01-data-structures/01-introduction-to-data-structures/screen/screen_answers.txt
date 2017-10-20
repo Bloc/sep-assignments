@@ -1,0 +1,9 @@
+1. This data structure allows developers to add Pixels to a screen and specify what the pixel's overall color is
+and its location on the screen. A developer can also access what pixel is at a particuliar location on the screen.
+
+2. I would search for it by the pixel coordinates. Two pixels may have the same overall color, but they cannot have 
+the same location on a screen, so in order to find a specific element one would have to use the coordinates to find it
+or else risk getting back a different element with the same attributes as the one they were searching for.
+
+3. This data structure can be used to map the locations of certain items using a map overlayed with a matrix. It can also
+be used for graphing trends.
