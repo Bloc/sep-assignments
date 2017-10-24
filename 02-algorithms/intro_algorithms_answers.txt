@@ -1,0 +1,34 @@
+Using proper pseudo-code, describe three or more primitive algorithms used in your day-to-day life.
+
+  * Making-Coffee Algorithm
+    1. boil water
+    2. put cone on top of the coffee pot
+    3. put filter in the cone
+    4. put 3 tablespoons of coffee in the filter
+    5. when water boils, put in carafe and wait one minute
+    6. cover carafe and pour a little water into the cone
+    7. empty coffee pot
+    8. pour cone full of water
+    9. repeat two more times until pot is full
+    10. enjoy!
+
+  * Brushing-Teeth Algorithm
+    1. wet toothbrush head
+    2. put dab of toothpaste on head
+    3. turn on brush
+    4. brush each area for 30 seconds
+    5. turn off brush
+    6. rinse off brush head
+    7. rinse out mouth
+    8. smile
+
+  * Grading-Homework Algorithm
+    1. gather papers together
+    2. loop through papers until there are no more
+      a. read paper
+      b. if there is a mistake and you understand, correct it
+      c. if there is a mistake and you don't understand, underline with a question mark
+      d. grade full, half, or zero for effort
+    3. if there are common mistakes (4 or more students), then note for discussion
+    4. record grade for each homework(loop)
+    5. rest
