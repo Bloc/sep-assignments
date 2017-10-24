@@ -1,0 +1,23 @@
+1. Given the alphabetically sorted collection in this checkpoint, how many iterations would it take to find the value G using linear search?
+
+  It would take 7 iterations using a linear search since it is the seventh item in the array.
+
+2. Given the alphabetically sorted collection in this checkpoint, how many iterations would it take to find the value G using binary search?
+
+  It would take 3 iterations using binary search. On the second iteration, low, mid, and high would be set to "G" instead of "E".
+
+3. Calculate fib(10), fib(11), fib(12) by hand.
+
+fib(10) = fib(9) + fib(8)
+           34    +   21
+                55
+
+fib(11) = fib(10) + fib(9)
+            55    +   34
+                 89
+
+fib(12) = fib(11) + fib(10)
+            89    +    55
+                 144
+
+                 
