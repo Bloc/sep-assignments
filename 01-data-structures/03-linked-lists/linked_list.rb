@@ -9,7 +9,7 @@ class LinkedList
     @tail.next = node if !@tail.nil?
     @tail = node
     @tail.next = nil
-    @head = @tail if @head.nil?
+    @head = node if @head.nil?
   end
 
   # This method removes the last node in the lists and must keep the rest of the list intact.
