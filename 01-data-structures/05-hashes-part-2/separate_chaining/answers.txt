@@ -1,0 +1,58 @@
+-Output of print method for my hash class.
+
+irb(main):013:0> h["key1"] = "value1"
+=> "value1"
+irb(main):014:0> h["key2"] = "valuetwo"
+=> "valuetwo"
+irb(main):015:0> h["key3"] = "valuethree"
+=> "valuethree"
+irb(main):016:0> h["key4"] = "valuefour"
+=> "valuefour"
+irb(main):017:0> h["key5"] = "valuefive"
+=> "valuefive"
+irb(main):018:0> h.print
+{
+        key1: value1,
+        key2: valuetwo,
+        key3: valuethree,
+        key4: valuefour,
+        key5: valuefive,
+}
+Load factor: 0.625
+=> nil
+irb(main):019:0>
+
+Describe three collision resolution strategies not mentioned here.
+
+1. hopscotch Hashing - is a variation of open addressing. Each bucket has a
+neighbourhood of nearby consecutive buckets. The length of the neighbourhood is
+such that the cost of finding an item in the neighbourhood is close to the cost
+of finding an item in its intended bucket, for example, having each bucket in
+a neighbourhood fall within the same cache line. When a collision occurs during
+insertion, the hash function will search for an empty bucket inside the
+neighbourhood of the intended bucket. If an empty bucket exists in the
+neighbourhood the item will be placed there, otherwise, the Hash will be resized
+and rehashed.
+
+2. 2 choice hashing - Similar to Cuckoo hashing, 2 choice utilizes two hashing
+functions. When a value is inserted into the table, two separate hash functions
+are computed, and the value is inserted into the bucket which contains the fewest
+number of values.
+
+3. Coalesced hashing - is a hybrid of separate chaining and open addressing.
+When a collision occurs, coalesced hashing uses a similar technique to separate
+chaining, but uses buckets inside the hash table rather than new nodes. The new
+node will be placed in the first available bucket inside the hash table, and a
+link will be created between the chain and the bucket. 
+
+
+2. Create your own collision resolution strategy and describe how it works.
+
+A possible collision resolution strategy might be to similar to separate chaining,
+but rather than using a linked list for collisions, the hash would use create a
+new hash at the location of the collision, to store the conflicting attributes.
+The secondary hash would use a different hashing function in order to avoid a
+second collision on the new hash creation. If a collision were to occur on the
+secondary hash, it would first attempt to resize and rehash the secondary hash,
+if a collision still occurs, the primary hash would be resized. When searching,
+the hash would search the primary hash, followed by the secondary hash.
