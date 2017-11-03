@@ -4,7 +4,7 @@ require_relative 'binary_search_tree'
 
 RSpec.describe BinarySearchTree, type: Class do
   let (:root) { Node.new("The Matrix", 87) }
-
+  
   let (:tree) { BinarySearchTree.new(root) }
   let (:pacific_rim) { Node.new("Pacific Rim", 72) }
   let (:braveheart) { Node.new("Braveheart", 78) }

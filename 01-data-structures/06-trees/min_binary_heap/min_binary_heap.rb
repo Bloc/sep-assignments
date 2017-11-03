@@ -1,67 +1,68 @@
 require_relative 'node'
 
 class MinBinaryHeap
-  attr_accessor :root
+  attr_reader :root
 
-  def initialize
+  def initialize(root)
     @root = root
   end
 
-  def insert(root, node)
-    if root.rating > node.rating
-      current_root = root
-      root = node
-      node = current_root
-      insert(root, node)
-    elsif root.left.nil?
+def insert(root, node)
+
+  if root.rating > node.rating
+    temp = root
+    @root = node
+    node = temp
+    insert(@root, node)
+  else
+    if root.left.nil?
       root.left = node
-    elsif !root.left.nil? && root.right.nil?
+    elsif root.right.nil? && root.left != nil
       root.right = node
-    elsif (!root.left.nil? && !root.right.nil? ) && (!root.left.left.nil? && !root.left.right.nil?)
+    elsif root.left != nil && root.right != nil && root.left.left != nil && root.left.right != nil
       insert(root.right, node)
-    elsif !root.left.nil? && !root.right.nil?
+    elsif root.left != nil && root.right != nil
       insert(root.left, node)
-    else
-      puts "Ooops. There was an error. Please ensure there are no duplicates and retry."
     end
   end
+end
 
-  # Recursive Depth First Search
   def find(root, data)
-    return nil if  data.nil?
-
-    if root.title.eql?(data)
-      return root
-    elsif !root.left.nil?
-      find(root.left, data)
-    elsif !root.right.nil?
-      find(root.right, data)
+    if root.nil? || data.nil?
+      return nil
+    else
+      if root.title == data
+        return root
+      elsif root.left != nil
+        find(root.left, data)
+      elsif root.right != nil
+        find(root.right, data)
+      end
     end
   end
 
   def delete(root, data)
-    return nil if data.nil?
-    remove = find(root, data)
-    remove.title, remove.rating = nil, nil
-  end
-
-  # Recursive Breadth First Search
-  def printf(children=nil)
-    queue = [@root] #FIFO
-    children = []
-
-    until queue.empty?
-      sub_root = queue.slice!(0)
-
-      queue << sub_root.left if !sub_root.left.nil?
-      queue << sub_root.right if !sub_root.right.nil?
-
-      children << "#{sub_root.title} : #{sub_root.rating}"
-    end
-
-    children.each do |child|
-      puts child
+    if  data.nil?
+      return nil
+    else
+      target_node = find(root, data)
+      target_node.nil? ? nil : (target_node.title = nil && target_node.rating = nil)
     end
   end
 
+  def printf
+    queue = [@root]
+    output = []
+    while queue.length > 0
+      new_root = queue.shift
+      if new_root.left != nil
+        queue.push(new_root.left)
+      end
+      if new_root.right != nil
+        queue.push(new_root.right)
+      end
+      output.push("#{new_root.title}: #{new_root.rating}")
+    end
+    output.each {|x| puts x}
+  end
 end
