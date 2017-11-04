@@ -7,10 +7,10 @@ class SeparateChaining
     @max_load_factor = 0.7
   end
 
-  def []=(key, value)
+  def []=(key, value) #setter
   end
 
-  def [](key)
+  def [](key) #getter
   end
 
   # Returns a unique, deterministically reproducible index into an array
