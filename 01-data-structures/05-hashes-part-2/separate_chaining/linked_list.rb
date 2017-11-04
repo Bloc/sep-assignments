@@ -64,4 +64,12 @@ class LinkedList
   def remove_front
     @head = @head.next
   end
+
+  def find_value(key)
+    @find_node = @head
+    until @find_node.key === key || @find_node.next.nil?
+      @find_node = @find_node.next
+    end
+    @find_node.value
+  end
 end
