@@ -20,22 +20,15 @@ class SeparateChaining
       #create a linked list and assign the head and next
       @items[hash_index] = LinkedList.new
       @items[hash_index].add_to_tail(new_item)
-
-      #@items[index(key,size)] = new_item
-      puts "no collision - added #{@items[hash_index]} : index: #{hash_index} : items: #{@total_items}"
     else
       # Else if the key of index does not equal key of the new item
       # there is a collison get the linked list and insert infront
       llist = @items[hash_index]
       llist.add_to_front(new_item)
-
-      puts "collision resolved : items: #{@total_items}"
-      #@items[index(key,size)] = new_item
     end
   end
 
   def [](key) #getter
-    puts "Get: #{key}"
     get_index = index(key,size) #this is where the liked list is
     llist = @items[get_index]
     return llist.find_value(key)
@@ -54,7 +47,6 @@ class SeparateChaining
 
   # Calculate the current load factor
   def load_factor
-    puts "***** total items: #{@total_items} Hash table size: #{size} : LOAD FACTOR: #{@total_items.fdiv(size)}"
     return (@total_items.fdiv(size))
   end
 
@@ -69,14 +61,11 @@ class SeparateChaining
     temp_items = @items
     new_size = @items.length * 2
     @items = Array.new(new_size)
-    puts "**** resizing array"
     temp_items.each do |x|
       if !x.nil?
         llist = x
-        puts "LinkedList: #{llist}"
         old_node = llist.head
         until old_node == nil
-          puts "llist #{old_node.key} => #{old_node.value}"
           #every item has to be reidexed
           new_item = Node.new(old_node.key,old_node.value)
           hash_index = index(old_node.key, size)
@@ -89,19 +78,7 @@ class SeparateChaining
           end
           old_node = old_node.next
         end
-      else
-        puts "EMPTY"
       end
-      # llist = x #linked list
-      # next_node = llist.head
-      # until next_node.next == nil
-      #   puts "Key: #{next_node.key} => #{next_node.value}"
-      #   next_node = next_node.next
-      # end
-      # if !x.nil?
-      #   new_item = HashItem.new(x.key,x.value)
-      #   @items[index(x.key,new_size)] = new_item
-      # end
     end
   end
 end
