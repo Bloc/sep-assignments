@@ -1,16 +1,18 @@
 require_relative 'node'
 
-class BinarySearchTree
+class BinaryHeap
 
   def initialize(root)
     @root = root
   end
 
   def insert(root, node)
-    if root.rating <= node.rating
-      root.right == nil ? root.right = node : insert(root.right, node)
-    else
-      root.left == nil ? root.left = node : insert(root.left, node)
+    insert_next(root, node)
+
+    parent = find_parent(root, node.title)
+
+    if node.rating < parent.rating
+      swap(node, parent)
     end
   end
 
@@ -73,7 +75,6 @@ class BinarySearchTree
     stack.push(root)
     while !stack.empty? do
       current = stack.pop
-      #puts current.right.title
       if (current.left.is_a?(Node) && current.left.title == data) || (current.right.is_a?(Node) && current.right.title == data)
         return current
         break
@@ -86,5 +87,42 @@ class BinarySearchTree
         end
       end
     end
+  end
+
+  def insert_next(root, node)
+    queue = []
+
+    queue.push root
+    while !queue.empty? do
+      current = queue.shift
+      if current.left == nil
+        current.left = node
+        break
+      else
+        queue.push(current.left)
+      end
+      if current.right == nil
+        current.right = node
+        break
+      else
+        queue.push(current.right)
+      end
+    end
+  end
+
+  def swap(node, parent)
+    temp_title = node.title
+    temp_rating = node.rating
+    node.title = parent.title
+    node.rating = parent.rating
+    parent.title =  temp_title
+    parent.rating = temp_rating
+
+    new_parent = find_parent(@root, parent.title)
+
+    if new_parent != nil && parent.rating < new_parent.rating
+      swap(parent, new_parent)
+    end
+
   end
 end
