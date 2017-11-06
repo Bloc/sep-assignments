@@ -1,0 +1,85 @@
+Binary search tree
+Input Order:
+
+irb(main):022:0>        tree.insert(root, hope)
+=> #<Node:0x3b3ac48 @title="Star Wars: A New Hope", @rating=93, @left=nil, @right=nil>
+irb(main):023:0>        tree.insert(root, empire)
+=> #<Node:0x3a40730 @title="Star Wars: The Empire Strikes Back", @rating=94, @left=nil, @right
+irb(main):024:0>        tree.insert(root, jedi)
+=> #<Node:0x3cd95d8 @title="Star Wars: Return of the Jedi", @rating=80, @left=nil, @right=nil>
+irb(main):025:0>        tree.insert(root, martian)
+=> #<Node:0x3a689f0 @title="The Martian", @rating=92, @left=nil, @right=nil>
+irb(main):026:0>        tree.insert(root, pacific_rim)
+=> #<Node:0x3b84c88 @title="Pacific Rim", @rating=72, @left=nil, @right=nil>
+irb(main):027:0>        tree.insert(root, inception)
+=> #<Node:0x3a58760 @title="Inception", @rating=86, @left=nil, @right=nil>
+irb(main):028:0>        tree.insert(root, braveheart)
+=> #<Node:0x385cfe0 @title="Braveheart", @rating=78, @left=nil, @right=nil>
+irb(main):029:0>        tree.insert(root, shawshank)
+=> #<Node:0x3b75c70 @title="The Shawshank Redemption", @rating=91, @left=nil, @right=nil>
+irb(main):030:0>        tree.insert(root, district)
+=> #<Node:0x3e4a368 @title="District 9", @rating=90, @left=nil, @right=nil>
+irb(main):031:0>        tree.insert(root, mad_max_2)
+=> #<Node:0x3ac4b20 @title="Mad Max 2: The Road Warrior", @rating=98, @left=nil, @right=nil>
+
+printf results:
+
+The Matrix: 87
+Star Wars: Retur
+Star Wars: A New
+Pacific Rim: 72
+Inception: 86
+The Martian: 92
+Star Wars: The E
+Braveheart: 78
+The Shawshank Re
+Mad Max 2: The R
+District 9: 90
+
+Binary heap
+Input Order:
+
+irb(main):019:0>        tree.insert(root, hope)
+=> nil
+irb(main):020:0>        tree.insert(root, empire)
+=> nil
+irb(main):021:0>        tree.insert(root, jedi)
+=> nil
+irb(main):022:0>        tree.insert(root, martian)
+=> nil
+irb(main):023:0>        tree.insert(root, pacific_ri
+=> nil
+irb(main):024:0>        tree.insert(root, inception)
+=> nil
+irb(main):025:0>        tree.insert(root, braveheart
+=> nil
+irb(main):026:0>        tree.insert(root, shawshank)
+=> nil
+irb(main):027:0>        tree.insert(root, district)
+=> nil
+irb(main):028:0>        tree.insert(root, mad_max_2)
+
+printf results:
+
+Pacific Rim: 72
+Braveheart: 78
+Star Wars: Return of the Jedi: 8
+The Matrix: 87
+District 9: 90
+Star Wars: The Empire Strikes Ba
+Inception: 86
+Star Wars: A New Hope: 93
+The Shawshank Redemption: 91
+The Martian: 92
+Mad Max 2: The Road Warrior: 98
+
+2. Benchmark results:
+
+***Create binary tree and binary heap of 10,000 length***
+       user     system      total        real
+Binary Search Tree  5.437000   0.000000   5.437000 (  5.478531)
+Binary Heap        22.735000   0.000000  22.735000 ( 23.403288)
+***Finds 5,000th element***
+       user     system      total        real
+Binary Search Tree  0.000000   0.000000   0.000000 (  0.001276)
+Binary Heap         0.000000   0.000000   0.000000 (  0.001320)
