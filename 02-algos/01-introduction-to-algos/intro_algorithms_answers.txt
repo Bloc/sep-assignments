@@ -1,0 +1,31 @@
+1. Using proper pseudo-code, describe three or more primitive algorithms used in your day-to-day life.
+
+1. Calculate a tip:
+
+READ total bill
+CASE service quality OF
+  Excellent : Return total bill * 0.20
+  Good : Return total bill * 0.15
+  Fair : Return total bill * 0.05
+  Poor : Return 0
+ENDCASE
+
+2. Determining what to wear:
+CHECK Closet
+IF NO Clean Clothes
+  CALL FUNCTION Do Laundry
+ENDIF
+
+IF Today IS Weekend
+  SELECT Comfy Clothes
+ELSIF Today IS Weekday
+  SELECT Nice Clothes
+ENDIF
+
+3. Getting to work:
+Walk FROM house TO car
+START car
+REVERSE FROM driveway
+DRIVE along roads
+PULL INTO parking lot
+GET OUT of car

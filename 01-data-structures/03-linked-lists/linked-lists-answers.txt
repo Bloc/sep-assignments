@@ -1,0 +1,23 @@
+1. What is Spatial Locality and why does it benefit performance?
+
+Spatial Locality refers to the use of multiple elements of data within close
+proximity to each other. For example when pulling a piece of data from memory
+to the cache, the computer will retrieve a range of data, reducing the number
+of times it must read from memory. It benefits performance, because reading
+from memory takes longer than reading from cache, so if the computer could
+make fewer calls to memory, it will improve performance.
+
+2. Compare the performance of an Array to a Linked List using the Benchmark module.
+
+  ***create list/array with 10,000 items***
+         user     system      total        real
+  array        0.000000   0.000000   0.000000 (  0.001862)
+  linked list  0.000000   0.000000   0.000000 (  0.001391)
+  ***access 5000th element***
+         user     system      total        real
+  array        0.000000   0.000000   0.000000 (  0.000003)
+  linked list  0.000000   0.000000   0.000000 (  0.000002)
+  ***remove 5000th element***
+         user     system      total        real
+  array        0.000000   0.000000   0.000000 (  0.000002)
+  linked list  0.000000   0.000000   0.000000 (  0.000006)

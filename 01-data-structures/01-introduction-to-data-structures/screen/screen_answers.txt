@@ -1,0 +1,19 @@
+1. How does your data structure allow developers to access and manipulate the data?
+
+The screen data structure has insert and at methods to access and manipulate
+data. The insert method inserts a pixel at the specified coordinates on the
+screen. The at method displays the pixel at the specified coordinates.
+
+2. If a developer wanted to find a specific element in your data structure, how would you search for it?
+
+The developer would us the at method to search for a specified element. The at
+method takes in x and y coordinates of the element, and returns the information
+for the pixel at location.
+
+3. What other real-world data can each structure represent?
+
+The multi-dimensional array can be used to store data with multiple attributes,
+similar to the use of objects. An example could be the use of a
+multi-dimensional array to store user information as an array of arrays.
+Another example is the use of multi-dimensional arrays to represent information
+to be displayed in a table. 
