@@ -1,0 +1,73 @@
+kevin_bacon = {
+  "Apollo 13" = [tom_hanks, bill_paxton, gary_sinise]
+  "Footloose" = [lori_singer, dianne_wiest, john_lithgow]
+}
+
+tom_hanks = {
+  "Apollo 13" = [kevin_bacon, bill_paxton, gary_sinise]
+  "Big" = [elizabeth_perkins, robert_loggia, john_heard]
+}
+
+bill_paxton = {
+  "Apollo 13" = [kevin_bacon, tom_hanks, gary_sinise]
+  "Twister" = [helen_hunt, jami_gertz, cary_elwes]
+}
+
+gary_sinise = {
+  "Apollo 13" = [kevin_bacon, bill_paxton, tom_hanks]
+}
+
+lori_singer = {
+  "Footloose" = [kevin_bacon, dianne_wiest, john_lithgow]
+}
+
+dianne_wiest = {
+  "Footloose" = [kevin_bacon, lori_singer, john_lithgow]
+}
+
+john_lithgow = {
+  "Footloose" = [kevin_bacon, dianne_wiest, lori_singer]
+  "Shrek" = [mike_meyers, eddie_murphy]
+}
+
+elizabeth_perkins ={
+  "Big" = [tom_hanks, robert_loggia, john_heard]
+  "Ghostbusters" = [melissa_mccarthy]
+}
+
+robert_loggia = {
+  "Big" = [elizabeth_perkins, tom_hanks, john_heard]
+  "Scarface" = [al_pachino]
+}
+
+john_heard = {
+  "Big" = [elizabeth_perkins, robert_loggia, tom_hanks]
+}
+
+helen_hunt = {
+  "Twister" = [bill_paxton, jami_gertz, cary_elwes]
+}
+
+jami_gertz = {
+  "Twister" = [helen_hunt, bill_paxton, cary_elwes]
+}
+
+cary_elwes = {
+  "Twister" = [helen_hunt, jami_gertz, bill_paxton]
+}
+
+mike_meyers = {
+  "Shrek" = [john_lithgow, eddie_murphy]
+}
+
+eddie_murphy = {
+  "Shrek" = [mike_meyers, john_lithgow]
+}
+
+melissa_mccarthy = {
+  "Ghostbusters" = [elizabeth_perkins]
+}
+
+al_pachino = {
+  "Scarface" = [robert_loggia]
+}
