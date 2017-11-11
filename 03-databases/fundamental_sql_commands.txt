@@ -1,0 +1,158 @@
+Checkpoint 3: Fundamental SQL Commands
+
+1. List the commands for adding, updating, and deleting data
+
+  CREATE TABLE creates a table of data with column names and data types.
+  INSERT INTO adds data to a table.
+  UPDATE changes data that exists within a table.
+  DELETE FROM deletes data from a table.
+  ALTER TABLE changes a tables schema, allowing columns to be added or deleted.
+  DROP TABLE deletes an entire table.
+
+2. Explain the structure for each type of command.
+
+  CREATE TABLE table_name (
+    column_name1 data_type,
+    column_name2 data_type
+  );
+  # Columns are declared with the data type that will populate the column(one of 40+ types).
+
+  INSERT INTO table_name (column_name1, column_name2) VALUES (value1, value2);
+  # Column names are optional and values can be added for several rows in one statement. Care should be taken to ensure that values are populating the correct cells.
+
+  UPDATE table_name SET column_name1=value1 WHERE column_name2=value2;
+  # Cells within columns are selected and changed to the new value (value1). A 'WHERE' statement is often used to pinpoint which cell or cells are to be changed.
+
+  DELETE FROM table_name WHERE column_name1=value1 AND column_name2=value2;
+  # Cells within columns are selected and deleted from the table using a 'WHERE' statement to choose which ones to delete.
+
+  ALTER TABLE table_name ADD COLUMN new_column_name data_type;
+  # Adds a column into the table setting the data type. A default value can be set using 'SET DEFAULT value'. Columns can also be deleted from the table using 'DROP COLUMN column_name'.
+
+  DROP TABLE table_name;
+  # Deletes the entire table, forever.
+
+3. What are some of the data types that can be used in tables? Give a real world example of each.
+
+  datetimes: 11/12/2017 22:10:59
+  float(size, decimals): 12.99
+  smallmoney: Monetary data from -922,337,203,685,477.5808 to 922,337,203,685,477.5807
+  money: Monetary data from -214,748.3648 to 214,748.3647
+  uniqueidentifier: GUID(globally unique identifier)
+
+4. Think through how to create a new table to hold a list of people invited to a wedding. This table needs to have first and last name, whether they sent in their RSVP, the number of guests they are bringing, and the number of meals (1 for adults and 1/2 for children).
+
+  a) Which data type would you use to store each of the following pieces of information?
+
+    1)First and last name: varchar
+    2)Whether they sent in their RSVP: boolean
+    3)Number of guests: int(2)
+    4)Number of meals: int(2)
+
+  b) Write a command that makes the table to track the wedding.
+
+    CREATE TABLE wedding (
+      name varchar,
+      rsvp boolean,
+      num_guests int(2),
+      num_meals int(2)
+    );
+
+  c) Using the table we just created, write a command that adds a column to track whether they were sent a thank you card.
+
+    ALTER TABLE wedding ADD COLUMN thank_you_sent boolean SET DEFAULT true;
+
+  d) You have decided to move the data about the meals to another table, so write a command to remove the column storing the number meals from the wedding table.
+
+    ALTER TABLE wedding DROP COLUMN num_meals;
+
+  e) The guests are going to need a place to sit at the reception, so write a statement that adds a column for table number.
+
+    ALTER TABLE wedding ADD COLUMN table_num int(2);
+
+  f) The wedding is over and we do not need to keep this information, so write a command that deletes the wedding table from the database.
+
+    DROP TABLE wedding;
+
+5. Write a command to make a new table to hold the books in a library with the columns ISBN, title, author, genre, publishing date, number of copies, and available copies.
+
+  CREATE TABLE books (
+    isbn int(13),
+    title varchar,
+    author varchar,
+    genre varchar,
+    publish_date date,
+    copies_num int(5),
+    copies_available int(5)
+  );
+
+  a) Find three books and add their information to the table.
+
+    INSERT INTO books (isbn, title, author, genre, publish_date, copies_num, copies_available) VALUES
+    (9781617291692, 'The Well-Grounded Rubyist', 'David A. Black', 'Computer Science', 2014-1-1, 5, 1),
+    (9780819571472, 'Silence in the Snowy Fields', 'Robert Bly', 'Poetry', 1962-1-1, 1, 0),
+    (0345336275, 'Foundation', 'Isaac Asimov', 'Science Fiction', 1951-3-1, 2, 1);
+
+  b) Say that someone has just checked out one of the books. Change the available copies column to 1 less.
+
+    UPDATE books SET copies_available= copies_available - 1 WHERE isbn=0345336275;
+
+  c) Now one of the books has been added to the banned books list. Remove it from the table.
+
+    DELETE FROM books WHERE isbn=9780819571472;
+
+6. Write a command to make a new table to hold spacecrafts. Information should include id, name, year launched, country of origin, a brief description of the mission, orbiting body, if it is currently operating, and approximate miles from Earth.
+
+  CREATE TABLE spacecraft (
+    id int,
+    name varchar,
+    launch_yr int,
+    origin_country varchar,
+    mission text,
+    orbiting_body varchar,
+    operational boolean,
+    miles_from_earth int
+  );
+
+  a) Add 3 non-Earth-orbiting satellites to the table.
+
+    INSERT INTO spacecraft (id, name, launch_yr, origin_country, mission, orbiting_body, operational, miles_from_earth) VALUES
+    (1, 'Voyager 1', 'United States', 'study the outer solar system', 'Jupiter, Saturn', true, 13109892100),
+    (2, 'Juno', 'United States', 'study the planet Jupiter', 'Jupiter', true, 597137715),
+    (3, 'New Horizons', 'United States', 'study Pluto and the Kuiper Belt', 'Pluto', true, 376000000);
+
+  b) Remove one of the satellites from the table since it has just been crashed into the planet.
+
+    DELETE FROM spacecraft WHERE name='New Horizons';
+
+  c) Edit another satellite because it is no longer operating and change the value to reflect that.
+
+    UPDATE spacecraft SET operational=false WHERE name='Juno';
+
+7. Write a command to make a new table to hold the emails in your inbox. This table should include an id, the subject line, the sender, any additional recipients, the body of the email, the timestamp, whether or not it’s been read, and the id of the email chain it’s in.
+
+  CREATE TABLE emails (
+    id int,
+    subject varchar,
+    sender varchar,
+    recipients varchar,
+    body text,
+    time_sent timestamp,
+    read boolean,
+    chain_id int
+  );
+
+  a) Add 3 new emails to the inbox.
+
+    INSERT INTO emails (id, subject, sender, recipients, body, time_sent, read, chain_id) VALUES
+    (1, 'Welcome!', 'verizon@verizon.net', '', 'Some email body', '2017-01-01 06:30:01', true, nil),
+    (2, 'Sale', 'scamforyou@faker.com', 'anotherfool@everymail.com', '$100 dollar pencils...act now!', '2017-11-01 24:30:01', false, 1),
+    (3, 'Important Job Offer', 'supercool@tech.co', '', 'Hey! Got a job for you...so call.', '2017-12-25 23:30:01', true, nil);
+
+  b) You’ve just deleted one of the emails, so write a command to remove the row from the inbox table.
+
+    DELETE FROM emails WHERE id=2;
+
+  c) You started reading an email but just heard a crash in another room. Mark the email as unread before investigating, so you can come back to it later.
+
+    UPDATE emails SET read=false WHERE id=3;
