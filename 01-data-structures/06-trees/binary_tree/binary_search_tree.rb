@@ -9,47 +9,60 @@ class BinarySearchTree
   end
 
   def insert(root, node)
-
-    @new_node = node
-    @current_node = root
-    @leaf_found = false
-
-    if (node.rating < @root.rating) && (root.left.nil?)
-      @root.left = @new_node
-      puts "root left node set"
-    elsif (node.rating >= @root.rating) && root.right.nil?
-      @root.right = @new_node
-      puts "root right node set"
-    else
-      until @leaf_found === true do
-        puts "dig deeper"
-        if @new_node.rating < @current_node.rating
-          if @current_node.left.nil?
-            @current_node.left = @new_node
-            @left_found = true
-          else
-            @current_node = @current_node.left
-          end
-        else
-          if @current_node.right.nil?
-            @current_node.right = @new_node
-            @leaf_found = true
-          else
-            @current_node = @current_node.right
-          end
-        end
+    if node.rating < root.rating #go left
+      if root.left.nil?
+        root.left = node
+      else # insert again - new root is root.left
+        insert(root.left, node)
+      end
+    elsif node.rating > root.rating
+      if root.right.nil?
+        root.right = node
+      else # insert again - new root is root.right
+        insert(root.right, node)
       end
     end
   end
 
-  # Recursive Depth First Search
   def find(root, data)
+    if data.nil?
+      return nil
+    else
+      if root.title == data
+        return root
+      elsif root.left != nil
+        find(root.left, data)
+      elsif root.right !=nil
+        find(root.right, data)
+      end
+    end
   end
 
   def delete(root, data)
+    return nil if data.nil?
+    #find the node
+    node = find(root,data)
+    #does it have any child nodes?
+    if node.nil?
+      return nil
+    else
+      node.title = nil
+      node.rating = nil
+    end
   end
 
   # Recursive Breadth First Search
   def printf(children=nil)
+    
+    tree_output = [@root]
+    tree_output.each do |node|
+      tree_output.push(node.left) if !node.left.nil?
+      tree_output.push(node.right) if !node.right.nil?
+    end
+
+    tree_output.each do |node|
+      puts "#{node.title}: #{node.rating}"
+    end
+
   end
 end

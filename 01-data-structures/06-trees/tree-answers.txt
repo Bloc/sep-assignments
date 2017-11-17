@@ -1,0 +1,86 @@
+BinarySearchTree
+
+The Matrix: 87
+Donnie Darko: 85
+Mad Max 2: The Road Warrior: 98
+Pacific Rim: 72
+Star Wars: A New Hope: 93
+Star Wars: Return of the Jedi: 80
+District 9: 90
+Star Wars: The Empire Strikes Back: 94
+Braveheart: 78
+The Shawshank Redemption: 91
+
+
+MinBinaryHeap
+
+Pacific Rim: 72
+Braveheart: 78
+Donnie Darko: 85
+The Matrix: 87
+Star Wars: Return of the Jedi: 80
+Mad Max 2: The Road Warrior: 98
+District 9: 90
+Star Wars: A New Hope: 93
+The Shawshank Redemption: 91
+Star Wars: The Empire Strikes Back: 94
+
+1) So what is the difference between a binary_search_tree and
+a min_binary_heap?
+
+  You can see in the output above that they do produce very different
+  results with different goals. The Binary Search Tree is used to find
+  valued items quickly, traversing down the tree according to the value
+  that is used to sort this tree. Smaller items to the left of the tree
+  and larger items to the right. You would use this type of sort to quickly
+  sort through large data.
+
+  In a Min Binary Heap, the smallest (or larges Max Heap) value always bubbles
+  to the top of the tree. So uses for this would be cases where the min or max value
+  is highly desired when accessing this data structure (priority queues, etc.).
+  In general the remaining values are largely unsorted.
+
+2) Insert all numbers from 1 to 100000 into both Trees, then use Benchmark to compare
+performance: How much time does an average insertion consume in the Binary Search Tree
+compared to the Heap?
+
+  Insertion via the BST takes much longer than MinBinaryHeap insert. The data below shows
+  it all:
+
+  BinarySearchTree (8 seconds)
+  #<Benchmark::Tms:0x007ff9d302ff88 @label="", @real=8.193295999895781, @cstime=0.0, @cutime=0.0, @stime=0.009999999999999998, @utime=8.17, @total=8.18>
+
+  MinBinaryHeap (less than .08 seconds)
+  #<Benchmark::Tms:0x007fe3147a50e0 @label="", @real=0.08604500000365078, @cstime=0.0, @cutime=0.0, @stime=0.0, @utime=0.07999999999999999, @total=0.07999999999999999>
+
+3) How much time does finding 5000 in the Binary Search Tree consume compared to the Heap?
+
+  Giving the structure of the tree and the load of the test, the trees look relatively
+  similar. However, by function, the BinarySearchTree will perform much faster than
+  the MinBinaryHeap.
+
+  BinarySearchTree
+  #<Benchmark::Tms:0x007fec66d903f0 @label="", @real=0.0010149998124688864, @cstime=0.0, @cutime=0.0, @stime=0.0, @utime=0.010000000000001563, @total=0.010000000000001563>
+
+  MinBinaryHeap
+  #<Benchmark::Tms:0x007f89fc84a9f8 @label="", @real=0.0005630000960081816, @cstime=0.0, @cutime=0.0, @stime=0.0, @utime=0.0, @total=0.0>
+
+4) How much time does the average deletion consume in a Binary Search Tree compared to the Heap?
+   You can see that a Binary Search Tree tends to take slightly more time in this example. Heaps
+   can cause the entire tree to be reorganized since they are not sorted.
+
+  BinarySearchTree
+  #<Benchmark::Tms:0x007fec6713f5c8 @label="", @real=0.000986000057309866, @cstime=0.0, @cutime=0.0, @stime=0.0, @utime=0.0, @total=0.0>
+
+  MinBinaryHeap
+  #<Benchmark::Tms:0x007f89fd949b50 @label="", @real=0.000556000042706728, @cstime=0.0, @cutime=0.0, @stime=0.0, @utime=0.0, @total=0.0>
+
+5) When would we use binary search tree? and Why?
+  We would use a binary search tree if "search" was a priority function to this data structure.
+  We can see from the examples that it is very efficient at searching by the way the tree is
+  built and maintained. It is also more efficient at adding and removing items from this data structure.
+
+6) When would you use an Heap and why?
+  We would use Heaps as a data structure in examples where the min and max value are important in a
+  large group of data. Imagine a stack of jobs and this stack (heap) needs to prioritize the highest
+  priority. A heap will manage that. It is not efficient at sorting or adding/removing items, though.
