@@ -1,0 +1,168 @@
+Checkpoint 6: JOIN statements
+
+1. How do you find data that is held in two separate data tables?
+
+  Data can be found using a JOIN statement to combine the data.
+
+2. Explain, in your own words, the difference between a CROSS JOIN, INNER JOIN, LEFT OUTER JOIN, RIGHT OUTER JOIN, and FULL OUTER JOIN. Give a real world example for each.
+
+  a) CROSS JOIN: outputs a table with all combinations of rows from the tables entered.
+    A CROSS JOIN could be used to find all possible combinations of meals on a menu. (ie. main dish, side)
+    SELECT * FROM main_dish CROSS JOIN sides;
+
+  b) INNER JOIN: creates a join table where rows are populated with data that satisfy the criteria from both table1 and table2. This is the default JOIN method.
+    If we want to know which workers have been assigned to which shift, we can use INNER JOIN to find that out.
+    SELECT workers.name, shifts.shift_time
+      FROM workers
+      JOIN shifts
+      ON workers.shift_id = shifts.id;
+
+  c) LEFT OUTER JOIN: first inner joins, then adds rows from table1 where the criteria in table2 is not met. (Opposite of RIGHT OUTER JOIN.)
+    If we want to know that status of all current employees, then we can use a LEFT OUTER JOIN to find the shift status for all employees.
+    SELECT workers.name, shifts.shift_time
+      FROM workers
+      LEFT OUTER JOIN shifts
+      ON workers.shift_id = shifts.id;
+
+  d) RIGHT OUTER JOIN: first performs INNER JOIN, then adds rows from table2 where criteria in table1 is not met. (Opposite of LEFT OUTER JOIN.)
+    If we want to know the status of all shifts, then we can perform a RIGHT OUTER JOIN to find if all shifts have been filled or are not filled.
+    SELECT workers.name, shifts.shift_time
+      FROM workers
+      RIGHT OUTER JOIN shifts
+      ON workers.shift_id = shifts.id;
+
+  e) FULL OUTER JOIN: Is a combination of LEFT and RIGHT OUTER JOIN, so that if the join criteria is not met for either table, a row will be created.
+    If we want to have a complete schedule of our shifts and employees, then we could use a FULL OUTER JOIN to help us match workers without shifts to possible shifts.
+    SELECT workers.name, shifts.shift_time
+      FROM workers
+      FULL OUTER JOIN shifts
+      ON workers.shift_id = shifts.id;
+
+3. Define primary key and foreign key. Give a real world example for each.
+
+  Primary key is the unique key used to identify a row in a table, while a foreign key is used to identify a row in another table where the key is the primary key.
+
+  An example would be the license plate of your car as the primary key to identify the car in a table of cars, but as a foreign key in a table of drivers.
+
+4. Define aliasing.
+
+  Aliasing simply assigns a new name to a column for output purposes.
+
+5. Change this query so that you are using aliasing:
+  Original:
+  SELECT professor.name, compensation.salary, compensation.vacation_days
+    FROM professor
+    JOIN compensation
+    ON professor.id = compensation.professor_id;
+
+  Changed:
+  SELECT p.name, c.salary, c.vacation_days
+    FROM professor AS p
+    JOIN compensation AS c
+    ON p.id = c.professor_id;
+
+6. Why would you use a NATURAL JOIN? Give a real world example.
+
+  NATURAL JOIN joins the output of all columns that are present in both tables without specifying the columns. Most caution against using this type of join because it does not explicitly declare the join columns and could lead to confusion. If you have company_ids for all employees and for managers, you could do a natural join to avoid repeated company_ids columns.
+
+7. Build an Employees table and a Shifts table with appropriate primary and foreign keys. Then, write queries to find the following information:
+
+  CREATE TABLE employees (id integer, name text, shift integer);
+  CREATE TABLE shifts (shift integer, schedule varchar);
+
+  a) List all employees and all shifts.
+    SELECT employees.name, shifts.shift
+      FROM employees
+      FULL OUTER JOIN shifts
+      ON employees.shift = shifts.shift;
+
+  b) Create a list of all possible schedules.
+    SELECT * FROM employees CROSS JOIN shifts;
+
+8. Given the Dogs table (described below), the Adoptions table (described below), the Adopters table (which has the columns id, first_name, last_name, address, and phone number), and the Volunteers table (which has the columns id, name, address, phone_number, available_to_foster, and foster_id), please write queries to retrieve the following information.
+
+  a) Create a list of all volunteers. If the volunteer is fostering a dog, include each dog as well.
+
+    SELECT volunteers.name, dogs.name
+      FROM volunteers
+      LEFT OUTER JOIN dogs
+      ON volunteers.foster_id = dogs.id;
+
+  b) List the adopter’s name and the pet’s name for each animal adopted within the past month to be displayed as a ‘Happy Tail’ on social media.
+
+    SELECT adopter.first_name, adopter.last_name, dogs.name, cats.name
+      FROM adoptions
+      LEFT OUTER JOIN adopters ON adoptions.adopter = adopter.id
+      LEFT OUTER JOIN dogs ON adoptions.dog = dogs.id
+      LEFT OUTER JOIN cats ON adoptions.cat = cats.id
+      WHERE date > '10/18/2017';
+
+  c) Create a list of adopters who have not yet chosen a dog to adopt and generate all possible combinations of adopters and available dogs.
+
+    SELECT *
+      FROM adopters
+      JOIN adoptions ON adopters.id = adoptions.adopter AND adoptions.dog IS NULL
+      CROSS JOIN dogs;
+
+  d) Display a list of all cats and all dogs who have not been adopted.
+
+    SELECT dogs.name, cats.name
+      FROM adoptions
+
+
+
+  e) Create a list of volunteers who are available to foster. If they currently are fostering a dog, include the dog. Also include all dogs who are not currently in foster homes.
+
+    
+
+
+9. Write a query to find the name of the person who adopted Seashell given the tables Cats (depicted below), Adoptions (depicted below), and Adopters which has columns for id, address, phone number, and name.
+
+  a) Dogs table has the columns id, name, gender, age, weight, intake_date, breed, and in_foster.
+  NOTE: Shelter dogs’ breeds are typically guessed by the intake team, so the column may have multiple words. I.E. labrador collie mix
+
+  b) Cats table has the columns id, name, gender, age, intake_date, adoption_date
+
+  c) Adoptions table has the columns id, adopter, cat, dog, fee, date
+
+
+10. Given the tables Books (isbn, title, author), Transactions(id, checked_out_date, checked_in_date, user_id, isbn), Holds(id, isbn, user_id, rank, date), and Patrons(id, name, fine_amount), write queries to find the following information:
+
+  a) To discern if the library should buy more copies of a given book, please provide the names and position, in order, of all of the patrons waiting in line for Harry Potter and the Sorcerer’s Stone.
+
+    SELECT patrons.name, holds.rank
+      FROM holds
+      JOIN books ON holds.isbn = books.isbn AND books.title = 'Harry Potter and the Sorcerer’s Stone'
+      JOIN patrons ON holds.user_id = patrons.id
+      ORDER BY holds.rank DESC;
+
+  b) Make a list of all book titles and denote whether or not a copy of that book is checked out.
+
+    SELECT books.title, transactions.checked_out_date
+      FROM books
+      LEFT OUTER JOIN transactions ON books.isbn = transactions.isbn
+      WHERE checked_in_date IS NULL
+      ORDER BY books.title;
+
+  c) In an effort to learn which books take longer to read, the librarians would like you to create a list of total checked out time by book name in the past month.
+
+    SELECT books.title, SUM(t.checked_in_date - t.checked_out_date) AS total_check_out
+      FROM transactions AS t
+      LEFT OUTER JOIN books ON books.isbn = t.isbn
+      GROUP BY book.name
+      HAVING t.checked_in_date < '10/18/2017';
+
+  d) In order to learn which items should be retired, make a list of all books that have not been checked out in the past 5 years.
+
+    SELECT *
+      FROM books
+      JOIN transactions ON books.isbn = transactions.isbn
+      WHERE transactions.checked_out_date < '11/18/2012';
+
+  e) List all of the library patrons. If they have one or more books checked out, correspond the books to the patrons.
+
+    SELECT patrons.name, patrons.id, books.title
+      FROM books
+      JOIN transactions ON books.isbn = transactions.isbn
+      RIGHT OUTER JOIN patrons ON patrons.id = transactions.user_id
+      GROUP BY patron.id;
