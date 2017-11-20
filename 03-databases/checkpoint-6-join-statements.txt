@@ -92,31 +92,41 @@ Checkpoint 6: JOIN statements
 
     SELECT adopter.first_name, adopter.last_name, dogs.name, cats.name
       FROM adoptions
-      LEFT OUTER JOIN adopters ON adoptions.adopter = adopter.id
-      LEFT OUTER JOIN dogs ON adoptions.dog = dogs.id
-      LEFT OUTER JOIN cats ON adoptions.cat = cats.id
+      JOIN adopters ON adoptions.adopter = adopter.id
+      LEFT JOIN dogs ON adoptions.dog = dogs.id
+      LEFT JOIN cats ON adoptions.cat = cats.id
       WHERE date > '10/18/2017';
 
   c) Create a list of adopters who have not yet chosen a dog to adopt and generate all possible combinations of adopters and available dogs.
 
     SELECT *
       FROM adopters
-      JOIN adoptions ON adopters.id = adoptions.adopter AND adoptions.dog IS NULL
-      CROSS JOIN dogs;
+      JOIN adoptions ON adopters.id = adoptions.adopter
+      CROSS JOIN dogs
+      WHERE adoptions.dog IS NULL;
 
   d) Display a list of all cats and all dogs who have not been adopted.
 
-    SELECT dogs.name, cats.name
-      FROM adoptions
-
-
+    SELECT name FROM dogs
+    WHERE in_foster = 'FALSE'
+    UNION
+    SELECT name FROM cats
+    WHERE adoption_date IS NULL;
 
   e) Create a list of volunteers who are available to foster. If they currently are fostering a dog, include the dog. Also include all dogs who are not currently in foster homes.
 
-    
-
+    SELECT volunteers.name, dogs.name
+    FROM volunteers
+    FULL OUTER JOIN dogs ON volunteers.foster_id = dogs.id
+    WHERE volunteers.available_to_foster = 'TRUE';
 
 9. Write a query to find the name of the person who adopted Seashell given the tables Cats (depicted below), Adoptions (depicted below), and Adopters which has columns for id, address, phone number, and name.
+
+  SELECT adopters.name
+    FROM adoptions
+    JOIN cats ON adoptions.cat = cats.id
+    JOIN adopters ON adoptions.adopter = adopters.id
+    WHERE cats.name = 'Seashell';
 
   a) Dogs table has the columns id, name, gender, age, weight, intake_date, breed, and in_foster.
   NOTE: Shelter dogs’ breeds are typically guessed by the intake team, so the column may have multiple words. I.E. labrador collie mix
@@ -150,7 +160,7 @@ Checkpoint 6: JOIN statements
       FROM transactions AS t
       LEFT OUTER JOIN books ON books.isbn = t.isbn
       GROUP BY book.name
-      HAVING t.checked_in_date < '10/18/2017';
+      HAVING t.checked_in_date > '10/18/2017';
 
   d) In order to learn which items should be retired, make a list of all books that have not been checked out in the past 5 years.
 
@@ -165,4 +175,5 @@ Checkpoint 6: JOIN statements
       FROM books
       JOIN transactions ON books.isbn = transactions.isbn
       RIGHT OUTER JOIN patrons ON patrons.id = transactions.user_id
+      WHERE transactions.checked_in_date IS NULL
       GROUP BY patron.id;
