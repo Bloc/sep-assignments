@@ -26,8 +26,60 @@
 
   a) Find all students who have taken a particular class.
 
+    SELECT students.first_name, students.last_name
+      FROM students
+      RIGHT JOIN enrollments ON students.student_id = enrollments.student_id
+      WHERE enrollments.class_id = 3;
+
+     first_name | last_name
+    ------------+-----------
+     John       | Li
+     Mary       | Wu
+     Jane       | Cho
+     Ivan       | Sham-Luo
+    (4 rows)
+
   b) Count the number of each grade (using letter grades A-F) earned in a particular class.
+
+    SELECT final_grade, COUNT(final_grade) AS number_given
+      FROM enrollments
+      WHERE class_id = 3
+      GROUP BY final_grade;
+
+     final_grade | number_given
+    -------------+--------------
+     A           |            1
+     B           |            1
+     C           |            1
+     F           |            1
+    (4 rows)
 
   c) Find class names and the total number of students who have taken each class in the list.
 
+    SELECT classes.name, COUNT(enrollments.class_id) AS enrollment
+      FROM classes
+      JOIN enrollments ON classes.class_id = enrollments.class_id
+      GROUP BY classes.name;
+
+              name          | enrollment
+    ------------------------+------------
+     Physics 101            |          4
+     German History II      |          4
+     Fundamentals of Speech |          4
+     Hermeneutics           |          4
+     Javascript             |          4
+    (5 rows)
+
   d) Find the class taken by the largest number of students.
+
+    SELECT classes.name, MAX(enrollments.class_id) AS enrollment
+      FROM classes
+      JOIN enrollments ON classes.class_id = enrollments.class_id
+      GROUP BY classes.name
+      ORDER BY enrollment DESC
+      LIMIT 1;
+
+        name    | enrollment
+    ------------+------------
+     Javascript |          5
+    (1 row)
