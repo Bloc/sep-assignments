@@ -1,0 +1,23 @@
+Using Pseudo-Code - intro to algorithms
+
+Calculating a tip
+  READ receipt for waiter
+  SET TOTAL = total amount owed on receipt
+  CALCULATE TIP = TOTAL * 20%
+
+Stopping at a four way Stop Sign
+  IF you are the only car at the intersection THEN
+    GO
+  ESLE
+    IF CAR is present to the right THEN
+      Allow car to go through
+    ELSE
+      Look to left and proceed with Caution
+    ENDIF
+  ENDIF
+
+Is the garbage ready to go out?
+  WHILE garbage bag isn't full
+    PLEASE garbage in bag
+  ENDWHILE
+  DISPLAY message: Garbage is full, time to take it out.
