@@ -13,6 +13,18 @@
 
   d) Count the number of unique guests who have booked the same room.
 
+    SELECT room_number, COUNT(guest_id)
+      FROM bookings
+      GROUP BY room_number;
+      
+     room_number | count
+    -------------+-------
+             203 |     1
+             701 |     3
+             403 |     2
+             501 |     1
+             202 |     1
+    (5 rows)
 
 2. Design a data model for students and the classes they have taken. The model should include the students' grades for a given class.
 
