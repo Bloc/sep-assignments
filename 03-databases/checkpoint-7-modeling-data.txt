@@ -9,14 +9,44 @@
 
   b) Find bookings for a guest who has booked two rooms for the same dates.
 
+    SELECT guests.first_name, guests.last_name, bookings.check_in_date, bookings.check_out_date, ARRAY_AGG(bookings.room_number) AS room_nums
+      FROM bookings
+      JOIN guests ON guests.id = bookings.guest_id
+      GROUP BY guests.first_name, guests.last_name, bookings.check_in_date, bookings.check_out_date
+      HAVING COUNT(*) > 1;
+
+     first_name | last_name | check_in_date | check_out_date | room_nums
+    ------------+-----------+---------------+----------------+-----------
+     Samantha   | Bee       | 2017-04-21    | 2017-04-27     | {203,202}
+    (1 row)
+
   c) Find bookings for a guest who has booked one room several times on different dates.
+    SELECT guests.first_name, guests.last_name, bookings.check_in_date, bookings.room_number
+      FROM bookings
+      JOIN guests ON guests.id = bookings.guest_id
+      WHERE bookings.guest_id IN (SELECT bookings.guest_id
+                                  FROM bookings
+                                  GROUP BY bookings.guest_id
+                                  HAVING COUNT(DISTINCT bookings.check_in_date) > 1)
+      ORDER BY guests.last_name;
+
+      first_name | last_name | check_in_date | room_number
+    ------------+-----------+---------------+-------------
+     John       | Baptiste  | 2017-06-21    |         403
+     John       | Baptiste  | 2017-02-21    |         403
+     Stephen    | Colbert   | 2017-07-21    |         701
+     Stephen    | Colbert   | 2017-05-21    |         701
+     Stephen    | Colbert   | 2017-03-21    |         701
+     Jimmy      | Kimmel    | 2017-05-21    |         501
+     Jimmy      | Kimmel    | 2017-09-21    |         701
+    (7 rows)
 
   d) Count the number of unique guests who have booked the same room.
 
     SELECT room_number, COUNT(guest_id)
       FROM bookings
       GROUP BY room_number;
-      
+
      room_number | count
     -------------+-------
              203 |     1
