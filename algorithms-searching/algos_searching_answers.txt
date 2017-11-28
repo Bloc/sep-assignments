@@ -1,0 +1,36 @@
+Given the alphabetically sorted collection in this checkpoint, how many iterations would it take to find the value G using linear search?
+  Answer: The number of iterations would take 7. Since G is the 7th letter and linear search typically runs through the entire dataset looking
+  for a match.
+
+Given the alphabetically sorted collection in this checkpoint, how many iterations would it take to find the value G using binary search?
+  Answer: The number of iterations using a binary sort to find G would take 3.
+
+Calculate fib(10), fib(11), fib(12) by hand.
+  Answer: fib(10) = 55, fib(11) = 89, fib(12) = 144
+
+Compare the time it takes to run fib(20) between the iterative solution from the previous checkpoint and recursive solutions.
+  Recursive Fibonacci -
+    #<Benchmark::Tms:0x007fee298bb298 @label="", @real=0.0017450000159442425, @cstime=0.0, @cutime=0.0, @stime=0.0, @utime=0.0, @total=0.0>
+
+  Iterative Fibonacci -
+    #<Benchmark::Tms:0x007ffd21a2d5c0 @label="", @real=8.00006091594696e-06, @cstime=0.0, @cutime=0.0, @stime=0.0, @utime=0.0, @total=0.0>
+
+    Iterative is FASTER!?
+
+
+Given an unsorted collection of a million items, which algorithm would you choose between linear search and binary search?
+Would you use an iterative or recursive solution? Explain your reasoning.
+  For an unsorted collection, you really don't have much of a choice. Binary Search is only available for SORTED array.
+  You couldn't really use it for a unsorted collection.
+
+  Given the size of the array (a million items) we have already shown that recursion can be fairly expensive when it comes
+  to time efficiencies. Therefore we would choose iterative as opposed to recursive.
+
+
+Given a sorted collection of a million items, which algorithm would you choose between linear search and binary search?
+Would you use an iterative or recursive solution? Explain your reasoning.
+  For a sorted collection, you would definitely want to use a Binary Search method as opposed to linear. Binary Search
+  can cut down the search times. Worst case O(n) for linear and O(Log n) for Binary.
+
+  Again, given the size of the array we would still want to use iterative as opposed to recursive based on the earlier
+  findings when we benchmarked the two.
