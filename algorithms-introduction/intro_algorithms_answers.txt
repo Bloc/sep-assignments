@@ -18,6 +18,6 @@ Stopping at a four way Stop Sign
 
 Is the garbage ready to go out?
   WHILE garbage bag isn't full
-    PLEASE garbage in bag
+    SET garbage in bag
   ENDWHILE
   DISPLAY message: Garbage is full, time to take it out.
