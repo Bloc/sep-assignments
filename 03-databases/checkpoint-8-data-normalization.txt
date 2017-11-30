@@ -1,0 +1,54 @@
+1. In your own words, explain the benefits of normalization. Include a real-world scenario where normalization is necessary.
+
+    Data normalization basically results in better organization of data so that the integrity of the data is better preserved. Data that is repeated in tables are placed in a separate tables, reducing the number of columns in the tables. This can lead to more efficient queries, speedier sorting and updating, and better concurrency resolution.
+
+    An example of the necessity of data normalization would be the database of an expanding sales company. If a local sales company experiences rapid growth and starts to increase their national presence by expanding into other markets, then they might need to normalize their database. For example, sales could be listed by area in a local market. If the market expands, then data will have to be classified by regional markets with many local markets. Product sales, manager, and customer data would now need to have extra columns to accommodate this widening focus. Normalizing the data by creating a regional table to join this data might make sense.
+
+2. List and explain the different normal forms and how they relate to one another, with regard to your real-world scenario in the first question.
+
+  a) <1NF> The first normal form requires only one value for each column. If a table of regions is created with several markets in a field of the column markets for a single region's row, then this would not be in 1NF and would have to be changed. The best change would be to create a table for each region and include the region code in the original table.
+
+  b) <2NF> The second normal form states that a table must be in 1NF and all non-primary key columns can not be dependent on a subset of the primary key. If there is a table personnel with columns first_name, last_name, market_code, and home_address, then we would need to move either market_code or home_address to another table because they are not dependent on each other, only name.
+
+  c) <3NF> For a table to be in third normal form, it must first be in 2NF and columns can not be transitively dependent on the primary key. They must be directly dependent on the primary key. If our personnel table has columns for name, home_address, phone_number, city, and email_address, then it is not in 3NF because city is dependent on name through home_address. (Or home_address is dependent on name through city.) If city was removed or the complete address was moved to another table, then it would be in 3NF.
+
+  d) <BCNF> A table is in BCNF if it is in 3NF and every dependency of X -> Y, X is a unique super key of the table. If our personnel table has id, name, market, market_size, and market_number, then it would not be in BCNF. We would need to break up the tables into table1: id, name; table2: market, market_size, market_number; and table3: id, market.
+
+3. The student_records table below shows the students and their grades in different subjects. The table is already in first normal form (1NF). Convert this table to the third normal form (3NF) using the techniques you learned in this checkpoint.
+
+  student_records:
+    entry_id	| student_id	|  professor_id	 |  subject	   |  grade
+    ----------|-------------|----------------|-------------|---------
+        1     |     1       |       2        | Philosophy  |    A
+        2	    |     2	      |       2        | Philosophy	 |    C
+        3	    |     3	      |       1	       | Economics	 |    A
+        4	    |     4	      |       3	       | Mathematics |    B
+        5	    |     5	      |       1	       | Economics	 |    B
+
+  student_information:
+    student_id  |     student_email	     |   student_name
+    ------------|------------------------|-----------------
+        1       | john.b20@hogwarts.edu	 |     John B
+        2       | sarah.s20@hogwarts.edu |     Sarah S
+        3       | martha.l20@hogwarts.edu|     Martha L
+        4       | james.g20@hogwarts.edu |     James G
+        5       | stanley.p20@hogwarts.edu|	  Stanley P
+
+  professor_information:
+    professor_id  |  professor_name
+    --------------|-----------------
+        1         |   Natalie M
+        2         |   William C
+        3         |   Mark W
+
+4. In your own words, explain the potential disadvantages of normalizing the data above. What are its trade-offs? Discuss this with your mentor.
+
+  One of the biggest disadvantages of normalizing this data is that names are separated from the student_records table possibly reducing the efficiency of querying the database to find the grades of students. In this case, a join is now required to find out the student or professor's name and another join would be required to add the student's email address. The benefit is that updating the student's personal information might be easier since it has been separated from classes and grades.
+
+5. Looking at the tables you have normalized. If you need to denormalize to improve query performance or speed up reporting, how would you carry out denormalization for this database design? Discuss potential strategies with your mentor.
+
+  I would add the names of students and professors to the student_records table because most queries require a name. Personal information, such as address and email, can be kept in a separate table. Another idea would be reorganizing the schema so that grades are kept in classes with student and professor ids. Classes are unique instances related to a semester and a subject, and they reference a department. Departments are collections of classes and they reference schools, which are bigger subsets of the university database.
+
+6. Discuss the trade-offs between data normalization and denormalization in this scenario with your mentor.
+
+  This scenario would make it easier to check on the performance of specific professors, enrollment in classes, and performance of different departments. It would make it harder for queries involving the entire student population.
