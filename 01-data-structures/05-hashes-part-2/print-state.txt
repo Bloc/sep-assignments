@@ -1,0 +1,33 @@
+(open_addressing) Let's go > irb
+2.4.0 :001 > require_relative 'Open_Addressing'
+ => true
+2.4.0 :002 > star_wars_movies = OpenAddressing.new(6)
+ => #<OpenAddressing:0x007fa88e968af0 @items=[nil, nil, nil, nil, nil, nil]>
+2.4.0 :003 >     star_wars_movies["Star Wars: The Phantom Menace"] = "Number One"
+ => "Number One"
+2.4.0 :004 >     star_wars_movies["Star Wars: Attack of the Clones"] = "Number Two"
+ => "Number Two"
+2.4.0 :005 >     star_wars_movies["Star Wars: Revenge of the Sith"] = "Number Three"
+ => "Number Three"
+2.4.0 :006 >     star_wars_movies["Star Wars: A New Hope"] = "Number Four"
+ => "Number Four"
+2.4.0 :007 >     star_wars_movies["Star Wars: The Empire Strikes Back"] = "Number Five"
+ => "Number Five"
+2.4.0 :008 >     star_wars_movies["Star Wars: Return of the Jedi"] = "Number Six"
+ => "Number Six"
+2.4.0 :009 > star_wars_movies.print_hash
+
+HASH TABLE ***************************
+[0] ---  EMPTY
+[1] ---  EMPTY
+[2] --- 'Star Wars: The Empire Strikes Back'=>Number Five
+[3] --- 'Star Wars: Attack of the Clones'=>Number Two
+[4] --- 'Star Wars: A New Hope'=>Number Four
+[5] --- 'Star Wars: Return of the Jedi'=>Number Six
+[6] --- 'Star Wars: The Phantom Menace'=>Number One
+[7] ---  EMPTY
+[8] ---  EMPTY
+[9] ---  EMPTY
+[10] ---  EMPTY
+[11] --- 'Star Wars: Revenge of the Sith'=>Number Three
+ ***** LOAD FACTOR = 0.5 *****
