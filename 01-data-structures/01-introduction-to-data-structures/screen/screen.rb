@@ -10,12 +10,13 @@ class Screen
     @width = width
     @height = height
     @matrix = []
-    @height.times do |h|
-      @matrix[h] ||= []
-      @width.times do |w|
-        @matrix[h][w] = []
-      end
-    end
+    @matrix = Array.new(height) { Array.new(width) }
+    # @height.times do |h|
+    #   @matrix[h] ||= []
+    #   @width.times do |w|
+    #     @matrix[h][w] = []
+    #   end
+    # end
   end
 
   def insert(pixel, x, y)
@@ -24,7 +25,6 @@ class Screen
 
   def at(x, y)
     return @matrix[x][y] if inbounds(x,y)
-    return nil
   end
 
   private
