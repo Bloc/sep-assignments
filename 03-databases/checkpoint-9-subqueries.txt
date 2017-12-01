@@ -1,0 +1,155 @@
+1. Explain a subquery in your own words.
+
+  A subquery is a nested query using a SELECT statement to find a subset of data based on conditional criteria.
+
+2. Where can you use a subquery within a SELECT statement?
+
+  They can be used in a SELECT statement or a WHERE clause.
+
+3. When would you employ a subquery?
+
+  Usually you would use a subquery when you have conditional criteria for selecting data or when you are concerned about retrieving duplicate data in a JOIN.
+
+4. Explain a row constructor in your own words.
+
+  A row constructor compares the results of a subquery and returns matches with a row that is defined.
+
+5. What happens if a row in the subquery result provides a NULL value to the comparison?
+
+  The result will be NULL not true.
+
+6. What are the ways to use a subquery within a WHERE clause? If you can't remember them, do these flashcards until you can.
+
+  Subqueries in a WHERE clause use IN, NOT IN, SOME (or ANY), ALL, EXISTS, and NOT EXISTS.
+
+7. Build an employees table and a shifts table with appropriate primary and foreign keys. Then, write queries to find the following information:
+
+  CREATE TABLE employees (id integer, name text, shift integer);
+  CREATE TABLE shifts (shift integer, schedule varchar);
+
+(NOTE: I use a JOIN statement instead of a subquery because these are not conditional queries or cases where we are worried about duplicate data.)
+
+  a) List all employees and all shifts.
+
+    SELECT employees.name, shifts.shift
+      FROM employees
+      FULL JOIN shifts
+      ON employees.shift = shifts.shift;
+
+  b) Create a list of all possible schedules.
+
+    SELECT * FROM employees CROSS JOIN shifts;
+
+8. Given a dogs table, adoptions table, adopters table, and volunteers table , write queries to retrieve the following information. All tables are described below. (* See NOTE at bottom *)
+
+  a) Create a list of all volunteers. If the volunteer is fostering a dog, include each dog as well.
+
+    SELECT volunteers.name, (SELECT dogs.name FROM dogs WHERE dogs.id = volunteers.foster_pet_id) AS dog_name
+      FROM volunteers;
+
+  b) List the adopter’s name and the pet’s name for each animal adopted within the past month to be displayed as a ‘Happy Tail’ on social media.
+
+  SELECT adopters.name, dogs.name, cats.name
+
+    WHERE date > '11/01/2017';
+
+  c) Create a list of adopters who have not yet chosen a dog to adopt and generate all possible combinations of adopters and available dogs.
+
+
+
+  d) Display a list of all cats and all dogs who have not been adopted.
+
+    SELECT name FROM dogs
+      WHERE adoption_date IS NULL
+      UNION
+      SELECT name FROM cats
+      WHERE adoption_date IS NULL;
+
+  e) Create a list of volunteers who are available to foster. If they currently are fostering a dog, include the dog. Also include all dogs who are not currently in foster homes.
+
+
+9. Write a query to find the name of the person who adopted Seashell given the tables cats, adoptions, and adopters. All tables are described below
+
+  SELECT adopters.name
+    FROM adopters
+    WHERE adopter_id IN
+        (SELECT adopter_id
+         FROM adoptions
+         WHERE cat_id IN
+            (SELECT cats.id
+             FROM cats
+             WHERE cats.name = 'Seashell')
+          );
+
+10. Given the tables books (isbn, title, author), transactions (id, checked_out_date, checked_in_date, user_id, isbn), holds (id, isbn, user_id, rank, date), and patrons (id, name, fine_amount), write queries to find the following information:
+
+  a) To discern if the library should buy more copies of a given book, please provide the names and position, in order, of all of the patrons waiting in line for Harry Potter and the Sorcerer’s Stone.
+
+    SELECT holds.rank, (SELECT patrons.name FROM patrons WHERE patrons.id = holds.user_id) AS name
+      FROM holds
+      WHERE isbn IN
+          (SELECT books.isbn
+           FROM books
+           WHERE books.title = 'Harry Potter and the Sorcerer’s Stone')
+      ORDER BY holds.rank DESC;
+
+  b) Make a list of all book titles and denote whether or not a copy of that book is checked out.
+
+    SELECT books.title, (SELECT transactions.checked_out_date FROM transactions WHERE books.isbn = transactions.isbn) AS date_checked_out
+      FROM books
+      ORDER BY books.title;
+
+  c) In an effort to learn which books take longer to read, the librarians would like you to create a list of total checked out time by book name in the past month.
+
+    SELECT books.title, (SELECT SUM(transactions.checked_in_date - transactions.checked_out_date) FROM transactions) AS total_check_out
+      FROM books
+      WHERE books.isbn = transactions.isbn
+      GROUP BY book.name
+      HAVING transactions.checked_in_date > '11/01/2017';
+
+  d) In order to learn which items should be retired, make a list of all books that have not been checked out in the past 5 years.
+
+    SELECT *
+      FROM books
+      WHERE isbn IN (SELECT transactions.isbn
+                     FROM transactions
+                     WHERE transactions.checked_out_date < '12/01/2012');
+
+  e) List all of the library patrons. If they have one or more books checked out, correspond the books to the patrons.
+
+    SELECT patrons.name, patrons.id, ARRAY_AGG(SELECT books.title FROM books) AS books_out
+      FROM patrons
+      WHERE 
+      JOIN transactions ON books.isbn = transactions.isbn
+      RIGHT OUTER JOIN patrons ON patrons.id = transactions.user_id
+      WHERE transactions.checked_in_date IS NULL
+      GROUP BY patron.id;
+
+11. Given the following tables in an airliner database, find the following information. airplanes (model, seat capacity, range), flights(flight_number, destination, origin, company, distance, flight_time, airplane_model), transactions(id, seats_sold, total_revenue, total_cost, flight_number, date)
+
+  a) To determine the most profitable airplanes, find all airplane models where each flight has had over 100 paying customers in the past month.
+
+
+
+  b) To determine the most profitable flights, find all destination-origin pairs where 90% or more of the seats have been sold in the past month.
+
+
+
+  c) The airline is looking to expand its presence in the US Southeast and globally. Find the total revenue of any flight arriving at or departing from Atlanta.
+
+
+12. Compare the subqueries you've written above. Compare them to the joins you wrote in Checkpoint 6. Which ones are more readable? Which were more logical to write?
+
+
+<-- NOTE -->
+I changed the table definitions slightly to make them more logical.
+
+DOGS table has the columns id, name, gender, age, weight, intake_date, breed, and adoption_date.
+
+CATS table has the columns id, name, gender, age, weight, intake_date, breed, and adoption_date.
+
+ADOPTIONS table has the columns id, adopter_id, cat_id, dog_id, fee, date.
+
+ADOPTERS table has the columns name, address, and phone number.
+
+VOLUNTEERS table has the columns id, name, address, phone_number, and foster_pet_id.
