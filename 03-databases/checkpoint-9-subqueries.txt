@@ -31,10 +31,8 @@
 
   a) List all employees and all shifts.
 
-    SELECT employees.name, shifts.shift
-      FROM employees
-      FULL JOIN shifts
-      ON employees.shift = shifts.shift;
+    SELECT employees.name, (SELECT shifts.shift FROM shifts.shift) AS shift
+      FROM employees;
 
   b) Create a list of all possible schedules.
 
@@ -49,13 +47,16 @@
 
   b) List the adopter’s name and the pet’s name for each animal adopted within the past month to be displayed as a ‘Happy Tail’ on social media.
 
-  SELECT adopters.name, dogs.name, cats.name
-
-    WHERE date > '11/01/2017';
+    SELECT adopters.name, (SELECT dogs.name FROM dogs) AS dogs_name, (SELECT cats.name FROM cats) AS cats_name
+      FROM adopters
+      WHERE date > '11/01/2017'
+      ORDER BY adopters.name;
 
   c) Create a list of adopters who have not yet chosen a dog to adopt and generate all possible combinations of adopters and available dogs.
 
-
+    SELECT adopters.name, ARRAY_AGG(SELECT dogs.name FROM dogs) AS dogs_to_adopt
+      FROM adopters
+      WHERE adopters.id NOT IN (SELECT adoptions.adopter_id FROM adoptions);
 
   d) Display a list of all cats and all dogs who have not been adopted.
 
@@ -67,6 +68,9 @@
 
   e) Create a list of volunteers who are available to foster. If they currently are fostering a dog, include the dog. Also include all dogs who are not currently in foster homes.
 
+    SELECT volunteers.name, (SELECT dogs.name FROM dogs WHERE dogs.id NOT IN (SELECT adoptions.dog_id FROM adoptions))
+      FROM volunteers
+      WHERE volunteers.foster_pet_id IS NULL;
 
 9. Write a query to find the name of the person who adopted Seashell given the tables cats, adoptions, and adopters. All tables are described below
 
@@ -80,6 +84,19 @@
              FROM cats
              WHERE cats.name = 'Seashell')
           );
+
+  <-- NOTE -->
+  I changed the table definitions slightly to make them more logical.
+
+  DOGS table has the columns id, name, gender, age, weight, intake_date, breed, and adoption_date.
+
+  CATS table has the columns id, name, gender, age, weight, intake_date, breed, and adoption_date.
+
+  ADOPTIONS table has the columns id, adopter_id, cat_id, dog_id, fee, date.
+
+  ADOPTERS table has the columns id, name, address, and phone number.
+
+  VOLUNTEERS table has the columns id, name, address, phone_number, and foster_pet_id.
 
 10. Given the tables books (isbn, title, author), transactions (id, checked_out_date, checked_in_date, user_id, isbn), holds (id, isbn, user_id, rank, date), and patrons (id, name, fine_amount), write queries to find the following information:
 
@@ -117,39 +134,31 @@
 
   e) List all of the library patrons. If they have one or more books checked out, correspond the books to the patrons.
 
-    SELECT patrons.name, patrons.id, ARRAY_AGG(SELECT books.title FROM books) AS books_out
+    SELECT patrons.name, patrons.id, ARRAY_AGG(SELECT books.title FROM books WHERE books.isbn = (SELECT transactions.isbn FROM transactions WHERE transactions.user_id = patrons.user_id)) AS books_out
       FROM patrons
-      WHERE 
-      JOIN transactions ON books.isbn = transactions.isbn
-      RIGHT OUTER JOIN patrons ON patrons.id = transactions.user_id
-      WHERE transactions.checked_in_date IS NULL
-      GROUP BY patron.id;
+      GROUP BY patrons.id;
 
 11. Given the following tables in an airliner database, find the following information. airplanes (model, seat capacity, range), flights(flight_number, destination, origin, company, distance, flight_time, airplane_model), transactions(id, seats_sold, total_revenue, total_cost, flight_number, date)
 
   a) To determine the most profitable airplanes, find all airplane models where each flight has had over 100 paying customers in the past month.
 
-
+    SELECT DISTINCT flights.airplane_model
+      FROM flights
+      WHERE flights.number = (SELECT flight_number FROM transactions WHERE seats_sold > 100);
 
   b) To determine the most profitable flights, find all destination-origin pairs where 90% or more of the seats have been sold in the past month.
 
-
+    SELECT flights.flight_number, flights.origin, flights.destination
+      FROM flights
+      WHERE flight_number IN (SELECT transactions.flight_number, airplanes.seat_capacity
+                              FROM transactions
+                              LEFT JOIN airplanes ON transactions.flight_number = flights.flight_number AND flights.airplane_model = airplanes.model
+                              WHERE (transactions.seats_sold / airplanes.seat_capacity) * 100 > 90);
 
   c) The airline is looking to expand its presence in the US Southeast and globally. Find the total revenue of any flight arriving at or departing from Atlanta.
 
+    SELECT flights.flight_number, (SELECT transactions.total_revenue FROM transactions WHERE transactions.flight_number = flights.flight_number) AS revenue
+      FROM flights
+      WHERE flights.destination = 'Atlanta' OR flights.origin = 'Atlanta';
 
 12. Compare the subqueries you've written above. Compare them to the joins you wrote in Checkpoint 6. Which ones are more readable? Which were more logical to write?
-
-
-<-- NOTE -->
-I changed the table definitions slightly to make them more logical.
-
-DOGS table has the columns id, name, gender, age, weight, intake_date, breed, and adoption_date.
-
-CATS table has the columns id, name, gender, age, weight, intake_date, breed, and adoption_date.
-
-ADOPTIONS table has the columns id, adopter_id, cat_id, dog_id, fee, date.
-
-ADOPTERS table has the columns name, address, and phone number.
-
-VOLUNTEERS table has the columns id, name, address, phone_number, and foster_pet_id.
