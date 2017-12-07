@@ -1,0 +1,105 @@
+Psuedocode and SQL queries for Checkpoint 1: Databases:Introduction
+
+1. Remove duplicates in a query response
+
+  (PSUEDO)
+    comments = Comment.all
+    user_ids = ARRAY
+    FOR user_id IN comments DO
+      IF user_ids DOES NOT INCLUDE user_id THEN
+        user_ids << user_id
+      END IF
+    END FOR LOOP
+
+  (SQL)
+    SELECT DISTINCT user_id
+      FROM comment;
+
+2. Filter records using inequalities, pattern matching, ranges, and boolean logic
+
+  (PSUEDO)
+    comments = Comment.all
+    comments123 = ARRAY
+    FOR index IN (0 TO comments.length - 1) DO
+      post_id = comments[index]
+      IF post_id >= 1 AND post_id <= 3 THEN
+        comments123 << comments[index]
+      END IF
+    END FOR LOOP
+
+  (SQL)
+    SELECT *
+      FROM comment
+      WHERE post_id BETWEEN 1 AND 3;
+
+3. Sort records in a particular order
+
+  (PSUEDO)
+    users = User.all
+    sorted_users = SORT users BY user.full_name
+
+  (SQL)
+    SELECT *
+      FROM user
+      ORDER BY full_name DESC;
+
+4. Limit the number of records returned
+
+  (PSUEDO)
+    posts = Post.all
+    lyrics = ARRAY
+    FOR index IN 0 TO 1 DO
+      lyrics << posts[index].body
+    END FOR
+
+  (SQL)
+    SELECT body
+      FROM post
+      LIMIT 2;
+
+5. Group records into sections
+
+  (PSUEDO)
+    comments = Comment.all
+    comments_grouped = ARRAY
+    FOR index IN 0 TO comments.length - 1 DO
+      post = comments[index].post_id
+      comments_grouped[post] = comments[index].body
+    END FOR
+
+  (SQL)
+    SELECT post_id, body
+      FROM comment
+      GROUP BY post_id;
+
+6. Perform calculations using aggregate functions
+
+  (PSUEDO)
+    comments = Comment.all
+    posts_count = ARRAY
+    FOR index IN 0 TO comments.length - 1 DO
+      post = comments[index].post_id
+      posts_count[post] INCREMENT BY 1
+    END FOR LOOP
+
+  (SQL)
+    SELECT post_id, COUNT(post_id)
+      FROM comment
+      GROUP BY post_id;
+
+7. Join tables using cross join, inner join, and outer join
+
+  (PSUEDO)
+    posts = Post.all
+    users = User.all
+    singers_titles = ARRAY
+    FOR i IN 0 TO posts.length - 1 DO
+      FOR j IN 0 TO users.length - 1 DO
+        singers_titles << (users[j].full_name + ", " + posts[i].title)
+      END FOR LOOP
+    END FOR LOOP
+
+  (SQL)
+    SELECT user.full_name, post.title
+      FROM user
+      CROSS JOIN post;
