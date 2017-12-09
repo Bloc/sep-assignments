@@ -1,0 +1,171 @@
+1. Write out a generic SELECT statement.
+
+  SELECT column1 FROM table_name WHERE column=condition;
+
+2. Create a fun way to remember the order of operations in a SELECT statement, such as a mnemonic.
+
+  "Select a column from the table where the choices are."
+
+3. Create a pets database. Create a dogs table using this file. From the dogs table with the columns id, name, gender, age, weight, intake_date, breed, and in_foster, write statements to select the following pieces of data.
+Display the name, gender, and age of all dogs that are part Labrador.
+
+  Terminal output:
+    SJL@03-databases: createdb -U postgres -w pets
+    SJL@03-databases: psql -f ~/Desktop/dogs.sql pets postgres
+    CREATE TABLE
+    INSERT 0 6
+    SJL@03-databases: psql pets postgres
+    psql (10.1, server 9.6.6)
+    Type "help" for help.
+
+    pets=# SELECT * FROM dogs;
+      id   |   name    | gender | age | weight |       breed        | intake_date | in_foster
+    -------+-----------+--------+-----+--------+--------------------+-------------+------------
+     10001 | Boujee    | F      |   3 |     36 | labrador poodle    | 2017-06-22  |
+     10002 | Munchkin  | F      |   0 |      8 | dachsund chihuahua | 2017-01-13  | 2017-01-31
+     10004 | Marley    | M      |   0 |     10 | labrador           | 2017-05-04  | 2016-06-20
+     10003 | Lassie    | F      |   7 |     17 | collie shepherd    | 2016-07-05  | 2017-07-22
+     10006 | Marmaduke | M      |   7 |    150 | great dane         | 2016-03-22  | 2016-05-15
+     10007 | Rosco     | M      |   5 |    180 | rottweiler         | 2017-04-01  |
+    (6 rows)
+
+  a) Display the ids of all dogs that are under 1 year old.
+
+    pets=# SELECT id FROM dogs WHERE age<1;
+      id
+      -------
+      10002
+      10004
+      (2 rows)
+
+  b) Display the name and age of all dogs that are female and over 35lbs.
+
+    pets=# SELECT name, age FROM dogs WHERE gender='F' AND weight>35;
+      name  | age
+      --------+-----
+      Boujee |   3
+      (1 row)
+
+  c) Display all of the information about all dogs that are not Shepherd mixes.
+
+    pets=# SELECT * FROM dogs WHERE breed NOT LIKE '%shepherd%';
+      id   |   name    | gender | age | weight |       breed        | intake_date | in_foster
+      -------+-----------+--------+-----+--------+--------------------+-------------+------------
+      10001 | Boujee    | F      |   3 |     36 | labrador poodle    | 2017-06-22  |
+      10002 | Munchkin  | F      |   0 |      8 | dachsund chihuahua | 2017-01-13  | 2017-01-31
+      10004 | Marley    | M      |   0 |     10 | labrador           | 2017-05-04  | 2016-06-20
+      10006 | Marmaduke | M      |   7 |    150 | great dane         | 2016-03-22  | 2016-05-15
+      10007 | Rosco     | M      |   5 |    180 | rottweiler         | 2017-04-01  |
+      (5 rows)
+
+  d) Display the id, age, weight, and breed of all dogs that are either over 60lbs or Great Danes.
+
+    pets=# SELECT id, age, weight, breed FROM dogs WHERE weight>60 OR breed='great dane';
+      id   | age | weight |   breed
+      -------+-----+--------+------------
+      10006 |   7 |    150 | great dane
+      10007 |   5 |    180 | rottweiler
+      (2 rows)
+
+4. From the cats table below, what pieces of data would be returned from these queries?
+
+  a) SELECT name, adoption_date FROM cats;
+
+    name  | adoption_date
+    ------+--------------
+    Mushi | 2016-03-22
+    Seashell |
+    Azul  | 2016-04-17
+    Victoire | 2016-09-01
+    Nala  |
+
+  b) SELECT name, age FROM cats;
+
+    name    |   age
+    --------+--------
+    Mushi   |   1
+    Seashell |   7
+    Azul    |   3
+    Victoire |   7
+    Nala    |   1
+
+5. From the cats table, write queries to select the following pieces of data.
+
+  a) Display all the information about all of the available cats.
+
+    SELECT * FROM cats WHERE adoption_date IS NULL;
+
+  b) Choose one cat of each age to show to potential adopters.
+
+    SELECT DISTINCT ON (age) FROM cats WHERE adoption_date IS NULL ORDER BY age;
+
+  c) Find all of the names of the cats, so you don’t choose duplicate names for new cats.
+
+    SELECT name FROM cats;
+
+6. List each comparison operator and explain, in your own words, when you would use it. Include a real world example for each.
+
+  (>) is used when comparing two objects to find cells greater than a value.
+    SELECT * FROM cats WHERE age > 1;
+
+  (>=) is used when comparing two objects to find cells greater than or equal to a value.
+    SELECT * FROM cats WHERE age >= 1;
+
+  (<) is used when comparing two objects to find cells less than a value.
+    SELECT * FROM cats WHERE age < 7;
+
+  (<=) is used when comparing two objects to find cells less than or equal to a value.
+    SELECT * FROM cats WHERE age <= 7;
+
+  (=) is used when comparing two objects to find cells equal to a value.
+    SELECT * FROM cats WHERE age = 3;
+
+  (!=) is used when comparing two objects to find cells that are not equal to a value.
+    SELECT * FROM cats WHERE age != 7;
+
+  (<>) is used when comparing two objects to find cells greater than or less than a value.
+    SELECT * FROM cats WHERE age <> 3;
+
+  (NOT) selects cells where a given expression is false.
+    SELECT * FROM cats WHERE name NOT LIKE 'A%';
+
+  (OR) selects cells where one of two or more expressions is true.
+    SELECT * FROM cats WHERE gender = 'M' OR age < 4;
+
+  (AND) selects cells where both (or all) expressions are true.
+    SELECT * FROM cats WHERE gender = 'F' AND age < 7;
+
+  (LIKE) selects cells where part of the cell matches a given pattern.
+    SELECT * FROM cats WHERE name NOT LIKE 'A%';
+
+  (BETWEEN) selects cells where where the value is greater than or equal to one value and less than or equal to another.
+    SELECT * FROM cats WHERE age BETWEEN 1 AND 3;
+
+  (IS DISTINCT FROM) selects cells that are not equal to a given value.
+    SELECT * FROM cats WHERE age IS DISTINCT FROM 3;
+
+7. From the cats table below, what data would be returned from these queries?
+
+  a) SELECT name FROM cats WHERE gender = ‘F’;
+    name
+    ----
+    Seashell
+    Nala
+
+  b) SELECT name FROM cats WHERE age <> 3;
+    name
+    -----
+    Mushi
+    Seashell
+    Victoire
+    Nala
+
+  c) SELECT ID FROM cats WHERE name != ‘Mushi’ AND gender = ‘M’;
+
+    This would throw and error because there isn't a column 'ID'. If you meant 'id', then the output would be the following:
+
+    id
+    -------
+    00003
+    00004
+    

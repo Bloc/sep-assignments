@@ -1,0 +1,127 @@
+1. Create a database for the model we built in the example. Create a SQL file that creates the tables and inserts sample data (the questions below will help you create the data). Write queries that demonstrate the following scenarios:
+
+  a) Find a guest who exists in the database and has not booked a room.
+
+    SELECT guests.first_name, guests.last_name
+      FROM guests
+      FULL OUTER JOIN bookings ON bookings.guest_id = guests.id
+      WHERE bookings.guest_id IS NULL;
+
+  b) Find bookings for a guest who has booked two rooms for the same dates.
+
+    SELECT guests.first_name, guests.last_name, bookings.check_in_date, bookings.check_out_date, ARRAY_AGG(bookings.room_number) AS room_nums
+      FROM bookings
+      JOIN guests ON guests.id = bookings.guest_id
+      GROUP BY guests.first_name, guests.last_name, bookings.check_in_date, bookings.check_out_date
+      HAVING COUNT(*) > 1;
+
+     first_name | last_name | check_in_date | check_out_date | room_nums
+    ------------+-----------+---------------+----------------+-----------
+     Samantha   | Bee       | 2017-04-21    | 2017-04-27     | {203,202}
+    (1 row)
+
+  c) Find bookings for a guest who has booked one room several times on different dates.
+    SELECT guests.first_name, guests.last_name, bookings.check_in_date, bookings.room_number
+      FROM bookings
+      JOIN guests ON guests.id = bookings.guest_id
+      WHERE bookings.guest_id IN (SELECT bookings.guest_id
+                                  FROM bookings
+                                  GROUP BY bookings.guest_id
+                                  HAVING COUNT(DISTINCT bookings.check_in_date) > 1)
+      ORDER BY guests.last_name;
+
+      first_name | last_name | check_in_date | room_number
+    ------------+-----------+---------------+-------------
+     John       | Baptiste  | 2017-06-21    |         403
+     John       | Baptiste  | 2017-02-21    |         403
+     Stephen    | Colbert   | 2017-07-21    |         701
+     Stephen    | Colbert   | 2017-05-21    |         701
+     Stephen    | Colbert   | 2017-03-21    |         701
+     Jimmy      | Kimmel    | 2017-05-21    |         501
+     Jimmy      | Kimmel    | 2017-09-21    |         701
+    (7 rows)
+
+  d) Count the number of unique guests who have booked the same room.
+
+    SELECT room_number, COUNT(guest_id)
+      FROM bookings
+      GROUP BY room_number;
+
+     room_number | count
+    -------------+-------
+             203 |     1
+             701 |     3
+             403 |     2
+             501 |     1
+             202 |     1
+    (5 rows)
+
+2. Design a data model for students and the classes they have taken. The model should include the students' grades for a given class.
+
+  First, you need a Students table with columns for student_id(primary key), first_name, last_name. Other types could be stored and updated easily, such as address, phone number, major, outstanding_fees. Next, you would need a Classes table with columns for class_id, name, semester. Again, other types of data, such as instructor_name, prerequisite, pass_fail, could be added to this table.
+
+  I think the best way to capture multiple classes and grades for each student is to use a join table or a separate table Enrollments with columns enrollment_id, student_id, class_id, and final_grade. This way student records can be created when enrolled and class records can be created when a type of class is initiated. Then, each semester, students can be enrolled in several courses through the Enrollments table.
+
+  (See Student-Classes model.png for UML schema of data.)
+
+3. Build a database for the students/classes data model. Create a SQL file that creates the tables and inserts sample data (the questions below will help you create the data). Write queries that demonstrate the following scenarios:
+
+  a) Find all students who have taken a particular class.
+
+    SELECT students.first_name, students.last_name
+      FROM students
+      RIGHT JOIN enrollments ON students.student_id = enrollments.student_id
+      WHERE enrollments.class_id = 3;
+
+     first_name | last_name
+    ------------+-----------
+     John       | Li
+     Mary       | Wu
+     Jane       | Cho
+     Ivan       | Sham-Luo
+    (4 rows)
+
+  b) Count the number of each grade (using letter grades A-F) earned in a particular class.
+
+    SELECT final_grade, COUNT(final_grade) AS number_given
+      FROM enrollments
+      WHERE class_id = 3
+      GROUP BY final_grade;
+
+     final_grade | number_given
+    -------------+--------------
+     A           |            1
+     B           |            1
+     C           |            1
+     F           |            1
+    (4 rows)
+
+  c) Find class names and the total number of students who have taken each class in the list.
+
+    SELECT classes.name, COUNT(enrollments.class_id) AS enrollment
+      FROM classes
+      JOIN enrollments ON classes.class_id = enrollments.class_id
+      GROUP BY classes.name;
+
+              name          | enrollment
+    ------------------------+------------
+     Physics 101            |          4
+     German History II      |          4
+     Fundamentals of Speech |          4
+     Hermeneutics           |          4
+     Javascript             |          4
+    (5 rows)
+
+  d) Find the class taken by the largest number of students.
+
+    SELECT classes.name, MAX(enrollments.class_id) AS enrollment
+      FROM classes
+      JOIN enrollments ON classes.class_id = enrollments.class_id
+      GROUP BY classes.name
+      ORDER BY enrollment DESC
+      LIMIT 1;
+
+        name    | enrollment
+    ------------+------------
+     Javascript |          5
+    (1 row)

@@ -1,0 +1,20 @@
+1. What is Spatial Locality and why does it benefit performance?
+
+  Spatial Locality means that items are saved in consecutive memory locations (together). It benefits performance because it is not expensive operation to search through the set since the items are all next to each other.
+
+2. Compare the performance of an Array to a Linked List using the Benchmark module.
+  - Compare the time it takes to create a 10,000 item Array to appending 10,000 items to a Linked List.
+
+    The Array took 0.001086 seconds to create and appending 10,000 nodes took 1.57 sec.
+
+  - Compare the time it takes to access the 5000th element of the Array and the 5000th Node in the Linked List.
+
+    Accessing the 5000th item in an array took almost 0 sec (5.00003807246685e-06 to be exact). Accessing the 5000th node in the linked list took 0.00039 seconds.
+
+  - Compare the time it takes to remove the 5000th element from the Array to removing the 5000th Node in the Linked List.
+
+    I had almost the exact same times as above.
+    
+  - In the Array, the 5001st item becomes the 5000th, and so on.
+
+    If one is simply shifting the elements, I think the Array would be faster since the items are located together.

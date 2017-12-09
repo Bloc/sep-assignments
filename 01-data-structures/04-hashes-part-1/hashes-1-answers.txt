@@ -1,0 +1,3 @@
+Explain why doubling the size of the underlying array of your HashClass may be a poor idea.
+
+As the hints mention, doubling the size may lead to fragmentation, especially with such a simple hash function used in this code. With the list of 6 items in the RSpec test, two collisions occurred resulting in an array of size 24(doubled twice). Doubling the array is a slow operation and, in this case, the amount of data stored in this hash does not justify the poor performance. 

@@ -1,0 +1,175 @@
+Psuedocode and SQL queries for Checkpoint 1: Databases:Introduction
+
+1. Remove duplicates in a query response
+
+  (PSUEDO)
+    comments = Comment.all
+    user_ids = ARRAY
+    FOR user_id IN comments DO
+      IF user_ids DOES NOT INCLUDE user_id THEN
+        user_ids << user_id
+      END IF
+    END FOR LOOP
+
+  (SQL)
+    SELECT DISTINCT user_id
+      FROM comment;
+
+2. Filter records using inequalities, pattern matching, ranges, and boolean logic
+
+  a)(PSUEDO)
+    comments = Comment.all
+    comments123 = ARRAY
+    FOR index IN (0 TO comments.length - 1) DO
+      post_id = comments[index]
+      IF post_id >= 1 AND post_id <= 3 THEN
+        comments123 << comments[index]
+      END IF
+    END FOR LOOP
+
+  a)(SQL)
+    SELECT *
+      FROM comment
+      WHERE post_id BETWEEN 1 AND 3;
+
+  b)(PSUEDO)
+    users = User.all
+    j_users = ARRAY
+    FOR index IN 0 TO users.length - 1 DO
+      first_char = users[index].full_name[0] # Get first letter of full_name
+      IF first_char = 'J' AND users[index].id != 1 THEN
+        user_name_id = [users[index].full_name, users[index].id]
+        j_users << user_name_id
+      END IF
+    END FOR LOOP
+
+  b)(SQL)
+    SELECT full_name, id
+      FROM user
+      WHERE full_name LIKE 'J%' AND id IS NOT 1;
+
+3. Sort records in a particular order
+
+  (PSUEDO)
+    users = User.all
+    sorted_users = SORT users BY user.full_name
+
+  (SQL)
+    SELECT *
+      FROM user
+      ORDER BY full_name DESC;
+
+4. Limit the number of records returned
+
+  (PSUEDO)
+    posts = Post.all
+    lyrics = ARRAY
+    FOR index IN 0 TO 1 DO
+      lyrics << posts[index].body
+    END FOR
+
+  (SQL)
+    SELECT body
+      FROM post
+      LIMIT 2;
+
+5. Group records into sections
+
+  (PSUEDO)
+    comments = Comment.all
+    comments_grouped = ARRAY
+    FOR index IN 0 TO comments.length - 1 DO
+      post = comments[index].post_id
+      comments_grouped[post] = comments[index].body
+    END FOR
+
+  (SQL)
+    SELECT post_id, body
+      FROM comment
+      GROUP BY post_id;
+
+6. Perform calculations using aggregate functions
+
+  (PSUEDO)
+    comments = Comment.all
+    posts_count = ARRAY
+    FOR index IN 0 TO comments.length - 1 DO
+      post = comments[index].post_id
+      posts_count[post] INCREMENT BY 1
+    END FOR LOOP
+
+  (SQL)
+    SELECT post_id, COUNT(post_id)
+      FROM comment
+      GROUP BY post_id;
+
+7. Join tables using (a)cross join, (b)inner join, and (c)outer join
+
+  a)(PSUEDO)
+    posts = Post.all
+    users = User.all
+    singers_titles_combinations = ARRAY
+    FOR i IN 0 TO posts.length - 1 DO
+      FOR j IN 0 TO users.length - 1 DO
+        singers_titles_combinations << [users[j].full_name, posts[i].title]
+      END FOR LOOP
+    END FOR LOOP
+
+  a)(SQL)
+    SELECT user.full_name, post.title
+      FROM user
+      CROSS JOIN post;
+
+  b)(PSUEDO)
+    posts = Post.all
+    users = User.all
+    singers_titles_posted = ARRAY
+    song_titles = ARRAY
+    FOR i IN 0 TO users.length - 1 DO
+      found = FALSE
+      FOR j IN 0 TO posts.length - 1 DO
+        IF users[i].id = posts[j].user_id
+          song_titles << posts[j].title
+          found = TRUE
+        END IF
+      END FOR LOOP
+      IF found = TRUE THEN
+        singers_titles_posted << [users[i].full_name, song_titles]
+        song_titles = NEW ARRAY
+        found = FALSE
+      END IF
+    END FOR LOOP
+
+  b)(SQL)
+    SELECT user.full_name, post.title
+      FROM user
+      JOIN post
+      ON user.id = post.user_id;
+
+  c)(PSUEDO)
+    posts = Post.all
+    users = User.all
+    singers_titles_all = ARRAY
+    song_titles = ARRAY
+    FOR i IN 0 TO users.length - 1 DO
+      found = FALSE
+      FOR j IN 0 TO posts.length - 1 DO
+        IF users[i].id = posts[j].user_id
+          song_titles << posts[j].title
+          found = TRUE
+        END IF
+      END FOR LOOP
+      IF found = TRUE THEN
+        singers_titles_all << [users[i].full_name, song_titles]
+        song_titles = NEW ARRAY
+      ELSE
+        singers_titles_all << [users[i].full_name, NULL]
+      END IF
+      found = FALSE
+    END FOR LOOP
+
+  c)(SQL)
+    SELECT user.full_name, post.title
+      FROM user
+      LEFT JOIN post
+      ON user.id = post.user_id;
