@@ -17,7 +17,7 @@ Psuedocode and SQL queries for Checkpoint 1: Databases:Introduction
 
 2. Filter records using inequalities, pattern matching, ranges, and boolean logic
 
-  (PSUEDO)
+  a)(PSUEDO)
     comments = Comment.all
     comments123 = ARRAY
     FOR index IN (0 TO comments.length - 1) DO
@@ -27,10 +27,26 @@ Psuedocode and SQL queries for Checkpoint 1: Databases:Introduction
       END IF
     END FOR LOOP
 
-  (SQL)
+  a)(SQL)
     SELECT *
       FROM comment
       WHERE post_id BETWEEN 1 AND 3;
+
+  b)(PSUEDO)
+    users = User.all
+    j_users = ARRAY
+    FOR index IN 0 TO users.length - 1 DO
+      first_char = users[index].full_name[0] # Get first letter of full_name
+      IF first_char = 'J' AND users[index].id != 1 THEN
+        user_name_id = [users[index].full_name, users[index].id]
+        j_users << user_name_id
+      END IF
+    END FOR LOOP
+
+  b)(SQL)
+    SELECT full_name, id
+      FROM user
+      WHERE full_name LIKE 'J%' AND id IS NOT 1;
 
 3. Sort records in a particular order
 
@@ -87,19 +103,73 @@ Psuedocode and SQL queries for Checkpoint 1: Databases:Introduction
       FROM comment
       GROUP BY post_id;
 
-7. Join tables using cross join, inner join, and outer join
+7. Join tables using (a)cross join, (b)inner join, and (c)outer join
 
-  (PSUEDO)
+  a)(PSUEDO)
     posts = Post.all
     users = User.all
-    singers_titles = ARRAY
+    singers_titles_combinations = ARRAY
     FOR i IN 0 TO posts.length - 1 DO
       FOR j IN 0 TO users.length - 1 DO
-        singers_titles << (users[j].full_name + ", " + posts[i].title)
+        singers_titles_combinations << [users[j].full_name, posts[i].title]
       END FOR LOOP
     END FOR LOOP
 
-  (SQL)
+  a)(SQL)
     SELECT user.full_name, post.title
       FROM user
       CROSS JOIN post;
+
+  b)(PSUEDO)
+    posts = Post.all
+    users = User.all
+    singers_titles_posted = ARRAY
+    song_titles = ARRAY
+    FOR i IN 0 TO users.length - 1 DO
+      found = FALSE
+      FOR j IN 0 TO posts.length - 1 DO
+        IF users[i].id = posts[j].user_id
+          song_titles << posts[j].title
+          found = TRUE
+        END IF
+      END FOR LOOP
+      IF found = TRUE THEN
+        singers_titles_posted << [users[i].full_name, song_titles]
+        song_titles = NEW ARRAY
+        found = FALSE
+      END IF
+    END FOR LOOP
+
+  b)(SQL)
+    SELECT user.full_name, post.title
+      FROM user
+      JOIN post
+      ON user.id = post.user_id;
+
+  c)(PSUEDO)
+    posts = Post.all
+    users = User.all
+    singers_titles_all = ARRAY
+    song_titles = ARRAY
+    FOR i IN 0 TO users.length - 1 DO
+      found = FALSE
+      FOR j IN 0 TO posts.length - 1 DO
+        IF users[i].id = posts[j].user_id
+          song_titles << posts[j].title
+          found = TRUE
+        END IF
+      END FOR LOOP
+      IF found = TRUE THEN
+        singers_titles_all << [users[i].full_name, song_titles]
+        song_titles = NEW ARRAY
+      ELSE
+        singers_titles_all << [users[i].full_name, NULL]
+      END IF
+      found = FALSE
+    END FOR LOOP
+
+  c)(SQL)
+    SELECT user.full_name, post.title
+      FROM user
+      LEFT JOIN post
+      ON user.id = post.user_id;
