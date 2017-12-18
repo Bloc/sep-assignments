@@ -5,25 +5,32 @@ class Line
   attr_accessor :members
 
   def initialize
-    self.members = []
+    @members = []
   end
 
   def join(person)
+    @members.push(person)
   end
 
   def leave(person)
+    @members.delete(person)
   end
 
   def front
+    @members[0]
   end
 
   def middle
+    average = (@members.length / 2).floor
+    @members[average]
   end
 
   def back
+    @members[-1]
   end
 
   def search(person)
+    person if @members.include?(person)
   end
 
   private

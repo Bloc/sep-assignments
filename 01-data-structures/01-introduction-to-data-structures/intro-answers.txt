@@ -1,0 +1,22 @@
+1. How does your data structure allow developers to access and manipulate
+the data?
+
+  In 'line.rb', it allows developers to access and manipulate the data by letting them add,
+remove and check the positions of the people through simple commands. In
+'pixel.rb' and 'screen.rb', it allows access and manipulation by letting
+developers create and color pixels including their sizes, as well as creating a
+screen (which turns into a matrix) and adding pixels to it.
+
+2. If a developer wanted to find a specific element in your data structure,
+how would you search for it?
+
+  A developer could find a specific element in my data structure by going to
+specific class and looking for what they want it to do such as insert.
+
+3. What other real-world data can each structure represent?
+
+  Other real-world data that each structure can represent would be anything
+that requires some sort of specific line (even numbers) such as a stack of
+papers or a priority queue for a hospital for 'line.rb'. For 'screen.rb', that
+would require coordinates or a matrix such as a dictionary or sorting as mail
+per person.
