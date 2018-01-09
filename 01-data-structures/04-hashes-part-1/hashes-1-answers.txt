@@ -1,0 +1,7 @@
+Doubling the size of a hash is a bad idea for a couple reasons:
+
+1. It's a waste of resources. If you have a hash of 1000 items and you add 1, it becomes a 2000 entry hash with 1001. It's a waste of ram and processing power.
+
+2. Using the example above, if you need to iterate through the hash, it wastes 999 iterations.
+
+If you're creating a hash, the most reasonable thing to do is make it the size you need and add to it if needed, but doubling the size is a ridiculous waste of resources. If you can calculate how many spaces you need, adding that number would be best but even if you do something like `new length = (array.length * 1.1).ceil` you'll be better off.
