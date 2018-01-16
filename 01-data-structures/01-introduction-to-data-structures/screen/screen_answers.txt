@@ -1,0 +1,16 @@
+1. How does your data structure allow developers to access and manipulate the
+data?
+  The data is stored in an array of arrays. The "outer" array is made up of
+  "row" arrays. And, each of the elements of the "row" arrays represent a
+  column. So, the array is accessed as: "matrix_array[row_index][column_index]".
+insert pixel: instance method
+
+2. If a developer wanted to find a specific element in your data structure, how
+would you search for it?
+  An element with specific "x" and "y" coordinates can be found by using the
+  "at(x,y)" instance method.
+
+3. What other real-world data can each structure represent?
+  a. The pixels on a digital picture.
+  b. The grid of a webpage
+  c. The grid of a map (e.g. google maps!)

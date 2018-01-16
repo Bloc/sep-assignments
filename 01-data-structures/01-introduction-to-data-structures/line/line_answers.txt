@@ -1,0 +1,14 @@
+1. How does your data structure allow developers to access and manipulate the
+data?
+  The name strings are stored in an array. The array can be obtained through the
+  correct instance variable. Data can added or removed via instance methods. The
+  place in line of a given name is the index of that name in the data array.
+
+2. If a developer wanted to find a specific element in your data structure, how
+would you search for it?
+  There is an instance method "search(name)" that returns nil if the name is
+  not found. Alternatively, it returns the name if the name is found in the
+  array.
+
+3. What other real-world data can each structure represent?
+  A live manufacturing process.
