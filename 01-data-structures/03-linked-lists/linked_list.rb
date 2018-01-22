@@ -4,27 +4,85 @@ class LinkedList
   attr_accessor :head
   attr_accessor :tail
 
-  # This method creates a new `Node` using `data`, and inserts it at the end of the list.
   def add_to_tail(node)
+    tail_node = @tail
+    if tail_node
+      tail_node.next = node
+      @tail = node
+    else
+      @head = node
+      @tail = node
+    end
+
   end
 
-  # This method removes the last node in the lists and must keep the rest of the list intact.
   def remove_tail
+    if @tail != @head
+      current_node = @head
+      previous_node = Node.new(nil)
+      while current_node.next != nil do
+        previous_node = current_node
+        current_node = current_node.next
+      end
+      previous_node.next = nil
+      @tail = previous_node
+    else
+      @head = nil
+      @tail = nil
+    end
   end
 
-  # This method prints out a representation of the list.
   def print
+    if @head
+      current_node = @head
+      while current_node.next != nil do
+        puts current_node.data
+        current_node = current_node.next
+      end
+      puts current_node.data
+    end
   end
 
-  # This method removes `node` from the list and must keep the rest of the list intact.
   def delete(node)
+    if node === @head && @head === @tail
+      @head = nil
+      @tail = nil
+    elsif node === @head
+      remove_front
+    elsif node === @tail
+      remove_tail
+    elsif @head
+      current_node = @head
+
+      while current_node != node && current_node.next != nil do
+        previous_node = current_node
+        current_node = current_node.next
+      end
+
+      if current_node === node
+        previous_node.next = node.next
+        node = nil
+      else
+        nil
+      end
+    else
+      nil
+    end
   end
 
-  # This method adds `node` to the front of the list and must set the list's head to `node`.
   def add_to_front(node)
+    if @head
+      node.next = @head
+      @head = node
+    else
+      @head = node
+      @tail = node
+    end
   end
 
-  # This method removes and returns the first node in the Linked List and must set Linked List's head to the second node.
   def remove_front
+    first_node = @head
+    @head = first_node.next
+    first_node
   end
 end

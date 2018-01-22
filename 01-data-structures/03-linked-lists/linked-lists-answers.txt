@@ -1,0 +1,31 @@
+1.) What is Spatial Locality and why does it benefit performance?
+  Spatial locality describes how data takes up physical space in memory. When
+  data is stored sequentially, cache is more likely to get all of the data
+  needed for a given operation. When a data structure stores its data in
+  several unpredictable locations, it's easier for cache to have a cache miss.
+  The processor then has to look in other slower memory hardware, negatively
+  affecting performance.
+
+Compare the performance of an Array to a Linked List using the Benchmark
+module.
+
+2.) Compare the time it takes to create a 10,000 item Array to appending 10,000
+items to a Linked List.
+  Array measured times for creating 10,000 item array
+    0.000000   0.000000   0.000000 (  0.000010)
+  Linked lists measured times for appending 10,000 nodes to the list
+    1.710000   0.010000   1.720000 (  1.708442)
+
+3.) Compare the time it takes to access the 5000th element of the Array and the
+5000th Node in the Linked List.
+  Times to find 5000th element in the array
+    0.000000   0.000000   0.000000 (  0.000005)
+  Times to find the 5000th node on linked list
+    0.000000   0.000000   0.000000 (  0.000134)
+
+4.) Compare the time it takes to remove the 5000th element from the Array to
+removing the 5000th Node in the Linked List.
+  Times to delete the 5000th element in the array
+    0.000000   0.000000   0.000000 (  0.000007)
+  Times to delete the 5000th node in the linked list
+    0.000000   0.000000   0.000000 (  0.000392)
