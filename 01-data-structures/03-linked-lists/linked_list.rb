@@ -5,7 +5,7 @@ class LinkedList
   attr_accessor :tail
 
   def add_to_tail(node)
-    tail_node = find_tail(@head)
+    tail_node = @tail
     if tail_node
       tail_node.next = node
       @tail = node
@@ -84,19 +84,5 @@ class LinkedList
     first_node = @head
     @head = first_node.next
     first_node
-  end
-
-  private
-
-  def find_tail(head_node)
-    if head_node
-      current_node = head_node
-      while current_node.next != nil do
-        current_node = current_node.next
-      end
-      current_node
-    else
-      nil
-    end
   end
 end
