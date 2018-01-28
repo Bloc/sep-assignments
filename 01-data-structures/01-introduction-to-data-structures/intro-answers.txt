@@ -1,0 +1,15 @@
+1. How does your data structure allow developers to access and manipulate the data?
+2. If a developer wanted to find a specific element in your data structure, how would you search for it?
+3. What other real-world data can each structure represent?
+
+**LINE**
+
+1. The data is structured as an array. It allows to search for the first, last, and middle items, and to add or removes items
+2. Data can be retrieved using the name of the person as the parameter of the search method
+3. Any type of real-world ordered list such as waiting lists or playlists
+
+**SCREEN**
+
+1. The data is structured as an array of arrays. Data can be accessed by 'classic' array manipulation
+2. To find a specific element (pixel) in the matrix (array of arrays), you use x & y properties of the pixel as indexes of the matrix
+3. A representation of a mathematical function, a chess board, or any real-world application requiring x & y coordinates
