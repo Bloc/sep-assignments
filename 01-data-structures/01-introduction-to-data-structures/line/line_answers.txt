@@ -1,0 +1,3 @@
+1. The data structure used is an array. Each element can be manipulated using the index.
+2. The search function uses a person's name as the parameter.
+3. An array can be used with any list or values that requires the order be tracked.

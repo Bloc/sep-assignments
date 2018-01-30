@@ -1,0 +1,9 @@
+Lines
+1. The data structure used is an array. Each element can be manipulated using the index.
+2. The search function uses a person's name as the parameter.
+3. An array can be used with any list or values that requires the order be tracked.
+
+Screen
+1. The data is structured using a hash.
+2. The data in the hash can be accessed by specifying a key, which will output the value.
+3. This type of data structure can be used with any data that needs to hold a corresponding value.
