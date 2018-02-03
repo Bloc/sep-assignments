@@ -1,0 +1,5 @@
+1. It gives the ability to adjust the elements by grabbing an item based on a certain index and replacing it.
+
+2. THey could use the seach method provided.
+
+3.the screen could be used as a game board, such as checkers or battleship, chess, etc.   
