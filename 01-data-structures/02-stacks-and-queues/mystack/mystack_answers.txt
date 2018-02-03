@@ -1,0 +1,1 @@
+I could be wrong, but I think that the mystack_spec for pop is wrong, shouldn't return the LAST element in the array, it yells if i return the element still in the array, not the element that was removed.
