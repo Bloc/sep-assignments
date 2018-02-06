@@ -5,6 +5,7 @@ class HashClass
   end
 
   def []=(key, value)
+    @items = {key => value}
   end
 
 
@@ -22,6 +23,7 @@ class HashClass
 
   # Simple method to return the number of items in the hash
   def size
+    @items.length
   end
 
 end
