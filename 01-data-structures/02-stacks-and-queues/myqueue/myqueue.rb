@@ -27,9 +27,7 @@ class MyQueue
   end
 
   def empty?
-    if @queue.length < 1
-      true
-    else
+    if @queue.length > 0
       false
     end
   end

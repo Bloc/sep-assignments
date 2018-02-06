@@ -22,9 +22,7 @@ class MyStack
   end
 
   def empty?
-    if @stack.length <= 0
-      true
-    else
+    if @stack.length > 0
       false
     end
   end
