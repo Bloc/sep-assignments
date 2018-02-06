@@ -1,0 +1,8 @@
+1.Q: How does your data structure allow developers to access and manipulate the data?
+1.A: Using a matrix allows a developer to access and manipulate the data by creating a 2 dimensional array in order to display a graph.
+
+2.Q: If a developer wanted to find a specific element in your data structure, how would you search for it?
+2.A: A developer would search through each column and row in order to find a specific element in the matrix/2d array.
+
+3.Q: What other real-world data can each structure represent?
+3.A: Matrices can be used to render images, as the basic components for robotic movements, or for compression of a large amount of information.

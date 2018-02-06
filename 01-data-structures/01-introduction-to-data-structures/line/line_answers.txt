@@ -1,0 +1,8 @@
+1.Q: How does your data structure allow developers to access and manipulate the data?
+1.A: The queue data structure uses a first in first out method that can be manipulated by a developer by implementing an array or linked list.
+
+2.Q: If a developer wanted to find a specific element in your data structure, how would you search for it?
+2.A: A developer could iterate through the array to find a specific element in the data structure.
+
+3.Q: What other real-world data can each structure represent?
+3.A: Other real-world examples where a queue data structure could be represented would be in network printers where bluetooth technology communicates to a printer where documents are printed in the order in which they are received, or a line of vehicles at a toll booth.  
