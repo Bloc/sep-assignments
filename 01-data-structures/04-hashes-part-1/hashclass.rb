@@ -26,13 +26,16 @@ class HashClass
   end
 
   def resize
-    temp = @items
-    @items = Array.new(temp.size * 2)
-    temp.each do |t|
-      if t != nil
-        @items[index(t.key, size)] = t
+    current_size = size
+    temparray = Array.new(current_size * 2)
+    @items.each do |t|
+      if t
+        key = t.key
+        value = t.value
+        new_index = index(key, temparray.length)
       end
     end
+    @items = temparray
   end
 
   # Returns a unique, deterministically reproducible index into an array
@@ -44,7 +47,7 @@ class HashClass
 
   # Simple method to return the number of items in the hash
   def size
-    @items.length
+    @items.size
   end
 
 end
