@@ -12,12 +12,9 @@ class OpenAddressing
     elsif @items[idx].key == key && @items[idx].value == value
       return
     else
-      next_idx = @items.next_open_index(idx)
-      if @items[idx].key == key && @items[idx].value != value && next_idx == -1
-        @items.resize
-        @items[index(key, size)] = Node.new(key, value)
-      elsif next_idx == -1
-        @items.resize
+      next_idx = next_open_index(idx)
+      if next_idx == -1
+        resize
         @items[index(key, size)] = Node.new(key, value)
       else
         new_idx = next_open_index(index(key, size))
@@ -28,7 +25,7 @@ class OpenAddressing
 
   def [](key)
     item = @items[index(key, size)]
-    item.nil ? nil : item.value
+    item.nil? ? nil : item.value
   end
 
   # Returns a unique, deterministically reproducible index into an array
@@ -41,13 +38,13 @@ class OpenAddressing
   # Given an index, find the next open index in @items
   def next_open_index(index)
     while @items[index]
-      index += 1
+      if index >= @items.length - 1
+        return -1
+      else
+        index += 1
+      end
     end
-    if index >= @items.length
-      return -1
-    else
-      return index
-    end
+    return index
   end
 
   # Simple method to return the number of items in the hash
@@ -59,14 +56,14 @@ class OpenAddressing
   def resize
     current_size = size
     temp_array = Array.new(current_size * 2)
-    @linked_list.each do |item|
+    @items.each do |item|
       if item
         key = item.key
         value = item.value
         new_idx = index(key, temp_array.size)
       end
     end
-    @linked_list = temp_array
+    @items = temp_array
   end
 
   def status

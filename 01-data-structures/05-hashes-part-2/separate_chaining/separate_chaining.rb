@@ -25,7 +25,7 @@ class SeparateChaining
   end
 
   def [](key)
-    idx = self.index(key, size) 
+    idx = index(key, size) 
     if @linked_list[idx]
       current = @linked_list[idx].head
       while current
@@ -37,6 +37,7 @@ class SeparateChaining
       end
     end
   end
+
 
   # Returns a unique, deterministically reproducible index into an array
   # We are hashing based on strings, let's use the ascii value of each string as
@@ -74,7 +75,7 @@ class SeparateChaining
       if item
         current = item.head
         while current
-          puts "Key: #{current.key}, Value: #{{current.value}}"
+          puts "Key: #{current.key}, Value: #{current.value}"
           current = current.next
         end
       end
