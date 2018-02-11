@@ -1,3 +1,4 @@
+require 'benchmark'
 require_relative 'node'
 
 class LinkedList
@@ -55,4 +56,34 @@ class LinkedList
     @ll.delete_at(0)
     @head = @ll[0]
   end
+end
+
+Benchmark.bm(1) do |x|
+  x.report('linked_list-append   ') {
+    ll = LinkedList.new
+    (1..10_000).each{|num| ll.add_to_tail(Node.new(num))}
+  }
+  x.report('create 10,000 element array  ') {
+    arr = Array(1..10_000)
+  }
+
+  x.report('get 500th el in LinkedList') {
+    ll = LinkedList.new
+    (1..5_000).each{|num| ll.add_to_tail(num)}
+    ll.tail
+
+  }
+  x.report('get 500th el in Array') {
+    arr = Array(1..5_000)
+    arr[4999]
+  }
+  x.report('remove 500th el in LinkedList') {
+    ll = LinkedList.new
+    (1..5_000).each{|num| ll.add_to_tail(num)}
+    ll.remove_tail
+  }
+  x.report('remove 500th el in Array') {
+    arr = Array(1..5_000)
+    arr.pop()
+  }
 end

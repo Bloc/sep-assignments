@@ -1,3 +1,4 @@
+require 'benchmark'
 require_relative 'node'
 
 class LinkedList
@@ -27,4 +28,17 @@ class LinkedList
   # This method removes and returns the first node in the Linked List and must set Linked List's head to the second node.
   def remove_front
   end
+<<<<<<< Updated upstream
 end
+=======
+end
+Benchmark.bm(1) do |x|
+  x.report('linked_list-append 10,000 items   ') {
+    ll = LinkedList.new
+    (1..10_000).each{|i| ll.add_to_front(i)}
+  }
+  x.report('create 10,000 element array  ') {
+    arr = Array(1..10_000)
+  }
+end
+>>>>>>> Stashed changes
