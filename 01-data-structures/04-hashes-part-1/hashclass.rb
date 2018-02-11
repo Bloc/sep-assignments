@@ -5,11 +5,15 @@ class HashClass
   end
 
   def []=(key, value)
-    @items = {key => value}
+    @items.map.with_index{|i|}
+
+    end
+    @items = {key: value}
   end
 
 
   def [](key)
+    key
   end
 
   def resize

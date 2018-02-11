@@ -6,6 +6,7 @@ class OpenAddressing
   end
 
   def []=(key, value)
+
   end
 
   def [](key)
