@@ -8,11 +8,11 @@ class SeparateChaining
   def initialize(size)
     @max_load_factor = 0.7
     @linked_list = Array.new(size)
-    @count = 0
+    @count = 0.0
   end
 
   def []=(key, value)
-    idx = self.index(key, size)
+    idx = index(key, size)
     linked_list = @linked_list[idx]
     if linked_list.nil?
       linked_list = LinkedList.new
@@ -25,7 +25,7 @@ class SeparateChaining
   end
 
   def [](key)
-    idx = index(key, size) 
+    idx = index(key, size)
     if @linked_list[idx]
       current = @linked_list[idx].head
       while current
