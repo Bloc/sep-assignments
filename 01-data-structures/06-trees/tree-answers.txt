@@ -1,0 +1,42 @@
+Binary Search Tree printed:
+
+Jumanji: Welcome to the Jungle: 76
+Maze Runner: The Death Cure: 43
+The Post: 88
+Winchester: 10
+The Greatest Showman: 55
+The Shape of Water: 92
+Den of Thieves: 39
+12 Strong: 54
+Hostiles: 72
+Paddington 2: 100
+
+Time to insert numbers 1 - 10,000:
+12.460000   0.040000  12.500000 ( 12.553452)
+
+Time to find 5000:
+0.000000   0.000000   0.000000 (  0.000838)
+
+
+Min Binary Heap printed:
+
+Winchester: 10
+Maze Runner: The Death Cure: 43
+Den of Thieves: 39
+12 Strong: 54
+The Post: 88
+The Greatest Showman: 55
+Jumanji: Welcome to the Jungle: 76
+The Shape of Water: 92
+Hostiles: 72
+Paddington 2: 100
+
+Time to insert numbers 1 - 100,000:
+0.040000   0.000000   0.040000 (  0.045399)
+
+Time to find 50,000:
+0.000000   0.000000   0.000000 (  0.000009)
+
+A heap can be very useful when storing a large amount of data is needed because of it's quick insertion capabilities. However, recovering data from a very large heap may take some time. The deeper down the heap, the more unorganized it gets. Each row has values that are in no specific order, which makes finding the data a bit slower.
+
+The binary search tree will take a bit more time to insert the data into the tree, but it will payoff that time when it comes to recovering the data. Each node is sorted in a quantitative form and can easily be accessed again without checking unnecessary nodes. 
