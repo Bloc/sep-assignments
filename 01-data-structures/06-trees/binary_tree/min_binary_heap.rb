@@ -58,9 +58,46 @@ class MinBinaryHeap
 
   def delete(root, data)
     return nil if data == nil
-    movie = find(root, data)
-    movie.title = nil
-    movie.rating = nil
+    node = find(root, data)
+    parent = node.parent
+    largest_node = find_max_value(root)
+    if parent.left == node
+      node = largest_node
+    elsif parent.right == node
+      node = largest_node
+    end
+    if node > node.left
+      swap_nodes(node, node.left)
+    elsif node > node.right
+      swap_nodes(node, node.right)
+    end
+  end
+
+  def find_max_value(root)
+    max = nil
+    largest_node = nil
+    if root.left != nil || root.right != nil
+      if root.left.rating > max
+        max = root.left.rating
+        largest_node = root
+        root = root.left
+        find_max_value(root)
+      elsif root.right.rating > max
+        max = root.right.rating
+        largest_node = root
+        root = root.right
+        find_max_value(root)
+      end
+    end
+    return largest_node
+  end
+
+  def swap_nodes(node, child_node)
+    if node > child_node
+      temp = node
+      node = child_node
+      child_node = temp
+    end
   end
 
   # Recursive Breadth First Search

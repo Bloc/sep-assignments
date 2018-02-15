@@ -42,9 +42,34 @@ class BinarySearchTree
 
   def delete(root, data)
     return nil if data == nil
-    movie = find(root, data)
-    movie.title = nil
-    movie.rating = nil
+    node = find(root, data)
+    parent = node.parent
+    # remove node if no child nodes exist
+    if node.left.nil? && node.right.nil?
+      if parent.left == node
+        parent.left = nil
+      else
+        parent.right.nil
+      end
+    # if only one child exists, replace node with child
+    elsif node.right != nil || node.left != nil
+      if node.right
+        parent.right = node.right
+      else
+        parent.left = node.left
+      end
+    # if the node has two children, look for the minimum value in the subtree
+    elsif node.left != nil && node.right != nil
+      if node.right.left > node.left
+        node = node.right.left
+        delete(node.right.left)
+      elsif node.left.right < node.right
+        node = node.left.right
+        delete(node.left.right)
+      end
+    else
+      puts "Failed to delete node."
+    end
   end
 
   # Recursive Breadth First Search
