@@ -26,7 +26,11 @@ class Actor
       end
       # print films array once Kevin is connected
       if film.actors.include?(Kevin_Bacon)
-        puts link
+        if link.length <= 6
+          puts link
+        else
+          puts "It took more than 6 films to find Kevin Bacon."
+        end
       else
         # check off current actor as iterated
         current_actor.iterated = true
