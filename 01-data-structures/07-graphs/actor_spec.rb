@@ -36,71 +36,71 @@ RSpec.describe Actor, type: Class do
 
   describe "#add_actor_to_film(film)" do
     it "adds the actor to the list of actors" do
-      xmen.add_actor_to_film(kevin_bacon)
-      xmen.add_actor_to_film(jennifer_lawrence)
-      xmen.add_actor_to_film(james_mcavoy)
-      expect(film.actors).to eq ["Kevin Bacon", "Jennifer Lawrence", "James McAvoy"]
+      kevin_bacon.add_actor_to_film(xmen)
+      jennifer_lawrence.add_actor_to_film(xmen)
+      james_mcavoy.add_actor_to_film(xmen)
+      expect(xmen.actors.name).to eq ["Kevin Bacon", "Jennifer Lawrence", "James McAvoy"]
     end
   end
 
   describe "#film_actor_hash(film)" do
     it "prints out a list of the other actors in the film" do
-      xmen.add_actor_to_film(kevin_bacon)
-      xmen.add_actor_to_film(jennifer_lawrence)
-      xmen.add_actor_to_film(james_mcavoy)
+      kevin_bacon.add_actor_to_film(xmen)
+      jennifer_lawrence.add_actor_to_film(xmen)
+      james_mcavoy.add_actor_to_film(xmen)
       expect(kevin_bacon.film_actor_hash(xmen)).to eq ["Jennifer Lawrence", "James McAvoy"]
     end
   end
 
   describe "#find_kevin_bacon" do
     it "links to Kevin Bacon in 6 movies or less" do
-      xmen.add_actor_to_film(kevin_bacon)
-      xmen.add_actor_to_film(jennifer_lawrence)
-      xmen.add_actor_to_film(james_mcavoy)
+      kevin_bacon.add_actor_to_film(xmen)
+      jennifer_lawrence.add_actor_to_film(xmen)
+      james_mcavoy.add_actor_to_film(xmen)
 
-      hunger.add_actor_to_film(jennifer_lawrence)
-      hunger.add_actor_to_film(josh_hutcherson)
-      hunger.add_actor_to_film(liam_hemsworth)
+      jennifer_lawrence.add_actor_to_film(hunger)
+      josh_hutcherson.add_actor_to_film(hunger)
+      liam_hemsworth.add_actor_to_film(hunger)
 
-      independence.add_actor_to_film(liam_hemsworth)
-      independence.add_actor_to_film(jeff_goldblum)
-      independence.add_actor_to_film(bill_pullman)
+      liam_hemsworth.add_actor_to_film(independence)
+      jeff_goldblum.add_actor_to_film(independence)
+      bill_pullman.add_actor_to_film(independence)
 
-      thor.add_actor_to_film(jeff_goldblum)
-      thor.add_actor_to_film(cate_blanchett)
-      thor.add_actor_to_film(tessa_thompson)
+      jeff_goldblum.add_actor_to_film(thor)
+      cate_blanchett.add_actor_to_film(thor)
+      tessa_thompson.add_actor_to_film(thor)
 
       expect(cate_blanchett.find_kevin_bacon).to eq "Thor: Ragnarok, Independence Day: Resurgence, The Hunger Games, X-Men: First Class"
     end
 
     it "will fail to print link if it takes more than 6 films" do
-      xmen.add_actor_to_film(kevin_bacon)
-      xmen.add_actor_to_film(jennifer_lawrence)
-      xmen.add_actor_to_film(james_mcavoy)
+      kevin_bacon.add_actor_to_film(xmen)
+      jennifer_lawrence.add_actor_to_film(xmen)
+      james_mcavoy.add_actor_to_film(xmen)
 
-      hunger.add_actor_to_film(jennifer_lawrence)
-      hunger.add_actor_to_film(josh_hutcherson)
-      hunger.add_actor_to_film(liam_hemsworth)
+      jennifer_lawrence.add_actor_to_film(hunger)
+      josh_hutcherson.add_actor_to_film(hunger)
+      liam_hemsworth.add_actor_to_film(hunger)
 
-      independence.add_actor_to_film(liam_hemsworth)
-      independence.add_actor_to_film(jeff_goldblum)
-      independence.add_actor_to_film(bill_pullman)
+      liam_hemsworth.add_actor_to_film(independence)
+      jeff_goldblum.add_actor_to_film(independence)
+      bill_pullman.add_actor_to_film(independence)
 
-      thor.add_actor_to_film(jeff_goldblum)
-      thor.add_actor_to_film(cate_blanchett)
-      thor.add_actor_to_film(tessa_thompson)
+      jeff_goldblum.add_actor_to_film(thor)
+      cate_blanchett.add_actor_to_film(thor)
+      tessa_thompson.add_actor_to_film(thor)
 
-      creed.add_actor_to_film(tessa_thompson)
-      creed.add_actor_to_film(sylvester_stallone)
-      creed.add_actor_to_film(michael_b_jordon)
+      tessa_thompson.add_actor_to_film(creed)
+      sylvester_stallone.add_actor_to_film(creed)
+      michael_b_jordon.add_actor_to_film(creed)
 
-      fantastic.add_actor_to_film(michael_b_jordon)
-      fantastic.add_actor_to_film(kate_mara)
-      fantastic.add_actor_to_film(miles_teller)
+      michael_b_jordon.add_actor_to_film(fantastic)
+      kate_mara.add_actor_to_film(fantastic)
+      miles_teller.add_actor_to_film(fantastic)
 
-      shooter.add_actor_to_film(kate_mara)
-      shooter.add_actor_to_film(mark_wahlberg)
-      shooter.add_actor_to_film(rhona_mitra)
+      kate_mara.add_actor_to_film(shooter)
+      mark_wahlberg.add_actor_to_film(shooter)
+      rhona_mitra.add_actor_to_film(shooter)
 
       expect(rhona_mitra.find_kevin_bacon).to eq "It took more than 6 films to find Kevin Bacon."
     end
