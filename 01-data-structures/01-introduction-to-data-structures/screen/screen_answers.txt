@@ -1,0 +1,28 @@
+# How does your data structure allow developers to access and manipulate the data?
+
+The Screen Class creates a matrix, in this case an array of arrays. You can access and manipulate the data just like regular arrays. A matrix is a valid data structure in the sense that here it is a template to organize pixel information. And the screen class provides methods to access and manipulate this data.
+
+# If a developer wanted to find a specific element in your data structure, how would you search for it?
+
+You would use the at method - i.e. screen.at(x, y) which returns the pixel information (colors, etc.) for the pixel at the x,y coordinate passed in.
+
+# What other real-world data can each structure represent?
+Basically anything you would want to store as a matrix, table or in an excel spreadsheet.
+
+Screen could represent Personal information:
+ - where you have data stored for name, address, phone number, etc. for multiple persons
+ - along the y-axis you would have different entries, list perhaps by id number
+ - along the x-axis would be the different categories of information ( 0 = first name, 1 = last name, ... )
+ - for example
+      let personal_info = Screen.new(10, 4)
+      personal_info.insert('Natalie', 0, 0)  //would assign the name Natalie to the first person's (index = 0) first name
+      personal_info.at(0, 0) //would return Natalie
+ - this may not be the best example since the Screen class relies on numerical labels
+
+A better example might be a chess board, Screen could model the position of the pieces at any given point in a game:
+    let board = Screen.new(8,8)
+    //assuming (0,0) is the bottom left corner, white pieces on bottom (I don't actually play chess)
+
+    at the beginning of a game:
+    board.insert('King - white', 0, 4)
+    board.at(0,4) // return 'King - white'

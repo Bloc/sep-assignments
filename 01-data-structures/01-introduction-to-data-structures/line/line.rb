@@ -30,7 +30,7 @@ class Line
   end
 
   def search(person)
-    self.members.include?(person) ? self.members[self.members.index(person)] : nil
+    self.members.include?(person) ? person : nil
   end
 
   private

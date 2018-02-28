@@ -1,0 +1,12 @@
+# How does your data structure allow developers to access and manipulate the data?
+Essentially, the Line Class creates an array and you can access and manipulate the data just like arrays through the class methods. The class methods for Line objects simply use basic array methods to access & manipulate data.
+
+# If a developer wanted to find a specific element in your data structure, how would you search for it?
+You would use the search method - i.e. line.search('name') which returns the name if that person exists in the line, or nil if they are not present.
+
+# What other real-world data can each structure represent?
+Other than various queue representations, Line could represent a list:
+ - the list is composed of items, which are represented by strings
+ - there is the first item on the list, and the last item on the list
+ - when you add an item to the list it is added to the end of the list
+ - and you can cross items off the list (removing them from the list)
