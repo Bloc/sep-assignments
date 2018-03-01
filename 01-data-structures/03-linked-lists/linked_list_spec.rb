@@ -12,8 +12,11 @@ RSpec.describe LinkedList, type: Class do
   describe "#add_to_tail" do
     it "adds a Node to the tail" do
       llist.add_to_tail(n1)
+      expect(llist.head).to eq n1
       expect(llist.tail).to eq n1
+
       llist.add_to_tail(n2)
+      expect(llist.head).to eq n1
       expect(llist.tail).to eq n2
     end
   end
