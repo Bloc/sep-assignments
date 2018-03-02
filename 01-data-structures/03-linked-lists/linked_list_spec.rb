@@ -92,4 +92,18 @@ RSpec.describe LinkedList, type: Class do
       expect(llist.head).to eq nil
     end
   end
+
+  describe "#find" do
+    before do
+      llist.add_to_tail(n1)
+      llist.add_to_tail(n2)
+      llist.add_to_tail(n3)
+    end
+
+    it "finds items in list" do
+      expect(llist.find("Rob")).to eq n1
+      expect(llist.find("Ben")).to eq n2
+      expect(llist.find("Mike")).to eq n3
+    end
+  end
 end

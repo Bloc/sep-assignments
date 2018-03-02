@@ -29,11 +29,6 @@ class LinkedList
   # This method removes the last node in the lists and must keep the rest of the list intact.
   def remove_tail
     current = @head
-    # #find tail
-    # while(current.next)
-    #   current = current.next
-    # end
-    # tail = current
 
     #find node before tail & set this to new tail
     @tail = find_before(find_tail)
@@ -57,7 +52,7 @@ class LinkedList
   # This method removes `node` from the list and must keep the rest of the list intact.
   def delete(node)
     #if node = head, call remove front
-    if @head == node
+    if @head.data == node.data
       self.remove_front
     else
       #otherwise, find node before
@@ -79,6 +74,18 @@ class LinkedList
     @head = @head.next
   end
 
+  def find(value)
+    current = @head
+    # return nil if list is empty
+    return nil if current.data.nil?
+
+    #otherwise traverse the list
+    while(current.data)
+      return current if current.data == value
+      current = current.next
+    end
+  end
+
   private
 
   def find_before(node)
@@ -86,12 +93,12 @@ class LinkedList
 
     #return nil if value is head, there is no before node
     return nil if !current.next
-    #return head if the head's next node data = value, the head is the one before
+    #return head if the head's next == node
     return @head if current.next == node
 
     #otherwise traverse the list
     while(current.next)
-      return current if current.next && current.next == node
+      return current if current.next && current.next.data == node.data
       current = current.next
     end
   end
