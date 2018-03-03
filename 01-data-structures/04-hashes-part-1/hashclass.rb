@@ -8,19 +8,19 @@ class HashClass
   def []=(key, value)
     #get index from hashing algorithm
     index = self.index(key, self.size)
+    new_hash_item = HashItem.new(key, value)
 
-    #if index already exists: Is it a duplicate value? - if so do nothing, else resize then store key,value pair
+    #if index already exists: Is it a duplicate value? - if so do nothing, else resize until index is open, then store key,value pair
     if @items[index]
-      if @items[index][1] != value
-        until @items[index].nil?
+      if @items[index].value != value
+        #until @items[index].nil?
           self.resize
           index = self.index(key, self.size)
-        end
-        @items[index] = [key, value]
+        #end
       end
-    else
-      @items[index] = [key, value]
     end
+    @items[index] = new_hash_item
+
 
     #if index already exists: Is it a duplicate value? - if so do nothing, else resize until index is open then store key,value pair
     # if @items[index]
@@ -44,7 +44,7 @@ class HashClass
   #Element Reference
   def [](key)
     index = self.index(key, self.size)
-    @items[index][1]
+    @items[index].value
   end
 
   def resize
@@ -59,8 +59,8 @@ class HashClass
     #for each element in temp, get key & value and then recall def []=(key, value)
     temp_array.each { |e|
       unless e.nil?
-        index = self.index(e[0], self.size)
-        @items[index] = [e[0], e[1]]
+        index = self.index(e.key, self.size)
+        @items[index] = e
       end
     }
     print "\n HASH RESIZING! \n Hash size: #{self.size} \n Internal Array: #{@items} \n"
