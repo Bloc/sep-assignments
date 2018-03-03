@@ -13,30 +13,14 @@ class HashClass
     #if index already exists: Is it a duplicate value? - if so do nothing, else resize until index is open, then store key,value pair
     if @items[index]
       if @items[index].value != value
-        #until @items[index].nil?
+        until @items[index].nil?
           self.resize
-          index = self.index(key, self.size)
-        #end
+          new_index = self.index(key, self.size)
+          @items[index] = @items[new_index]
+        end
       end
     end
     @items[index] = new_hash_item
-
-
-    #if index already exists: Is it a duplicate value? - if so do nothing, else resize until index is open then store key,value pair
-    # if @items[index]
-    #   #if index already exists and its a duplicate value  => return (do nothing to array)
-    #   if @items[index][1] == value
-    #     return
-    #   else
-    #     #otherwise resize internal array & recalc index until index[value] == nil
-    #     while @items[index]
-    #       self.resize
-    #       index = self.index(key, self.size)
-    #     end
-    #   end
-    # end
-    # #once @items[index] (is open) => store key value pair in array at open index
-    # @items[index] = [key, value]
 
     print "\n Hash size: #{self.size} \n Internal Array: #{@items} \n"
   end
