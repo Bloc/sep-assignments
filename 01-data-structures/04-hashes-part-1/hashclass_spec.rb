@@ -40,6 +40,7 @@ RSpec.describe HashClass, type: Class do
     end
   end
 
+  #bad test
   describe "hash[key] = value" do
     it "does not resize the array when a collision occurs and the values match" do
       hash = HashClass.new(1)
@@ -58,12 +59,12 @@ RSpec.describe HashClass, type: Class do
     end
 
     it "sets the value of key to value" do
-      lotr_movies["The Lord of the Rings: The Fellowship of the Ring"] = "3 hours, 48 minutes"
-      lotr_movies["The Lord of the Rings: The Two Towers"] = "3 hours, 55 minutes"
-      lotr_movies["The Lord of the Rings: The Return of the King"] = "3 hours, 21 minutes"
-      lotr_movies["The Hobbit: An Unexpected Journey"] = "3 hours, 2 minutes"
-      lotr_movies["The Hobbit: The Desolation of Smaug"] = "3 hours, 7 minutes"
-      lotr_movies["The Hobbit: The Battle of Five Armies"] = "2 hours, 44 minutes"
+      lotr_movies["The Lord of the Rings: The Fellowship of the Ring"] = "3 hours, 48 minutes" #4361
+      lotr_movies["The Lord of the Rings: The Two Towers"] = "3 hours, 55 minutes" #3268
+      lotr_movies["The Lord of the Rings: The Return of the King"] = "3 hours, 21 minutes" #3941
+      lotr_movies["The Hobbit: An Unexpected Journey"] = "3 hours, 2 minutes" #3043
+      lotr_movies["The Hobbit: The Desolation of Smaug"] = "3 hours, 7 minutes" #3160
+      lotr_movies["The Hobbit: The Battle of Five Armies"] = "2 hours, 44 minutes" #3248
 
       expect(lotr_movies["The Lord of the Rings: The Fellowship of the Ring"]).to eq "3 hours, 48 minutes"
       expect(lotr_movies["The Lord of the Rings: The Two Towers"]).to eq "3 hours, 55 minutes"
