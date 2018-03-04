@@ -8,19 +8,21 @@ class HashClass
   def []=(key, value)
     #get index from hashing algorithm
     index = self.index(key, self.size)
+    #store new key,value pair as a new hash item
     new_hash_item = HashItem.new(key, value)
 
-    #if index already exists: Is it a duplicate value? - if so do nothing, else resize until index is open, then store key,value pair
-    if @items[index]
-      if @items[index].value != value
-        until @items[index].nil?
-          self.resize
-          new_index = self.index(key, self.size)
-          @items[index] = @items[new_index]
-        end
-      end
+    #if index is free => insert new_hash_item
+    #if index.key != new key are different => resize ???
+    #if index is not free && not a duplicate => resize the array until the index is free then insert new_hash_item
+    if @items[index] == nil
+      @items[index] = new_hash_item
+    elsif @items[index].key != new_hash_item.key
+      self.resize
+      self[key] = value
+    elsif @items[index].value != new_hash_item.value
+      self.resize
+      @items[index(new_hash_item.key, size)] = new_hash_item
     end
-    @items[index] = new_hash_item
 
     print "\n Hash size: #{self.size} \n Internal Array: #{@items} \n"
   end
