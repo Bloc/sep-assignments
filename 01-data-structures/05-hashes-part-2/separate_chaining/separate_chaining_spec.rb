@@ -6,12 +6,12 @@ RSpec.describe SeparateChaining, type: Class do
   let(:star_wars_movies) { SeparateChaining.new(6) }
 
   before do
-    star_wars_movies["Star Wars: The Phantom Menace"] = "Number One"
-    star_wars_movies["Star Wars: Attack of the Clones"] = "Number Two"
-    star_wars_movies["Star Wars: Revenge of the Sith"] = "Number Three"
-    star_wars_movies["Star Wars: A New Hope"] = "Number Four"
-    star_wars_movies["Star Wars: The Empire Strikes Back"] = "Number Five"
-    star_wars_movies["Star Wars: Return of the Jedi"] = "Number Six"
+    star_wars_movies["Star Wars: The Phantom Menace"] = "Number One" #2610
+    star_wars_movies["Star Wars: Attack of the Clones"] = "Number Two" #2787
+    star_wars_movies["Star Wars: Revenge of the Sith"] = "Number Three" #2699
+    star_wars_movies["Star Wars: A New Hope"] = "Number Four" #1768
+    star_wars_movies["Star Wars: The Empire Strikes Back"] = "Number Five" #3050
+    star_wars_movies["Star Wars: Return of the Jedi"] = "Number Six" #2595
   end
 
   describe "#index" do
@@ -29,7 +29,7 @@ RSpec.describe SeparateChaining, type: Class do
   end
 
   describe "#hash[key] = value" do
-    it "does not resize the array when a collision occurs and the values match" do
+    it "does not resize the array when a collision occurs and the keys match" do
       hash = SeparateChaining.new(4)
       hash["key"] = "value"
       expect(hash.size).to eq 4
@@ -38,12 +38,13 @@ RSpec.describe SeparateChaining, type: Class do
     end
 
     it "sets the value of key to value" do
-      star_wars_movies["Star Wars: The Phantom Menace"] = "Number One"
-      star_wars_movies["Star Wars: Attack of the Clones"] = "Number Two"
-      star_wars_movies["Star Wars: Revenge of the Sith"] = "Number Three"
-      star_wars_movies["Star Wars: A New Hope"] = "Number Four"
-      star_wars_movies["Star Wars: The Empire Strikes Back"] = "Number Five"
-      star_wars_movies["Star Wars: Return of the Jedi"] = "Number Six"
+      # why is this here again, doesn't seem DRY
+      # star_wars_movies["Star Wars: The Phantom Menace"] = "Number One"
+      # star_wars_movies["Star Wars: Attack of the Clones"] = "Number Two"
+      # star_wars_movies["Star Wars: Revenge of the Sith"] = "Number Three"
+      # star_wars_movies["Star Wars: A New Hope"] = "Number Four"
+      # star_wars_movies["Star Wars: The Empire Strikes Back"] = "Number Five"
+      # star_wars_movies["Star Wars: Return of the Jedi"] = "Number Six"
 
       expect(star_wars_movies["Star Wars: The Phantom Menace"]).to eq "Number One"
       expect(star_wars_movies["Star Wars: Attack of the Clones"]).to eq "Number Two"
@@ -60,13 +61,13 @@ RSpec.describe SeparateChaining, type: Class do
 
       # Load Factor starts at zero
       expect(h.load_factor == 0).to be true
+
       h["key"] = "value"
       h["keytwo"] = "value"
-
       # Load factor should be .5 when two items are added
       expect(h.load_factor).to eq 0.5
-      h["keytwo"] = "value"
 
+      h["keythree"] = "value"
       # Load factor goes down to .375 (3/8) since when third item is added, load factor goes to .75
       # then the resize is triggered and load factor is recalculated
       expect(h.load_factor).to eq 0.375

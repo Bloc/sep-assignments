@@ -82,7 +82,7 @@ class OpenAddressing
 
   # Resize the hash
   def resize
-print "\n Hash before resizing! \n Hash size: #{self.size} \n Internal Array: #{@items} \n"
+    print "\n Hash before resizing! \n Hash size: #{self.size} \n Internal Array: #{@items} \n"
     #copy of current Array
     temp_array = Marshal.load(Marshal.dump(@items))
 
