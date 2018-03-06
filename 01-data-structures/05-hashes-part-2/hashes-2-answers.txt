@@ -1,0 +1,3 @@
+Describe three collision resolution strategies not mentioned here.
+
+Create your own collision resolution strategy and describe how it works.

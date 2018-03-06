@@ -34,7 +34,9 @@ class OpenAddressing
       @items[index] = [key, value]
     end
 
-    print "\n Hash size: #{self.size} \n Internal Array: #{@items} \n"
+    items_present = @items.count{ |x| !x.nil? }
+    load_factor = (items_present.to_f)/(self.size.to_f)
+    print "\n Load Factor: #{load_factor} \n Internal Array: #{@items} \n"
   end
 
   def [](key)
