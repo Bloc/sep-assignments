@@ -89,9 +89,11 @@ class SeparateChaining
     #rehash keys
     #for each element in temp, get key & value and then recall def []=(key, value)
     temp_array.each { |node|
-      unless node.nil?
-        index = self.index(node.key, self.size)
-        @items[index] = node
+      if !node.nil?
+        while node
+          self[node.key] = node.value
+          node = node.next_node
+        end
       end
     }
     print "\n HASH AFTER RESIZING! \n Hash size: #{self.size} \n Internal Array: #{@items} \n"
