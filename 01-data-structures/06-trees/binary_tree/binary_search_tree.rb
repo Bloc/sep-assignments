@@ -53,39 +53,76 @@ class BinarySearchTree
     # puts "Data: #{data}"
     # puts node_to_delete ? "node to delete: #{node_to_delete}, #{node_to_delete.title}" : "No node found"
 
-    #For leafs: find parent.left or parent.right that equals data and set it  = nil
+    # Case 1 - No children
+    # Find parent.left or parent.right that equals data and set it  = nil
     if node_to_delete.left.nil? && node_to_delete.right.nil?
       parent = self.find_parent(root, data)
       parent.left = nil if parent.left && parent.left.title == data
       parent.right = nil if parent.right && parent.right.title == data
-    end
+    elsif (node_to_delete.left || node_to_delete.right) && !(node_to_delete.left && node_to_delete.right)
+      #Case 2 - One child
+      #link child of node_to_delete to the parent of node_to_delete
 
-    # For parents with one child: link child of node_to_delete to the parent of node_to_delete
-    if (node_to_delete.left || node_to_delete.right) && !(node_to_delete.left && node_to_delete.right)
       parent = self.find_parent(root, data)
       puts  "parent: #{parent.title}"
       child = node_to_delete.left || node_to_delete.right
       puts  "child: #{child.title}"
       parent.left.title == data ? parent.left = child : parent.right = child
+    else
+      #Case 3 - Two children
+      #find min in right sub tree
+      #copy that to node_to_delete
+      #delete the copy
+
+      min_right = find_min(node_to_delete.right)
     end
 
     # For parents with two childen
+
+    # node_to_delete = self.find(root, data)
+    #
+    # if root.nil?
+    #   return root
+    # elsif node_to_delete.rating < root.rating
+    #   root.left = self.delete(root.left, data)
+    # elsif node_to_delete.rating > root.rating
+    #   root.right = self.delete(root.right, data)
+    # else
+    #   if root.left.nil? && root.right.nil?  #Case 1: no child
+    #     root = nil
+    #   elsif root.left.nil?                  #Case 2: 1 child - right
+    #     root = root.right
+    #   elsif root.right.nil?                 #Case 2: 1 child - left
+    #     root = root.left
+    #   else                                  #Case 3: 2 children
+    #     min = self.find_min(root.right)     # find min root.right
+    #     root = min
+    #     root.right = self.delete(root.right, min.title)
+    #   end
+    #   return root
+    # end
+
+  end
+
+  def find_min(root)
+    if root.left.nil?
+      return root
+    else
+      return find_min(root.left)
+    end
   end
 
   # Recursive Breadth First Search
-  def printf(children=nil)
-    # prints a depth first search
-    # if root
-    #   #return node when you find title matching data
-    #   puts root ? "root title: #{root.title}" : "No root node"
-    #
-    #   #recursively search left sub-tree
-    #   self.find(root.left, data) if root.left
-    #
-    #   #recursively search right sub-tree
-    #   self.find(root.right, data) if root.right
-    # end
+  def printf
+    return if @root.nil?
+    queue = [@root]
 
+    while !queue.empty?
+      current = queue.shift
+      queue.push(current.left) if current.left
+      queue.push(current.right) if current.right
+      print "#{current.title}: #{current.rating}\n"
+    end
   end
 
 end
