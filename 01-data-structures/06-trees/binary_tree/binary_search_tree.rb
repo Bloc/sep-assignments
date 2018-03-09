@@ -15,15 +15,9 @@ class BinarySearchTree
     end
   end
 
-  # Recursive Depth First Search
-  # data = title(string)
+  # Recursive Depth First Search, data(string)
   def find(root, data)
-    # puts "Root title: #{root.title}"
-    # puts root.left ? "Left title: #{root.left.title}" : "No left node"
-    # puts root.right ? "Right title: #{root.right.title}" : "No right node"
-
-    #handle nil data search
-    return nil if data.nil?
+    return nil if data.nil?       #handle nil data search
 
     if root
       if root.title == data
@@ -46,39 +40,39 @@ class BinarySearchTree
   end
 
   def delete(root, data)
-    #handle nil data
-    return nil if data.nil?
-
+    return nil if data.nil?               #handle nil data
     node_to_delete = self.find(root, data)
-    # puts "Data: #{data}"
-    # puts node_to_delete ? "node to delete: #{node_to_delete}, #{node_to_delete.title}" : "No node found"
 
-    # Case 1 - No children
-    # Find parent.left or parent.right that equals data and set it  = nil
     if node_to_delete.left.nil? && node_to_delete.right.nil?
+      # Case 1 - No children
+      # Find parent.left or parent.right that equals data and set it = nil
       parent = self.find_parent(root, data)
       parent.left = nil if parent.left && parent.left.title == data
       parent.right = nil if parent.right && parent.right.title == data
     elsif (node_to_delete.left || node_to_delete.right) && !(node_to_delete.left && node_to_delete.right)
       #Case 2 - One child
       #link child of node_to_delete to the parent of node_to_delete
-
       parent = self.find_parent(root, data)
-      puts  "parent: #{parent.title}"
       child = node_to_delete.left || node_to_delete.right
-      puts  "child: #{child.title}"
       parent.left.title == data ? parent.left = child : parent.right = child
     else
       #Case 3 - Two children
-      #find min in right sub tree
-      #copy that to node_to_delete
-      #delete the copy
+      #find min in right sub tree, copy that inplace of node_to_delete, delete the copy
+      min = find_min(node_to_delete.right)
+      min.left = node_to_delete.left
+      parent = find_parent(@root, node_to_delete.title)
 
-      min_right = find_min(node_to_delete.right)
+      if parent.left && parent.left.title == node_to_delete.title
+        parent.left = min
+      else
+        parent.right = min
+      end
+
+      puts "New tree:"
+      self.printf
     end
 
-    # For parents with two childen
-
+    # #recursive solution
     # node_to_delete = self.find(root, data)
     #
     # if root.nil?
@@ -101,9 +95,9 @@ class BinarySearchTree
     #   end
     #   return root
     # end
-
   end
 
+  # Finds the node with minimum value
   def find_min(root)
     if root.left.nil?
       return root
