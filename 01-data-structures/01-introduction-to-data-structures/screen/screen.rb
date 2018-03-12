@@ -13,16 +13,19 @@ class Screen
 
   # Insert a Pixel at x, y
   def insert(pixel, x, y)
-    @matrix[x][y] = pixel
+    if inbounds(x,y)
+      @matrix[x][y] = pixel
+    end
   end
 
   def at(x, y)
-    return @matrix[x][y]
+    inbounds(x,y) ? @matrix[x][y] : nil
   end
 
   private
 
   def inbounds(x, y)
+    ((x < width || x > 0) || (y < height || y > 0))
   end
 
 end
