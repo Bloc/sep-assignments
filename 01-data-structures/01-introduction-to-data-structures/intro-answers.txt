@@ -1,0 +1,16 @@
+Line:
+1. My data structure uses an array to allow developers to access and
+manipulate the data using ruby methods.
+2. If a developer wanted to find a specific element in my data structure, use
+the search method with a person parameter.
+3. This could also be used to order anything that requires a queue/line, such
+as queuing systems for vendors/stores, music/karaoke requests, and ticketing
+systems for task completion.
+
+Screen:
+1. My data structure uses an array of arrays to allow developers to access
+and manipulate the data using the given functions.
+2. If a developer wanted to find a specific element in my data structure, use
+the at method to find out the color at the specific pixel location.
+3. This could also be used to structure anything that requires a 2D
+array/matrix, such as a map, a board game, or a painting.
