@@ -1,0 +1,17 @@
+Insert all numbers from 1 to 10,000 into both Trees, then use Benchmark to compare performance.
+1. How much time does an average insertion consume in the Binary Search Tree compared to the Heap?
+On my computer the time to insert 10,000 items was 4.7576 seconds for the Binary Search Tree versus 0.0092 seconds for the Min Heap. The start difference could be because I chose to use an array or the underlying structure for my Min Heap.
+
+2. How much time does finding 5000 in the Binary Search Tree consume compared to the Heap?
+On my computer the time to find the 5000th element in the Binary Search Tree was 0.002272 seconds vs 0.000940 seconds for the Min Heap.
+
+3. How much time does the average deletion consume in a Binary Search Tree compared to the Heap?
+To delete the 5000th element it took 0.004923 seconds for the Binary Search Tree and 0.000734 seconds for the Min Heap.
+
+4. When would you use a Binary Search Tree and why?
+A BST allows you to quickly search for items. Compared to an unsorted array, which has a search time complexity of 0(n), the search time complexity for a BST is 0(log(n)) which is a significant improvement. This is possible because the items in a BST are ordered. A BST is also more efficient for insertion and deletion compared to an array.
+
+A BST would be an appropriate data structure when you have a lot of data that needs to be accessed, added or deleted. Or data that follows a natural hierarchical pattern
+
+5. When would you use an Heap and why?
+Heaps are efficient for priority-queues where the highest priority item is retrieved first, then the next highest, etc. This can be used for scheduling processes. Heaps are also useful if you want quick access to the largest or smallest item in a data set because that item will always be the first element in the tree for a max or min heap.
