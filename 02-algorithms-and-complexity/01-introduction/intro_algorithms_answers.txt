@@ -1,0 +1,112 @@
+1. Making tea in the morning
+DEF MORNING_TEA(tea_type, steeping_time)
+  IF tea_kettle is FULL THEN
+    CALL boil water
+  Else
+    Fill kettle with water
+    CALL boil water
+  ENDIF
+
+  IF tea_type is loose leaf THEN
+    Add loose tea to steeping pot
+    Fill steeping pot with boiled water
+    Wait for steeping_time
+    Pour tea in mug
+    CAll clean steeping pot method
+  ELSE if tea_type is bag THEN
+    Add tea bag to mug
+    Fill mug with boiled water
+    Wait for steeping_time
+    Remove tea bag from mug
+    Place tea bag in trash
+  ENDIF
+
+  IF honey is available
+    Add 1 spoon of honey to tea
+    Stir tea
+    Enjoy tea
+  ELSE
+    Add honey to shopping list      #cause you are going to the store later
+    Drink tea begrudgingly
+  ENDIF
+END DEF
+
+2. How to warm-up & attempt a one rep max deadlift
+
+DEF DEADLIFT_ONE_REP_MAX(old_max)
+  COMPUTE weight for first warm up set as 45% of old_max, ASSIGN to first_warm_up
+  ASSIGN to first_warm_up to second_warm_up
+  COMPUTE weight for third warm up set as 55% of old_max, ASSIGN to third_warm_up
+  COMPUTE weight for fourth warm up set as 65% of old_max, ASSIGN to fourth_warm_up
+  COMPUTE weight for fifth warm up set as 75% of old_max, ASSIGN to fifth_warm_up
+  COMPUTE weight for sixth warm up set as 85% of old_max, ASSIGN to sixth_warm_up
+
+  IF it is the first - third set
+    SET Reps to 3
+  ELSE IF it is the forth set THEN
+    SET Reps to 2
+  ELSE
+    SET Reps to 1
+  ENDIF
+
+  FOR each set in the warm-up schedule
+    PRINT the Set number, number of reps and the weight rounded to nearest 5lbs
+  END FOR
+
+  OBTAIN from user if warm-up complete
+  Set attempt_counter to 0
+  IF warm-up complete
+    COMPUTE max_attempt at 92% of old_max, ASSIGN to max_attempt
+    Increase attempt_counter by 1
+    PRINT max attempt
+  END
+
+  REPEAT until lift attempt counter > 3
+    OBTAIN from user if max_attempt was sucessful
+    IF YES
+      Set attempt_counter to 0
+      IF max_attempt is less than 102% of old max
+        COMPUTE new max_attempt equal to previous max attempt + 5%, ASSIGN to max_attempt
+      ELSE
+        COMPUTE new max_attempt equal to previous max attempt + 2%, ASSIGN to max_attempt
+      ENDIF
+      Increase attempt_counter by 1
+      PRINT max_attempt
+    ELSE
+      IF attempt counter < 3
+        Repeat max_attempt
+        Increase attempt_counter by 1
+      ELSE
+        Call it a day and try again next cycle
+      ENDIF
+    ENDIF
+  END REPEAT
+
+  OBTAIN from user if they got a new one_rep_max
+  IF YES
+    RECORD max_attempt as new_max_deadlift
+    GO Celebrate!
+  ELSE
+    Maxes are scare, you don't get them every time
+    GO Celebrate!
+  ENDIF
+END DEF
+
+3. How to determine if you can order your once a year cheese plate
+#I'm vegan but once a year I order a cheese plate. Don't tell the vegan police.
+
+DEF CHEESE_PLATE?(date, special_occassion, vacation, does_it_look_really_good)
+  ASSIGN date to date_of_last_cheese_plate
+  COMPUTE date of next possible cheese plate, ASSIGN to cheese_day
+
+  IF cheese_day is less than today
+    COMPUTE days until you can order cheese plate, ASSIGN to days_of_sadness
+    NO! You must wait days_of_sadness until cheese plate.
+  ELSE
+    IF you're on vacation or it's a special occasion or it looks really, really good
+      Omg, yes! Get that cheese plate. You should probably get some wine to go with it too.
+    ELSE
+      You should probably wait. More amazing cheese plates will be in your future.
+    ENDIF
+  ENDIF
+END DEF 
