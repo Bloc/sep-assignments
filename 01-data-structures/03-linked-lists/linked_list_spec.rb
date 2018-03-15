@@ -12,8 +12,11 @@ RSpec.describe LinkedList, type: Class do
   describe "#add_to_tail" do
     it "adds a Node to the tail" do
       llist.add_to_tail(n1)
+      expect(llist.head).to eq n1
       expect(llist.tail).to eq n1
+
       llist.add_to_tail(n2)
+      expect(llist.head).to eq n1
       expect(llist.tail).to eq n2
     end
   end
@@ -87,6 +90,20 @@ RSpec.describe LinkedList, type: Class do
       expect(llist.head).to eq n1
       llist.remove_front
       expect(llist.head).to eq nil
+    end
+  end
+
+  describe "#find" do
+    before do
+      llist.add_to_tail(n1)
+      llist.add_to_tail(n2)
+      llist.add_to_tail(n3)
+    end
+
+    it "finds items in list" do
+      expect(llist.find("Rob")).to eq n1
+      expect(llist.find("Ben")).to eq n2
+      expect(llist.find("Mike")).to eq n3
     end
   end
 end

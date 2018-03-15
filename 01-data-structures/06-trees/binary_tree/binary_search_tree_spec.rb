@@ -86,12 +86,31 @@ RSpec.describe BinarySearchTree, type: Class do
     it "properly finds a right-left node" do
       tree.insert(root, hope)
       tree.insert(root, martian)
+      expect(tree.find(root, hope.title).title).to eq "Star Wars: A New Hope"
       expect(tree.find(root, martian.title).title).to eq "The Martian"
     end
 
     it "properly finds a right-right node" do
       tree.insert(root, empire)
       tree.insert(root, mad_max_2)
+      expect(tree.find(root, mad_max_2.title).title).to eq "Mad Max 2: The Road Warrior"
+    end
+
+    it "properly searches more complex tree" do
+      tree.insert(root, hope)
+      tree.insert(root, empire)
+      tree.insert(root, jedi)
+      tree.insert(root, martian)
+      tree.insert(root, pacific_rim)
+      tree.insert(root, inception)
+      tree.insert(root, braveheart)
+      tree.insert(root, shawshank)
+      tree.insert(root, district)
+      tree.insert(root, mad_max_2)
+
+      expect(tree.find(root, pacific_rim.title).title).to eq "Pacific Rim"
+      expect(tree.find(root, inception.title).title).to eq "Inception"
+      expect(tree.find(root, martian.title).title).to eq "The Martian"
       expect(tree.find(root, mad_max_2.title).title).to eq "Mad Max 2: The Road Warrior"
     end
   end
@@ -139,6 +158,76 @@ RSpec.describe BinarySearchTree, type: Class do
       tree.insert(root, mad_max_2)
       tree.delete(root, mad_max_2.title)
       expect(tree.find(root, mad_max_2.title)).to be_nil
+    end
+
+    it "properly deletes a node with one left child " do
+      tree.insert(root, hope)
+      tree.insert(root, empire)
+      tree.insert(root, jedi)
+      tree.insert(root, martian)
+      tree.insert(root, pacific_rim)
+      tree.insert(root, inception)
+      tree.insert(root, braveheart)
+      tree.insert(root, shawshank)
+      tree.insert(root, district)
+      tree.insert(root, mad_max_2)
+
+      tree.delete(root, martian.title)
+      expect(tree.find(root, martian.title)).to be_nil
+      expect(tree.find(root, hope.title).left.title).to eq "The Shawshank Redemption"
+    end
+
+    it "properly deletes a node with one right child" do
+      tree.insert(root, hope)
+      tree.insert(root, empire)
+      tree.insert(root, jedi)
+      tree.insert(root, martian)
+      tree.insert(root, pacific_rim)
+      tree.insert(root, inception)
+      tree.insert(root, braveheart)
+      tree.insert(root, shawshank)
+      tree.insert(root, district)
+      tree.insert(root, mad_max_2)
+
+      tree.delete(root, empire.title)
+      expect(tree.find(root, empire.title)).to be_nil
+      expect(tree.find(root, hope.title).right.title).to eq "Mad Max 2: The Road Warrior"
+    end
+
+    it "properly deletes a node with two children" do
+      tree.insert(root, hope)
+      tree.insert(root, empire)
+      tree.insert(root, jedi)
+      tree.insert(root, martian)
+      tree.insert(root, pacific_rim)
+      tree.insert(root, inception)
+      tree.insert(root, braveheart)
+      tree.insert(root, shawshank)
+      tree.insert(root, district)
+      tree.insert(root, mad_max_2)
+
+      tree.delete(root, hope.title)
+      expect(tree.find(root, hope.title)).to be_nil
+      expect(tree.find(root, empire.title).left.title).to eq "The Martian"
+      expect(tree.find(root, empire.title).right.title).to eq "Mad Max 2: The Road Warrior"
+
+    end
+  end
+
+  describe "#find_min" do
+    it "properly finds the node with the min rating" do
+      tree.insert(root, hope)
+      tree.insert(root, empire)
+      tree.insert(root, jedi)
+      tree.insert(root, martian)
+      tree.insert(root, pacific_rim)
+      tree.insert(root, inception)
+      tree.insert(root, braveheart)
+      tree.insert(root, shawshank)
+      tree.insert(root, district)
+      tree.insert(root, mad_max_2)
+
+      expect(tree.find_min(empire)).to eq empire
     end
   end
 
