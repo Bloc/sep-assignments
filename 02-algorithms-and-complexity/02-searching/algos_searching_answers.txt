@@ -1,0 +1,30 @@
+1. Given the alphabetically sorted collection in this checkpoint, how many iterations would it take to find the value G using linear search?
+7th iteration
+
+2. Given the alphabetically sorted collection in this checkpoint, how many iterations would it take to find the value G using binary search?
+4th iteration
+
+3. Calculate fib(10), fib(11), fib(12) by hand.
+fib(0) = 0
+fib(1) = 1
+fib(2) = 1
+fib(3) = 2
+fib(4) = 3
+fib(5) = 5
+fib(6) = 8
+fib(7) = 13
+fib(8) = 21
+fib(9) = 34
+
+fib(10) = fib(9) + fib(8) = 34 + 21 = 55
+fib(11) = fib(10) + fib(9) = 55 + 34 = 89
+fib(12) = fib(11) + fib(10) = 89 + 55 = 144
+
+4. Given an unsorted collection of a million items, which algorithm would you choose between linear search and binary search? Would you use an iterative or recursive solution? Explain your reasoning.
+
+Since the collection is unsorted a binary search would not make sense, because you cannot effectively compare your search value to the mid value to determine which sub-section to discard. As for a iterative or recursive solution, I would want to know what the search algorithm was for. Based on the benchmarking I just conducted for the Fibonacci solutions, the iterative solution was much faster. As we saw in the last section, recursion is very helpful walking through trees. Since trees are ordered and this collection is not, I would probably lean towards an iterative solution. But I would need for information about the search to answer this question.
+
+
+5. Given a sorted collection of a million items, which algorithm would you choose between linear search and binary search? Would you use an iterative or recursive solution? Explain your reasoning.
+
+For a sorted collection, I would use a binary search. Now you can effectively compare your search value and each iteration you can discard half the collection. For a million terms, this will significantly shorten the average search time. As for iteration vs. recursion since the data is ordered it would probably lend itself to a recursive solution. But again I would want to know more about the problem.
