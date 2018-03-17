@@ -25,7 +25,7 @@ class Screen
   private
 
   def inbounds(x, y)
-    ((x < width || x > 0) || (y < height || y > 0))
+    ((x < @width || x >= 0) || (y < @height || y >= 0))
   end
 
 end
