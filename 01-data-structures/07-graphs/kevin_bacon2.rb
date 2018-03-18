@@ -13,18 +13,22 @@ class Graph
 
   def find_kevin_bacon(start)
     return @path_array if start.name == 'Kevin Bacon'
+    @checked_actors.push(start) unless @checked_actors.include?(start)
 
     start.film_actor_hash.each do |film, cast|
       cast.each do |actor|
-        if actor.name == 'Kevin Bacon'
+        if actor.name == "Kevin Bacon"
+          @path_array.push(film) unless @path_array.include?(film)
           return @path_array
         elsif !@checked_actors.include?(actor)
           @path_array.push(film) unless @path_array.include?(film)
           @checked_actors.push(actor)
-          find_kevin_bacon(actor)
+          return find_kevin_bacon(actor)
+        else
+          return
         end #if
       end #cast.each
     end # film_hash.each
-
   end #def
+  
 end #class
