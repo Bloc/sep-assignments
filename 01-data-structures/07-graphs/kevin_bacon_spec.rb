@@ -63,6 +63,9 @@ RSpec.describe Graph, type: Class do
     jeremy_renner.film_actor_hash['Arrival'] = [amy_adams]
     amy_adams.film_actor_hash['Arrival'] = [jeremy_renner]
 
+    amy_adams.film_actor_hash['Man of Steel'] = [henry_cavill]
+    henry_cavill.film_actor_hash['Man of Steel'] = [amy_adams]
+
     matt_damon.film_actor_hash['Interstellar'] = [matthew_mcconaughey, anne_hathaway]
     matthew_mcconaughey.film_actor_hash['Interstellar'] = [matt_damon, anne_hathaway]
     anne_hathaway.film_actor_hash['Interstellar'] = [matthew_mcconaughey, matt_damon]
@@ -104,14 +107,13 @@ RSpec.describe Graph, type: Class do
       expect(graph.find_kevin_bacon(amy_adams)).to eq(paths)
     end
 
-    # it "does not find Kevin Bacon if more than 6 connections away" do
-    #   paths = []
-    #   expect(graph.find_kevin_bacon(henry_cavill)).to eq(paths)
-    # end
-    #
-    # it "does not find Kevin Bacon if not connected" do
-    #   paths = []
-    #   expect(graph.find_kevin_bacon(matt_damon)).to eq(paths)
-    # end
+    it "does not find Kevin Bacon if more than 6 connections away" do
+      expect(graph.find_kevin_bacon(henry_cavill)).to eq("Kevin Bacon more than 6 connections away.")
+    end
+
+    it "does not find Kevin Bacon if not connected" do
+      paths = []
+      expect(graph.find_kevin_bacon(matt_damon)).to eq(paths)
+    end
   end
 end

@@ -22,13 +22,14 @@ class Graph
           return @path_array
         elsif !@checked_actors.include?(actor)
           @path_array.push(film) unless @path_array.include?(film)
+          return "Kevin Bacon more than 6 connections away." if @path_array.length >= 6
           @checked_actors.push(actor)
           return find_kevin_bacon(actor)
         else
-          return
+          return []
         end #if
       end #cast.each
     end # film_hash.each
   end #def
-  
+
 end #class
