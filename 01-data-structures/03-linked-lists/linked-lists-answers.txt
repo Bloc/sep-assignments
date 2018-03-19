@@ -1,0 +1,12 @@
+1. Spatial Locality is where the data is located close to each other. This
+benefits performance because this reduces the number of times a computer needs
+to read from RAM.
+2. The Array performance is better than the Linked list performance:
+
+                                        user     system      total        real
+create 10,000 item array:             0.000000   0.000000   0.000000 (  0.001271)
+append 10,000 items to linked list:   0.010000   0.000000   0.010000 (  0.005612)
+access 5000th element in array:       0.000000   0.000000   0.000000 (  0.000005)
+access 5000th node in linked list:    0.000000   0.000000   0.000000 (  0.000478)
+remove 5000th element in array:       0.000000   0.000000   0.000000 (  0.000009)
+remove 5000th node in linked list:    0.000000   0.000000   0.000000 (  0.001290)
