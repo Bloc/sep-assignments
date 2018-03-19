@@ -77,32 +77,32 @@ RSpec.describe Graph, type: Class do
       expect(graph.find_kevin_bacon(kevin_bacon)).to eq(paths)
     end
 
-    it "finds Kevin Bacon from Michael Fassbender" do
+    it "finds Kevin Bacon 1 connection away" do
       paths = ['X-Men: First Class']
       expect(graph.find_kevin_bacon(michael_fassbender)).to eq(paths)
     end
 
-    it "finds Kevin Bacon from Morgan Freeman" do
+    it "finds Kevin Bacon 2 connections away" do
       paths = ['Wanted','X-Men: First Class']
       expect(graph.find_kevin_bacon(morgan_freeman)).to eq(paths)
     end
 
-    it "finds Kevin Bacon from Tommy Lee Jones " do
+    it "finds Kevin Bacon 3 connections away" do
       paths = ['The Fugitive', 'Blade Runner: 2049', 'Crazy, Stupid, Love']
       expect(graph.find_kevin_bacon(tommy_lee_jones)).to eq(paths)
     end
 
-    it "finds Kevin Bacon from Simon Pegg" do
+    it "finds Kevin Bacon 4 connections away" do
       paths = ['Star Trek: Into Darkness', 'Guardians of the Galaxy', 'Wanted', 'X-Men: First Class']
       expect(graph.find_kevin_bacon(simon_pegg)).to eq(paths)
     end
 
-    it "finds Kevin Bacon from Tom Cruise" do
+    it "finds Kevin Bacon 5 connections away" do
       paths = ['Mission Impossible: Ghost Protocol', 'Star Trek: Into Darkness', 'Guardians of the Galaxy', 'Wanted', 'X-Men: First Class']
       expect(graph.find_kevin_bacon(tom_cruise)).to eq(paths)
     end
 
-    it "finds Kevin Bacon from Amy Adams" do
+    it "finds Kevin Bacon 6 connections away" do
       paths = ['Arrival', 'Mission Impossible: Ghost Protocol', 'Star Trek: Into Darkness', 'Guardians of the Galaxy', 'Wanted', 'X-Men: First Class']
       expect(graph.find_kevin_bacon(amy_adams)).to eq(paths)
     end
