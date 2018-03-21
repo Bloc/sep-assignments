@@ -1,23 +1,39 @@
 require_relative 'node'
-require 'benchmark'
 
-class BinarySearchTree
+class MinBinaryHeap
+  attr_accessor :root
 
   def initialize(root)
     @root = root
   end
 
   def insert(root, node)
-    if node.rating < root.rating && root.left == nil
-      root.left = node
-    elsif node.rating < root.rating && root.left != nil
-      root = root.left
-      insert(root, node)
-    elsif node.rating > root.rating && root.right == nil
-      root.right = node
-    elsif node.rating > root.rating && root.right != nil
-      root = root.right
-      insert(root, node)
+    if node.rating > root.rating
+      if root.left.nil?
+        node.parent = root
+        root.left = node
+      elsif root.right.nil?
+        node.parent = root
+        root.right = node
+      else
+        if root.left.left.nil? || root.left.right.nil?
+          insert(root.left, node)
+        elsif root.right.left.nil? || root.right.right.nil?
+          insert(root.right, node)
+        end
+      end
+    elsif node.rating < root.rating && root == @root
+      @root = node
+      node = root
+      insert(@root, node)
+    elsif node.rating < root.rating && root != @root
+      temp_root = root
+      if root.parent.left == root
+        root.parent.left = node
+      elsif root.parent.right == root
+        root.parent.right = node
+      end
+      insert(node, temp_root)
     end
   end
 
@@ -72,6 +88,7 @@ class BinarySearchTree
   end
 end
 
+
 jumanji = Node.new("Jumanji: Welcome to the Jungle", 76)
 mazerunner = Node.new("Maze Runner: The Death Cure", 43)
 winchester = Node.new("Winchester", 10)
@@ -83,14 +100,16 @@ thieves = Node.new("Den of Thieves", 39)
 water = Node.new("The Shape of Water", 92)
 paddington = Node.new("Paddington 2", 100)
 
-movies = BinarySearchTree.new(jumanji)
+movies = MinBinaryHeap.new(jumanji)
 
-movies.insert(jumanji, mazerunner)
-movies.insert(jumanji, winchester)
-movies.insert(jumanji, showman)
-movies.insert(jumanji, post)
-movies.insert(jumanji, hostiles)
-movies.insert(jumanji, strong)
-movies.insert(jumanji, thieves)
-movies.insert(jumanji, water)
-movies.insert(jumanji, paddington)
+movies.insert(movies.root, strong)
+movies.insert(movies.root, water)
+movies.insert(movies.root, paddington)
+movies.insert(movies.root, mazerunner)
+movies.insert(movies.root, winchester)
+movies.insert(movies.root, showman)
+movies.insert(movies.root, post)
+movies.insert(movies.root, hostiles)
+movies.insert(movies.root, thieves)
+
+movies.printf
