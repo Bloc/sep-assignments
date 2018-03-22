@@ -9,26 +9,34 @@ class Line
   end
 
   def join(person)
+    members << person
   end
 
   def leave(person)
+    members.delete(person)
   end
 
   def front
+    members.first
   end
 
   def middle
+    middleIndex = members.size / 2
+    members[middleIndex]
   end
 
   def back
+    members.last
   end
 
   def search(person)
+    index = index(person)
+    index ? members[index] : nil
   end
 
   private
 
   def index(person)
+    index = members.index(person)
   end
-
 end

@@ -1,0 +1,22 @@
+1. How does your data structure allow developers to access and manipulate the data?
+
+  If the developer wants to see what is at a given set of x & y coordinates of the screen they
+  have the #at method. The #at method accepts two arguments, for the x & y coordinates. #at returns
+  the element stored at that location on the screen.
+
+  If the developer wants to insert a pixel into the screen they have the #insert method. The #insert
+  method takes three arguments, 1) an instance of the Pixel class 2) an integer for the x-coordinate and
+  3) an integer for the y-coordinate of the pixel.
+
+2. If a developer wanted to find a specific element in your data structure, how would you search for it?
+
+  The #at method allows the developer to see what is at a specific location on the screen.
+
+  If the developer wants to search for all instances of a particular color pixel the #search method is available.
+  #search takes a pixel as a parameter and returns an array containing the x & y coordinates of any instances
+  of pixels with that same color combination if they were found.
+
+3. What other real-world data can each structure represent?
+
+  Similar to a screen this data structure could represent a large billboard sign, or a score board as
+  used in sporting arenas. Very simple graphical games could use a simple screen interface such as this.
