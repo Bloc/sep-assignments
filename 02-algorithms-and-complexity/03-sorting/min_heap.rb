@@ -10,7 +10,7 @@ class MinHeap
   end
 
   def bubble_up(index)
-    parent_index = (index -1) / 2
+    parent_index = (index - 1) / 2
 
     #return if we reach the root
     return if index <= 1
@@ -30,8 +30,8 @@ class MinHeap
   end
 
   def delete_root
-    #root is always at index = 1 in @elements array
-    index = 1
+    #root is always at index = 0 in @elements array
+    index = 0
 
     #swap root with last index in array
     swap(index, @elements.size - 1)
@@ -47,7 +47,7 @@ class MinHeap
   end
 
   def bubble_down(index)
-    child_index = index * 2
+    child_index = 2*index + 1
 
     #return if we reach the bottom of the tree
     return if child_index > @elements.size - 1
@@ -66,11 +66,5 @@ class MinHeap
 
     #repeat until parent is smaller than its children
     bubble_down(child_index)
-  end
-
-  def printf
-    @elements.each do |element|
-      puts "#{element.title}: #{element.rating}" if element
-    end
   end
 end
