@@ -10,7 +10,7 @@ class MinHeap
   end
 
   def bubble_up(index)
-    parent_index = (index -1) / 2
+    parent_index = (index - 1) / 2
 
     #return if we reach the root
     return if index <= 1
