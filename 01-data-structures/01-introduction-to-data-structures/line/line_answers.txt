@@ -1,0 +1,28 @@
+1. How does your data structure allow developers to access and manipulate the data?
+
+  If the developer wants to access a person at certain places in the line, such as the first, middle or
+  back positions they have the use of the #first, #middle and #back methods respectively.
+
+  If the developer wants to add a person to the list they have use of the #join method which takes a person
+  in the form of a string as an argument. The person is added to the end of the line.
+
+  If a developer wants to remove a person from the list they have use of the #leave method which takes a
+  person in the form of a string as an argument. The members array is directly altered when a person
+  leaves the line.
+
+  Lastly, the full list of line members can be accessed on an instance of the Line class by using .members
+
+2. If a developer wanted to find a specific element in your data structure, how would you search for it?
+
+  The #search method allows developers to find if a person is in the members array. #search takes a person
+  in the form of a string as an argument. If the person is in the members array the person is returned.
+  The array is not altered by the #search method.
+
+
+3. What other real-world data can each structure represent?
+
+  This Line class could represent any number of situations where people form into lines, from the grocery
+  store to the DMV, or a restaurant table wait list. More abstractly the Line class could apply to
+  a myriad of situations where objects are placed in a line-like system. For instance, cars that come into
+  a repair shop where each car could be serviced on a first-come, first-served basis. This implementation
+  of List would require modification to suit any such specific use-cases.

@@ -38,4 +38,22 @@ RSpec.describe Screen, type: Class do
     end
   end
 
+  describe "#search" do
+    it "returns an array of matching pixel coordinates" do
+      pixel_1 = Pixel.new(255, 200, 175, 1, 1)
+      pixel_2 = Pixel.new(255, 200, 175, 2, 2)
+      pixel_3 = Pixel.new(255, 200, 175, 3, 3)
+      different_color_pixel = Pixel.new(111,222,111, 4, 4)
+
+      screen.insert(pixel_1, 1, 1)
+      screen.insert(pixel_2, 2, 2)
+      screen.insert(pixel_3, 3, 3)
+      screen.insert(different_color_pixel, 4, 4)
+
+      search_results = screen.search(pixel_1)
+
+      expect(search_results).to eq [[1,1],[2,2],[3,3]]
+    end
+  end
+
 end
