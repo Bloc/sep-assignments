@@ -1,7 +1,7 @@
 include RSpec
 
 require_relative 'node'
-require_relative 'kevin_bacon2'
+require_relative 'kevin_bacon'
 
 RSpec.describe Graph, type: Class do
   let (:graph) {Graph.new}
@@ -73,47 +73,45 @@ RSpec.describe Graph, type: Class do
 
   describe "it finds the actor that was passed" do
     it "finds Kevin Bacon from himself" do
-      paths = []
-      expect(graph.find_kevin_bacon(kevin_bacon)).to eq(paths)
+      expect(graph.bfs(kevin_bacon, kevin_bacon)).to eq("You want to find Kevin Bacon from Kevin Bacon? What is this insanity?")
     end
 
     it "finds Kevin Bacon 1 connection away" do
       paths = ['X-Men: First Class']
-      expect(graph.find_kevin_bacon(michael_fassbender)).to eq(paths)
+      expect(graph.bfs(michael_fassbender, kevin_bacon)).to eq(paths)
     end
 
     it "finds Kevin Bacon 2 connections away" do
       paths = ['Wanted','X-Men: First Class']
-      expect(graph.find_kevin_bacon(morgan_freeman)).to eq(paths)
+      expect(graph.bfs(morgan_freeman, kevin_bacon)).to eq(paths)
     end
 
     it "finds Kevin Bacon 3 connections away" do
       paths = ['The Fugitive', 'Blade Runner: 2049', 'Crazy, Stupid, Love']
-      expect(graph.find_kevin_bacon(tommy_lee_jones)).to eq(paths)
+      expect(graph.bfs(tommy_lee_jones, kevin_bacon)).to eq(paths)
     end
 
     it "finds Kevin Bacon 4 connections away" do
       paths = ['Star Trek: Into Darkness', 'Guardians of the Galaxy', 'Wanted', 'X-Men: First Class']
-      expect(graph.find_kevin_bacon(simon_pegg)).to eq(paths)
+      expect(graph.bfs(simon_pegg, kevin_bacon)).to eq(paths)
     end
 
     it "finds Kevin Bacon 5 connections away" do
       paths = ['Mission Impossible: Ghost Protocol', 'Star Trek: Into Darkness', 'Guardians of the Galaxy', 'Wanted', 'X-Men: First Class']
-      expect(graph.find_kevin_bacon(tom_cruise)).to eq(paths)
+      expect(graph.bfs(tom_cruise, kevin_bacon)).to eq(paths)
     end
 
     it "finds Kevin Bacon 6 connections away" do
       paths = ['Arrival', 'Mission Impossible: Ghost Protocol', 'Star Trek: Into Darkness', 'Guardians of the Galaxy', 'Wanted', 'X-Men: First Class']
-      expect(graph.find_kevin_bacon(amy_adams)).to eq(paths)
+      expect(graph.bfs(amy_adams, kevin_bacon)).to eq(paths)
     end
 
     it "does not find Kevin Bacon if more than 6 connections away" do
-      expect(graph.find_kevin_bacon(henry_cavill)).to eq("Kevin Bacon more than 6 connections away.")
+      expect(graph.bfs(henry_cavill, kevin_bacon)).to eq("Kevin Bacon is more than 6 connections away.")
     end
 
     it "does not find Kevin Bacon if not connected" do
-      paths = []
-      expect(graph.find_kevin_bacon(matt_damon)).to eq(paths)
+      expect(graph.bfs(matt_damon, kevin_bacon)).to eq("Kevin Bacon not found.")
     end
   end
 end
