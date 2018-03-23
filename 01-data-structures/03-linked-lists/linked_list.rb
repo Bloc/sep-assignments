@@ -73,6 +73,7 @@ class LinkedList
     front_node = @head
     if @head === @tail
       @head = nil
+      @tail = nil
     elsif !@head.nil?
       @head = front_node.next
         if @head.next.nil?
