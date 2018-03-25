@@ -1,0 +1,1 @@
+Spatial locality benefits performance by reducing the number of times the computer needs to read from RAM, as opposed to reading from cache. This optimizes the time used and is more efficient than jumping back and forth between cache and RAM. 
