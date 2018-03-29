@@ -1,5 +1,8 @@
 require 'benchmark'
-require_relative 'improvements'
+require_relative 'improving_complexity_version_one'
+require_relative 'improving_complexity_version_two'
+require_relative 'improving_complexity_version_three'
+require_relative 'improving_complexity_version_four'
 
 Benchmark.bm(7) do |x|
   x.report("improvement_one: ") { improvement_one([19,18,17,20], [4,2,3,1], [9,12,11,10], [5,6,7,8], [16,13,14,15], [21,23,22,25,24]) }
