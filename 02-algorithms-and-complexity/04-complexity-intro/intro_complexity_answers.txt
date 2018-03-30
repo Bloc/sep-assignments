@@ -1,0 +1,53 @@
+1. Describe an analogy for relating an algorithm that has efficiency O(1) and another algorithm that has O(2n).
+
+An analogy?? I did some housework today so here's a real boring one ... An algorithm that has efficiency O(1) runs in constant time, meaning that regardless of the size of the input it takes a certain amount of time to execute. This is the best case scenario for an algorithm. Constant time is like running my dishwasher (ignoring all the fancy different cycle choices). It doesn't matter if I put one fork in there or it's fully loaded, it will take the same amount of time to run. Where as algorithm that has O(2n) complexity (the factor of 2 doesn't matter in big-O notation) runs in linear time, meaning the run time will increase linearly as the number of inputs increases. This is like folding or putting up the laundry (the absolute worse chore). Assuming each item of clothing takes the same amount of time to fold, the more items I have to fold the more time it takes to complete the task. I understand in terms of complexity an algorithm of O(1) is considered to be faster than an algorithm of O(n). This assumes the time it takes to complete a task is the same between both algorithms. But this not necessarily indicative of actual run times, since you can factor out constants from complexity notations. An O(1) algorithm could have a constant run time of 10 mins and an O(n) algorithm could run on a small input set (or large one for that matter) and actually finish in 10 seconds. For this reason I am not in favor of the analogy given. I think it implies a constant time algorithm, the cheetah, will always run faster than a linear one, the snail. Big-O notation is really concerned with the growth of the time required as the number of inputs increases. Or am I misunderstanding something?
+
+2. In plain English, what is the best case scenario for binary search?
+You find the item on the first try. Yay!
+
+3. In plain English, what is the worst-case scenario for binary search?
+Worst case would be the searching for the first or last item (or an item one off from the middle) in an array. Which would mean you would have to through all the iterations until the was only one element in the sub array checked. Or in a tree structure the worst case would be having to traverse to the deepest level. Boo :( But each time you make an iteration the number of remaining items needed to be checked is cut in half. If you compare the number of items in an array to the number of iterations required in the worst case. The number of iterations required follow the function lg(n) + 1. Still pretty good even for a worst case!
+
+4. In plain English, what is the bounded-case scenario for binary search? Big-Theta
+The bounded case for a binary search is logarithmic time. The bounded case simply means the growth of the function as n increases is essentially the same as log(n). Bounding of function or asymptotic behavior does not care about small n.
+
+5. Create a graph using the data below.
+I don't need a graph, the function is 2^n. Base 2 exponential growth - for each increase in input the output doubles i.e. its a doubling function.
+
+6. What is the limit of the function above as n approaches infinity?
+As n approaches +infinity, f(n) approaches +infinity. (As n grows positively without bound the function, f(n) also grows positively without bound)
+
+7. What is the Big-O of an algorithm that has the data points above?
+Some constant, k, times 2^n or O(2^n).
+
+8. Write a Ruby method that takes a number n. This method must print the worst-case number of iterations for linear search to find an item in collections of size one to n. Use it to generate a table of worst-case iterations of collections up to size 10.
+
+def really(n)
+  n.times { |n| puts "collection size = worst-case number of iterations = #{n + 1}" }
+end
+
+Output:
+collection size = worst-case number of iterations = 1
+collection size = worst-case number of iterations = 2
+collection size = worst-case number of iterations = 3
+collection size = worst-case number of iterations = 4
+collection size = worst-case number of iterations = 5
+collection size = worst-case number of iterations = 6
+collection size = worst-case number of iterations = 7
+collection size = worst-case number of iterations = 8
+collection size = worst-case number of iterations = 9
+collection size = worst-case number of iterations = 10
+
+9. Create a graph from the output using Google Sheets or other graphing software. Analyze the graph and denote its Big-O somewhere on the graph.
+It's a linear graph f(n) = n. Big-O is still O(n) = k*n, where k>1.
+
+10. What is the Big-O of binary search?   O(log(n))
+This means that the as n, the number of inputs, grows to infinity the time complexity will always be LESS than some constant, k, times log(n). i.e. it grows no faster than log(n).
+
+11. What is the Big-Ω of binary search?   Ω(log(n))
+This means that the as n, the number of inputs, grows to infinity the time complexity will always be MORE than some constant, k, times log(n). i.e. it grows  faster than log(n).
+
+12. What is the Big-Ө of binary search?   Ө(log(n))
+This means that the as n, the number of inputs, grows to infinity the time requirement will be bounded between k1 * log(n) and k2 * log(n), upper and lower bounds respectively. The performance will always be between the two. It will be more than the lower bound but less than the upper bound. Since it is tightly bound, we can say that essentially our function grows as fast as log(n)
+
+Big-Ω, Big-O, Big-Ө are not the same as best-case, worst-case and average-case performance. You can use any of these notations to describe these notations to describe the best case (etc.), but usually Big-O notation is given because it gives the upper bound for the best-case, worst-case and average-case performance.

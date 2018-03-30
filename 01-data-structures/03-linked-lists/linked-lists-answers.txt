@@ -1,0 +1,16 @@
+1. What is Spatial Locality and why does it benefit performance?
+Spatial locality is the concept that likelihood of referencing a resource is
+higher if a resource near it was just referenced. So if you know that one element is being accessed, why not go ahead and pull other elements near it too because there is a good chance those elements will also need to be referenced. This reduces the number of times a computer needs to read from RAM. It seems logical that fewer RAM calls would improve performance.
+
+2. Compare the performance of an Array to a Linked List using the Benchmark module.
+-Compare the time it takes to create a 10,000 item Array to appending 10,000 items to a Linked List.
+
+Comparing the real elapsed time in seconds for my computer, it took 0.000016s to create a 10,000 item array vs 1.735s to create the 10,000 item linked list. I also tested creating a 100 item array and linked list. It took 0.000004s to create the array and 0.035575s to create the linked list. The time to create the array was small in both cases. While the time was significantly less to create the smaller linked list.
+
+-Compare the time it takes to access the 5000th element of the Array and the 5000th Node in the Linked List.
+
+Comparing the real elapsed time in seconds for my computer, it took 0.000002s to access the 5000th item in the array vs 0.001122s to access the 5000th item in the linked list. I also tested accessing the 5th item in an array versus a linked list. It took 0.000002s for the array and 0.000004s to create the linked list. The time was essentially the same for the array, regardless of what index we were accessing. While the time was significantly less to access an item closer to the head in the linked list. This seems to be consistent with the fact that the time complexity to access and item in an array is at worst O(1) for an array vs O(n) for a linked list. The array took essential the same amount of time to access an item, while the larger the linked list the more time it took to access an item.
+
+-Compare the time it takes to remove the 5000th element from the Array to removing the 5000th Node in the Linked List.
+
+Comparing the real elapsed time in seconds for my computer, it took 0.000004s to remove the 5000th item in the array vs 0.002528s to delete the 5000th item in the linked list. It took the linked list more time to traverse the list and delete the element vs the array shifting elements over.
