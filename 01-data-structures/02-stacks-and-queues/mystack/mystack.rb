@@ -9,13 +9,15 @@ class MyStack
   # avoid using .push command
   def push(item)
     @stack.insert(0,item)
+    self.top = item
   end
 
   # avoid using .pop command
   def pop
-    @top = @stack.slice(0)
-    @stack = @stack.slice!(1..-1)
-    @top
+    mostRecent = self.top
+    @stack.delete(mostRecent)
+    self.top = @stack.last
+    mostRecent
   end
 
 # avoid using .empty?
@@ -27,7 +29,4 @@ class MyStack
     end
   end
 
-  def top
-    @stack.slice(0)
-  end
 end
