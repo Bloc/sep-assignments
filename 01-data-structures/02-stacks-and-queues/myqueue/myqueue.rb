@@ -5,6 +5,7 @@ class MyQueue
   def initialize
     @queue = Array.new
     @head = @queue[0]
+    @tail = @queue[-1]
   end
 
 #  do not use existing push command,keep pointers for head/tail
