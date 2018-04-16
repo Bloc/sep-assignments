@@ -8,11 +8,22 @@ class MyQueue
   end
 
   def enqueue(element)
+    @queue.push(element)
   end
 
   def dequeue
+    @queue.pop
   end
 
   def empty?
+    @queue.empty?
+  end
+
+  def head
+    @head = @queue.first
+  end
+
+  def tail
+    @queue.last
   end
 end
