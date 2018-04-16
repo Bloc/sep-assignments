@@ -21,7 +21,7 @@ class MyQueue
   end
 
   def head
-    @head = @queue.first
+    @queue.first
   end
 
   def tail
