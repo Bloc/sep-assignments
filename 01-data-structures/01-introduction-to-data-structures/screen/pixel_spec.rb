@@ -17,12 +17,12 @@ RSpec.describe Pixel, type: Class do
       expect(pixel.red).to eq 0
     end
     
-    it "corrects a blue value if it's less than 0" do
+    it "corrects a green value if it's less than 0" do
       pixel = Pixel.new(100, -10, 100, 5, 5)
       expect(pixel.green).to eq 0
     end
     
-    it "corrects a green value if it's less than 0" do
+    it "corrects a blue value if it's less than 0" do
       pixel = Pixel.new(100, 100, -12, 5, 5)
       expect(pixel.blue).to eq 0
     end
