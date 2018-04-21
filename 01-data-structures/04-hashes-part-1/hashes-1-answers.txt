@@ -1,0 +1,4 @@
+Explain why doubling the size of the underlying array of your HashClass may be a poor idea.
+
+	While it’s a simple solution to the problem it could get out of hand rather quickly.  If you’re doubling an array that’s realistically already way bigger than it needs to be, and full of mostly nil or repeated values it will take up a lot of unnecessary space which will slow down future operations of searching that array, and resizing it again.  It’s a waste of memory, power, and time.
+
