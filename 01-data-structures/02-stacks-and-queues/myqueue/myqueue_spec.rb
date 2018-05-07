@@ -37,7 +37,6 @@ RSpec.describe MyQueue, type: Class do
       q.dequeue
       expect(q.head).to eq nil
       expect(q.tail).to eq nil
-      q.dequeue
     end
   end
 
