@@ -31,6 +31,12 @@ RSpec.describe MyQueue, type: Class do
       q.enqueue("Ben")
       expect(q.head).to eq "Rob"
       expect(q.tail).to eq "Ben"
+      q.dequeue
+      expect(q.head).to eq "Ben"
+      expect(q.tail).to eq "Ben"
+      q.dequeue
+      expect(q.head).to eq nil
+      expect(q.tail).to eq nil
     end
   end
 
