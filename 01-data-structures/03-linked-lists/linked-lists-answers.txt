@@ -1,0 +1,20 @@
+1. What is Spatial Locality and why does it benefit performance?
+
+	Spatial Locality refers to where the memory is in close proximity. It benefits performance by not having to spend time going back to the main memory. Say we have an array. If we wanted to loop through it, the first access we would have to get it from the memory. From then on, the rest of the array would be cached. For linked lists, we would have to get data from the memory everytime we want to access the next node.
+
+2. 
+	"Array Creation"
+	  0.010000   0.000000   0.010000 (  0.003670)
+	"Node Creation"
+	  0.000000   0.000000   0.000000 (  0.005059)
+	"Array Access"
+	  0.000000   0.000000   0.000000 (  0.000004)
+	"Node Access"
+	  0.000000   0.000000   0.000000 (  0.000319)
+	"Array Delete"
+	  0.000000   0.000000   0.000000 (  0.000007)
+	"Node Delete"
+	  0.000000   0.000000   0.000000 (  0.000350)
+
+	From the benchmark above, we can see that array creation, access, and removal is faster than node creation, access, and removal.
+
