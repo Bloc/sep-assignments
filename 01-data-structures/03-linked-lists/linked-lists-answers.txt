@@ -1,0 +1,20 @@
+1.  Data with spatial locality are close together in terms of where they are
+    stored inside of memory. Looking up items that have spatial locality is
+    faster because the data you are searching for very likely exists in that
+    specific range.
+
+2.  Each pair of times represents the time it took for a linked list operation
+    followed by an array operation. Array operations took a lot less time to
+    complete than any linked list operation.
+
+(  0.001305) - Appending 10000 nodes of the string "testing" to the linked list
+(  0.000040) - Creating an Array object with 10k items, all have the arbitrary
+               integer value of 3242
+
+(  0.000004) - Time it took to traverse the entirety of the linked list with a
+               while loop
+(  0.000002) - Time for the call arr[4999] to be completed
+
+(  0.000005) - Time for remove_tail method to complete
+(  0.000003) - Time for delete_at[4999] to complete
+
