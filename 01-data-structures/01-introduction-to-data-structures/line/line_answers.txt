@@ -1,0 +1,15 @@
+members is an array, and people is elemnet of the array.
+
+join method is to add element into an array. Using push command can achieve that.
+
+leave method is to remove an element. Method delete can do that.
+
+front method is to show the first person of the array. Simply array[0] will do.
+
+middle method is to show the middle person of the array. The length of array divid by 2 is the answer.
+
+back method is to show the last person of the array which is length of array minus 1.
+
+search method is to search the person. Using each method of array to search every element of array. If matches then return, if no then return nil.
+
+I'm not sure where can I utilize the index private method, but I think it's to get the index of the person, so I use each_with_index method of array to implement it.  
