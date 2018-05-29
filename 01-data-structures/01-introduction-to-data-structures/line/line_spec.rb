@@ -16,7 +16,8 @@ RSpec.describe Line, type: Class do
 
   describe "#initialize" do
     it "instantiates the members variable" do
-      expect(line.members).to_not be_nil
+	  expect(line.members).to_not be_nil
+	  puts line.members
     end
   end
 

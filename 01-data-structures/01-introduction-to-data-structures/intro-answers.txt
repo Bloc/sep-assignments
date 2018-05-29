@@ -1,0 +1,20 @@
+Q: How does your data structure allow developers to access and manipulate the data?
+A: Developers can access each data structure by calling any of the methods that are defined for
+	the class. Developers can also read the instance variables, but not write to them directly.
+
+
+Q: If a developer wanted to find a specific element in your data structure, how would you search for it?
+A: If they wanted to find something in Line, they could use the search method:
+	a = Line.new()
+	a.join('Emily')
+	searched = a.search('Emily)
+
+	If they wanted to find a pixel in Screen, they would need to use the at method:
+	pixel = Pixel.new(0, 0, 0, 1, 1)
+	a = Screen.new(2, 3)
+	a.insert(P, 1, 1)
+	a.at(1, 1) <== returns pixel
+
+Q: What other real-world data can each structure represent?
+A: The data structure for line could also be used for restaraunt orders. The data structure used for
+	screen could be used for a map. 
