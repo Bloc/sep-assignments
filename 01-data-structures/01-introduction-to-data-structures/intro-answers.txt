@@ -1,0 +1,5 @@
+1. for an amusement park line, it could simply be an array [1, 2, 3, 4] each index reprsents a position in the array.  Pixels on a screen would be a 2d array so that elements can be retrieved via (x, y) indices.
+
+2. for the line, they can use the provided search function which passes in the item they want to find, for pixels, they can pas in the x and y coordinates to locate the element with the 'at'fxn.
+
+3.the screen could be used as a game board, such as checkers or battleship, chess, etc.

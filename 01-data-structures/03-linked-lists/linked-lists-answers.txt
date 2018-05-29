@@ -1,0 +1,10 @@
+1.) Spacial locality refers to data elements that are stored close to each other in memory. If you know something is stored closely to you, it will not take as long to search for it and find it.
+
+2.)
+user     system      total        real
+linked_list-append     0.010000   0.000000   0.010000 (  0.011395)
+create 10,000 element array    0.000000   0.000000   0.000000 (  0.000827)
+get 500th el in LinkedList  0.000000   0.000000   0.000000 (  0.011721)
+get 500th el in Array  0.000000   0.000000   0.000000 (  0.000502)
+remove 500th el in LinkedList  0.010000   0.000000   0.010000 (  0.001992)
+remove 500th el in Array  0.000000   0.000000   0.000000 (  0.002791)
