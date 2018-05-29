@@ -1,0 +1,20 @@
+Line:
+1) How does your data structure allow developers to access and manipulate the data?
+-The data structure uses an array.  With the defined commands a user can easily add people to the end of the line, or remove them from anywhere in the line.
+
+2) If a developer wanted to find a specific element in your data structure, how would you search for it?
+-We could run the `line.search(element)` method to see where the element is in the structure if it exists.
+
+3)What other real-world data can each structure represent?
+-This could represent almost any real-world queue (assuming it’s orderly) like a single line of cars at a light, or a grocery checkout line.
+
+
+Screen:
+1) How does your data structure allow developers to access and manipulate the data?
+-It allows the user to place a pixel with any valid Red, Blue, Green combination on a screen matrix that is set up like a grid.
+
+2) If a developer wanted to find a specific element in your data structure, how would you search for it?
+-We could run the `screen.at(x, y)` method and would receive the pixel data that is at those coordinates if the x and y values are within the range of our screen size.
+
+3)What other real-world data can each structure represent?
+-This type of data structure could be slightly modified and used for almost any 2d mapping purposes like a game board, or a floor plan.

@@ -1,0 +1,10 @@
+1: Describe three collision resolution strategies not mentioned here.
+-Extendable hashing: It’s my understanding that this type of hash system is a bit like separate chaining, but uses tries instead of linked lists.  I seems useful for very large hashes, and is used for indexing files.  While it is stable, and can handle a lot of editing it is complicated to set up right.
+
+-Coalesced hashing: An open addressing and chaining hybrid. This links together nodes into a chain within the hash table itself.
+
+-Hopscotch hashing: An alternative to open addressing, it’s my understanding that this breaks up the series of buckets in the hash table into neighborhoods.  Inserting an element originally tries to place if in the neighborhood of it’s index.  if the neighborhood is full the entry is placed in the nearest empty bucket in another neighborhood and that entry and then “hopped” over to it’s neighborhood scooting all the other buckets out of the way.
+
+
+2: Create your own collision resolution strategy and describe how it works.
+-Not entirely sure this is a good idea, but something worth trying if the index creation is somehow not too repetitive. This would be like a variation of hopscotch.  It would essentially be a large array where each index would contain a hash of a limited size.  Each index in the over all array would be like a neighborhood, and the first node in each neighborhood could value to denote if there is any more space in that hash.  This way the entry method of the hash could look at the first hash of each array to see if there is a space available or if it should move on to the next index.  When the overall hash needs to resize I will add a few positions to each neighborhood and create a whole other neighborhood. I can definitely see this having issues with memory as the hash gets REALLY big, but it could work for smaller setoff data.
