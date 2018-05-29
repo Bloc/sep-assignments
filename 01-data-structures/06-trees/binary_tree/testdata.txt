@@ -1,0 +1,82 @@
+require_relative 'binary_search_tree'
+root = Node.new("The Matrix",87)
+tree = BinarySearchTree.new(root)
+pacific_rim = Node.new("Pacific Rim", 72)
+braveheart = Node.new("Braveheart", 78)
+jedi = Node.new("Star Wars: Return of the Jedi", 80)
+donnie = Node.new("Donnie Darko", 85)
+inception = Node.new("Inception", 86)
+district = Node.new("District 9", 90)
+shawshank = Node.new("The Shawshank Redemption", 91)
+martian = Node.new("The Martian", 92)
+hope = Node.new("Star Wars: A New Hope", 93)
+empire = Node.new("Star Wars: The Empire Strikes Back", 94)
+mad_max_2 = Node.new("Mad Max 2: The Road Warrior", 98)
+
+tree.insert(root, donnie)
+tree.insert(root, mad_max_2)
+tree.insert(root, hope)
+tree.insert(root, empire)
+tree.insert(root, pacific_rim)
+tree.insert(root, district)
+tree.insert(root, jedi)
+tree.insert(root, shawshank)
+tree.insert(root, braveheart)
+
+# Benchmarking
+#insert all numbers from 1 to 100000 into both Trees
+
+require_relative 'binary_search_tree'
+require 'benchmark'
+root = Node.new("0",0)
+tree = BinarySearchTree.new(root)
+
+result = Benchmark.measure{
+  100000.times do |x|
+    node = Node.new(x.to_s, x)
+    tree.insert(root, node)
+  end
+}
+
+#<Benchmark::Tms:0x007ff9d302ff88 @label="", @real=8.193295999895781, @cstime=0.0, @cutime=0.0, @stime=0.009999999999999998, @utime=8.17, @total=8.18>
+
+# Benchmarking
+# find 5000 in both Trees
+
+require_relative 'binary_search_tree'
+require 'benchmark'
+root = Node.new("0",0)
+tree = BinarySearchTree.new(root)
+
+  10000.times do |x|
+    node = Node.new(x.to_s, x)
+    tree.insert(root, node)
+  end
+
+
+result = Benchmark.measure{
+    tree.find(root, "5000")
+}
+
+=> #<Benchmark::Tms:0x007f9caf174bb8 @label="", @real=0.0010110000148415565, @cstime=0.0, @cutime=0.0, @stime=0.0, @utime=0.0, @total=0.0>
+
+
+# Benchmarking
+# Delete 5000 in both Trees
+
+require_relative 'binary_search_tree'
+require 'benchmark'
+root = Node.new("0",0)
+tree = BinarySearchTree.new(root)
+
+  10000.times do |x|
+    node = Node.new(x.to_s, x)
+    tree.insert(root, node)
+  end
+
+
+result = Benchmark.measure{
+    tree.delete(root, "5000")
+}
+
+=> #<Benchmark::Tms:0x007fec6713f5c8 @label="", @real=0.000986000057309866, @cstime=0.0, @cutime=0.0, @stime=0.0, @utime=0.0, @total=0.0>

@@ -1,0 +1,15 @@
+Explain why doubling the size of the underlying array of your HashClass may be a
+poor idea.
+
+  Doubling the array size every time there is a collision may not be the best way
+  of solving this issue. If we remember that arrays are awesome at accessing information
+  as long as we know the index, but when we double the array size all the existing data
+  has to be copied into the new larger array. This is a costly processing operation.
+
+  In addition, every time we double an array we increase the number of empty slots
+  which by definition we are creating fragmentation and not being very memory allocation-
+  sensitive.
+
+  Arrays are also kept in the same memory blocks too. Meaning if the array expands, and
+  there isn't enough room, the memory manager will look for other blocks that can
+  accommodate the new size. This is also a costly operation.
