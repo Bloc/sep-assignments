@@ -1,0 +1,1 @@
+Doubling the size of the underlying array of my HashClass may be a poor idea because it'll increase the open slots in the array exponentially which may lead to more fragmentation. Doubling the size is also a slow process. Using prime numbers to resize is better as that'll reduce the number of collisions. 
