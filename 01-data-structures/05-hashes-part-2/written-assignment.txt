@@ -1,0 +1,33 @@
+Collision Resolution strategies
+Describe three collision resolution strategies not mentioned here.
+
+Coalesced Hashing
+This is a hybrid of separate chaining and open addressing.
+When a collision occurs, similar to open addressing, the
+algorithm looks for the next available spot. The next
+available spot probing is done linearly from the BOTTOM.
+When an available spot is found the original collision location
+is updated with a pointer to this alternate location.
+This is similar to separate chaining.
+
+2-choice hashing
+This hashing collision resolution strategy uses two different
+hashing functions and two tables. Both hashing functions do
+produce two table locations and the table that has the least
+amount of objects will win and be inserted in that table.
+
+Doubling Hashing
+This resolution strategy uses two different hashing functions
+when a collision occurs. So, if a hashing function results in
+a collision, a second hashing function will be applied. The
+function is M – (key MOD M) where M is a prime number less than
+the table size.
+
+
+My Own Hashing Strategy - Matrix Hashing
+Although not as efficient as other strategies, imagine a table
+size that resembles a matrix. The hashing strategy would use
+two hashing functions that would essentially give the X and Y coordinates
+of the bucket. If a collision happens, the strategy is to use
+linear probing on both x and y variables until an open bucket
+is found. 
