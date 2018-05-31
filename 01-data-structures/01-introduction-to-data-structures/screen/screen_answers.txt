@@ -1,0 +1,15 @@
+How does your data structure allow developers to access and manipulate the data?
+  There are two methods that allow for the access and manipulation of data
+  * The at() method returns the pixels at a specific location in the matrix, i.e. screen.
+  * The insert() method allows the developer to insert a pixel at a specified location.
+
+If a developer wanted to find a specific element in your data structure, how would you search for it?
+  I think I could create a method that uses a series of for loops, one to check for each value of the pixel.
+  If each loop successfully runs then the method would save the pixels location and then continue through the matrix to locate
+  any other instances of the pixel. But I imagine this would be highly inefficient (assuming how I've abstractly presented the code would actually work).
+  I did a cursory look online for how to best search multidimensional arrays. I found a few resources on 2D arrays, but nothing much yet on 3D arrays.
+  I'd appreciate if you could provide any resources on this, especially any pointing to well-established algorithms that solve this search problem.
+
+What other real-world data can the structure represent?
+  This could be used for anything that needs objects with 5 different values (although that number could easily be changed as needed)
+  to be stored in specific locations. For example you could use it to map a formation of drones flying in a pattern (swapping pixels for drones and using appropriate values.)
