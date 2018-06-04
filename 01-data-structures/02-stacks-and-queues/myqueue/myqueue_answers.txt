@@ -1,0 +1,7 @@
+Queue is first in first out, so element comes in at the end and goes out at the first of the array.
+
+enqueue method is to add an element at the end of the queue, and set the new head to the first the new queue and new tail to the end of the new queue.
+
+dequeue method is to get first element of the queue which is head. Then remove the first element of the array, everybody left shifts. Finally, set the new head to the first the new queue and new tail to the end of the new queue.
+
+empty? method is to check if the array is empty via its length.

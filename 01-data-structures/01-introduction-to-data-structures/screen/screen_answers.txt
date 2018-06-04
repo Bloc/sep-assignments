@@ -1,0 +1,7 @@
+To initialize the pixel, before put the value into the color, need to make sure that the value is with in 0-255. Call the validate_color to modify the color value within 0-255.
+
+To initialize a screen, we need to create a matrix. I use 2 dimension array to create a matrix with default value nil.
+
+For the insert method, simply put the pixel into the designated matrix. Before putting in just make sure pixel's x and y coordinate are the same as given x, y.
+
+For the at method, if given x and y are integer, then return the designated matrix.

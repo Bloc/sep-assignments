@@ -1,0 +1,10 @@
+Describe three collision resolution strategies not mentioned here.
+1. Hopscotch hashing is one of the open addressing technique to resolve the collision in hash tables. It includes the feature of linear probing and cuckoo hashing. The idea is to having buckets in the neighborhood fall within the same cache line.
+Hop-Info is an H-bit bitmap that indicates which of the next H-1 entries contains the elements that are hashed to this location initially. H is usually 32, standard machine word size. The complete lookup can be done within two loads of cache lines.
+
+2. Coalesced hashing is a strategy of collision resolution in a hash table that forms a hybrid of separate chaining and open addressing. When the collision happens, instead of creating a linked list, it will find a empty spot, use the spot, and "coalesced" the bucket with previous collision spot.
+
+3. 2-choice hashing utilize 2 hash function so that element has 2 potential locations. The element is put in the array position with the fewer elements.
+
+Create your own collision resolution strategy and describe how it works.
+Combined 2-choice hashing with hopscotch hashing, so that it can be searched faster and before the searching it is already cut into half because of 2-choice hashing.
