@@ -1,0 +1,51 @@
+1. Print both Trees to the console and compare the difference between your Binary Search Tree and your Heap.
+
+binary_search_tree
+Ray: 81
+Ali: 67
+Men In Black: 93
+Think Like A Man: 53
+Unbreakable: 68
+The Matrix: 87
+The Matrix Revolutions: 36
+The Wood: 62
+American Gangster: 80
+Kong: Skull Island: 76
+The Matrix Reloaded: 73
+The Great Debaters: 79
+
+min_binary_heap
+The Matrix Revolutions: 36 Ray: 81 Men In Black: 93 The Matrix: 87
+
+user     system      total        real
+tree #insert                0.840000   0.020000   0.860000 (  1.115610)
+heap #insert                0.430000   0.010000   0.440000 (  0.496089)
+                user     system      total        real
+tree #find                  0.000000   0.000000   0.000000 (  0.000018)
+heap #find                  0.000000   0.000000   0.000000 (  0.000008)
+                user     system      total        real
+tree #delete                0.000000   0.000000   0.000000 (  0.000011)
+heap #delete                0.000000   0.000000   0.000000 (  0.000008
+
+
+2.
+a: How much time does an average insertion consume in the Binary Search Tree compared to the
+Heap? The tree insert takes more than twice as long as the heap insert
+
+b: How much time does finding 50000 in the Binary Search Tree consume compared to the Heap?
+The binary search tree takes approximately 2 times longer than the heap
+
+c: How much time does the average deletion consume in a Binary Search Tree compared to the
+Heap?
+The heap delete is slightly faster than the tree delete
+
+d: When would you use a Binary Search Tree and why?
+
+A binary search tree maintains an order for all nodes. I would use a binary search tree to quickly
+find an item in an ordered set/ list, or to iterate through an ordered set/ list.
+
+e: When would you use an Heap and why?
+A heap is a data structure that satisfies the heap property. The root/ parent node will always have
+a left and right child that is less than the root/ parent node (max heap) or greater than the root/
+parent node (min heap). I would use a heap when order or in-order traversal is of no consequence
+and I need to remove an object with the highest or lowest priority.

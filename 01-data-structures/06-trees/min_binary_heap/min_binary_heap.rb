@@ -1,23 +1,36 @@
 require_relative 'node'
 
-class BinarySearchTree
+class MinBinaryHeap
+  attr_reader :root
 
   def initialize(root)
     @root = root
   end
 
-  # uses depth first search to find the appropriate place to add the data and adds it as a new Leaf.
-  def insert(root, node)
-    if root.rating > node.rating
-      root.left.nil? ? root.left = node : insert(root.left, node)
-    else
-      root.right.nil? ? root.right = node : insert(root.right, node)
+def insert(root, node)
+
+  if root.rating > node.rating
+    temp = root
+    @root = node
+    node = temp
+    insert(@root, node)
+  else
+    if root.left.nil?
+      root.left = node
+    elsif root.right.nil? && !root.left.nil?
+      root.right = node
+    elsif !root.left.nil? && !root.right.nil? && !root.left.left.nil? && !root.left.right.nil?
+      insert(root.right, node)
+    elsif !root.left .nil? && !root.right.nil?
+      insert(root.left, node)
     end
   end
+end
 
-  # Recursive Depth First Search
   def find(root, data)
-    return nil if data.nil?
+    if data.nil?
+      return nil
+    else
       if root.title.eql?(data)
         return root
       elsif !root.left.nil?
@@ -25,17 +38,19 @@ class BinarySearchTree
       elsif !root.right.nil?
         find(root.right, data)
       end
+    end
   end
 
   def delete(root, data)
-    return nil if data.nil?
-
+    if  data.nil?
+      return nil
+    else
       target = find(root, data)
-      target.nil? ? nil : (target.title = nil && target.rating = nil)
+      target.nil? ? nil : (target.title.nil? && target.rating.nil?)
+    end
   end
 
-  # Recursive Breadth First Search
-  def printf(children=nil)
+  def printf
     q = [@root]
     output = []
     while q.length > 0
@@ -52,7 +67,6 @@ class BinarySearchTree
   end
 end
 
-
 ray = Node.new("Ray", 81)
 ali = Node.new("Ali", 67)
 unbreakable = Node.new("Unbreakable", 68)
@@ -66,18 +80,18 @@ matrix = Node.new("The Matrix", 87)
 wood = Node.new("The Wood", 62)
 revolt = Node.new("The Matrix Revolutions", 36)
 
-bstree = BinarySearchTree.new(ray)
+binaryHeap = MinBinaryHeap.new(ray)
 
-bstree.insert(ray, ali)
-bstree.insert(ray, unbreakable)
-bstree.insert(ray, american)
-bstree.insert(ray, kong)
-bstree.insert(ray, think)
-bstree.insert(ray, mib)
-bstree.insert(ray, debaters)
-bstree.insert(ray, reloaded)
-bstree.insert(ray, matrix)
-bstree.insert(ray, wood)
-bstree.insert(ray, revolt)
+binaryHeap.insert(ray, ali)
+binaryHeap.insert(ray, unbreakable)
+binaryHeap.insert(ray, american)
+binaryHeap.insert(ray, kong)
+binaryHeap.insert(ray, think)
+binaryHeap.insert(ray, mib)
+binaryHeap.insert(ray, debaters)
+binaryHeap.insert(ray, reloaded)
+binaryHeap.insert(ray, matrix)
+binaryHeap.insert(ray, wood)
+binaryHeap.insert(ray, revolt)
 
-bstree.printf
+binaryHeap.printf
