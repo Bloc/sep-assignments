@@ -1,0 +1,31 @@
+1. What is Spatial Locality and why does it benefit performance?
+
+Spatial locality refers to data that is located next to or nearby one another in memory.
+This benefits performance because the efficiency of the cache is improved as the locality
+of reference is increased. The wiki on this topic presents the advantage of spatial locality
+clearly, based on the behavior of the cache:
+
+  Data-elements in a cache do not necessarily correspond to data-elements that are spatially
+  close in the main memory; however, data elements are brought into cache one cache line at
+  a time. This means that spatial locality is again important: if one element is referenced,
+  a few neighboring elements will also be brought into cache.
+
+Since a linked list does not exhibit spatial locality, the chance that a RAM lookup will contain
+related elements greatly diminishes, resulting in Cache-misses and more RAM lookups. This increases
+the overall lookup time.
+
+2. Compare the performance of an Array to a Linked List using the Benchmark module.
+
+Compare the time it takes to create a 10,000 item Array to appending 10,000 items to a Linked List.
+  * Array:       0.000000   0.000000   0.000000 (  0.000487)
+  * Linked List: 1.020000   0.000000   1.020000 (  1.014105)
+
+Compare the time it takes to access the 5000th element of the Array and the 5000th Node in the
+Linked List.
+  * Array:       0.000000   0.000000   0.000000 (  0.000023)
+  * Linked List: 0.000000   0.000000   0.000000 (  0.002646)
+
+Compare the time it takes to remove the 5000th element from the Array to removing the 5000th Node
+in the Linked List.
+  * Array:       0.000000   0.000000   0.000000 (  0.000006)
+  * Linked List: 0.000000   0.000000   0.000000 (  0.002731)
