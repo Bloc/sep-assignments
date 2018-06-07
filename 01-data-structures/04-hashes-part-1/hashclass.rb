@@ -18,10 +18,10 @@ class HashClass
       @items.each_with_index do |item, index|
         if item != nil
           @items[index] = nil
-          @items[index(item[0], self.size)] = item
+          @items[index(item[0], (self.size**0.34))] = item
         end
       end
-      @items[index(item[0], self.size)] = item
+      @items[index(item[0], (self.size**0.3))] = item
     end
   end
 
@@ -32,6 +32,7 @@ class HashClass
         return i[1]
       end
     end
+    puts "Key not found."
   end
 
   def resize
