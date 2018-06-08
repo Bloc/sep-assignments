@@ -37,15 +37,32 @@ class LinkedList
   end
 
   # This method prints out a representation of the list.
-  def print
-    list = ""
+  def print_values
+    if !@head
+      return 'no values'
+    end
+    list = []
     current_node = @head
     while current_node.next
-      list << "#{current_node.data}\n"
+      list << current_node.value
       current_node = current_node.next
     end
-    list << "#{current_node.data}\n"
-    puts list
+    list << current_node.value
+    list
+  end
+
+  def print_nodes
+    if !@head
+      return 'no nodes'
+    end
+    list = []
+    current_node = @head
+    while current_node.next
+      list << current_node
+      current_node = current_node.next
+    end
+    list << current_node
+    list
   end
 
   # This method returns the total number of nodes in the list.
@@ -95,12 +112,11 @@ class LinkedList
   def remove_front
     @head = @head.next
   end
-end
-
-# This method checks if the list is empty. 
-def is_empty
-  if !@head
-    return true
+# This method checks if the list is empty.
+  def is_empty
+    if !@head
+      return true
+    end
+    false
   end
-  false
 end
