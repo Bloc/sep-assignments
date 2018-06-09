@@ -9,26 +9,33 @@ class Line
   end
 
   def join(person)
+    self.members.push(person)
   end
 
   def leave(person)
+    self.members.slice!(self.members.index(person))
   end
 
   def front
+    self.members.first
   end
 
   def middle
+    self.members[()(members.length/2).ciel)]
   end
 
   def back
+    self.members.last
   end
 
   def search(person)
+    self.members.include?(person) ? person : nil;
   end
 
   private
 
   def index(person)
+    self.members.index(person)
   end
 
 end
