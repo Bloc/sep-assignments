@@ -14,23 +14,21 @@ class SeparateChaining
 
   def []=(key, value)
     node = Node.new(key, value)
-    puts "new node is KEY: #{node.key} VALUE: #{node.value}"
     bucket = index(node.key, self.size)
-    puts "index is #{bucket}"
     bucket_values = @items[bucket].print_values
-    puts "bucket values before adding are #{bucket_values}"
     density = @items[bucket].count
-    puts "bucket density is #{density}"
     if bucket_values.include?(node.value)
       return 'duplicate'
-    elsif density < 5
-      @items[bucket].add_to_tail(node)
-      bucket_values = @items[bucket].print_values
-      puts "bucket values after adding are #{bucket_values}"
-    else
+    elsif density > 5
       self.resize
       bucket = index(node.key, self.size)
       @items[bucket].add_to_tail(node)
+    else
+      @items[bucket].add_to_tail(node)
+      bucket_values = @items[bucket].print_values
+    end
+    if self.load_factor > @max_load_factor
+      self.resize
     end
   end
 
@@ -61,6 +59,15 @@ class SeparateChaining
 
   # Calculate the current load factor
   def load_factor
+    load_factor = 0
+    @items.each do |bucket|
+      if !bucket.is_empty
+        load_factor += bucket.count
+      end
+    end
+    puts "#{load_factor}"
+    load_factor = load_factor.fdiv(@items.length)
+    load_factor.to_f
   end
 
   # Simple method to return the number of items in the hash
@@ -75,15 +82,17 @@ class SeparateChaining
     size.times do
       new_array << LinkedList.new
     end
-    nodes = []
-    @items.each do |bucket|
+    nodes = Array.new
+    @items.each_with_index do |bucket, index|
       if !bucket.is_empty
-        nodes << bucket.print_nodes
+        bucket.print_nodes.each do |n|
+          nodes << n
+        end
       end
     end
-    nodes.each do |node|
-      bucket = index(node.key, self.size)
-      new_array[bucket].add_to_tail(node)
+    nodes.each do |n|
+      bucket = index(n.key, self.size)
+      new_array[bucket].add_to_tail(n)
     end
     @items = new_array
   end
