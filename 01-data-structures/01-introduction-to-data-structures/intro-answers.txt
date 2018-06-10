@@ -1,0 +1,24 @@
+1. A line of people at an amusement park ride.
+
+  The data of the people in line is structured as an array,
+  so developers can access and manipulate the data using Array
+  manipulation techniques.
+
+  A developer can find a specific element by using the index
+  of the element.
+
+  This data structure can be used to organize the orders of
+  customers in a restaurant in a first comes first served basis.
+
+  2. Pixels on a computer screen
+
+  Pixels are created in three colors and validated so that the
+  color coordinate values are not out of boundary.After a pixel
+  is created it can be inserted to a specific coordinate on the
+  screen using two dimensional array. A pixels x and y coordinates
+  can't be negative or greater than the width and array.
+
+  A developer can access a pixel by using its width and array coordinates.
+
+  This data structure can be used to create a sitting arrangement for
+  different depending on peoples relationships, ranks or age.
