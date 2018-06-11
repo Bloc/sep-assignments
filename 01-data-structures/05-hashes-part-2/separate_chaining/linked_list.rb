@@ -17,8 +17,10 @@ class LinkedList
       end
       current_node.next = node
       @tail = node
+      node.next = nil
     else
       @head, @tail = node, node
+      node.next = nil
     end
   end
 
@@ -74,7 +76,7 @@ class LinkedList
       total += 1
       current_node = current_node.next
     end
-    total
+    return total
   end
 
 

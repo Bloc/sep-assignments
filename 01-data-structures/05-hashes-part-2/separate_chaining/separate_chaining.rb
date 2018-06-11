@@ -25,10 +25,7 @@ class SeparateChaining
       @items[bucket].add_to_tail(node)
     else
       @items[bucket].add_to_tail(node)
-      bucket_values = @items[bucket].print_values
     end
-    # something breaks when is code runs and the hash is initialized with
-    # a size of 4 or less
     if self.load_factor > @max_load_factor
       self.resize
     end
@@ -68,7 +65,7 @@ class SeparateChaining
       end
     end
     load_factor = load_factor.fdiv(@items.length)
-    load_factor.to_f
+    load_factor
   end
 
   # Simple method to return the number of items in the hash
@@ -86,15 +83,19 @@ class SeparateChaining
     nodes = Array.new
     @items.each_with_index do |bucket, index|
       if !bucket.is_empty
-        bucket.print_nodes.each do |n|
-          nodes << n
+        bucket.print_nodes.each do |node|
+          nodes << node
         end
       end
     end
-    nodes.each do |n|
-      bucket = index(n.key, self.size)
-      new_array[bucket].add_to_tail(n)
+    nodes.each do |node|
+      bucket = index(node.key, self.size)
+      new_array[bucket].add_to_tail(node)
     end
     @items = new_array
   end
+
+  def status
+  end
+
 end

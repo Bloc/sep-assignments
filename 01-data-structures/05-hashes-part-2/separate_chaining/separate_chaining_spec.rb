@@ -60,7 +60,7 @@ RSpec.describe SeparateChaining, type: Class do
 
       # Load Factor starts at zero
       expect(h.load_factor == 0).to be true
-      h["key"] = "valueone"
+      h["keyone"] = "valueone"
       h["keytwo"] = "valuetwo"
 
       # Load factor should be .5 when two items are added
