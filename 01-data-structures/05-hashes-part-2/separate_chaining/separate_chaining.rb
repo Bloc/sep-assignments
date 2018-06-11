@@ -96,6 +96,25 @@ class SeparateChaining
   end
 
   def status
+    puts "Empty buckets are not printed."
+    total_nodes = 0
+    @items.each_with_index do |bucket, index|
+      if !bucket.is_empty
+        bucket_contents = bucket.print_nodes
+        node_number = 0
+        puts " "
+        puts "BUCKET AT INDEX #{index}:"
+        bucket_contents.each do |node|
+            total_nodes += 1
+            node_number += 1
+            puts "NODE #{node_number}: KEY is #{node.key}, VALUE is #{node.value}"
+        end
+      end
+    end
+    puts " "
+    puts "This Hash has #{self.size} BUCKETS and #{total_nodes} NODES"
+    puts "LOAD FACTOR is #{self.load_factor}"
   end
+
 
 end

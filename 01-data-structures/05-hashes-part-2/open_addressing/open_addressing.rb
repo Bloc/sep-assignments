@@ -71,7 +71,7 @@ class OpenAddressing
       end
     end
     puts " "
-    puts "The hash has #{@items.length} buckets and #{total_values} values stored"
-    puts "The Load factor is #{(total_values.to_f / @items.length.to_f)}"
+    puts "The hash has #{@items.length} BUCKETS and #{total_values} VALUES stored"
+    puts "The LOAD FACTOR is #{(total_values.to_f / @items.length.to_f)}"
   end
 end
