@@ -27,6 +27,8 @@ class SeparateChaining
       @items[bucket].add_to_tail(node)
       bucket_values = @items[bucket].print_values
     end
+    # something breaks when is code runs and the hash is initialized with
+    # a size of 4 or less
     if self.load_factor > @max_load_factor
       self.resize
     end
@@ -65,7 +67,6 @@ class SeparateChaining
         load_factor += bucket.count
       end
     end
-    puts "#{load_factor}"
     load_factor = load_factor.fdiv(@items.length)
     load_factor.to_f
   end

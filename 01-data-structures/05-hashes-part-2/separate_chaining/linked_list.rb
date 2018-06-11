@@ -58,12 +58,10 @@ class LinkedList
     list = []
     current_node = @head
     while current_node.next
-      puts "current node is #{current_node}"
       list << current_node
       current_node = current_node.next
     end
     list << current_node
-    puts "current list in print is #{list}"
     return list
   end
 
