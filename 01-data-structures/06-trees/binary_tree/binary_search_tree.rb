@@ -8,64 +8,108 @@ class BinarySearchTree
 
   def insert(root, node)
     temp_node = root
-    while temp_node
-      if temp_node.rating > node.rating && temp_node.left
-        temp_node = temp_node.left
-      elsif temp_node.rating > node.rating
-        temp_node.left = node
-        temp_node = nil
-      elsif temp_node.rating <= node.rating && temp_node.right
-        temp_node = temp_node.right
-      else
-        temp_node.right = node
-        temp_node = nil
-      end
+    if temp_node.rating > node.rating && temp_node.left
+      insert(temp_node.left, node)
+    elsif temp_node.rating > node.rating
+      temp_node.left = node
+      node.parent = temp_node
+    elsif temp_node.rating <= node.rating && temp_node.right
+      insert(temp_node.right, node)
+    else
+      temp_node.right = node
+      node.parent = temp_node
     end
   end
 
   # Recursive Depth First Search
   def find(root, data)
-    if data == nil || root.nil?
+    if data.nil? || root.nil?
       return nil
     end
+    stack = [root]
+    visited = []
 
-    if root.title != data && root.left
-      root = find(root.left, data)
+    while !stack.empty?
+      current = stack.last
+      visited << current
 
+      if current.title == data
+        return current
+      elsif !current.left.nil? && !visited.include?(current.left)
+        if current.left.title == data
+          return current.left
+        else
+          visited << current.left
+          stack << current.left
+        end
+      elsif !current.right.nil? && !visited.include?(current.right)
+        if current.right.title == data
+          return current.right
+        else
+          visited << current.right
+          stack << current.right
+        end
+      else
+        stack.pop
+      end
 
-    elsif root.title != data && root.right
-      root = find(root.right, data)
-
-    elsif root.title == data
-      return root
     end
 
+    return nil
   end
 
   def delete(root, data)
-    return nil if data == nil
+    target = find(root, data)
+    return nil if data == nil || target == nil
 
-    if root.title == data
-      if root.left && root.right
-        successor = root.right.find_min(root.right)
-        root = successor
-        successor.delete(successor, successor.title)
-      elsif root.left
-        root = root.left
-      elsif root.right
-        root = root.right
-      else
-        root.title = nil
-        root.rating = nil
+    if target.left && target.right
+      successor = find_min(target.right)
+      target.title = successor.title
+      target.rating = successor.rating
+      if target.parent.nil?
+
+      elsif target.parent.left == target
+        target.parent.left = successor
+      elsif target.parent.right == target
+        target.parent.right = successor
       end
+      delete(successor, successor.title)
+    elsif target.left
+      if target.parent.nil?
 
-    elsif root.title != data && root.left
-      delete(root.left, data)
+      elsif target.parent.left == target
+        target.parent.left = target.left
+      elsif target.parent.right == target
+        target.parent.right = target.left
+      end
+      target.rating = target.left.rating
+      target.title = target.left.title
+      target.right = target.left.right
+      target.left = target.left.left
 
+    elsif target.right
+      if target.parent.nil?
 
-    elsif root.title != data && root.right
-      delete(root.right, data)
+      elsif target.parent.left == target
+        target.parent.left = target.right
+      elsif target.parent.right == target
+        target.parent.right = target.right
+      end
+      target.rating = target.right.rating
+      target.title = target.right.title
+      target.left = target.right.left
+      target.right = target.right.right
 
+    else
+      target.title = nil
+      target.rating = nil
+      if target.parent.nil?
+
+      elsif target.parent.left == target
+        target.parent.left = nil
+      elsif target.parent.right == target
+        target.parent.right = nil
+      end
     end
   end
 
