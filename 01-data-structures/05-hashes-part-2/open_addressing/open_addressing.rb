@@ -5,24 +5,26 @@ class OpenAddressing
   attr_accessor :items
 
   def initialize(size)
-    @items = Array.new(size, 'empty')
+    @items = Array.new(size)
   end
 
   def []=(key, value)
     node = Node.new(key, value)
-    index = next_open_index(0)
-    if index != -1
+    index = index(node.key, self.size)
+    if !@items[index]
       @items[index] = node
+    elsif next_open_index(index) != -1
+      @items[next_open_index(index)] = node
     else
       self.resize
-      new_index = next_open_index(0)
+      new_index = index(node.key, self.size)
       @items[new_index] = node
     end
   end
 
   def [](key)
     @items.each do |node|
-      if node != 'empty' && node.key === key
+      if node && node.key === key
         return node.value
       end
     end
@@ -42,11 +44,16 @@ class OpenAddressing
   # Given an index, find the next open index in @items
   def next_open_index(index)
     for i in index...@items.length do
-      if @items[i] == 'empty'
+      if !@items[i]
         return i
       end
     end
-    -1
+    for i in 0...index do
+      if !@items[i]
+        return i
+      end
+    end
+    return -1
   end
 
   # Simple method to return the number of items in the hash
@@ -56,16 +63,20 @@ class OpenAddressing
 
   # Resize the hash
   def resize
-    double = self.size
-    double.times do
-      @items << 'empty'
+    new_array = Array.new((@items.length * 2))
+    @items.each do |node|
+      if node
+        index = index(node.key, new_array.length)
+        new_array[index] = node
+      end
     end
+    @items = new_array
   end
 
   def status
     total_values = 0
     @items.each_with_index do |node, index|
-      if node != 'empty'
+      if node
         puts "INDEX #{index} = KEY: #{node.key}, VALUE: #{node.value}"
         total_values += 1
       end

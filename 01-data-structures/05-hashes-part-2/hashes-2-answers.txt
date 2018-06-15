@@ -59,3 +59,11 @@ Describe three collision resolution strategies not mentioned here.
     contains fewer objects (with the default being the h1(x) table location if there
     is equality in bucket size). 2-choice hashing employs the principle of the power
     of two choices.
+
+Create your own collision resolution strategy and describe how it works.
+
+  Linear 3-choice hashing
+    It's probably not terribly efficient, but this collision strategy utilizes three hash
+    functions. Like 2-choice hashing, the object is placed in the bucket with fewer objects
+    than the other 2. If all three buckets are at max density, then the linear search begins for
+    another bucket with available space. The hash will only resize when its full, like open addressing.

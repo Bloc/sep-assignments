@@ -32,14 +32,11 @@ class SeparateChaining
   end
 
   def [](key)
-    @items.each do |bucket|
-      if !bucket.is_empty
-        bucket_contents = bucket.print_nodes
-        bucket_contents.each do |node|
-          if node.key === key
-            return node.value
-          end
-        end
+    bucket = @items[index(key, self.size)]
+    bucket_contents = bucket.print_nodes
+    bucket_contents.each do |node|
+      if node.key === key
+        return node.value
       end
     end
     return "key not found"
@@ -89,7 +86,7 @@ class SeparateChaining
       end
     end
     nodes.each do |node|
-      bucket = index(node.key, self.size)
+      bucket = index(node.key, new_array.length)
       new_array[bucket].add_to_tail(node)
     end
     @items = new_array
