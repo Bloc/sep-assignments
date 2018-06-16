@@ -1,31 +1,37 @@
 class HashClass
 
-  i = index(key, size())
+
 
   def initialize(size)
     @items = Array.new(size)
   end
 
   def []=(key, value)
-
-    if @items[i] == nil
+    i = index(key, size())
+    new_item = @items[i]
+    if new_item == nil
       @items[i] = HashItem.new(key,value)
-    elsif @items[i].key != key
-      self.resize
+    elsif new_item.key != key
+      while @items[index(key, size())].key != nil && @items[index(key, size())].key != key
+        resize()
+        j = index(key, size())
+        break if @items[j] == nil
+      end
       self[key] = value
-    elsif @items[i].key == key && @items[i] != value
-      self.resize
-      @items[i].value = value
+    elsif new_item.key == key && new_item.value != value
+      resize()
+      new_item.value = value
     end
   end
 
 
   def [](key)
+    i = index(key, size())
     @items[i].value
   end
 
   def resize
-    @size = @size * 2
+    @size = @items.length * 2
     resized_hash = Array.new(@size)
     @items.each do |item|
       if item != nil
