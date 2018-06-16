@@ -1,6 +1,6 @@
+require_relative 'hash_item'
+
 class HashClass
-
-
 
   def initialize(size)
     @items = Array.new(size)
