@@ -1,0 +1,138 @@
+Binary Search Tree
+
+irb(main):001:0> braveheart = Node.new("Braveheart", 78)
+=> #<Node:0x00000000f80098 @title="Braveheart", @rating=78, @left=nil, @right=nil>
+irb(main):002:0> galaxy = Node.new("Guardians of the Galaxy", 91)
+=> #<Node:0x00000000f0c378 @title="Guardians of the Galaxy", @rating=91, @left=nil, @right=nil>
+irb(main):003:0> sk_it = Node.new("Stephen King's IT", 85)
+=> #<Node:0x00000001032ec8 @title="Stephen King's IT", @rating=85, @left=nil, @right=nil>
+irb(main):004:0> scarface = Node.new("Scarface", 82)
+=> #<Node:0x00000000fa4bc8 @title="Scarface", @rating=82, @left=nil, @right=nil>
+irb(main):005:0> psycho = Node.new("American Psycho", 68)
+=> #<Node:0x00000001063e10 @title="American Psycho", @rating=68, @left=nil, @right=nil>
+irb(main):006:0> fight_club = Node.new("Fight Club", 79)
+=> #<Node:0x00000001092f30 @title="Fight Club", @rating=79, @left=nil, @right=nil>
+irb(main):007:0> knight = Node.new("The Dark Knight", 94)
+=> #<Node:0x000000010d1be0 @title="The Dark Knight", @rating=94, @left=nil, @right=nil>
+irb(main):008:0> moulin = Node.new("Moulin Rouge", 76)
+=> #<Node:0x000000010ea028 @title="Moulin Rouge", @rating=76, @left=nil, @right=nil>
+irb(main):009:0> t2 = Node.new("Terminator 2: Judgement Day", 93)
+=> #<Node:0x000000010c7438 @title="Terminator 2: Judgement Day", @rating=93, @left=nil, @right=nil>
+irb(main):010:0> princess = Node.new("The Princess Bride", 97)
+=> #<Node:0x000000010b07d8 @title="The Princess Bride", @rating=97, @left=nil, @right=nil>
+irb(main):011:0> departed = Node.new("The Departed", 92)
+=> #<Node:0x0000000108f178 @title="The Departed", @rating=92, @left=nil, @right=nil>
+irb(main):012:0> jacket = Node.new("Full Metal Jacket", 95)
+=> #<Node:0x00000001061de0 @title="Full Metal Jacket", @rating=95, @left=nil, @right=nil>
+
+irb(main):013:0> tree = BinarySearchTree.new(braveheart)
+=> #<BinarySearchTree:0x00000001053d80 @root=#<Node:0x00000000f80098 @title="Braveheart", @rating=78, @left=nil, @right=nil>, @target=nil>
+
+irb(main):014:0> tree.insert(braveheart, galaxy)
+=> #<Node:0x00000000f0c378 @title="Guardians of the Galaxy", @rating=91, @left=nil, @right=nil>
+irb(main):015:0> tree.insert(braveheart, sk_it)
+=> #<Node:0x00000001032ec8 @title="Stephen King's IT", @rating=85, @left=nil, @right=nil>
+irb(main):016:0> tree.insert(braveheart, scarface)
+=> #<Node:0x00000000fa4bc8 @title="Scarface", @rating=82, @left=nil, @right=nil>
+irb(main):017:0> tree.insert(braveheart, psycho)
+=> #<Node:0x00000001063e10 @title="American Psycho", @rating=68, @left=nil, @right=nil>
+irb(main):018:0> tree.insert(braveheart, fight_club)
+=> #<Node:0x00000001092f30 @title="Fight Club", @rating=79, @left=nil, @right=nil>
+irb(main):019:0> tree.insert(braveheart, knight)
+=> #<Node:0x000000010d1be0 @title="The Dark Knight", @rating=94, @left=nil, @right=nil>
+irb(main):020:0> tree.insert(braveheart, moulin)
+=> #<Node:0x000000010ea028 @title="Moulin Rouge", @rating=76, @left=nil, @right=nil>
+irb(main):021:0> tree.insert(braveheart, t2)
+=> #<Node:0x000000010c7438 @title="Terminator 2: Judgement Day", @rating=93, @left=nil, @right=nil>
+irb(main):022:0> tree.insert(braveheart, princess)
+=> #<Node:0x000000010b07d8 @title="The Princess Bride", @rating=97, @left=nil, @right=nil>
+irb(main):023:0> tree.insert(braveheart, departed)
+=> #<Node:0x0000000108f178 @title="The Departed", @rating=92, @left=nil, @right=nil>
+irb(main):024:0> tree.insert(braveheart, jacket)
+=> #<Node:0x00000001061de0 @title="Full Metal Jacket", @rating=95, @left=nil, @right=nil>
+
+irb(main):025:0> tree.printf
+Braveheart: 78
+American Psycho: 68
+Guardians of the Galaxy: 91
+Moulin Rouge: 76
+Stephen King's IT: 85
+The Dark Knight: 94
+Scarface: 82
+Terminator 2: Judgement Day: 93
+The Princess Bride: 97
+Fight Club: 79
+The Departed: 92
+Full Metal Jacket: 95
+=> 6
+irb(main):026:0> exit
+
+Min Heap Tree
+
+irb(main):001:0> braveheart = Node.new("Braveheart", 78)
+=> #<Node:0x000000018ccae8 @title="Braveheart", @rating=78>
+irb(main):002:0> galaxy = Node.new("Guardians of the Galaxy", 91)
+=> #<Node:0x0000000194fa88 @title="Guardians of the Galaxy", @rating=91>
+irb(main):003:0> sk_it = Node.new("Stephen King's IT", 85)
+=> #<Node:0x0000000195ed08 @title="Stephen King's IT", @rating=85>
+irb(main):004:0> scarface = Node.new("Scarface", 82)
+=> #<Node:0x000000019a62c0 @title="Scarface", @rating=82>
+irb(main):005:0> psycho = Node.new("American Psycho", 68)
+=> #<Node:0x000000019f8a98 @title="American Psycho", @rating=68>
+irb(main):006:0> fight_club = Node.new("Fight Club", 79)
+=> #<Node:0x00000001a57a48 @title="Fight Club", @rating=79>
+irb(main):007:0> knight = Node.new("The Dark Knight", 94)
+=> #<Node:0x00000001a96a18 @title="The Dark Knight", @rating=94>
+irb(main):008:0> moulin = Node.new("Moulin Rouge", 76)
+=> #<Node:0x00000001aaeed8 @title="Moulin Rouge", @rating=76>
+irb(main):009:0> t2 = Node.new("Terminator 2: Judgement Day", 93)
+=> #<Node:0x00000001a879f0 @title="Terminator 2: Judgement Day", @rating=93>
+irb(main):010:0> princess = Node.new("The Princess Bride", 97)
+=> #<Node:0x00000001a75278 @title="The Princess Bride", @rating=97>
+irb(main):011:0> departed = Node.new("The Departed", 92)
+=> #<Node:0x00000001a53740 @title="The Departed", @rating=92>
+irb(main):012:0> jacket = Node.new("Full Metal Jacket", 95)
+=> #<Node:0x00000001a23248 @title="Full Metal Jacket", @rating=95>
+
+irb(main):013:0> tree = MinHeapTree.new
+=> #<MinHeapTree:0x00000001a1db40 @items=[nil], @item_map={}>
+
+irb(main):014:0> tree.insert(braveheart)
+=> nil
+irb(main):015:0> tree.insert(galaxy)
+=> nil
+irb(main):016:0> tree.insert(sk_it)
+=> nil
+irb(main):017:0> tree.insert(scarface)
+=> nil
+irb(main):018:0> tree.insert(psycho)
+=> nil
+irb(main):019:0> tree.insert(fight_club)
+=> nil
+irb(main):020:0> tree.insert(knight)
+=> nil
+irb(main):021:0> tree.insert(moulin)
+=> nil
+irb(main):022:0> tree.insert(t2)
+=> nil
+irb(main):023:0> tree.insert(princess)
+=> nil
+irb(main):024:0> tree.insert(departed)
+=> nil
+irb(main):025:0> tree.insert(jacket)
+=> nil
+
+irb(main):026:0> tree.print_heap
+American Psycho: 68
+Moulin Rouge: 76
+Fight Club: 79
+Braveheart: 78
+Scarface: 82
+Stephen King's IT: 85
+The Dark Knight: 94
+Guardians of the Galaxy: 91
+Terminator 2: Judgement Day: 93
+The Princess Bride: 97
+The Departed: 92
+Full Metal Jacket: 95
+irb(main):027:0> exit

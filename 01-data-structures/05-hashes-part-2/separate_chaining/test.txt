@@ -1,0 +1,199 @@
+irb(main):001:0> list = SeparateChaining.new(2)
+=> #<SeparateChaining:0x00000001f7e5a8 @max_load_factor=0.7, @items=[nil, nil], @size=2>
+
+irb(main):002:0> list["KeyOne"] = "Value One"
+=> "Value One"
+irb(main):003:0> list["KeyTwo"] = "Value Two"
+=> "Value Two"
+irb(main):004:0> list.state
+index 0: is nil
+index 1: is nil
+index 2: is nil
+index 3:
+key: KeyOne -- value: Value One -- memory: 16571000
+key: KeyTwo -- value: Value Two -- memory: 16571020
+load factor: 0.5
+=> nil
+
+irb(main):005:0> list["KeyThree"] = "Value Three"
+=> "Value Three"
+irb(main):006:0> list["KeyFour"] = "Value Four"
+=> "Value Four"
+irb(main):007:0> list["KeyFive"] = "Value Five"
+=> "Value Five"
+irb(main):008:0> list.state
+index 0: is nil
+index 1:
+key: KeyThree -- value: Value Three -- memory: 16770140
+index 2: is nil
+index 3:
+key: KeyFive -- value: Value Five -- memory: 16943500
+key: KeyTwo -- value: Value Two -- memory: 16770020
+key: KeyOne -- value: Value One -- memory: 16770060
+index 4: is nil
+index 5:
+key: KeyFour -- value: Value Four -- memory: 16890040
+index 6: is nil
+index 7: is nil
+load factor: 0.625
+=> nil
+
+irb(main):009:0> list["KeySix"] = "Value Six"
+=> "Value Six"
+irb(main):010:0> list["KeySeven"] = "Value Seven"
+=> "Value Seven"
+irb(main):011:0> list["KeyEight"] = "Value Eight"
+=> "Value Eight"
+irb(main):012:0> list["KeyNine"] = "Value Nine"
+=> "Value Nine"
+irb(main):013:0> list["KeyTen"] = "Value Ten"
+=> "Value Ten"
+irb(main):014:0> list.state
+index 0:
+key: KeyTen -- value: Value Ten -- memory: 17062720
+index 1:
+key: KeyThree -- value: Value Three -- memory: 17242460
+index 2: is nil
+index 3:
+key: KeyNine -- value: Value Nine -- memory: 17146220
+key: KeyTwo -- value: Value Two -- memory: 17242380
+key: KeyFive -- value: Value Five -- memory: 17242400
+index 4: is nil
+index 5:
+key: KeyFour -- value: Value Four -- memory: 17242220
+index 6: is nil
+index 7: is nil
+index 8: is nil
+index 9: is nil
+index 10:
+key: KeyEight -- value: Value Eight -- memory: 17169060
+key: KeySeven -- value: Value Seven -- memory: 17219280
+index 11:
+key: KeyOne -- value: Value One -- memory: 17242340
+index 12: is nil
+index 13:
+key: KeySix -- value: Value Six -- memory: 17242260
+index 14: is nil
+index 15: is nil
+load factor: 0.625
+=> nil
+
+irb(main):015:0> list["KeyEleven"] = "Value Eleven"
+=> "Value Eleven"
+irb(main):016:0> list["KeyTwelve"] = "Value Twelve"
+=> "Value Twelve"
+irb(main):017:0> list["KeyThirteen"] = "Value Thirteen"
+=> "Value Thirteen"
+irb(main):018:0> list["KeyFourteen"] = "Value Fourteen"
+=> "Value Fourteen"
+irb(main):019:0> list["KeyFifteen"] = "Value Fifteen"
+=> "Value Fifteen"
+irb(main):020:0> list.state
+index 0:
+key: KeyTwelve -- value: Value Twelve -- memory: 16941160
+index 1:
+key: KeyThree -- value: Value Three -- memory: 16941080
+index 2: is nil
+index 3:
+key: KeyTwo -- value: Value Two -- memory: 16932820
+index 4: is nil
+index 5:
+key: KeyFour -- value: Value Four -- memory: 16932760
+index 6: is nil
+index 7: is nil
+index 8:
+key: KeyEleven -- value: Value Eleven -- memory: 16932720
+index 9: is nil
+index 10:
+key: KeyFifteen -- value: Value Fifteen -- memory: 16774440
+key: KeySeven -- value: Value Seven -- memory: 16932640
+index 11:
+key: KeyOne -- value: Value One -- memory: 16932600
+index 12:
+key: KeyThirteen -- value: Value Thirteen -- memory: 16897760
+index 13: is nil
+index 14: is nil
+index 15: is nil
+index 16:
+key: KeyTen -- value: Value Ten -- memory: 16941120
+index 17:
+key: KeyFourteen -- value: Value Fourteen -- memory: 16879320
+index 18: is nil
+index 19:
+key: KeyFive -- value: Value Five -- memory: 16932800
+key: KeyNine -- value: Value Nine -- memory: 16944140
+index 20: is nil
+index 21: is nil
+index 22: is nil
+index 23: is nil
+index 24: is nil
+index 25: is nil
+index 26:
+key: KeyEight -- value: Value Eight -- memory: 16932680
+index 27: is nil
+index 28: is nil
+index 29:
+key: KeySix -- value: Value Six -- memory: 16932560
+index 30: is nil
+index 31: is nil
+load factor: 0.46875
+=> nil
+
+irb(main):021:0> list["KeySixteen"] = "Value Sixteen"
+=> "Value Sixteen"
+irb(main):022:0> list["KeySeventeen"] = "Value Seventeen"
+=> "Value Seventeen"
+irb(main):023:0> list.state
+index 0:
+key: KeyTwelve -- value: Value Twelve -- memory: 16941160
+index 1:
+key: KeyThree -- value: Value Three -- memory: 16941080
+index 2: is nil
+index 3:
+key: KeyTwo -- value: Value Two -- memory: 16932820
+index 4: is nil
+index 5:
+key: KeyFour -- value: Value Four -- memory: 16932760
+index 6: is nil
+index 7: is nil
+index 8:
+key: KeyEleven -- value: Value Eleven -- memory: 16932720
+index 9:
+key: KeySixteen -- value: Value Sixteen -- memory: 16565020
+index 10:
+key: KeyFifteen -- value: Value Fifteen -- memory: 16774440
+key: KeySeven -- value: Value Seven -- memory: 16932640
+index 11:
+key: KeyOne -- value: Value One -- memory: 16932600
+index 12:
+key: KeyThirteen -- value: Value Thirteen -- memory: 16897760
+index 13: is nil
+index 14: is nil
+index 15: is nil
+index 16:
+key: KeyTen -- value: Value Ten -- memory: 16941120
+index 17:
+key: KeyFourteen -- value: Value Fourteen -- memory: 16879320
+index 18: is nil
+index 19:
+key: KeyFive -- value: Value Five -- memory: 16932800
+key: KeyNine -- value: Value Nine -- memory: 16944140
+index 20: is nil
+index 21: is nil
+index 22:
+key: KeySeventeen -- value: Value Seventeen -- memory: 16547140
+index 23: is nil
+index 24: is nil
+index 25: is nil
+index 26:
+key: KeyEight -- value: Value Eight -- memory: 16932680
+index 27: is nil
+index 28: is nil
+index 29:
+key: KeySix -- value: Value Six -- memory: 16932560
+index 30: is nil
+index 31: is nil
+load factor: 0.53125
+=> nil
+
+irb(main):024:0> exit

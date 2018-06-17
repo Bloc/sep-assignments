@@ -40,7 +40,7 @@ RSpec.describe HashClass, type: Class do
     end
   end
 
-  describe "hash[key] = value" do
+  describe "hash[key] = value" do  
     it "does not resize the array when a collision occurs and the values match" do
       hash = HashClass.new(1)
       hash["key"] = "value"
