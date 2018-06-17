@@ -200,6 +200,21 @@ RSpec.describe BinarySearchTree, type: Class do
       tree.delete(root, shawshank.title)
       expect(tree.find(root, "The Shawshank Redemption")).to be_nil
     end
+
+    it "properly deletes a node with left and right children" do
+      tree.insert(root, hope)
+      tree.insert(root, empire)
+      tree.insert(root, jedi)
+      tree.insert(root, martian)
+      tree.insert(root, pacific_rim)
+      tree.insert(root, inception)
+      tree.insert(root, braveheart)
+      tree.insert(root, shawshank)
+      tree.insert(root, district)
+      tree.insert(root, mad_max_2)
+      tree.delete(root, jedi.title)
+      expect(tree.find(root, "Star Wars: Return of the Jedi")).to be_nil
+    end
   end
 
   describe "#printf" do
@@ -230,6 +245,7 @@ RSpec.describe BinarySearchTree, type: Class do
        tree.insert(root, jedi)
        tree.insert(root, empire)
        tree.insert(root, hope)
+              tree.printf
        expect { tree.printf }.to output(expected_output).to_stdout
      }
   end

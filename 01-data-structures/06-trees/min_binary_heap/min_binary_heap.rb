@@ -32,60 +32,28 @@ class MinBinaryHeap
       #insert node to left or right child
       if current.left.nil?
         current.left = node
-        node.parent = current
       elsif current.right.nil?
         current.right = node
-        node.parent = current
       end
 
-      # puts "#{current.title} & #{current.parent.title}" if current.parent
       while !current.nil? && node.rating < current.rating
-        if current == @root
-          @root = node
-        end
-
-        #current = current.parent
-        #puts temp_node.title
-        if current.left == node
-          replace_child_parent(node, current)
-          temp_right = node.right
-
-          node.right = current.right
-          node.right.parent = node if node.right
-          current.right = temp_right
-          current.left = node.left
-          node.left = current
-          current.parent = node
-          current.right.parent = current if current.right
-          current.left.parent = current if current.left
-          #puts "#{temp_node.title} & #{temp_node.parent.title}" if temp_node.parent
-        elsif current.right == node
-          replace_child_parent(node, current)
-          temp_left = node.left
-          node.left = current.left
-          node.left.parent = node if node.left
-          current.left = temp_left
-          current.right = node.right
-          node.right = current
-          current.parent = node
-          current.right.parent = current if current.right
-          current.left.parent = current if current.left
-        end
-        current = node.parent
+        title = current.title
+        rating = current.rating
+        current.rating = node.rating
+        current.title = node.title
+        node.rating = rating
+        node.title = title
+        node = current
+        current = find_parent(@root, node)
       end
-      #puts @root.title
     end
   end
 
   # Recursive Depth First Search
   def find(root, data)
-    puts root.title
     return nil if data.nil?
-
     return root if root.title == data
     left = find(root.left, data) if root.left
-
-
     if left
       return left
     else
@@ -96,41 +64,55 @@ class MinBinaryHeap
 
   def delete(root, data)
     return nil if data == nil
-    target = find(root, "Pacific Rim")
-
+    target = find(root, data)
     #if root.left && root.right
-    last_node = find_last(target)
-
+    last_node = find_last(@root)
     if last_node
-      if target.parent
-        last_node.parent = target.parent
-        if last_node.parent.left == target
-          last_node.parent.left = last_node
-        elsif last_node.parent.right == target
-          last_node.parent.right = last_node
-        end
+      parent = find_parent(@root,last_node)
+      #puts parent.title
+      if parent.nil?
+      elsif parent.left == last_node
+        parent.left = nil
+      else
+        parent.right = nil
       end
-
-      last_node.left = target.left
-      last_node.right = target.right
-      target.left.parent = target if target.left
-      target.right.parent = target if target.right
-      target.title = nil
-      target.rating = nil
-      target.left = nil
-      target.right = nil
-      target.parent = nil
+      target.title = last_node.title
+      target.rating = last_node.rating
+      last_node.title = nil
+      last_node.rating = nil
     end
-      #root = successor
-      #successor.delete(successor, successor.title)
-    # #elsif root.left
-    #   root = root.left
-    # elsif root.right
-    #   root = root.right
-    # else
-    #   root.title = nil
-    #   root.rating = nil
-    # end
+
+    while target.left || target.right
+      if target.left && target.right
+        if target.left.rating < target.right.rating
+          if target.left.rating < target.rating
+            swap(target, target.left)
+          else
+            break
+          end
+        else
+          if target.right.rating < target.rating
+            swap(target, target.right)
+          else
+            break
+          end
+        end
+      elsif target.left
+        if target.left.rating < target.rating
+          swap(target, target.left)
+        else
+          break
+        end
+      elsif target.right
+        if target.right.rating < target.rating
+          swap(target, target.right)
+        else
+          break
+        end
+      else
+        break
+      end
+    end
   end
 
   # Recursive Breadth First Search
@@ -162,13 +144,27 @@ class MinBinaryHeap
     node
   end
 
-  def replace_child_parent(node, node_to_replace)
-    node_to_replace.parent ? node.parent = node_to_replace.parent : node.parent = nil
-    if node.parent.nil?
-    elsif node.parent.left == node_to_replace
-      node.parent.left = node
-    else
-      node.parent.right = node
+  def find_parent(root, node)
+    parent = root
+    return nil if @root == node
+    if parent.left == node || parent.right == node
+      return parent
     end
+
+    left = find_parent(parent.left, node) if parent.left
+    right = find_parent(parent.right, node) if parent.right
+
+    left || right
+
+  end
+
+  def swap(target, child)
+    rating = child.rating
+    title = child.title
+    child.rating = target.rating
+    child.title = target.title
+    target.rating = rating
+    target.title = title
+    target = child
   end
 end

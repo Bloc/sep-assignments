@@ -12,12 +12,12 @@ class BinarySearchTree
       insert(temp_node.left, node)
     elsif temp_node.rating > node.rating
       temp_node.left = node
-      node.parent = temp_node
+      #node.parent = temp_node
     elsif temp_node.rating <= node.rating && temp_node.right
       insert(temp_node.right, node)
     else
       temp_node.right = node
-      node.parent = temp_node
+      #node.parent = temp_node
     end
   end
 
@@ -61,40 +61,20 @@ class BinarySearchTree
   def delete(root, data)
     target = find(root, data)
     return nil if data == nil || target == nil
+    parent = find_parent(@root, target)
 
     if target.left && target.right
       successor = find_min(target.right)
       target.title = successor.title
       target.rating = successor.rating
-      if target.parent.nil?
-
-      elsif target.parent.left == target
-        target.parent.left = successor
-      elsif target.parent.right == target
-        target.parent.right = successor
-      end
       delete(successor, successor.title)
     elsif target.left
-      if target.parent.nil?
-
-      elsif target.parent.left == target
-        target.parent.left = target.left
-      elsif target.parent.right == target
-        target.parent.right = target.left
-      end
       target.rating = target.left.rating
       target.title = target.left.title
       target.right = target.left.right
       target.left = target.left.left
 
     elsif target.right
-      if target.parent.nil?
-
-      elsif target.parent.left == target
-        target.parent.left = target.right
-      elsif target.parent.right == target
-        target.parent.right = target.right
-      end
       target.rating = target.right.rating
       target.title = target.right.title
       target.left = target.right.left
@@ -103,12 +83,12 @@ class BinarySearchTree
     else
       target.title = nil
       target.rating = nil
-      if target.parent.nil?
+      if parent.nil?
 
-      elsif target.parent.left == target
-        target.parent.left = nil
-      elsif target.parent.right == target
-        target.parent.right = nil
+      elsif parent.left == target
+        parent.left = nil
+      elsif parent.right == target
+        parent.right = nil
       end
     end
   end
@@ -136,5 +116,19 @@ class BinarySearchTree
       current_node = current_node.left
     end
     current_node
+  end
+
+  def find_parent(root, node)
+    parent = root
+    return nil if @root == node
+    if parent.left == node || parent.right == node
+      return parent
+    elsif parent.rating > node.rating && parent.left
+      find_parent(parent.left, node)
+    elsif parent.rating <= node.rating && parent.right
+      find_parent(parent.right, node)
+    else
+      return nil
+    end
   end
 end

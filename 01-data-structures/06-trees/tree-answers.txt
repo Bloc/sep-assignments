@@ -1,0 +1,61 @@
+1.Print both Trees to the console and compare the difference between your Binary Search Tree and your Heap.
+Binary Search Tree only check right child is bigger than parent, and left child is smaller than parent:
+The Matrix: 87
+Braveheart: 78
+Mad Max 2: The Road Warrior: 98
+Pacific Rim: 72
+Inception: 86
+District 9: 90
+Star Wars: Return of the Jedi: 80
+The Shawshank Redemption: 91
+The Martian: 92
+Star Wars: The Empire Strikes Back: 94
+Star Wars: A New Hope: 93
+
+Min Binary Heap: The root must be the smallest, and tree needs to fill up every child before insert node into next layer.
+Pacific Rim: 72
+Star Wars: Return of the Jedi: 80
+Braveheart: 78
+The Matrix: 87
+The Shawshank Redemption: 91
+District 9: 90
+Inception: 86
+Mad Max 2: The Road Warrior: 98
+The Martian: 92
+Star Wars: The Empire Strikes Back: 94
+Star Wars: A New Hope: 93
+
+
+2.Insert all numbers from 1 to 100000 into both Trees, then use Benchmark to compare performance:
+How much time does an average insertion consume in the Binary Search Tree compared to the Heap?
+
+For 10k node:
+                    user     system      total        real
+Binary Search Tree  6.650000   0.010000   6.660000 (  6.674591)
+                  user     system      total        real
+Min Binary Heap  4.830000   0.020000   4.850000 (  4.848211)
+
+How much time does finding 50000 in the Binary Search Tree consume compared to the Heap?
+To find 5000th node:
+                      user     system      total        real
+Binary Search Tree: 0.360000   0.000000   0.360000 (  0.361991)
+Min Binary Heap:    0.000000   0.000000   0.000000 (  0.000504)
+
+How much time does the average deletion consume in a Binary Search Tree compared to the Heap?
+                      user     system      total        real
+Binary Search Tree:  0.370000   0.010000   0.380000 (  0.375541)
+Binary Search Tree:  1.470000   0.000000   1.470000 (  1.477066)
+Binary Search Tree:  0.130000   0.000000   0.130000 (  0.134650)
+
+Min Binary Heap:     0.000000   0.000000   0.000000 (  0.003238)
+Min Binary Heap:     0.000000   0.000000   0.000000 (  0.003088)
+Min Binary Heap:     0.010000   0.000000   0.010000 (  0.003349)
+
+When would you use a Binary Search Tree and why?
+Search time is better than Heap(O(log(n)) v.s. O(n))
+BinarySearchTree can do both findMin and findMax in O(1), heap can only do one in O(1)
+
+When would you use an Heap and why?
+Average time insertion is better than BinarySearchTree(O(1) v.s. O(log(n)))
+Binary heaps can be efficiently implemented on top of arrays, BinarySearchTree cannot, saving memory for constant factor.
+Binary heap creation is O(n) worst case, BinarySearchTree is O(nlog(n))
