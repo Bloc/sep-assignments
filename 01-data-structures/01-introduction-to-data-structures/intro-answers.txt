@@ -1,0 +1,10 @@
+1. How does your data structure allow developers to access and manipulate the data?
+Ans: I'm using Array to represent line and matrix, simply retrieve the data via index number, and you may change it as you like.
+     There is other useful array method to insert/delete the element like push, delete, pop, shift, and unshift
+
+
+2. If a developer wanted to find a specific element in your data structure, how would you search for it?
+Ans: Going through every element of the array from the beginning to the end.
+
+3. What other real-world data can each structure represent?
+Ans: Each network packet can store in the array. Chess can be store in a matrix.

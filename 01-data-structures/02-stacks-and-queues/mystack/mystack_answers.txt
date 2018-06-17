@@ -1,0 +1,7 @@
+Implemented stack using array. top is the pointer to show the top of the stack.
+
+push method is to add one element at the end of the stack, and top pointer to the item
+
+pop method is to release the top of the stack, so the pop's element should be the top. Then remove the last element of array, and top moves to the last element of array.
+
+empty method is to check if array is empty via checking length of the array.

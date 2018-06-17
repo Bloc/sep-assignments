@@ -1,0 +1,35 @@
+1.What is Spatial Locality and why does it benefit performance?
+If a particular storage is used at a particular time, then it's more likely the nearby memory locations will be used later on.
+If the system puts those data in nearby memory into cache, system can reference those data fast because it's in the cache.
+
+2.Compare the performance of an Array to a Linked List using the Benchmark module.
+ - Compare the time it takes to create a 10,000 item Array to appending 10,000 items to a Linked List.
+             user        system     total      real
+Array:       0.000000   0.000000   0.000000 (  0.000046)
+LinkedList:  0.010000   0.000000   0.010000 (  0.001606)
+
+This is 10,000,000 item:
+             user         system     total      real
+Array:       0.020000   0.020000   0.040000 (  0.048662)
+LinkedList:  1.450000   0.010000   1.460000 (  1.461256)
+
+ - Compare the time it takes to access the 5000th element of the Array and the 5000th Node in the Linked List.
+             user         system      total        real
+Array:       0.000000   0.000000   0.000000 (  0.000003)
+LinkedList:  0.000000   0.000000   0.000000 (  0.000265)
+
+This is 10,000,000 item:
+             user         system      total        real
+Array:       0.000000   0.000000   0.000000 (  0.000006)
+LinkedList:  0.000000   0.000000   0.000000 (  0.000499)
+
+ - Compare the time it takes to remove the 5000th element from the Array to removing the 5000th Node in the Linked List.
+   - In the Array, the 5001st item becomes the 5000th, and so on.
+             user         system      total        real
+Array:       0.000000   0.000000   0.000000 (  0.000006)
+LinkedList:  0.000000   0.000000   0.000000 (  0.000425)
+
+This is 10,000,000 item:
+             user     system      total        real
+Array:       0.010000   0.000000   0.010000 (  0.011722)
+LinkedList:  0.000000   0.000000   0.000000 (  0.000313)
