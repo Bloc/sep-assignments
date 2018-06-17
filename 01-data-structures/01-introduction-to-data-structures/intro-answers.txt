@@ -1,0 +1,9 @@
+1. How does your data structure allow developers to access and manipulate the data?
+Answer:  Both are just array's and so can be accessed and manipulated in standard fashion for ruby array's.
+
+2. If a developer wanted to find a specific element in your data structure, how would you search for it?
+Answer:  They could use the .select{} or .find{} methods.  Also include?() well tell them if the object is in the array in the first place
+
+3. What other real-world data can each structure represent?
+Answer: Screens could be just about anything with a matrix.  Games like Chess, Mastermind, and Battleship are all based off Matrix's.
+Lines could be used for any sort of queue.  Ships waiting for a the locks, Airport take off and landing schedules, etc

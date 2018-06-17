@@ -1,0 +1,3 @@
+The trickiest part was figuring out how to build the @matrix attribute.  I looked up a number of different methods
+Intuitively I wanted to use ruby's Matrix method, but you have to install and include that, so it took me a while to figure out how to build the array w/o it.
+Once I got that figured it I just need to set up some conditions via the inbounds private method and assign pixels to values in the matrix

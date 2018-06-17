@@ -1,0 +1,6 @@
+Creating a line data structure via an array
+
+I created an Array and use the objects inside of it as the line.
+new joiners went to the back of the line with a line.push
+then I created ways to identify who was at the front, middle, and back of the line
+I created a method for people to leave the line(array) regardless of where they are, that pushes all objects behind it, up one.
