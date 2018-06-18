@@ -53,7 +53,7 @@ class BinarySearchTree
     queue.enq(@root)
     while !queue.empty?
       value = queue.deq
-      puts "#{value.title}: #{value.rating}" if !value.title.nil?
+      puts "#{value.title}: #{value.rating}" 
       queue.enq(value.left) if value.left
       queue.enq(value.right) if value.right
     end
