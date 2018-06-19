@@ -1,0 +1,69 @@
+Create a function capable of printing the state of your HashClass to the console.
+
+  Separate Chaining stats method output:
+    Empty buckets are not printed.
+
+    BUCKET AT INDEX 0:
+      NODE 1: KEY is Star Wars: A New Hope, VALUE is Number Four
+
+    BUCKET AT INDEX 2:
+      NODE 1: KEY is Star Wars: The Phantom Menace, VALUE is Number One
+
+    BUCKET AT INDEX 3:
+      NODE 1: KEY is Star Wars: Attack of the Clones, VALUE is Number Two
+      NODE 2: KEY is Star Wars: Revenge of the Sith, VALUE is Number Three
+
+    This Hash has 8 BUCKETS and 4 NODES
+    The current LOAD FACTOR is 0.5
+
+  Open Addressing status method output:
+
+    INDEX 0 = KEY: Star Wars: The Phantom Menace, VALUE: Number One
+    INDEX 1 = KEY: Star Wars: Attack of the Clones, VALUE: Number Two
+    INDEX 2 = KEY: Star Wars: Revenge of the Sith, VALUE: Number Three
+    INDEX 3 = KEY: Star Wars: A New Hope, VALUE: Number Four
+    INDEX 4 = KEY: Star Wars: The Empire Strikes Back, VALUE: Number Five
+    INDEX 5 = KEY: Star Wars: Return of the Jedi, VALUE: Number Six
+    INDEX 6 = KEY: Gobbledeegook, VALUE: Number Seven
+    INDEX 7 = KEY: Young Anakin is dumb, VALUE: Number Eight
+    INDEX 8 = KEY: Disney has devastaed the franchise..., VALUE: Number Nine
+    INDEX 9 = KEY: Still going, VALUE: Number Ten
+    INDEX 10 = KEY: Another One, VALUE: Number Eleven
+    INDEX 11 = KEY: And again, VALUE: Number Twelve
+    INDEX 12 = KEY: Childhood Ruined, VALUE: Number Thirteen
+
+    The hash has 24 BUCKETS and 13 VALUES stored
+    The LOAD FACTOR is 0.5416666666666666
+
+Describe three collision resolution strategies not mentioned here.
+
+* Coalesced hashing
+    A hybrid of chaining and open addressing, coalesced hashing links
+    together chains of nodes within the table itself. Like open addressing,it
+    achieves space usage and (somewhat diminished) cache advantages over chaining.
+    Like chaining, it does not exhibit clustering effects; in fact, the table can
+    be efficiently filled to a high density. Unlike chaining, it cannot have more
+    elements than table slots.
+
+* Hopscotch hashing
+    The hopscotch hashing algorithm works by defining a neighborhood of buckets
+    near the original hashed bucket, where a given entry is always found. Thus,
+    search is limited to the number of entries in this neighborhood, which is
+    logarithmic in the worst case, constant on average, and with proper alignment
+    of the neighborhood typically requires one cache miss.
+
+* 2-choice hashing
+    2-choice hashing employs two different hash functions, h1(x) and h2(x), for the
+    hash table. Both hash functions are used to compute two table locations. When
+    an object is inserted in the table, then it is placed in the table location that
+    contains fewer objects (with the default being the h1(x) table location if there
+    is equality in bucket size). 2-choice hashing employs the principle of the power
+    of two choices.
+
+Create your own collision resolution strategy and describe how it works.
+
+  Linear 3-choice hashing
+    It's probably not terribly efficient, but this collision strategy utilizes three hash
+    functions. Like 2-choice hashing, the object is placed in the bucket with fewer objects
+    than the other 2. If all three buckets are at max density, then the linear search begins for
+    another bucket with available space. The hash will only resize when its full, like open addressing.
