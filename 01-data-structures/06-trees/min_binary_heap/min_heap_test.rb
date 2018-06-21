@@ -15,25 +15,15 @@ hope = Node.new("Star Wars: A New Hope", 93)
 empire = Node.new("Star Wars: The Empire Strikes Back", 94)
 mad_max_2 = Node.new("Mad Max 2: The Road Warrior", 98)
 
-#tree.insert(root, mad_max_2) #98 2
-
-tree.insert(root, district) #90 1
-
-tree.insert(root, shawshank) #91 1
-
-tree.insert(root, matrix) #87 1
-
-tree.insert(root, inception) #86 1
-
-tree.insert(root, braveheart) #78 1
-
-tree.insert(root, martian) #92 1
-
-tree.insert(root, jedi) #80 1
-
-tree.insert(root, empire) #94 1
-
-
-
+tree.insert(root, hope) #93
+tree.insert(root, empire) #94
+tree.insert(root, jedi) #80
+tree.insert(root, martian) #92
+tree.insert(root, braveheart) #78
+tree.insert(root, inception) #86
+tree.insert(root, matrix) #87
+tree.insert(root, shawshank) #91
+tree.insert(root, district) #90
+tree.insert(root, mad_max_2) #98
 
 tree.printf

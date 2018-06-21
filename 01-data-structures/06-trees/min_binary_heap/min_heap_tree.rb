@@ -39,13 +39,14 @@ class MinHeapTree
         node.left ? node.parent.left = node.left : node.parent.left = nil
         # the node then inherits the parent's other child and the parent becomes a child
         node.right = temp_right
+        temp_right.parent = node if temp_right
         node.left = node.parent
         # then the parent's parent becomes the nodes parent if it has one
         temp_parent = node.parent
         if node.parent.parent
           #determine which child the parent is relative to its parent and set the node
           #to that
-          if node.parent.parent.left && node.parent.parent.left === temp_parent
+          if node.parent.parent.left && node.parent.parent.left === node.parent
             node.parent.parent.left = node
             node.parent = node.parent.parent
           else
@@ -57,7 +58,6 @@ class MinHeapTree
         end
         # finally the node becomes its parent's parent
         temp_parent.parent = node
-        puts "#{node.title} has been swapped. It's parent is #{node.parent.title} and its children are #{node.left ? node.left.title : 'no left child'} and #{node.right ? node.right.title : 'no right child'}"
       else
         # if the node has children, they become the parent's children
         temp_left = node.parent.left
@@ -65,6 +65,7 @@ class MinHeapTree
         node.left ? node.parent.left = node.left : node.parent.left = nil
         # the node then inherits the parent's other child and the parent becomes a child
         node.right = node.parent
+        temp_left.parent = node
         node.left = temp_left
         # then the parent's parent becomes the nodes parent if it has one
         temp_parent = node.parent
@@ -83,7 +84,6 @@ class MinHeapTree
         end
         # finally the node becomes its parent's parent
         temp_parent.parent = node
-        puts "#{node.title} has been swapped. It's parent is #{node.parent.title} and its children are #{node.left ? node.left.title : 'no left child'} and #{node.right ? node.right.title : 'no right child'}"
       end
     end
   end
