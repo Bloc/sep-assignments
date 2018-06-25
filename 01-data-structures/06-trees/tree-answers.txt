@@ -1,0 +1,75 @@
+1.
+
+Order of insertions:
+
+Root = "Pacific Rim", 72
+
+"Star Wars: A New Hope", 93
+"Star Wars: The Empire Strikes Back", 94
+"Star Wars: Return of the Jedi", 80
+"The Martian", 92
+"Braveheart", 78
+"Inception", 86
+"The Matrix", 87
+"The Shawshank Redemption", 91
+"District 9", 90
+"Mad Max 2: The Road Warrior", 98
+
+Min Heap Output:
+
+Pacific Rim: 72
+Star Wars: Return of the Jedi: 80
+Braveheart: 78
+The Matrix: 87
+District 9: 90
+Star Wars: The Empire Strikes Back: 94
+Inception: 86
+Star Wars: A New Hope: 93
+The Shawshank Redemption: 91
+The Martian: 92
+Mad Max 2: The Road Warrior: 98
+
+
+
+Binary Search:
+
+Pacific Rim: 72
+Star Wars: A New Hope: 93
+Star Wars: Return of the Jedi: 80
+Star Wars: The Empire Strikes Back: 94
+Braveheart: 78
+The Martian: 92
+Mad Max 2: The Road Warrior: 98
+Inception: 86
+The Matrix: 87
+The Shawshank Redemption: 91
+District 9: 90
+
+
+2.
+
+Min Heap
+
+Total time to insert 9,999 elements
+  5.100000   0.000000   5.100000 (  5.103778)
+Time to find 5,000 in the Heap
+ 39.550000   0.010000  39.560000 ( 39.564238)
+Time to delete 10,000 elements
+  3.950000   0.000000   3.950000 (  3.951291)
+
+Binary Search Tree
+
+Total time to insert 9,999 elements
+  0.010000   0.000000   0.010000 (  0.003063)
+Time to find 5,000 in the Heap
+  0.000000   0.000000   0.000000 (  0.008434)
+Time to delete 10,000 elements
+  0.010000   0.000000   0.010000 (  0.000942)
+
+There are many things to use binary search trees for, such as maps or dictionaries
+in various programming languages. They are helpful for overall efficient searching
+when they are balanced to minimize search times.
+
+You would use a heap whenever you need to prioritize the data it holds. For instance
+you could assign degrees of urgency to patients in a hospital database and use a heap
+to order them by most urgent.
