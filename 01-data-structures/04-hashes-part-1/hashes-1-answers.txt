@@ -1,0 +1,7 @@
+Explain why doubling the size of the underlying array of your HashClass may be a poor idea.
+
+As the hints point out, doubling will take a toll on memory and can lead to more fragmentation.
+Doubling the array also does not take advantage of a point made in the checkpoint. The Ruby hash
+class uses prime number values to resize the core array because that results in fewer collision.
+Simply doubling an array for a hash class will result in a higher frequency of collisions and less
+overall efficiency. 
