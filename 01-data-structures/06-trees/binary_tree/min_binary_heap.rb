@@ -1,22 +1,28 @@
 require_relative 'node'
 
-class BinarySearchTree
+class MinBinaryHeap
+  attr_reader :root
 
   def initialize(root)
     @root = root
   end
 
   def insert(root, node)
-    if node.rating < root.rating && root.left == nil
-      root.left = node
-    elsif node.rating < root.rating && root.left != nil
-      root = root.left
-      insert(root, node)
-    elsif node.rating > root.rating && root.right == nil
-      root.right = node
-    elsif node.rating > root.rating && root.right != nil
-      root = root.right
-      insert(root, node)
+    if root.rating > node.rating
+      temp = root
+      @root = node
+      node = temp
+      insert(@root, node)
+    else
+      if root.left.nil?
+        root.left = node
+      elsif root.right.nil? && root.left != nil
+        root.right = node
+      elsif root.left != nil && root.right != nil && root.left.left != nil && root.left.right != nil
+        insert(root.right, node)
+      elsif root.left != nil && root.right != nil
+        insert(root.left, node)
+      end
     end
   end
 
