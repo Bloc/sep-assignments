@@ -7,11 +7,19 @@ class MyStack
   end
 
   def push(item)
+    self.top = item
+    @stack[@stack.length] = item
   end
 
   def pop
+    top_element = self.top
+    @stack.slice!(-1)
+    self.top = @stack[@stack.length-1]
+    top_element
   end
 
   def empty?
+    return true unless self.top
+    false
   end
 end
