@@ -1,0 +1,33 @@
+
+MinBinHeap
+100,000 entries:
+======================================================
+          user     system      total        real
+insert    0.170000   0.000000   0.170000 (  0.164957)
+find      0.000000   0.000000   0.000000 (  0.000025)
+delete    0.000000   0.000000   0.000000 (  0.000022)
+
+Binary Search Tree
+100,000 entries:
+======================================================
+          user     system      total        real
+insert    0.610000   0.000000   0.610000 (  0.622399)
+find      0.000000   0.000000   0.000000 (  0.000011)
+delete    0.040000   0.010000   0.050000 (  0.038198)
+
+The insertion method of the Min Heap is much faster than the Binary Search Tree.
+An average insertion in the Binary Search Tree consumes .622399 compared to the Heap at .164957
+Average time insertion into a binary heap is O(1) while for for BST it is O(log(n))
+
+
+The search method of the BST is much faster than the Min Heap.
+Finding "#50000" in the Binary Search Tree consumes .000011 compared to the Heap at .000025
+The search method for elements in BST is O(log(n)).  For Heaps it is O(n).
+
+
+The delete method of the Min Heap is much faster than the BST.
+Average deletion consumes .038198 in a Binary Search Tree compared to .000022 for the Heap
+Average time insertion into a binary heap is O(1) while for BST it is O(log(n))
+
+A Min/Max Heap does a good job of finding the min/max very quickly since it will be the
+first node.
