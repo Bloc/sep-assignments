@@ -1,0 +1,25 @@
+line:
+
+1.  The line data structure allows developers to insert new members to the back of the line;
+    remove members from any position in the queue while retaining the order of the members;
+    obtain the positions of any members currently in the line.
+   
+2.  To find a specific element, one would iteratively search through the length of the line
+    until a match is found
+
+3.  This can be used to represent anything that requires a queue, such as lines at
+    the DMV. It could also be used to keep track of perishable inventory. since insertion
+    into this list happens from the end, we know that the first first items are always
+    the oldest.
+    
+screen:
+
+1.  The screen data structure allows developers to locate things on a 2d plane and
+    insert values at those positions. It also gives you the value at any position
+    on the plane
+    
+2.  It finds elements using given coordinates.
+
+3.  This could be useful in representing a map as every object in the map would have
+    its own coordinate and could easily be found.
+    
