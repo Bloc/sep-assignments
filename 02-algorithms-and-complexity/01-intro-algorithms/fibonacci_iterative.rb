@@ -1,3 +1,5 @@
+require 'benchmark'
+
 def fib(n)
   return 0 if n === 0
   fib_0 = 0
@@ -21,3 +23,9 @@ puts fib(6)
 puts fib(7)
 puts fib(8)
 puts fib(9)
+
+
+puts "Total time to run fib(20) iteratively"
+puts Benchmark.measure {
+  fib(20)
+}
