@@ -15,10 +15,6 @@ class KevinBacon
     end
 
     #returns an Array of at most six film titles that connect it to the Kevin_Bacon Node
-    if (films.length <= 6 && films.length > 0) 
-    	p "Connected by films: #{films.all}" 
-    else 
-    	p "Not connected by 6 or less films"
-    end
+    (films.length <= 6 && films.length > 0) ? puts "Connected by films: #{films.all}" : puts "Not connected by 6 or less films"
   end
 end
