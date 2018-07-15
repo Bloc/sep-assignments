@@ -9,21 +9,29 @@ class Line
   end
 
   def join(person)
+    @members.push(person)
   end
 
   def leave(person)
+    @members.delete(person)
   end
 
   def front
+    return @members.first 
   end
 
   def middle
+    center = @members.length/2
+    return @members[center]
   end
 
   def back
+    return @members.last 
   end
 
   def search(person)
+    result = @members.find{|member| member.include?(person)}
+    return result 
   end
 
   private

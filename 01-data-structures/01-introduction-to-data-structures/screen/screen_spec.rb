@@ -34,7 +34,7 @@ RSpec.describe Screen, type: Class do
     it "handles invalid x, y values gracefully" do
       pixel = screen.at(-1, -1)
 
-      expect(pixel).to eq nil
+      expect(pixel).to eq []
     end
   end
 
