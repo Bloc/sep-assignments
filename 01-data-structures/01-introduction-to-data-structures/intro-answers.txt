@@ -1,0 +1,34 @@
+Q: How does your data structure allow developers to access and manipulate the data?
+
+  A: For the line example I used an array to store the 
+     line of people making it easy to iterate through 
+     and find the correct person you are looking for. 
+     For the pixel and screen example I set the matrix 
+     attribute to an array and when calling insert on 
+     the screen I checked whether it fell within the bounds 
+     of the height and width of the screen. If so, then I 
+     pushed a hash containing the pixel and it's x and y 
+     values. 
+
+Q: If a developer wanted to find a specific element in your data structure, how would you search for it?
+  
+  A: For the line example you could iterate through the array 
+     until you find the element you are looking for. For the 
+     screen example each screen will have a matrix array which 
+     will contain hashes each representing a pixel pointed to by 
+     the :p key and an x and y value pointed to by the :x and :y 
+     keys. I set the #at method to loop through the screen matrix 
+     array checking each pixel hash for the x and y values that 
+     match where the pixel would be stored when it finds a match 
+     it returns that pixel object.
+
+Q: What other real-world data can each structure represent?
+  
+  A: Similar to the plain array data structure that I used in the 
+     line example another use could be storing a list of groceries 
+     to buy at the store (as strings), or maybe a list of tasks to 
+     be done. Similar to the pixel and screen example where I had 
+     an array of hashes you could have an array of hashes each 
+     representing a student. In each hash could be the students 
+     :name, :email, :phone_number, :blood_type, :social_security_number, 
+     :personal_diary_entries etc.
