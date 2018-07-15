@@ -1,0 +1,15 @@
+Q:What is Spatial Locality and why does it benefit performance?
+  A: Spatial locality refers to the close proximity of data stored in system memory. 
+  Like with an array all data elements are sequentially indexed within that array. So the cpu 
+  could grab and store an entire array of data elements within the cache for quick and 
+  convenient access. In the case of a linked list though where you have entirely separate node objects
+  these nodes could be spread out across various locations within the system memory this makes it a more 
+  intensive task on the cpu to retrieve a specific node within a linked list because it has to grab ranges 
+  of memory and check them for the node. 
+Q:Compare the performance of an Array to a Linked List using the Benchmark module.
+  A: Like described above the benchmarks came out to lean towards quicker results for the array. 
+                user     system      total        real
+array push:     0.002001   0.000000   0.002001 (  0.002044)
+array pop:      0.001740   0.000000   0.001740 (  0.001742)
+ll_add_front:   0.002830   0.000000   0.002830 (  0.002832)
+ll_delete:      0.002850   0.000000   0.002850 (  0.002852)
