@@ -18,7 +18,7 @@ class SeparateChaining
   end
 
   def [](key)
-    @items[index(key,size)].find_value(key)
+    @items[index(key,size)].get_value(key)
   end
 
   # Returns a unique, deterministically reproducible index into an array
