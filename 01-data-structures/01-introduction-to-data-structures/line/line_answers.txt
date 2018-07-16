@@ -1,0 +1,13 @@
+How does your data structure allow developers to access and manipulate the data?
+  Through its various methods:
+    * join() lets you add a person to the line
+    * leave() allows you to remove a person
+    * front(), middle(), and back() return the person at the respective location in the line.
+    * search() confirms whether or not a person is in the line
+
+If a developer wanted to find a specific element in your data structure, how would you search for it?
+    You can use the search() method. I could also implement the index() method in the search() method so
+    instead of a boolean it returns the location (index) of the person.
+What other real-world data can each structure represent?
+  This data structure would work for anything needing to track a simple queue, such as a list of reservations at
+  a restaurant or people on a wait-list for college.

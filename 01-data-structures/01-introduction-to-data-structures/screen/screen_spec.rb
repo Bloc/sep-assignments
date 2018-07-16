@@ -1,3 +1,5 @@
+include RSpec
+
 require_relative 'screen'
 
 RSpec.describe Screen, type: Class do
