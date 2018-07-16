@@ -1,0 +1,27 @@
+1. Looking at the bar chart, speculate on why you think some sort algorithms are
+   faster than others and provide rationale as to your thought process.
+
+Bucket Sort wins the Usain Bolt award for being the fastest sorting algorithm
+(at least in my implementation of the algorithms) coming in at 0.002758 seconds
+to sort a shuffled array of 5000 numbers (I used 5000 instead of 50 to get a
+clearer difference b/w the algorithms). I imagine it comes out at top due to
+efficiently placing values in buckets then using insertion sort to sort each
+bucket. Insertion sort is able to work at its most efficient because most of
+the work is done already through the method to place values in the buckets.
+
+Heap Sort comes in second at 0.015701 seconds to sort the same array. Through
+cursory research, I am aware that a well optimized Quick Sort will run better
+than Heap Sort when sorting much larger data sets, but in this case Heap performs
+better. I also read that it has a better worst-case run time which ought to factor
+into decisions to use it or not. Heap sort is also an in-place algorithm which
+means it is more efficient with memory.
+
+Merge Sort also did well relative to the remaining algorithms. It seems this
+is in part due to it being a divide and conquer algorithm. It does not sort in
+place, which is probably why its a bit less efficient than Bucket and Heap Sorts
+in this implementation.
+
+Bubble Sort did the worst. I think is the case because it is simply iterating
+over an array and comparing adjacent values over and over until every value
+has been sorted. It doesn't utilize any technique to minimize comparisons and will
+only work best in situations where the input array is already mostly sorted.

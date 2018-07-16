@@ -25,6 +25,3 @@ def swap(collection, firstIndex, secondIndex)
   collection[firstIndex] = collection[secondIndex];
   collection[secondIndex] = temp;
 end
-
-collection = [5, 8, 20, 1, 52, 4, 33, 10]
-puts quick_sort(collection, 0, collection.length - 1)
