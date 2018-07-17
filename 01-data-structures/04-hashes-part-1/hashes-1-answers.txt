@@ -1,0 +1,5 @@
+Q: Explain why doubling the size of the underlying array of your HashClass may be a poor idea.
+  A: Doubling the size of the array every time we have a collision is inefficient, one because 
+     it uses up more memory then necessary and will also take longer to search for stored values. 
+     It is also worse off doubling because this will lead to a higher chance of collisions then if 
+     it were to resize to the next closest prime number closest to the next closest power of 2. 
