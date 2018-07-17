@@ -1,96 +1,62 @@
 
 require_relative 'node'
-require 'benchmark'
 
 class BinarySearchTree
+  attr_accessor :root
 
   def initialize(root)
     @root = root
   end
 
   def insert(root, node)
-    if root.rating > node.rating
-      root.left.nil? ? (root.left = node) : insert(root.left, node)
-    else
-      root.right.nil? ? (root.right = node) : insert(root.right, node)
+    if root.rating < node.rating && !root.right
+      root.right = node
+    elsif root.rating < node.rating && root.right
+      insert(root.right, node)
+    elsif root.rating > node.rating && !root.left
+      root.left = node
+    elsif root.rating > node.rating && root.left
+      insert(root.left, node)
     end
   end
 
-  # Recursive Depth First Search
+  #depth first search
   def find(root, data)
-    if root.nil?
-      nil
-    else
-      if root.title == data
-        root
-      elsif root.left != nil
-        find(root.left, data)
-      elsif root.right != nil
-        find(root.right, data)
-      end
+    return nil if !root || data === nil
+    return root if root.title === data
+    if root.left && root.left.title === data
+      return root.left
+    elsif root.right && root.right.title === data
+      return root.right
+    elsif find(root.left, data)
+      return find(root.left, data)
+    elsif find(root.right, data)
+      return find(root.right, data)
     end
   end
 
   def delete(root, data)
-    return nil if !data || !root
-    node_to_delete = find(root, data)
-    parent_of_node = get_parent(root, data)
-
-    if node_to_delete
-      delete_node(node_to_delete, parent_of_node)
+    return nil if data === nil
+    if root.left && root.left.title === data
+      root.left = nil
+    elsif root.right && root.right.title === data
+      root.right = nil
+    elsif find(root.left, data)
+      delete(root.left, data)
+    elsif find(root.right, data)
+      delete(root.right, data)
     end
   end
 
-  def delete_node(node, parent_node)
-    if parent_node.left && parent_node.left.title == node.title
-      if !has_child(parent_node.left)
-        parent_node.left = nil
-      end
-    elsif parent_node.right && parent_node.right.title == node.title
-      if !has_child(parent_node.right)
-        parent_node.right = nil
-      end
-    end
-  end
-
-  def get_parent(root, data)
-    case
-    when root.left && !root.right
-      root.left.title == data ? root : get_parent(root.left, data)
-    when root.right && !root.left
-      root.right.title == data ? root : get_parent(root.right, data)
-    when root.right && root.left
-      return root if root.left.title == data
-      return root if root.right.title == data
-    else
-      get_parent(root.left, data)
-      get_parent(root.right, data)
-    end
-  end
-
-  def has_child(node)
-    if node.left || node.right
-      return true
-    else
-      return false
-    end
-  end
-
-  # Recursive Breadth First Search
+  #breadth first search
   def printf(children=nil)
-    if children.nil?
-      children = [@root]
-    end
-    next_row = []
-    children.each do |child|
-      puts "#{child.title}: #{child.rating}"
-      next_row.push(child.left) if !child.left.nil?
-      next_row.push(child.right) if !child.right.nil?
-    end
-    if next_row.size == 0
-      nil
-    else
-      printf(next_row)
+    queue = Queue.new
+    queue.enq(@root)
+    while !queue.empty?
+      value = queue.deq
+      puts "#{value.title}: #{value.rating}" 
+      queue.enq(value.left) if value.left
+      queue.enq(value.right) if value.right
     end
   end
 end

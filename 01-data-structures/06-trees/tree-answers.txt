@@ -1,0 +1,28 @@
+Insert all numbers from 1 to 100000 into both Trees, then use Benchmark to compare performance:
+_____________________________________________________
+Min Binary Heap tree search: 
+total time to insert 9,999 elements
+  3.790000   0.010000   3.800000 (  3.797892)
+
+time to find 5,000 in the Heap
+ 31.200000   0.000000  31.200000 ( 31.195974)
+
+time to delete 10,000 elements
+  3.620000   0.000000   3.620000 (  3.620413)
+_____________________________________________________
+
+Binary Tree search: 
+time to insert 9,999 elements
+  0.000000   0.000000   0.000000 (  0.002423)
+
+time to find 5,000 in the Heap
+  0.010000   0.000000   0.010000 (  0.007152)
+
+time to delete 10,000 elements
+  0.000000   0.000000   0.000000 (  0.000854)
+_____________________________________________________
+
+The binary search tree was significantly faster. For this exact reason I would use it in cases 
+where speed is of the priority, especially when it comes to search for specific elements. I would use 
+the heap in the event that I needed to be more restrictive with how the elements needed to be sorted 
+but the drawback of those restraints is obviously a big hit on runtime speed. 
