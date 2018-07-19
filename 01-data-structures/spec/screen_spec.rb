@@ -1,4 +1,4 @@
-require_relative 'screen'
+require_relative '../01-introduction-to-data-structures/screen/pixel'
 
 RSpec.describe Screen, type: Class do
   let(:screen) { Screen.new(10, 10) }

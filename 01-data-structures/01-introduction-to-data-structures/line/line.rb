@@ -21,7 +21,7 @@ class Line
   end
 
   def middle
-    members[((members.count).floor/2)]
+    members[(members.count/2)]
   end
 
   def back
@@ -29,7 +29,7 @@ class Line
   end
 
   def search(person)
-    members.include?(person)
+    members.include?(person) ? person:nil
   end
 
   private
