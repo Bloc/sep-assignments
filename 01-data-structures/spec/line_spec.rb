@@ -1,6 +1,6 @@
 include RSpec
 
-require_relative 'line'
+require_relative '../01-introduction-to-data-structures/line/line'
 
 RSpec.describe Line, type: Class do
   let(:line) { Line.new }
