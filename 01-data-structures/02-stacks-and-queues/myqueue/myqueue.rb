@@ -4,15 +4,25 @@ class MyQueue
 
   def initialize
     @queue = Array.new
-    @head = @queue[0]
+    @head = nil
+    @tail = nil
   end
 
   def enqueue(element)
+    @queue.insert(@queue.length,element)
+    @head = @queue.first
+    @tail = @queue.last
   end
 
   def dequeue
+    temp = @queue.first
+    @queue.shift()
+    @tail = @queue.last
+    @head = @queue.first
+    return temp
   end
 
   def empty?
+    @queue.empty?
   end
 end

@@ -1,0 +1,9 @@
+1) How does your data structure allow developers to access and manipulate the data?
+2) If a developer wanted to find a specific element in your data structure, how would you search for it?
+3) What other real-world data can each structure represent?
+
+1) This data structure utilizes an array to store and manipulate information. Developers can access different elements in the array, such as the first, middle, or back and can delete or add elements to the line (an array in this case).
+
+2) In our line, which is an array data structure, a developer can search through it by utilizing the search function to search for a particular person in the line. If that person is not in the line, it will return nil.
+
+3) An array can be used to represent many real-world situations. An array would be great as a list (such as a grocery list), following the steps in a recipe, and any other ordered list. 
