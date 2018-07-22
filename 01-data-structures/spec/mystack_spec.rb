@@ -1,6 +1,6 @@
 include RSpec
 
-require_relative 'mystack'
+require_relative '../02-stacks-and-queues/mystack/mystack'
 
 RSpec.describe MyStack, type: Class do
   let(:stack) { MyStack.new }
