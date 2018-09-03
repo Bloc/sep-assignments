@@ -29,7 +29,7 @@ class Line
   end
 
   def search(person)
-    self.members.map {|k| return k if k == person }
+    self.members.each {|k| return k if k == person }
     return nil
   end
 
