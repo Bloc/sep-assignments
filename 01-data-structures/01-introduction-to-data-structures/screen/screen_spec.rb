@@ -14,7 +14,7 @@ RSpec.describe Screen, type: Class do
     it "retains color information upon insertion" do
       pixel = Pixel.new(255, 200, 175, 1, 1)
       screen.insert(pixel, 1, 1)
-
+      
       p1 = screen.at(1, 1)
       expect(p1.red).to eq pixel.red
       expect(p1.green).to eq pixel.green
