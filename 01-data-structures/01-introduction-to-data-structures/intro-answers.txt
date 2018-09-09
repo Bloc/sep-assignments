@@ -1,0 +1,13 @@
+1. How does your data structure allow developers to access and manipulate the data?
+
+  The data structure allows the developer to manipulate the data. The join and leave methods allow the developer to add and delete a person from the array.
+  In addition, the search method will find a person from the array and finding first, middle and last members.
+
+
+2. If a developer wanted to find a specific element in your data structure, how would you search for it?
+
+  The developer can use the search method to find if an element is located in the array.
+
+3. What other real-world data can each structure represent?
+
+  The Line class can be used in anywhere a queue would be used. An example would be online orders and tickets.
