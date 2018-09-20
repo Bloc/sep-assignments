@@ -1,0 +1,12 @@
+1. How does your data structure allow developers to access and manipulate the data?
+
+  My data structure uses two classes to manipulate colored pixels onto a two dimensional screen.
+  The Pixel class initiates the color RGB values and the Screen class places the pixel into the defined coordinates (x, y).
+
+2. If a developer wanted to find a specific element in your data structure, how would you search for it?
+
+  A developer can use the 'at' method in the Screen class by applying the x and y coordinates as arguments and it will return the pixel data at the location on the screen.
+
+3. What other real-world data can each structure represent?
+
+  This data structure can be used on any application where data is visually transmitted on a display; pixels can display color values onto monitor graphics.
