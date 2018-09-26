@@ -1,0 +1,55 @@
+1.
+Tree:
+The Matrix: 87
+Braveheart: 78
+Mad Max 2: The Road Warrior: 98
+Pacific Rim: 72
+Inception: 86
+District 9: 90
+Star Wars: Return of the Jedi: 80
+The Shawshank Redemption: 91
+The Martian: 92
+Star Wars: The Empire Strikes Back: 94
+Star Wars: A New Hope: 93
+
+Heap:
+Pacific Rim: 72
+Braveheart: 78
+Star Wars: Return of the Jedi: 80
+The Matrix: 87
+District 9: 90
+Star Wars: The Empire Strikes Back: 94
+Inception: 86
+Star Wars: A New Hope: 93
+The Shawshank Redemption: 91
+The Martian: 92
+Mad Max 2: The Road Warrior: 98
+
+2.
+***Create binary tree and binary heap of 10,000 length***
+       user     system      total        real
+Binary Search Tree  4.125000   0.000000   4.125000 (  4.129831)
+Binary Heap         4.063000   0.000000   4.063000 (  4.091185)
+***Finds 5,000th element***
+       user     system      total        real
+Binary Search Tree  0.000000   0.000000   0.000000 (  0.000511)
+Binary Heap         0.000000   0.000000   0.000000 (  0.000007)
+***Deletion***
+       user     system      total        real
+Binary Search Tree  0.000000   0.000000   0.000000 (  0.000006)
+Binary Heap         0.000000   0.000000   0.000000 (  0.000005)
+
+How much time does an average insertion consume in the Binary Search Tree compared to the Heap?
+Both times are nearly identical. Heap search was slightly quicker.
+
+How much time does finding 50000 in the Binary Search Tree consume compared to the Heap?
+It takes about 60x longer to find it in the tree compared to the heap.
+
+How much time does the average deletion consume in a Binary Search Tree compared to the Heap?
+It takes nearly the same amount of time.
+
+When would you use a Binary Search Tree and why?
+I would use a binary search tree if the order and sequence of the data is not required for my solution. It was slightly faster to find and delete nodes.
+
+When would you use an Heap and why?
+It would it better to implement a heap if there is a benefit to some ordered arrangement of nodes.
