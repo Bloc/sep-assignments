@@ -1,18 +1,12 @@
 
   def fib(n)
-		if n <= 1
-      return n
+    if n == 0
+      return 0  
+    elsif n == 1 || n == 2
+      return 1
+    else
+      fib(n-1) + fib(n-2)
     end
-		fib = 1
-		prevFib = 1
-    
-    for i in 2..n
-      temp = fib
-      fib+= prevFib
-      prevFib = temp
-    end
-
-    return fib
   end
 
   puts fib(0)
