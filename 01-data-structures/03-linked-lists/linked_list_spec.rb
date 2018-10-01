@@ -89,4 +89,13 @@ RSpec.describe LinkedList, type: Class do
       expect(llist.head).to eq nil
     end
   end
+  describe "#print_at" do
+    before do
+      llist.add_to_tail(n1)
+      llist.add_to_tail(n2)
+      llist.add_to_tail(n3)
+    end
+
+    specify { expect { llist.print_at(1) }.to output("Ben\n").to_stdout }
+  end
 end
