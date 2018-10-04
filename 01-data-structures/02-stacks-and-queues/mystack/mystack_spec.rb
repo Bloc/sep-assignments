@@ -40,6 +40,12 @@ RSpec.describe MyStack, type: Class do
       expect(stack.empty?).to eq true
     end
 
+    it "returns true when the stack is empty" do
+      stack.push("Rob")
+      stack.pop
+      expect(stack.empty?).to eq true
+    end
+
     it "returns false when the stack is not empty" do
       stack.push("Rob")
       expect(stack.empty?).to eq false
