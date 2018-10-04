@@ -1,0 +1,23 @@
+  For this challenge regarding the line at an amusement park I opted to use an
+array as the data structure.  I came to this decision as an array is already much
+like a line.
+
+  You can easily add "people" to the end of the "line" using the array.push
+method, similar to people joining a real world line at the end.  An array of
+is also linear like a line, and using some basic ruby method you can modify the
+array to show people leaving and entering the line in addition to seeing who is
+first, last and in the middle.
+
+  Developers would be able to access and manipulate this data by using Ruby array
+method in addition to searching by index.  Developers could also search by name
+using the detect method Ruby provides.
+
+  I believe that an array was the right solution.  I can also envision arrays
+being a useful data structure for other situations such as a to-do list of items,
+or the midi values and their related notes on a piano.  Some other examples that
+come to mind would be a repair queue at a phone shop, storing high scores on
+sequential levels of an arcade game, etc.  The list could go on and on as there
+is much real-world data that an array could represent.
+
+  While arrays are a more straight forward and simple data structure their use
+and ability to represent data is very valuable to developers.

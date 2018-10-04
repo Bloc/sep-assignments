@@ -1,6 +1,6 @@
 include RSpec
 
-require_relative 'line'
+require_relative 'line' 
 
 RSpec.describe Line, type: Class do
   let(:line) { Line.new }
