@@ -1,0 +1,4 @@
+spacial Locality involves accessing items that are close together in memory, as
+in an array.  This benefits performance as it limits the number of RAM lookups which
+are more time consuming.
+  
