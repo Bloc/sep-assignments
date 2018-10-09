@@ -1,0 +1,14 @@
+  I have created a queue and based on the tests, in addition to my understanding
+I believe it has what is necessary to function properly as a queue.
+
+  My enqueue method appends the element to the end of the array.  It will then
+set the new head as the element at queue[0] and the tail as element at queue[-1].
+
+  My dequeue method allows for FIFO as it will remove the first item in the queue
+after storing it temporarily(so that it can be returned).  Following the removal of
+the first element it will set the new head to the new item at queue[0] and the new
+tail to queue[-1].  It will then return the previous head.
+
+  My empty method will check to see if the queue length is equal to zero and if
+it is we know the queue is empty and the method will return true.  If not equal
+to zero then the method will return false as it is not empty
