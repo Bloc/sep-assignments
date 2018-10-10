@@ -1,0 +1,16 @@
+  In order to deal with collisions, this checkpoint instructed us to double the
+length of the array and re-map the keys with the new array size.  This made it
+relatively simple to fix collisions.
+
+  Although this is an easy way to deal with collisions it is not the most effective.
+There are a couple things to consider about this option and why it may not be
+the best.  As you double the size of arrays they will grow faster and faster,
+potentially taking up too much space.  This process also requires allocating more
+memory which is not a quick task.  In addition if collisions are happening 
+frequently the array is doubling making it so items in your array are more spaced
+out, leaving a lot of nil values in the array and wasting space, which would not be very
+efficient.
+
+  While doubling the size of an array may work in certain scenarios there are
+definitely better solutions to this problem, such as the expansion method described
+in the checkpoint (increasing to a prime number near the next largest power of two).

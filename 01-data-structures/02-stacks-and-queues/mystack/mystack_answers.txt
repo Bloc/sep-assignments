@@ -1,0 +1,12 @@
+  With my current understanding of a stack I believe my solution meets the necessary
+requirements.
+
+  For my push method I appended the item to the end of the stack.  From there my
+pop method will temporarily store the current top then delete the last element
+in the array.  It will then reset the top to the new last element and return
+the old top.
+
+  The empty? method will check to see if the array length is equal to zero and
+if it is it means the stack is empty and will return true.  If the length is not
+equal to zero then that will mean there is at least one element in the array
+and will return false.
