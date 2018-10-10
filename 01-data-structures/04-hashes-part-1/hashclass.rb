@@ -5,52 +5,46 @@ class HashClass
   end
 
   def []=(key, value)
-    index_val = index(key, @items.length)
-    # p @items[index_val]
-    # p value
-    if @items[index_val] === nil || @items[index_val][1] === value
-      @items[index_val] = [key, value]
-    else
-      resize
+    index_val = index(key, size)
+    new_item = @items[index_val]
+
+    if new_item == nil
+      @items[index_val] = HashItem.new(key, value)
+    elsif new_item.key != key
+      while @items[index(key, size)].key != nil && @items[index(key, size)].key != key
+        resize
+        i = index(key, size)
+        break if @items[i] == nil
+      end
+      self[key] = value
+    elsif new_item.key == key && new_item.value != value
+      resize()
+      new_item.value = value
     end
   end
 
 
   def [](key)
-    puts "------------------"
-    p @items
-    index_val = index(key, @items.length)
-    @items[index_val][1]
+    index_val = index(key, size)
+    @items[index_val].value
   end
 
   def resize
-    @items += Array.new(@items.length)
-
-    i = 0
-    while i < @items.size
-      if @items[i] != nil
-        @items[index(@items[i][0], @items.size)] = [@items[i][0], @items[i][1]]
+    resized_hash = @items += Array.new(size)
+    
+    @items.each do |i|
+      if i != nil
+        resized_hash[index(i.key, size)] = i
       end
-      i += 1
     end
+    @items = resized_hash
   end
 
   # Returns a unique, deterministically reproducible index into an array
   # We are hashing based on strings, let's use the ascii value of each string as
   # a starting point.
   def index(key, size)
-    i = 0
-    hash_code = 0
-
-    while(i < key.length)
-      hash_code += key[i].ord
-      i += 1
-    end
-
-    hash_code % size
-
-    puts "------------------"
-    p hash_code % size
+    key.sum % size
   end
 
   # Simple method to return the number of items in the hash
