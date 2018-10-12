@@ -1,0 +1,16 @@
+Q: Describe three collision resolution strategies not mentioned here.
+
+A: The first collision resolution I found that wasn't mentioned in bloc's curriculum
+is the Coalesced hashing strategy.  It is described as a mix between chaining and
+open addressing.  This method allows for better use of space like open addressing.
+Each slot gets a single element, and if a collision occurs the node in the slot
+stores a link to the next open index value.  This allows for a quicker look up like
+you get with chaining.
+
+  Another method not mentioned is "Separate chaining with list head cells".  It is
+very similar to the chaining method we discussed in the checkpoint.  The standout
+difference is that it stores the first element of each chain in the slot itself,
+reducing the pointer traversals by one.  While it is a slight difference it could
+be valuable to get that extra boost of performance in certain scenarios.
+
+  A third method that wasn't in the curriculum is Hopscotch hashing.  

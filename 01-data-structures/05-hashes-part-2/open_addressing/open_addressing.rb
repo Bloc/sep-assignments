@@ -1,42 +1,37 @@
-require 'prime'
 require_relative 'node'
 
 class OpenAddressing
   def initialize(size)
     @items = Array.new(size)
+    @item_count = 0.0
   end
 
   def []=(key, value)
     index = index(key, size)
 
-    if @items[index] == nil
+    if @items[index] == nil || @items[index].key === key
       @items[index] = Node.new(key, value)
-    elsif next_open_index(0) == -1
+    elsif next_open_index(index) == -1
       resize
       self[key] = value
     else
-      index = next_open_index(index)
-      if index == -1
-        resize
-        self[key] = value
-      elsif @items[index] == nil
+        index = next_open_index(index)
         @items[index] = Node.new(key, value)
-      end
     end
+    @item_count += 1
+    #hash_status
   end
 
   def [](key)
-    index = 0
-    # puts "--------------------"
-    # p @items
-    # p index(key, size)
+    index = index(key, size)
+
+    if @items[index].key == key
+      return @items[index].value
+    end
     until index == size
-      if @items[index] == nil
         index += 1
-      elsif @items[index].key == key
+      if @items[index].key == key
         return @items[index].value
-      else
-        index += 1
       end
     end
   end
@@ -70,14 +65,31 @@ class OpenAddressing
 
     @items.each do |i|
       if i != nil
-        resized_hash[index(i.key, size)] = i
+        resized_hash[index(i.key, resized_hash.length)] = i
       end
     end
     @items = resized_hash
   end
 
-  def print_hash
-    p @items
+  def load_factor
+    @item_count / size
+  end
+
+  def hash_status
+    j = 0
+    p "-------------------"
+    p "Load Factor: #{load_factor}"
+    @items.each do |i|
+      if i != nil
+        p "Index: #{j}"
+        p "Key: #{i.key}"
+        p "Value: #{i.value}"
+        p "~~~~~~~~~~~~~~~~~"
+        j += 1
+      end
+    end
+    p "-------------------"
+
   end
 
 end
