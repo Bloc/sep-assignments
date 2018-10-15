@@ -13,4 +13,44 @@ difference is that it stores the first element of each chain in the slot itself,
 reducing the pointer traversals by one.  While it is a slight difference it could
 be valuable to get that extra boost of performance in certain scenarios.
 
-  A third method that wasn't in the curriculum is Hopscotch hashing.  
+  A third method that wasn't in the curriculum is Hopscotch hashing.  This method
+utilizes a single array and for each slot in the array it creates a "neighborhood"
+of small consecutive slots.  Because of the close proximity of the "neighborhood"
+the cost of finding an item with in this area is close to the cost of finding the
+desired slot itself.  If there isn't a spot in the "neighborhood" it uses linear
+probing to find an available slot then must displace items to move this open spot
+closer to the original and into the "neighborhood", which can be an expensive process.
+
+
+Q: Create your own collision resolution strategy and describe how it works.
+
+A:  After researching many different collision resolution strategies, and spending
+a fair amount of time brain storming one of my own I came with a couple ideas.
+One that incorporates separate chaining but will potentially help with the time
+it takes to recall an element when a collision has taken place.  My second idea
+uses binary search to help with the look up when multiple keys collide with
+one index.  Both will utilize load factors and dynamic resizing to ensure that they
+are as performant as possible.
+
+  My first method would use linked lists and would traverse the list to find other nodes that
+have collided with this index.  Though I would include a counter instance variable
+that would increment as the node is accessed.  The linked list would be ordered by
+number of times items were need, placing the most accessed item in the list at
+the index and linking the second most and so on down the list.  As an item is accessed
+more it will be in turn be faster to access.  On the fist collision in an index the second
+item added will be placed at the end of the linked list, as item[i] is called its
+counter would increase and if it is accessed more it will become quicker to find, thus
+reducing traversals for items that have been accessed more frequently.  While this
+method would be harder to implement I think it could add a slight performance boost
+in the right situations.
+
+    Another method I came up with would incorporate a binary search.  When a collision
+occurs an array would be placed in the index location.  The keys that collided
+would then be placed in alphabetical order.  Upon look up a binary search would run
+looking for the specific key.  This would be useful in hash tables that have a lot
+of collisions although it would be harder to configure and set up.
+
+  Coming up with collision resolution strategies was a difficult assignment, as
+many of the most performant and space conscious methods and ideas have already been
+created.  While I know my methods are not perfect I enjoyed thinking about this topic
+and trying to come up with some of my own.
