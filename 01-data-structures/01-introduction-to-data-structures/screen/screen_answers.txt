@@ -1,0 +1,12 @@
+  For this challenge regarding the pixel and screen I opted to use a matrix made
+up of an array containing arrays.  This allowed me to represent the height and
+width of the screen that will then contain the pixels.
+
+  This data structure will allow for easy access to the data in the matrix.  By
+using matrix[coordinate-x][coordinate-y] you can easily manipulate or retrieve the data in the structure.  Developers
+would be able to easily search for pixels by coordinates.
+
+  This data structure could be useful for other real world data representations
+such as any game that utilizes a grid, for example battleship, connect 4 or 
+tick tack toe.  In addition previous checkpoints showed that a matrix can be used
+to represent graph data such as vertices and edges.

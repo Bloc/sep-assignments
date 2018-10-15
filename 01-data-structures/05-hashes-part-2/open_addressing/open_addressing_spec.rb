@@ -42,9 +42,19 @@ RSpec.describe OpenAddressing, type: Class do
       hash = OpenAddressing.new(1)
       hash["key"] = "value"
       expect(hash.size).to eq 1
-      hash["key"] = "second value"
+      # issues in test, two like keys should not cause a collision.  I have added
+      # additional testing
+      # hash["key"] = "second value"
+      # expect(hash.size).to eq 2
+      hash["key_two"] = "second value"
       expect(hash.size).to eq 2
+      hash["key_two"] = "Change value"
+      expect(hash.size).to eq 2
+      expect(hash["key_two"]).to eq "Change value"
+      hash["key_three"] = "Three Value"
+      expect(hash.size).to eq 4
     end
+
 
     it "sets the value of key to value" do
       expect(star_wars_movies["Star Wars: The Phantom Menace"]).to eq "Number One"
