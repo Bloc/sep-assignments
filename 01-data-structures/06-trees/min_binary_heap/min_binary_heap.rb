@@ -2,28 +2,38 @@ require_relative 'node'
 
 class MinBinaryHeap
 
+  attr_accessor :root
+
   def initialize(root)
     @root = root
     @print_queue = Queue.new
   end
 
   def insert(root, data)
-    if data.rating < root.rating
-      current_node = root.left
+    if data.rating < @root.rating
+      temp = @root
+      @root = data
+      p @root
+      insert(@root, temp)
 
-      if current_node
-        insert(current_node, data)
-      else
-        root.left = data
-      end
     elsif data.rating > root.rating
       current_node = root.right
 
-      if current_node
+      if current_node && root.left != nil
         insert(current_node, data)
+      elsif root.left == nil && root.right != nil
+        root.left = data
       else
         root.right = data
       end
+    # elsif data.rating > root.rating
+    #   current_node = root.right
+    #
+    #   if current_node
+    #     insert(current_node, data)
+    #   else
+    #     root.right = data
+    #   end
     end
 
   end
