@@ -9,5 +9,5 @@ class Node
     @rating = rating
     @right = nil
     @left = nil
-  end 
+  end
 end
