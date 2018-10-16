@@ -5,7 +5,6 @@ class BinarySearchTree
   def initialize(root)
     @root = root
     @print_queue = Queue.new
-    @delete_queue = Queue.new
   end
 
   def insert(root, node)
