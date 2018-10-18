@@ -10,7 +10,7 @@ RSpec.describe MinBinaryHeap, type: Class do
   let (:braveheart) { Node.new("Braveheart", 78) }
   let (:jedi) { Node.new("Star Wars: Return of the Jedi", 80) }
   let (:donnie) { Node.new("Donnie Darko", 85) }
-  let (:inception) { Node.new("Inception", 86) }
+  let (:inception) { Node.new("Inception", 96) }
   let (:district) { Node.new("District 9", 90) }
   let (:shawshank) { Node.new("The Shawshank Redemption", 91) }
   let (:martian) { Node.new("The Martian", 92) }
@@ -19,61 +19,71 @@ RSpec.describe MinBinaryHeap, type: Class do
   let (:mad_max_2) { Node.new("Mad Max 2: The Road Warrior", 98) }
 
   describe "#insert(data)" do
-    # it "replaces root if insert is less then @root" do
-    #   heap.insert(root_start, pacific_rim)
-    #   expect(MinBinaryHeap.instance_variable_get(:@root)).to eq pacific_rim
-    # end
-
     it "properly inserts a new node as a left child" do
       heap.insert(root_start, district)
-      heap.insert(root_start, empire)
-      expect(root_start.left.title).to eq "Star Wars: The Empire Strikes Back"
+      expect(root_start.left.title).to eq "District 9"
     end
 
-    # it "properly inserts a new node as a left-left child" do
-    #   heap.insert(root_start, district)
-    #   heap.insert(root_start, shawshank)
+    # it "properly swaps when value is less then" do
     #   heap.insert(root_start, martian)
-    #   heap.insert(root_start, hope)
-    #   expect(root_start.left.left.title).to eq "Star Wars: A New Hope"
+    #   heap.insert(root_start, empire)
+    #   heap.insert(root_start, district)
+    #   expect(root_start.left.title).to eq "District 9"
     # end
-    #
-    # it "properly inserts a new node as a left-right child" do
-    #   heap.insert(root, donnie)
-    #   heap.insert(root, inception)
-    #   expect(root.left.right.title).to eq "Inception"
-    # end
+
+    it "properly inserts a new node as a left-left child" do
+      heap.insert(root_start, district)
+      heap.insert(root_start, empire)
+      heap.insert(root_start, martian)
+      expect(root_start.left.left.title).to eq "The Martian"
+    end
+
+    it "properly inserts a new node as a left-right child" do
+      heap.insert(root_start, district)
+      heap.insert(root_start, empire)
+      heap.insert(root_start, martian)
+      heap.insert(root_start, hope)
+      expect(root_start.left.right.title).to eq "Star Wars: A New Hope"
+    end
 
     it "properly inserts a new node as a right child" do
       heap.insert(root_start, district)
-      expect(root_start.right.title).to eq "District 9"
+      heap.insert(root_start, empire)
+      expect(root_start.right.title).to eq "Star Wars: The Empire Strikes Back"
     end
 
-    # it "properly inserts a new node as a right-left child" do
-    #   heap.insert(root, hope)
-    #   heap.insert(root, martian)
-    #   expect(root.right.left.title).to eq "The Martian"
-    # end
-    #
-    # it "properly inserts a new node as a right-right child" do
-    #   heap.insert(root, empire)
-    #   heap.insert(root, mad_max_2)
-    #   expect(root.right.right.title).to eq "Mad Max 2: The Road Warrior"
-    # end
+    it "properly inserts a new node as a right-left child" do
+      heap.insert(root_start, district)
+      heap.insert(root_start, empire)
+      heap.insert(root_start, martian)
+      heap.insert(root_start, hope)
+      heap.insert(root_start, mad_max_2)
+      expect(root_start.right.left.title).to eq "Mad Max 2: The Road Warrior"
+    end
+
+    it "properly inserts a new node as a right-right child" do
+      heap.insert(root_start, district)
+      heap.insert(root_start, empire)
+      heap.insert(root_start, martian)
+      heap.insert(root_start, hope)
+      heap.insert(root_start, mad_max_2)
+      heap.insert(root_start, inception)
+      expect(root_start.right.right.title).to eq "Inception"
+    end
   end
 
-  # describe "#find(data)" do
-  #   it "handles nil gracefully" do
-  #     heap.insert(root, empire)
-  #     heap.insert(root, mad_max_2)
-  #     expect(heap.find(root, nil)).to eq nil
-  #   end
-  #
-  #   it "properly finds a left node" do
-  #     heap.insert(root, pacific_rim)
-  #     expect(heap.find(root, pacific_rim.title).title).to eq "Pacific Rim"
-  #   end
-  #
+  describe "#find(data)" do
+    it "handles nil gracefully" do
+      heap.insert(root_start, empire)
+      heap.insert(root_start, mad_max_2)
+      expect(heap.find(root_start, nil)).to eq nil
+    end
+
+    it "properly finds a left node" do
+      heap.insert(root_start, district)
+      expect(heap.find(root_start, district.title).title).to eq "District 9"
+    end
+
   #   it "properly finds a left-left node" do
   #     heap.insert(root, braveheart)
   #     heap.insert(root, pacific_rim)
@@ -86,10 +96,11 @@ RSpec.describe MinBinaryHeap, type: Class do
   #     expect(heap.find(root, inception.title).title).to eq "Inception"
   #   end
   #
-  #   it "properly finds a right node" do
-  #     heap.insert(root, district)
-  #     expect(heap.find(root, district.title).title).to eq "District 9"
-  #   end
+    # it "properly finds a right node" do
+    #   heap.insert(root_start, district)
+    #   heap.insert(root_start, empire)
+    #   expect(heap.find(root_start, empire.title).title).to eq "Star Wars: The Empire Strikes Back"
+    # end
   #
   #   it "properly finds a right-left node" do
   #     heap.insert(root, hope)
@@ -102,18 +113,18 @@ RSpec.describe MinBinaryHeap, type: Class do
   #     heap.insert(root, mad_max_2)
   #     expect(heap.find(root, mad_max_2.title).title).to eq "Mad Max 2: The Road Warrior"
   #   end
-  # end
+  end
   #
-  # describe "#delete(data)" do
-  #   it "handles nil gracefully" do
-  #     expect(heap.delete(root, nil)).to eq nil
-  #   end
-  #
-  #   it "properly deletes a left node" do
-  #     heap.insert(root, hope)
-  #     heap.delete(root, hope.title)
-  #     expect(heap.find(root, hope.title)).to be_nil
-  #   end
+  describe "#delete(data)" do
+    it "handles nil gracefully" do
+      expect(heap.delete(root_start, nil)).to eq nil
+    end
+
+    it "properly deletes a left node" do
+      heap.insert(root_start, district)
+      heap.delete(root_start, district.title)
+      expect(heap.find(root_start, district.title)).to be_nil
+    end
   #
   #   it "properly deletes a left-left node" do
   #     heap.insert(root, braveheart)
@@ -148,7 +159,7 @@ RSpec.describe MinBinaryHeap, type: Class do
   #     heap.delete(root, mad_max_2.title)
   #     expect(heap.find(root, mad_max_2.title)).to be_nil
   #   end
-  # end
+  end
   #
   # describe "#print" do
   #    specify {

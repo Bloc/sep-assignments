@@ -10,30 +10,23 @@ class MinBinaryHeap
   end
 
   def insert(root, data)
-    if data.rating < @root.rating
-      temp = @root
-      @root = data
-      p @root
-      insert(@root, temp)
+    if data.rating < root.rating
+      puts "jeool"
+      temp = root
+      root = data
+      insert(data, temp)
 
     elsif data.rating > root.rating
-      current_node = root.right
 
-      if current_node && root.left != nil
-        insert(current_node, data)
-      elsif root.left == nil && root.right != nil
+      if root.left == nil
         root.left = data
-      else
+      elsif root.right == nil
         root.right = data
+      elsif root.left.left == nil || root.left.right == nil
+        insert(root.left, data)
+      elsif root.right.right == nil || root.right.left == nil
+        insert(root.right, data)
       end
-    # elsif data.rating > root.rating
-    #   current_node = root.right
-    #
-    #   if current_node
-    #     insert(current_node, data)
-    #   else
-    #     root.right = data
-    #   end
     end
 
   end
@@ -55,18 +48,14 @@ class MinBinaryHeap
   def find(root, data)
     if data.nil?
       return nil
-    end
-
-    if root.right != nil
-      current_node = root.right
-    elsif root.left != nil
-      current_node = root.left
-    end
-
-    if current_node.title != data
-      find(current_node, data)
     else
-      current_node
+      if root.title == data
+        return root
+      elsif root.left != nil
+        find(root.left, data)
+      elsif root.right != nil
+        find(root.right, data)
+      end
     end
   end
 
