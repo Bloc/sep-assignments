@@ -1,0 +1,39 @@
+1. Brewing coffee:
+
+execute
+  SET kettle with water on stove
+  SET mug, coffee dripper, and coffee
+  IF water is boiling THEN
+    WHILE water level is below the height of the mug
+      Pour water onto coffee
+    END
+  END
+stop
+
+2. Grocery shopping:
+execute
+  CHECK fridge and inventory
+  ADD missing items to grocery list
+  DRIVE to grocery store
+  GET shopping cart
+  FOR each item on grocery list
+    FIND item in grocery store
+    PUT item in shopping cart
+  END
+  CHECKOUT from grocery store
+  DRIVE home
+  PUT groceries in fridge and cupboards
+stop
+
+3. Looking up word in dictionary:
+
+execute
+  OPEN the dictionary
+  WHILE word not on current page
+    IF word > last word on page
+      turn page forward
+    ELSE
+      turn page backward
+    END
+  ENDWHILE
+stop
