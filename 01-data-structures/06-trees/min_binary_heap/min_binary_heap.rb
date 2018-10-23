@@ -1,86 +1,60 @@
 require_relative 'node'
 
-class MinBinaryHeap
+class MinHeap
 
-  attr_accessor :root
+attr_accessor :root, :heap
 
   def initialize(root)
     @root = root
-    @print_queue = Queue.new
+    @heap = Array.new(1, @root)
   end
 
-  def insert(root, data)
-    if data.rating < root.rating
-      puts "jeool"
-      temp = root
-      root = data
-      insert(data, temp)
+  def insert(data)
+    @heap << data
+    heap_up
+  end
 
-    elsif data.rating > root.rating
-
-      if root.left == nil
-        root.left = data
-      elsif root.right == nil
-        root.right = data
-      elsif root.left.left == nil || root.left.right == nil
-        insert(root.left, data)
-      elsif root.right.right == nil || root.right.left == nil
-        insert(root.right, data)
-      end
+  def heap_up
+    index = @heap.length - 1
+    parent = ((index - 2.to_f) / 2).ceil
+    while @heap[parent] && parent >= 0 && @heap[parent].rating > @heap[index].rating
+      swap(parent, index)
+      index = parent
+      parent = ((index - 2.to_f) / 2).ceil
     end
-
   end
 
-  def delete(root, data)
-    if data.nil?
-      return nil
-    else
-      node_to_delete = find(root, data)
-      if node_to_delete.nil?
-        nil
+  def swap(index_one, index_two)
+    temp = @heap[index_one]
+    @heap[index_one] = @heap[index_two]
+    @heap[index_two] = temp
+  end
+
+  def find(data)
+    i = 0
+    while i < @heap.length
+      if(@heap[i].title == data)
+        return @heap[i]
+        i = @heap.length
       else
-        node_to_delete.title = nil
-        node_to_delete.rating = nil
+        i += 1
       end
     end
   end
 
-  def find(root, data)
-    if data.nil?
-      return nil
+  def delete(data)
+    if(data == @heap.last.title)
+      @heap.pop()
     else
-      if root.title == data
-        return root
-      elsif root.left != nil
-        find(root.left, data)
-      elsif root.right != nil
-        find(root.right, data)
-      end
+      item_delete = find(data)
+      @heap.delete(item_delete)
     end
   end
 
-  def print(root=nil)
-    if root === nil
-      root = @root
-      puts "#{root.title}: #{root.rating}"
-    end
-
-    if root.left != nil
-      @print_queue << root.left
-    end
-
-    if root.right != nil
-      @print_queue << root.right
-    end
-
-    if @print_queue.empty?
-      return
-    else
-      next_val = @print_queue.pop
-      puts "#{next_val.title}: #{next_val.rating}"
-      print(next_val)
+  def printf
+    @heap.each do |item|
+      puts "#{item.title}: #{item.rating}"
     end
   end
-
 
 end
