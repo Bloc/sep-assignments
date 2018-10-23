@@ -1,0 +1,58 @@
+
+  For my implementation of the min heap I opted to use an array.  After much
+research over different methods to implement a heap I found many developers turned
+to this option.  I found the author of cracking the coding interview recommended
+this option as you don’t need the overhead of a node.right and node.left as elements
+are inserted from left and right in a heap anyways.  In addition to this the math
+for finding a parent is as easy as (index - 2) / 2, the left child (index * 2) + 1,
+and the right child (index * 2) + 2.
+
+Q:  Print both Trees to the console and compare the difference between your Binary
+Search Tree and your Heap.
+
+A:  After printing both trees to the console there were a couple of key differences.
+The min heap would re-arrange on inserting to maintain its heap property.  While
+the binary search tree would insert to the right or left depending on if it was
+greater then or less then the parent value.  This meant the order of the printed
+values was very different.  The lowest value in the min heap will be the root and
+the min value in the binary tree will be the left most value.  In addition to this
+the heap fills in from left to right while the binary search tree fills in depending
+if the value is greater then or less then.  Making it so the print function shows
+the greatest value in the min heap on the bottom row and the search tree the far right.
+
+Q:  How much time does an average insertion consume in the Binary Search Tree
+compared to the Heap?
+
+A:  After running the benchmark test on three different insertions for both the
+Binary Search Tree and the Min Heap you can see that while they are very close
+but the binary search tree has a slight edge.  This seems to be because the min
+heap has to “heapify” itself upon insert to make sure that the heap property is
+maintained.  It may have to swap values to get the insert value to the right location.
+While the binary search tree must only check if it is greater then less then and
+move on.  Although when inserting numbers between 1-10,000 the heap when much
+quicker, this may be because of my implementation using an array in addition to
+no swaps taking place as all were inserted in order.  The Binary Search Tree took
+quite a bit longer as when inserting it has to make more and more comparisons as
+the tree gets larger.
+
+Q:  How much time does finding 5000 in the Binary Search Tree consume compared to the Heap?
+
+A:  When searching for the middle element I found that the binary search tree
+performed slightly better.  While both were quick the binary search tree performed
+better as it used a depth first search and my heap find method breadth first search.
+
+Q:  When would you use a Binary Search Tree and why?
+
+A:  You would use a binary search tree when you need to maintain a changing dataset
+in sorted order.  Allowing for performant insertions while still being able to utilize
+a binary search.
+
+Q:  When would you use an Heap and why?
+
+A:  You would use a heap when ever you would need quick access to the smallest or
+largest item as depending on your heap property smallest or largest could be the root.
+ Insertions are also fast using a heap making it valuable for changing datasets.
+
+Links to benchmark repl.it
+Binary Search Tree: https://repl.it/@ConSou/Ruby-Binary-Search-Tree
+Min Heap: https://repl.it/@ConSou/Ruby-Min-Heap

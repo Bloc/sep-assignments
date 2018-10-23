@@ -1,0 +1,15 @@
+  Spacial Locality involves accessing items that are close together in memory, as
+in an array.  This benefits performance as it limits the number of RAM lookups which
+are more time consuming.
+
+  I have created the benchmark tests for the array and the linked list.  I found
+array out performed the linked list in all 3 tests.  When creating the 10,000 item
+array and appending 10,000 items to the linked list the array completed slightly
+more then 4 seconds before the linked list.  The list had to move through all previous
+nodes to add to the tail node, explaining why it took so much longer.  Accessing
+the 5,000th element and deleting the 5,000 element were much closer as far as time
+but the array was still faster in both tests.
+
+    I have attached links to my benchmark tests on repl.it.
+Array Benchmarks: https://repl.it/@ConSou/Array-Benchmark
+Linked List Benchmarks: https://repl.it/@ConSou/Linked-List-Benchmark
