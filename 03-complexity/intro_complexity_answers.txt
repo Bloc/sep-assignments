@@ -1,0 +1,58 @@
+1. Describe an analogy for relating an algorithm that has efficiency O(1) and another algorithm that has O(2n).
+
+O(1): Driving from point A to point B
+O(2n): Taking a subway with a transfer to work
+
+
+2. In plain English, what is the best case scenario for binary search?
+
+The best case scenario for a binary search will occur when the target value is found after the first search iteration.
+Since it is found within the first iteration, the function will return the value and exit. This is the most efficient instance for this binary search.
+
+
+3. In plain English, what is the worst-case scenario for binary search?
+
+The worst case scenario for a binary search will occur when the target value is found after the last search iteration.
+The function would have to iteration through each data point before the function has finished. This would be the least efficient instance for this binary search.
+
+
+4. In plain English, what is the bounded-case scenario for binary search?
+
+A bounded-case scenario is between the best-case and worst-case. Most computations will occur between the best case and worst case scenarios.
+The bounded-case scenario is a better description of how the function will behave more often.
+
+
+6. What is the limit of the function above as n approaches infinity?
+
+2^n
+
+
+7. What is the Big-O of an algorithm that has the data points above?
+
+O(2^n)
+
+
+8. Write a Ruby method that takes a number n. This method must print the worst-case number of iterations for linear search to find an item in collections of size one to n.
+Use it to generate a table of worst-case iterations of collections up to size 10.
+
+For 10: 1 iterations
+For 10: 2 iterations
+For 10: 3 iterations
+For 10: 4 iterations
+For 10: 5 iterations
+For 10: 6 iterations
+For 10: 7 iterations
+For 10: 8 iterations
+For 10: 9 iterations
+For 10: 10 iterations
+
+
+10. What is the Big-O of binary search?
+O(log n)
+
+
+11. What is the Big-Ω of binary search?
+Ω(1)
+
+12. What is the Big-Ө of binary search?
+θ(log n)
