@@ -1,0 +1,26 @@
+-------------------
+Questions
+-------------------
+
+1. How does your data structure allow developers to access and manipulate the data?
+2. If a developer wanted to find a specific element in your data structure, how would you search for it?
+3. What other real-world data can each structure represent?
+
+
+-------------------
+Project #1: A line of people at an amusement park ride.
+-------------------
+
+1. Array data structures allow developers to access elements of the same type continuously. Developers can access these elements in one of two ways to manipulate the data. The first way is by having access to all of the elements through their index. Secondly, is by having access to the size of the array.
+2. By the elements index.
+3. A grocery list.
+
+-------------------
+Project #1: Pixels on a computer screen.
+-------------------
+
+1. An array of arrays helps to dynamically set any height (rows) and any width (columns). We are able to give two coordinates, to get access to a specific point's data. We've also created a private method inbounds just to make sure that the data being retrieved from the array[0][0] location really does exist.
+
+2. By using coordinates, the developer is able to retrieve an element at that specific location.
+
+3. Coordinates on a map! Using geo technology you can use any coordinates, place them into Google, and out will spit the exact location of those coordinates.

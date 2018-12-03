@@ -20,7 +20,7 @@ RSpec.describe Screen, type: Class do
       expect(p1.green).to eq pixel.green
       expect(p1.blue).to eq pixel.blue
     end
-  end
+   end
 
   describe "#at" do
     it "returns the pixel at a specific location" do
