@@ -1,4 +1,5 @@
 require_relative 'node'
+require 'benchmark'
 
 class LinkedList
   attr_accessor :head

@@ -11,11 +11,30 @@ Questions
       + In the Array, the 5001st item becomes the 5000th, and so on.
 
 -------------------
-Spacial Locality
+Spacial Locality: blog resource: https://medium.com/basecs/whats-a-linked-list-anyway-part-1-d8b7e6508b9d
 -------------------
 
-Spacial locality means that memory can be stored in any physical memory therefore there's the added benefit to take advantage of this huge amount of space, also the retrieving of this elements won't take long. For example, in a linked list, you only need the original first/head element, this node then traverses to the next node till the specific node is found. 
+Spacial locality refers to how the data is stored in the memory. When the processor requests a piece of data not found, it has the added performance benefit of retrieve the data from a range of locations, rather than retrieving a single location from RAM, and placing it in the Cache. Retrieving a range of locations reduces the number of times the computer must read from RAM, which is a longer process than retrieving the data from Cache. 
+
+1. Arrays are static data structures. Once the array is created all the resources need to be allocated at once, which means it uses a continuous block of memory, one byte next to the another. If elements need to be added, and there wasn't enough memory, the array would then need to be copied, and recreated with more memory.
+
+2. Linked Lists are dynamic data structures. A dynamic size can shrink and grow in memory. Unlike its cousin array, it doesn't need a set amount of memory allocated.
+
 
 -------------------
 Benchmark
 -------------------
+
+lcaton-mbp:03-linked-lists lcaton$  ruby benchmark.rb
+                 user     system      total        real
+array add    0.000000   0.000000   0.000000 (  0.000817)
+linked l_list add  1.830000   0.000000   1.830000 (  1.837169)
+                 user     system      total        real
+array find   0.000000   0.000000   0.000000 (  0.000030)
+linked l_list find  0.000000   0.000000   0.000000 (  0.000012)
+                 user     system      total        real
+array pop    0.000000   0.000000   0.000000 (  0.000004)
+linked l_list pop  0.000000   0.000000   0.000000 (  0.000468)
+                 user     system      total        real
+array shift  0.000000   0.000000   0.000000 (  0.000004)
+linked l_list shift  0.000000   0.000000   0.000000 (  0.000008)
