@@ -1,0 +1,21 @@
+-------------------
+Questions
+-------------------
+
+1. What is Spatial Locality and why does it benefit performance?
+
+2. Compare the performance of an Array to a Linked List using the Benchmark module.
+   + Compare the time it takes to create a 10,000 item Array to appending 10,000 items to a Linked List.
+   + Compare the time it takes to access the 5000th element of the Array and the 5000th Node in the Linked List.
+   + Compare the time it takes to remove the 5000th element from the Array to removing the 5000th Node in the Linked List.
+      + In the Array, the 5001st item becomes the 5000th, and so on.
+
+-------------------
+Spacial Locality
+-------------------
+
+Spacial locality means that memory can be stored in any physical memory therefore there's the added benefit to take advantage of this huge amount of space, also the retrieving of this elements won't take long. For example, in a linked list, you only need the original first/head element, this node then traverses to the next node till the specific node is found. 
+
+-------------------
+Benchmark
+-------------------
