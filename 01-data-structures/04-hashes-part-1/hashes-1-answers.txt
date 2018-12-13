@@ -1,0 +1,19 @@
+
+---------------
+QUESTION
+---------------
+
+1. Explain why doubling the size of the underlying array of your HashClass may be a poor idea.
+
+
+---------------
+ANSWER
+---------------
+
+Arrays are very efficient at access information as long as we know the index. When we double the array, we are doing 3 un-resourceful actions. 
+
+	1. When double the array size, we're also copying over existing elements, and this is a costly operation process. 
+
+	2. Every time we double the array we are increasing the amount of empty slots. Creating fragments is not being memory allocation-sensitive.
+	
+	3. Arrays are static in memory allocation which means it requires blocks of memory side-by-side. When the array expands and doesn't have enough room, the memory manager will look for other blocks that can accommodate this size, which can also be a costly operation process.
