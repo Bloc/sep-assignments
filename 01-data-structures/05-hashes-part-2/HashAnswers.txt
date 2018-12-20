@@ -1,0 +1,15 @@
+
+Alternatives
+
+Hopscotch Hashing:
+A combination of cuckoo hashing and linear probing. If a collision happens the algorithm will look for buckets near the original hash location and if none are found it will continue to look for one ultimately using linear probing to continue down the line until an empty location is found. Then at this time it will repeatedly displace items through a sequence of hops to bring the empty slot into the neighborhood of the original location.
+
+Robin Hood Hashing:
+With this type of collision resolution strategy, when a collision occurs the hash will look at the two objects and evaluate which one has a larger probe count and change the hash to reflect that data point. This change would then effectively bump the object with the shorter search time out and cause that object to reallocate itself. This ultimately leads to a reduction in the worst case search times for the table.
+
+2-Choice Hashing:
+This collision resolution strategy employs two different hashing algorithms thereby providing the object two locations to choose from. By default the object will then be inserted into the table at the location that contains fewer objects.
+
+My Method:
+When a collision occurs take the position of the total size divided by 2. Now search through the first half, and if any positions are empty in the first half store new hash key in that position. Determining if half of hash table is free first, has the added benefit of having a faster load factor! This is essentially meshing together a merge sort and hash table.  
+
