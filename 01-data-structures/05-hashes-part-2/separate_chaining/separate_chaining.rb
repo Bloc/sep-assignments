@@ -83,4 +83,16 @@ class SeparateChaining
     end
     @items = new_items
   end
+
+
+  def print_hash
+    compacted_items = @items.compact
+    loadfactor = ((compacted_items.length) / self.size.to_f)
+    puts "Load Factor: #{loadfactor.round(2)}"
+    compacted_items.each_with_index do |item, index|
+      puts "Index: #{index}, Value: #{item.inspect}"
+    end
+  end
+
+
 end
