@@ -1,0 +1,22 @@
+1.
+Tree: "The Matrix: 87\nBraveheart: 78\nMad Max 2: The Road Warrior: 98\nPacific Rim: 72\nInception: 86\nDistrict 9: 90\nStar Wars: Return of the Jedi: 80\nThe Shawshank Redemption: 91\nThe Martian: 92\nStar Wars: The Empire Strikes Back: 94\nStar Wars: A New Hope: 93\n"
+
+Heap:
+"Pacific Rim: 72\nThe Matrix: 87\nDistrict 9: 90\nStar Wars: A New Hope: 93\nThe Martian: 92\nMad Max 2: The Road Warrior: 98\nStar Wars: The Empire Strikes Back: 94\n"
+
+              user     system      total        real
+tree insert  0.330000   0.000000   0.330000 (  0.343733)
+heap insert  0.140000   0.000000   0.140000 (  0.140481)
+              user     system      total        real
+tree find    0.000000   0.000000   0.000000 (  0.000015)
+heap find    0.000000   0.000000   0.000000 (  0.000003)
+              user        system      total        real
+tree delete  0.000000   0.000000   0.000000 (  0.000005)
+heap delete  0.000000   0.000000   0.000000 (  0.000003)
+
+2.
+  -Very little time for each but the Tree is about 3x the time frame compared to the heap.
+  -It takes about 5x longer to find it in the tree compared to the heap.
+  -It takes almost 2x longer to delete with the tree compared to the heap.
+  -I would use the Binary Search tree in situations where it called for that specific data structure regardless of speed or efficiency.
+  -On the other hand I would use the Heap in the case where speed and efficiency was more of a priority compared to other needs.
