@@ -1,3 +1,4 @@
+
 class Node
   attr_accessor :title
   attr_accessor :rating
