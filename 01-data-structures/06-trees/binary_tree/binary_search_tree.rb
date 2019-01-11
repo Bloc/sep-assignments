@@ -6,13 +6,6 @@ class BinarySearchTree
     @root = root
   end
 
-  # def insert(root, node)
-  #   if root.rating > node.rating
-  #     root.left.nil? ? (root.left = node) : insert(root.left, node)
-  #   else
-  #     root.right.nil? ? (root.right = node) : insert(root.right, node)
-  #   end
-  # end
   def insert(root, node)
     if node.rating >= root.rating
         insert(root.right, node) unless root.right.nil?
@@ -55,11 +48,9 @@ end
       new_root = queue.shift
       if new_root.left != nil
         queue.push(new_root.left)
-        # queue.push("Left: #{new_root.left}")
       end
       if new_root.right != nil
         queue.push(new_root.right)
-        # queue.push("Right: #{new_root.right}")
       end
       result.push("#{new_root.title}: #{new_root.rating}")
     end
