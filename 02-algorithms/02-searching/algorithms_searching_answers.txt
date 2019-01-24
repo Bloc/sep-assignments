@@ -1,0 +1,75 @@
+---------------------------------
+1. Given the alphabetically sorted collection in this checkpoint, how many iterations would it take to find the value G using linear search?
+---------------------------------
+
+A - 1 iteration
+B - 2nd iteration
+C - 3rd iteration
+D - 4th iteration
+E - 5th iteration
+F - 6th iteration
+G - 7th iteration
+
+answer: 7
+
+7 steps using linear search**
+
+
+
+---------------------------------
+2. Given the alphabetically sorted collection in this checkpoint, how many iterations would it take to find the value G using binary search?
+---------------------------------
+
+A B C D E F G H I J K L M N O P Q R S T U V W X Y Z = 26 (26/2 = 13) even btw M and N
+		----> (mid = n/2 +1) N O P Q R S T U V W X Y Z = remove focus of this half
+
+A B C D E F G H I J K L M = 13 (13/2 = 6.5) odd = middle is G
+
+
+G = answer! - 3 iterations through to find the answer
+
+
+3 steps using binary search**
+
+
+
+---------------------------------
+3. Calculate fib(10), fib(11), fib(12) by hand.
+---------------------------------
+
+f(10)
+				fib(2)			fib(3)			fib(4)			fib(5)			fib(6)			fib(7)			fib(8)			fib(9)			
+base case +  base case + (fib(n-1) + fib(n-2)) + (fib(n-1) + fib(n-2)) + (fib(n-1) + fib(n-2)) + (fib(n-1) + fib(n-2)) + (fib(n-1) + fib(n-2)) + (fib(n-1) + fib(n-2)) + (fib(n-1) + fib(n-2)) + (fib(n-1) + fib(n-2)) + 
+
+	fib(10)			fib(11)			fib(12)
+(fib(n-1) + fib(n-2)) + (fib(n-1) + fib(n-2)) + (fib(n-1) + fib(n-2))
+	
+
+              2       3       4       5       6       7        8        9         10        11        12
+ 0  +  1  + (1+0) + (1+1) + (2+1) + (3+2) + (5+8) + (8+5) + (13+8) + (21+13) + (34+21) + (55+34) + (88+55)
+            fib(2)  fib(3)  fib(4)  fib(5)  fib(6)  fib(7)  fib(8)   fib(9)    fib(10)   fib(11)   fib(12)
+
+fib(10) = 0 + 1 + (1+0) + (1+1) + (2+1) + (2+3) + (3+5) + (5+8) + (8+13) + (13+21) + (21+34) => 55
+fib(11) = 0..(55+34) => 89
+fib(12) = 0..(89+55) => 144 
+
+
+
+---------------------------------
+4.
+---------------------------------
+
+Qs: Given an unsorted collection of a million items, which algorithm would you choose between linear search and binary search? Would you use an iterative or recursive solution? Explain your reasoning.
+
+As: I would use the linear search with an iterative solution to go through each item because we might reach the item before reaching the very end, since all items are unsorted.
+
+
+---------------------------------
+5.
+---------------------------------
+
+Qs: Given a sorted collection of a million items, which algorithm would you choose between linear search and binary search? Would you use an iterative or recursive solution? Explain your reasoning.
+
+As: I would use the binary search with a recursion solution for this algorithm because it is a sorted collection we are able to use the divide and conquer methodology. This would allow us to find the item in the least amount of steps possible by eliminating half of the items each time the value and the midpoint are compared.
+
+
