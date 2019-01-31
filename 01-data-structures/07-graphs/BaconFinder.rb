@@ -14,7 +14,7 @@ class BaconFinder
           if !@visited.include?(a)
             temp = find_kevin_bacon(a)
             films << title #<< is adding a string to array
-            films += temp #+= mathematical equation addd an array to an array (resulting in just one single array without nested arrays)
+            films += temp #+= mathematical equation adds an array to an array (resulting in just one single array without nested arrays)
           end
         end
       end
@@ -47,8 +47,8 @@ end
 #16. add titles, (w/out 'Kevin Bacon'), to array 'films'
 #17. add temp to films - *Isn't ths the same as #16^?*
 
-#(we've added all the titles with name 'Kevin Bacon' to our empty array films)
-#(now we're adding all the names that did not include 'Kevin Bacon' to our empty array films)
+#(we've adding the string titles (with name 'Kevin Bacon' as the actor) to the array 'films')
+#(we're adding the array of titles (that did not include 'Kevin Bacon' as the actor) to the array 'films')
 
 
 
