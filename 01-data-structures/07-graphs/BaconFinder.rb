@@ -1,4 +1,4 @@
-require_relative 'Node'
+require_relative 'node'
 
 class BaconFinder
   attr_accessor :visited
