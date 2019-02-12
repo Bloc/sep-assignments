@@ -1,0 +1,16 @@
+1. How does your data structure allow developers to access and manipulate the data?
+	
+	Both data structures (Line and Pixel) utilize arrays. In the Line data structure, data can be accessed and manipulated using the methods provided in the class (join, leave, front, middle, back, etc.), or via any other preferred method that can be called on an array. 
+	The Line data is slightly more abstract because it utilizes a 2D array data structure. Data may also be accessed and manipulated via the methods provided in the class, or by using the (x,y) coordinates and (r, g, b) pixel color values.
+ 
+2. If a developer wanted to find a specific element in your data structure, how would you search for it?
+
+	To find an element in the Line structure, a developer could use the methods provided in the Line class (i.e.,front, middle, back, and search(person)) or any of the standard methods of accessing elements in an array (e.g., members[2] to find the third person in line, or members.include? "Tom" to find if Tom is in line). 
+	To find an element in the Pixel data structure, a developer could use the at method in the Screen class, which would search for the element at the given coordinates.
+
+
+3. What other real-world data can each structure represent?
+
+	The Line data structure (queues) can be used for several real-world scenarios. In addition to lines of people, they can be used for keeping track of print queues, FIFO resources such as grocery items that may expire, or telephone answering systems where callers are placed on hold and then answered in the order in which they came in.
+	The Pixel data structure can be used for anything that requires data be held in a grid or matrix such as coordinates on a map.
+	 
