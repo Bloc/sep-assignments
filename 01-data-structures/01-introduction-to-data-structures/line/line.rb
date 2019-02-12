@@ -32,7 +32,7 @@ class Line
     if members.include?(person)
       person
     else
-      "#{person} is not in line."
+      nil
     end
   end
 
