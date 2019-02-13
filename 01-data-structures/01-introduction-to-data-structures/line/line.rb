@@ -9,21 +9,31 @@ class Line
   end
 
   def join(person)
+    members.push(person)
   end
 
   def leave(person)
+    members.delete(person)
   end
 
   def front
+    members.first
   end
 
   def middle
+    members[members.length/2]
   end
 
   def back
+    members.last
   end
 
   def search(person)
+    if members.include?(person)
+      person
+    else
+      nil
+    end
   end
 
   private
