@@ -14,7 +14,7 @@ class Screen
   # Insert a Pixel at x, y
   def insert(pixel, x, y)
     valid_coordinate = inbounds(x,y)
-    self.matrix.insert([x][y], pixel) if !valid_coordinate.nil?
+    self.matrix[x][y] = pixel if !valid_coordinate.nil?
   end
 
   def at(x, y)
