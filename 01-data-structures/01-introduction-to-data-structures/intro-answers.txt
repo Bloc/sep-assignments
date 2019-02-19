@@ -1,0 +1,21 @@
+1. How does your data structure allow developers to access and manipulate the data?
+
+Both the line and screen data structures allow developers to access and manipulate data through arrays. Line is a simple array
+of strings which allows developers to easily add new strings to the end of the array using line.join(person), remove members
+using line.leave(person), or find a specific person in line using line.search(person). The screen data structure is a two-dimensional
+array which allows developers to model a screen by inserting pixels at specified x,y coordinates using screen.insert(x,y)
+or find the pixel at a specified coordinate using screen.at(x,y).
+
+2. If a developer wanted to find a specific element in your data structure, how would you search for it?
+
+Line allows developers to find a specific person using line.search(person) which utilizes the private method line.index(person).
+Line.index() returns the index of the string that was searched for and allows developers to return the string at that index in
+the line.members array. Screen uses screen.at(x,y) to find the pixel at the specified x,y coordinate. If the x,y coordinate
+provided is within the dimensions of the screen, screen.at() will return the pixel data.
+
+3. What other real-world data can each structure represent?
+
+The line data structure is analogous to a queue in online gaming. When a user sends a request to enter a game, they are placed in
+a queue. The queue is first in, first out and a user can cancel the request to join (line.leave()). The screen data structure
+could also represent a digital picture. A digital picture could also be modeled as a two-dimensional array with specific
+pixel information at specific coordinates. 
