@@ -1,0 +1,20 @@
+Q: How does your data structure allow developers to access and manipulate the data?
+
+A: Developers are able to use attribute accessors that are instance variables
+so that they can keep the pixel and screen classes separate and clean and reusable.
+The attribute attr_accessor are set so that the developer can enter standard
+numeric values for both the colors and the pixel coordinates.
+
+Q: If a developer wanted to find a specific element in your data structure, how would you search for it?
+
+A: The developer could search by pixel coordinates to determine the
+color values.
+
+Q: What other real-world data can each structure represent?
+
+A: This could be used for plotting circumstance such as maps and grids.
+It could be used as a database for finding where a product is in a warehouse.
+It could be used to plan events such as where items or people go in a given area.
+To make art or design websites.
+To program a plotter printer.
+Also to play the game Battleship. 
