@@ -1,0 +1,26 @@
+Q: How does your data structure allow developers to access and manipulate the data?
+A: Developers can add, remove and search members which utilizes the push, slice
+and also checks to see if the person searched for exists, if it does, it returns the value.
+They can also see who is first and last using the standard .first and .last methods.
+They can then take the total number of objects and divide by two, and round 
+
+Q: If a developer wanted to find a specific element in your data structure,
+how would you search for it?
+A: The developer would need to make sure they include the current list of members,
+and search by member name and not allow a an empty search.
+
+Q: What other real-world data can each structure represent?
+A: Customers in any given setting where people come and go.
+
+Race cars entering and leaving the pits if you are counting first and last by time
+entered into pits and not physical spot I think. (This would not include the ever
+changing order of the cars during the race time on the track).
+
+A to do list
+
+Anything to do with a line of course like waiting for an amusement park ride, for ice cream,
+for the checkout etc.
+
+Commits to a code base
+
+Releases of beer from a brewer.
