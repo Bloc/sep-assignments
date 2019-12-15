@@ -12,6 +12,7 @@ class Pixel
 
 
   def initialize(red, green, blue, x, y)
+    
   end
 
   private

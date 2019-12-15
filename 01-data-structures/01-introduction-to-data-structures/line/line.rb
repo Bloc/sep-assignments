@@ -21,7 +21,7 @@ class Line
   end
 
   def middle
-    self.members[((members.length / 2 ).round)]
+    self.members[(members.length / 2 )]
   end
 
   def back
@@ -39,3 +39,9 @@ class Line
   end
 
 end
+
+#for testing in irb
+L = Line.new
+L.join "bob"
+L.join "nancy"
+L.join "drew"
