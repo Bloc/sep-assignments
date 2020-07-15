@@ -1,0 +1,26 @@
+**Print both Trees to the console and compare the difference between your Binary
+  Search Tree and your Heap.**
+
+The binary search tree seems to be in an almost random order. The heap is in
+mostly ascending order.
+
+**Insert all numbers from 1 to 100000 into both Trees, then use Benchmark to
+  compare performance:**
+
+                              user     system      total        real
+BinarySearchTree#insert    0.530000   0.000000    0.530000 (  0.533654)
+MinHeap#insert             0.090000   0.000000    0.090000 (  0.087007)
+BinarySearchTree#find      0.020000   0.000000    0.020000 (  0.020560)
+MinHeap#find               0.000000   0.000000    0.000000 (  0.003392)
+BinarySearchTree#delete 3512.840000   0.850000 3513.690000 (3516.365820)
+MinHeap#delete           187.420000   0.040000  187.460000 (187.538864)
+
+
+**When would you use a Binary Search Tree and why?**
+
+When you must keep the structure in sorted order, and you want to find elements
+quickly.
+
+**When would you use an Heap and why?**
+
+When you only plan on accessing or removing the minimum element.
